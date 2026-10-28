@@ -11,8 +11,8 @@
 | 새 카메라: 원본 카메라와의 관계, 높이, 방향 | `CAMERA` |
 | 주체 하나, 화면 점유율, 남길 랜드마크 1~3개, 프레임 밖으로 뺄 것 | `FRAMING` |
 | 반대 방향이면: 카메라 방식(먼 끝으로 이동 / 제자리 180°), 새 방향의 종점, 반복 요소, 번호·표지 | 틀 A |
-| 부모의 MASTER GEOMETRY · LIGHT LOCK · 팔레트 · 시대 잠금 · 마감 (에셋 대장, 글자 그대로) | 상속 줄 |
-| 이 뷰의 화면 대응 | 마지막 줄 |
+| 부모의 MASTER GEOMETRY · 팔레트 · 시대 잠금 · 마감 (에셋 대장, 글자 그대로) | 상속 줄 |
+| 이 뷰의 LIGHT LOCK(화면 쪽 + 물건). 반대 방향이면 좌우를 뒤집어 새로 쓴다 | 마지막 줄 |
 
 ## 공통
 
@@ -41,8 +41,8 @@ SPATIAL CONTINUITY:
 - [Numbers, plates, signs]: plain and unmarked, text not legible
 This is a newly observed opposite direction of the same physical [space], not a horizontal mirror of
 the reference.
-[Parent's MASTER GEOMETRY with its viewpoint · LIGHT LOCK · palette · era lock · finish — verbatim]
-In this view [direction] is screen LEFT and [direction] is screen RIGHT: [landmark] is at screen [side].
+[Parent's MASTER GEOMETRY with its viewpoint · palette · era lock · finish — verbatim]
+In this view [landmark] is at screen [side] and [landmark] is at screen [side]. [This view's LIGHT LOCK: the light comes from screen [side], the [object] side.]
 ```
 
 CAMERA는 두 줄 중 하나만 남긴다. 둘을 섞거나 중간 표현으로 타협하지 않는다.
@@ -65,8 +65,8 @@ CONTINUITY: Preserve the exact design, proportions, material, wear, state and pl
 of [subject and anchors]. Keep the same lighting direction, palette and era.
 Move in from the same side and along the same line of sight; no reverse angle and no view from behind.
 (새 방향이면 위 줄 대신: This is a newly observed direction of the same physical room, not a horizontal mirror of the reference.)
-[Parent's MASTER GEOMETRY with its viewpoint · LIGHT LOCK · palette · era lock · finish — verbatim]
-In this view [direction] is screen LEFT and [direction] is screen RIGHT: [landmark] is at screen [side].
+[Parent's MASTER GEOMETRY with its viewpoint · palette · era lock · finish — verbatim]
+In this view [landmark] is at screen [side] and [landmark] is at screen [side]. [This view's LIGHT LOCK: the light comes from screen [side], the [object] side.]
 ```
 
 **교정**

@@ -49,7 +49,6 @@ VOICE: "[ ]"
 
 ```text
 MASTER GEOMETRY (as seen from [어디], looking [방향]): [ ]
-LIGHT LOCK (장소 기준 방향으로): [ ]
 PALETTE: [ ]
 ERA LOCK: [ ]
 FINISH (정지 이미지용 카메라·렌즈·필름): [ ]
@@ -57,9 +56,9 @@ Nothing else (빈 장소용): [ ]
 ```
 초안(제안값): [ ]
 
-| 뷰 | 계보 | 카메라(어디서 어디를, mm = °) | 화면 대응 문장 (영어, 글자 그대로) | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
+| 뷰 | 계보 | 카메라(어디서 어디를, mm = °) | 이 뷰의 LIGHT LOCK (화면 쪽 + 물건, 영어, 글자 그대로) | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
 |---|---|---|---|---|---|---|---|---|
-| `LC-001-V1` | MASTER | | `In this view the [direction], the [landmark] side, is screen LEFT.` | — | | | | |
+| `LC-001-V1` | MASTER | | `[Light] from screen [side], the [object] side, is the only key.` | — | | | | |
 
 ## 소품
 

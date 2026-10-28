@@ -7,10 +7,10 @@
 | 필요한 정보 | 틀의 자리 |
 |---|---|
 | 컷 카메라가 확정 장소 뷰와 같은가 (장소 뷰 job). 컷 목록의 장소 뷰가 확정 뷰 그대로면 "같음(틀 1)"을 제안한다 | 모드: 틀 1 / 틀 2 |
-| 장소 뷰 job, LIGHT LOCK, 이 뷰의 화면 대응 줄 | `<<<LOC>>>`, `PRESERVE EXACTLY` |
+| 장소 뷰 job, 그 뷰의 LIGHT LOCK | `<<<LOC>>>`, `PRESERVE EXACTLY` |
 | 인물마다 요소 ID, 의상 상태, 고정 설명문 | `REFERENCE AUTHORITY`, `WARDROBE` |
 | 소품: 위치, 상태, 누가 드는가, 크기(cm + 신체) | `PROP` |
-| 카메라: 위치(물건 기준)·높이·방향·거리·샷 크기 (틀 2는 장비명도) | `CAMERA` |
+| 카메라: 위치(화면 속 물건으로)·높이·무엇을 보는지·거리·샷 크기 (틀 2는 장비명도) | `CAMERA` |
 | 인물마다 시작 위치(앵커·거리·접촉), 하던 동작, 시선, 손 | `CHANGE` / `BLOCKING` |
 | 보이는 인원 수 | `Exactly [N] people` |
 | 최종 화면비 | 설정 |
@@ -52,7 +52,7 @@ REFERENCE AUTHORITY:
 - <<<PROP>>> controls only [prop]'s shape, material and state; its size is as described above.
 DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framing.
 WARDROBE: [asset registry sentence, verbatim].
-PRESERVE EXACTLY: camera and perspective · every object already in the place · [LIGHT LOCK, verbatim] + [the view's screen-mapping sentence from the asset registry, verbatim] · shadows, exposure, grade, grain
+PRESERVE EXACTLY: camera and perspective · every object already in the place · [this view's LIGHT LOCK, verbatim] · shadows, exposure, grade, grain
 ONLY CHANGE: the people and props are added exactly as described. Everything else remains 100% identical.
 Exactly [one person is / N people are] visible.
 ```
@@ -76,6 +76,6 @@ WARDROBE: [asset registry sentence, verbatim].
 PROP: [position, state, who holds it, size in cm and body terms]. [Except: …]
 [PALETTE · ERA LOCK from the asset registry, verbatim]
 Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
-[LIGHT LOCK, verbatim] [Screen mapping for this new view: In this view [direction] is screen LEFT … — write it for this camera]
+[LIGHT LOCK for this new view: the light comes from screen [side], the [object] side]
 Exactly [one person is / N people are] visible.
 ```

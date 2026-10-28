@@ -81,17 +81,17 @@ VOICE: "[ ]"
 ### LC-001 시골 버스 정류장
 
 ```text
-MASTER GEOMETRY (as seen from the road, looking north): A concrete bus shelter with a corrugated tin roof stands at the centre, its open front facing the road. A wooden bench runs along its back wall. A painted metal timetable sign stands on a pole at the east side of the shelter. A bare persimmon tree stands at the west side. Harvested rice paddies stretch behind it to low hills.
-LIGHT LOCK (장소 기준 방향으로): Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+MASTER GEOMETRY (as seen from across the road, looking at the shelter's open front): A concrete bus shelter with a corrugated tin roof stands at the centre, its open front facing the road. A wooden bench runs along its back wall. A painted metal timetable sign stands on a pole at the RIGHT of the shelter. A bare persimmon tree stands at the LEFT. Harvested rice paddies stretch behind it to low hills.
+LIGHT LOCK (LC-001-V1, 화면 기준 + 광원 쪽 물건): Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
 Nothing else: no other buildings, no cars, no people, no legible text.
 PALETTE: Palette of roughly 80% faded ochre and dry straw — 15% weathered concrete grey — 5% persimmon orange.
 ERA LOCK: Late autumn, early 1990s, rural South Korea; nothing more recent anywhere in frame.
 FINISH: Photorealistic cinematic film still, ARRI Alexa LF, Cooke S4 35mm, Kodak Vision3 250D 5207, organic film grain, soft falloff, crisp natural detail.
 ```
 
-| 뷰 | 계보 | 카메라(어디서 어디를, mm = °) | 화면 대응 문장 (영어, 글자 그대로) | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
+| 뷰 | 계보 | 카메라(어디서 어디를, mm = °) | 이 뷰의 LIGHT LOCK (화면 쪽 + 물건, 영어, 글자 그대로) | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
 |---|---|---|---|---|---|---|---|---|
-| `LC-001-V1` | MASTER | 길 건너편 서서 눈높이, 북쪽(정류장 정면)을 봄, 35mm = 63° | `In this view the west, the persimmon-tree side, is screen LEFT.` | — | `job-lc001v1` | GPT Image 2.5 | 확정 | 감 열매 조금 많음 |
+| `LC-001-V1` | MASTER | 길 건너편 서서 눈높이, 정류장 정면을 봄, 35mm = 63° | `Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.` | — | `job-lc001v1` | GPT Image 2.5 | 확정 | 감 열매 조금 많음 |
 
 요소 이름: `loc_busstop_road_v1` = LC-001-V1
 

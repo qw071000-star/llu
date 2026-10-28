@@ -100,7 +100,7 @@ no text, no watermark, no logos, no frame borders, no other people, no duplicate
 
 ```text
 Generate a rural bus stop at dusk.
-CAMERA: wide shot, camera at standing eye level on the far side of the two-lane road, looking north at the shelter, the shelter read slightly at an angle, not square-on.
+CAMERA: wide shot, camera at standing eye level on the far side of the two-lane road, looking at the shelter's open front, the shelter read slightly at an angle, not square-on.
 THE DOMINANT ELEMENT: the low dusk sun raking in from screen left across the shelter's concrete face.
 SPATIAL GEOGRAPHY (as seen from the road; LEFT and RIGHT are SCREEN directions):
 At the CENTRE, a concrete bus shelter with a corrugated tin roof, its open front facing the camera. A wooden bench runs along its back wall. At the RIGHT of the shelter, a painted metal timetable sign on a single pole. At the LEFT, a bare persimmon tree with a few orange fruits left on the top branches. Behind the shelter, harvested rice paddies stretch to low hills. In the foreground, the cracked asphalt edge of the road.
@@ -108,7 +108,7 @@ Nothing else: no cars, no people, no animals, no modern signage, no vending mach
 Empty deserted bus stop, still air.
 Palette of roughly 80% dry ochre and grey concrete — 15% deep blue dusk sky — 5% persimmon orange.
 Real material truth: rough cast concrete with rain streaks, rusted tin ridges, a bench worn pale where people sit.
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 Image finish: ARRI Alexa Mini, 35mm lens, Kodak Vision3 250D. Era lock: late autumn, early 1990s, rural South Korea. Nothing more recent anywhere in frame. Hand-lettered signage, text not legible. No legible text anywhere.
 ```
 
@@ -125,13 +125,13 @@ Image finish: ARRI Alexa Mini, 35mm lens, Kodak Vision3 250D. Era lock: late aut
 
 ```text
 FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
-Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: an extreme wide shot from the harvested paddies south of the road, at standing eye level, looking north; the shelter is small at the right third of the frame. Shot on an ARRI Alexa Mini with a 50mm lens, Kodak Vision3 250D.
+Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: an extreme wide shot from the harvested paddies behind the reference camera, across the road, at standing eye level, looking toward the shelter; the shelter is small at the right third of the frame. Shot on an ARRI Alexa Mini with a 50mm lens, Kodak Vision3 250D.
 REFERENCE AUTHORITY:
 - <<<loc_busstop_road_v1>>>: geography, materials, landmarks, light direction
 PRIORITY: the CAMERA block overrides every reference.
 LANDSCAPE: harvested rice paddies with straw stubble fill the lower half; the two-lane road crosses the frame left to right a third of the way up; the bare persimmon tree stands just left of the shelter; low hills along the horizon; a few thin clouds lit orange from below.
 Nothing else: no people, no cars, no animals, no legible text, nothing more recent than the early 1990s.
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT: the sun sits low near the horizon at the left edge, its light raking across the stubble.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The sun sits low near the horizon at the screen-left edge, its light raking across the stubble.
 Palette of roughly 80% dry ochre and grey concrete — 15% deep blue dusk sky — 5% persimmon orange.
 Exactly 0 people are visible.
 ```
@@ -160,7 +160,7 @@ REFERENCE AUTHORITY: the start image has sole authority over camera, framing, th
 [LOCATION_MAP]
 LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
 LEFT EDGE: the bare persimmon tree. CENTRE: the concrete shelter with the bench along its back wall. RIGHT: the timetable sign on its pole. FOREGROUND: the empty road edge.
-In this view the west, the persimmon-tree side, is screen LEFT. GRANDPA stays on the bench.
+The persimmon tree is at screen LEFT. GRANDPA stays on the bench.
 
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]
 (Scope: FIRST_FRAME only.)
@@ -193,7 +193,7 @@ motion_owner = CAMERA: none.
 motion_owner = ENVIRONMENT: a few dry leaves on the tree tremble in the wind.
 
 [LIGHTING]
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
 
 [AUDIO]
 No dialogue. GRANDPA does not say a single word; no attempt to speak, no lip movement. Distant wind over the paddies. No music.
@@ -237,7 +237,7 @@ BLOCKING: the old man sits on the persimmon-tree half of the bench, his back aga
 WARDROBE: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes.
 PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. It lies across his thighs, clasp closed.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 Exactly 1 person is visible.
 ```
 
@@ -270,7 +270,7 @@ PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, ha
 PRESERVE EXACTLY:
 - Camera position, height, angle, lens, framing, horizon line, vanishing point and perspective
 - The shelter, bench, timetable sign, persimmon tree, road and paddies
-- Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+- Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 - Shadows, exposure, colour grade, contrast and grain
 ONLY CHANGE: the old man, the girl and the bag are added exactly as described. Everything else remains 100% identical. Exactly 2 people are visible.
 ```
@@ -300,7 +300,7 @@ REFERENCE AUTHORITY: the start image has sole authority over camera, framing, th
 [LOCATION_MAP]
 LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
 LEFT EDGE: the bare persimmon tree. CENTRE: the concrete shelter with the bench along its back wall. RIGHT: the timetable sign on its pole. FOREGROUND: the empty road edge.
-In this view the west, the persimmon-tree side, is screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
+The persimmon tree is at screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
 
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]
 (Scope: FIRST_FRAME only.)
@@ -336,7 +336,7 @@ motion_owner = CAMERA: none.
 motion_owner = ENVIRONMENT: none.
 
 [LIGHTING]
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
 
 [AUDIO]
 Dialogue in Korean, exactly once. GIRL: "할아버지, 막차 갔대." — a ten-year-old girl's clear, slightly hoarse voice, quiet and careful. GRANDPA does not say a single word; no attempt to speak, no lip movement. Distant wind over the paddies. No music.
@@ -384,7 +384,7 @@ BLOCKING:
 WARDROBE: The old man: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. The girl: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
 PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. It lies across the man's thighs, clasp closed.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 Exactly 2 people are visible.
 ```
 
@@ -410,6 +410,6 @@ PRIORITY: the CAMERA block overrides every reference.
 BLOCKING: the girl stands at the timetable sign, an arm's length from its pole, facing the sign in three-quarter back view, mid-reading, the hand nearer the sign raised to the printed times.
 WARDROBE: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 Exactly 1 person is visible.
 ```

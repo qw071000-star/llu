@@ -1,5 +1,5 @@
 Generate a rural bus stop at dusk.
-CAMERA: wide shot, camera at standing eye level on the far side of the two-lane road, looking north at the shelter, the shelter read slightly at an angle, not square-on.
+CAMERA: wide shot, camera at standing eye level on the far side of the two-lane road, looking at the shelter's open front, the shelter read slightly at an angle, not square-on.
 THE DOMINANT ELEMENT: the low dusk sun raking in from screen left across the shelter's concrete face.
 SPATIAL GEOGRAPHY (as seen from the road; LEFT and RIGHT are SCREEN directions):
 At the CENTRE, a concrete bus shelter with a corrugated tin roof, its open front facing the camera. A wooden bench runs along its back wall. At the RIGHT of the shelter, a painted metal timetable sign on a single pole. At the LEFT, a bare persimmon tree with a few orange fruits left on the top branches. Behind the shelter, harvested rice paddies stretch to low hills. In the foreground, the cracked asphalt edge of the road.
@@ -7,5 +7,5 @@ Nothing else: no cars, no people, no animals, no modern signage, no vending mach
 Empty deserted bus stop, still air.
 Palette of roughly 80% dry ochre and grey concrete — 15% deep blue dusk sky — 5% persimmon orange.
 Real material truth: rough cast concrete with rain streaks, rusted tin ridges, a bench worn pale where people sit.
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 Image finish: ARRI Alexa Mini, 35mm lens, Kodak Vision3 250D. Era lock: late autumn, early 1990s, rural South Korea. Nothing more recent anywhere in frame. Hand-lettered signage, text not legible. No legible text anywhere.

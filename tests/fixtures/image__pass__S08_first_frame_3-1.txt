@@ -16,6 +16,6 @@ PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, ha
 PRESERVE EXACTLY:
 - Camera position, height, angle, lens, framing, horizon line, vanishing point and perspective
 - The shelter, bench, timetable sign, persimmon tree, road and paddies
-- Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+- Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 - Shadows, exposure, colour grade, contrast and grain
 ONLY CHANGE: the old man, the girl and the bag are added exactly as described. Everything else remains 100% identical. Exactly 2 people are visible.

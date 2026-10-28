@@ -14,7 +14,7 @@ REFERENCE AUTHORITY: the start image has sole authority over camera, framing, th
 [LOCATION_MAP]
 LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
 LEFT: the tree-side end of the bench. CENTRE: the rest of the bench. RIGHT: the timetable sign on its pole. FOREGROUND: the road edge.
-In this view the west, the persimmon-tree side, is screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
+The persimmon tree is at screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
 
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]
 (Scope: FIRST_FRAME only.)
@@ -50,7 +50,7 @@ motion_owner = CAMERA: none.
 motion_owner = ENVIRONMENT: none.
 
 [LIGHTING]
-Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
 
 [AUDIO]
 Dialogue in Korean, exactly once. GIRL: "할아버지, 막차 갔대." — a ten-year-old girl's clear, slightly hoarse voice, quiet and careful. GRANDPA does not say a single word; no attempt to speak, no lip movement. Distant wind over the paddies. No music.

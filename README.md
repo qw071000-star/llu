@@ -12,7 +12,7 @@
 
 ```
 kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공유한다)
-  instructions.md          [항상 읽힘] 지침 칸 / CLAUDE.md. 규칙 10개 + 읽기 지도. 4,000자 이하
+  instructions.md          [항상 읽힘] 지침 칸 / CLAUDE.md. 규칙 11개 + 읽기 지도. 4,000자 이하
   skills/                  [그 작업 때만] 스킬 6개. 스킬 안에서도 읽기 지도가 가리키는 파일만 연다
     project-setup/         새 작품: 질문 한 번, 정본 초안, Higgsfield 폴더
     production-session/    세션 시작·컷 카드·핸드오프·정본 관리, ok-reuse("3-1처럼")

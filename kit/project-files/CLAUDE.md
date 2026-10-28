@@ -12,7 +12,7 @@
 | 에셋·폴더 대장 | `project/asset-registry.md` |
 | 컷 목록·연속성 표 | `project/shot-list.md` |
 | OK 대장(승인작의 설정과 프롬프트) | `project/ok-cuts.md` |
-| 컷 카드 | `project/cuts/3-1.md` |
+| 컷 카드 | `project/cuts/<컷 번호>.md` |
 | 핸드오프·시행착오 | `project/log/` |
 
 - 무엇을 읽을지는 지침의 읽기 지도, 누가 무엇을 고치는지는 `production-session` §1이 정한다. 이 파일에 다시 쓰지 않는다.

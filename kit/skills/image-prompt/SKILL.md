@@ -7,7 +7,7 @@ description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 �
 
 ## 단계 파일 — 하나만 연다
 
-`character.md` 인물 + 의상 시트 · `location.md` 장소(그 안의 표가 `location-view.md` 새 시점 / `location-edit.md` 같은 사진 수정 중 하나를 더 가리킨다) · `prop.md` 소품 · `style.md` 그림체 이미지 · `first-frame.md` 퍼스트 프레임(영상 0:00)
+`character.md` 인물 시트 신규 · `character-edit.md` 확정 시트 고치기 · `location.md` 장소(그 안의 표가 `location-view.md` 새 시점 / `location-edit.md` 같은 사진 수정 중 하나를 더 가리킨다) · `prop.md` 소품 · `style.md` 그림체 이미지 · `first-frame.md` 퍼스트 프레임(영상 0:00)
 
 ## 0. 쓰기 전 정보 점검
 

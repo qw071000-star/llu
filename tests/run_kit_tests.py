@@ -230,7 +230,7 @@ for f in ["video-prompt/fixes.md", "video-prompt/live-action.md", "acting/SKILL.
 check("[맹검] 렌즈 mm → 화각 환산표", "50mm 47°" in vskill and "시작 이미지가 이긴다" in vskill)
 check("[맹검] 가져온 OK의 위험도 옮긴다", "위험도 가져온다" in reuse and "위험 → 막는 문장" in okt)
 check("[맹검] OK 대장 예시는 지우라고 표시", "예시" in okt and "지운다" in okt)
-for word in ["PALETTE", "ERA LOCK", "화면 대응 문장", "초안(제안값)", "알려진 실패"]:
+for word in ["PALETTE", "ERA LOCK", "이 뷰의 LIGHT LOCK", "초안(제안값)", "알려진 실패"]:
     check(f"[맹검] 에셋 대장 틀에 '{word}'", word in reg)
 check("[맹검] 자리표시 태그 안내(image-prompt)", "자리표시" in img_skill)
 check("[맹검] \"다시 만들어\" 확인 규칙", "그 확인이다" in gen)
@@ -263,7 +263,7 @@ owners = [
     ("이미지를 볼 수 없을 때", r"볼 수 없", {"instructions.md"}),
     ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md", "production-session/cut-card.md", "production-session/SKILL.md"}),  # 카드를 쓰는 그 자리에도 한 줄(맹검 r3: 형식 보려고 다른 카드를 엶)
     ("acting을 여는 때", r"인물이 연기하는 실사 영상", {"instructions.md"}),
-    ("손·좌우 규칙", r"hand nearer|오른손|right hand", {"instructions.md"}),
+    ("방향은 화면 기준(손 포함)", r"screen-left hand|모든 방향은 화면", {"instructions.md"}),
     ("반복 실패 한도", r"4회 중 3회", {"instructions.md"}),
     ("고정 설명문은 글자 그대로", r"(대장|설명문)[^\n]{0,15}글자 그대로 (쓴다|옮긴다|복사|붙인다)", {"instructions.md"}),
     ("컷 카드 칸별 수정 권한", r"\[3\]~\[7\]", {"production-session/SKILL.md"}),
@@ -297,7 +297,7 @@ routes = {
     "생성·판정·OK 기록": ["higgsfield-generation/SKILL.md"],
     "컷 세션 시작": ["production-session/SKILL.md", "production-session/cut-card.md"],
 }
-BUDGET = 22000  # 정본·컷 카드 내용 제외. 늘려야 하면 무엇을 지울지 먼저 본다.
+BUDGET = 22500  # 정본·컷 카드 내용 제외. 늘려야 하면 무엇을 지울지 먼저 본다. (2026-10-28: 원본 문장 복원과 화면 기준 규칙으로 22,000 → 22,500)
 for name, files in routes.items():
     n = always + sum(len(read(os.path.join(SKILLS, f))) for f in files)
     check(f"[읽기량] {name}: {n:,}자 ≤ {BUDGET:,}", n <= BUDGET)

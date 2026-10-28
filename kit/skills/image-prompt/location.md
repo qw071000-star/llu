@@ -20,7 +20,7 @@
 | 방향별 벽·개구부·바닥·천장, 소실점(축이 긴 공간) | `SPATIAL GEOGRAPHY` |
 | 없어야 할 것 | `Nothing else` |
 | 팔레트 비율, 재질, 사용 흔적과 위치 | 팔레트, `Real material truth`, `Real aged surfaces` |
-| 광원과 방향(장소 기준), 시간대, 이 뷰의 화면 대응 | 빛 문장 (LIGHT LOCK) |
+| 광원, 이 뷰에서 빛이 오는 화면 쪽과 그쪽 물건, 시간대 | 빛 문장 (LIGHT LOCK) |
 | 이미지 마감(카메라·렌즈·필름) | `Image finish` |
 | 시대 잠금(계절·연도·장소) | `Era lock` |
 | 간판·가격표처럼 글자가 있는가 | 무문자 줄 |
@@ -41,10 +41,10 @@
 
 승인된 자식만 다음 부모가 된다. 폐기한 변형에서 파생하지 않는다. 자식끼리 물리지 않는다. 형제 뷰는 부모 프롬프트에서 CAMERA·FRAMING(전·중·후경)만 바꾸고 나머지는 글자까지 같게 둔다.
 
-**방향 쓰기**
-- 프롬프트 안의 LEFT·RIGHT는 모두 화면 기준이다: `LEFT and RIGHT are SCREEN directions, never the character's own left or right.`
-- MASTER GEOMETRY에는 기준 시점을 괄호로 먼저 적는다: `(directions as seen from [어디], looking [방향])`
-- LIGHT LOCK과 랜드마크 방향은 장소 기준(동서남북, 랜드마크 쪽)으로 쓴다: `from the west, the [landmark] side`. 뷰마다 화면 대응을 한 줄 붙인다: `In this view the west is screen LEFT.` 그래야 반대 방향 뷰에 글자 그대로 옮겨도 빛이 뒤집히지 않는다.
+**방향 쓰기 (지침 6번: 모두 화면 기준)**
+- MASTER GEOMETRY에는 기준 시점을 괄호로 먼저 적는다: `(directions as seen from [camera position], looking at [what])`. 시점도 동서남북이 아니라 무엇을 보는지로 쓴다.
+- LIGHT LOCK은 그 뷰의 화면 쪽 + 그쪽 물건으로 쓴다: `Low dusk sun from screen left, the persimmon-tree side, is the only key.` 물건 이름이 있어서 뷰가 바뀌어도 같은 빛이 된다.
+- LIGHT LOCK은 뷰마다 하나다. 반대 방향 뷰는 좌우를 뒤집어 그 뷰의 LIGHT LOCK을 새로 쓰고(`from screen right, the persimmon-tree side`), 에셋 대장의 그 뷰 줄에 적는다.
 
 **쓰는 법**
 - **시대는 물건·재질·글자·마감으로 쓴다. 색으로 쓰지 않는다.** 과거와 현재는 필름 그레인 유무로 가른다.
@@ -62,9 +62,9 @@
 
 **기록:** 확정되면 에셋 대장에 적는다. MASTER GEOMETRY는 승인 전에는 컷 프롬프트에 넣지 않는다.
 - MASTER GEOMETRY (3~4문장, 기준 시점 포함)
-- LIGHT LOCK (한 문장, 장소 기준)
+- 뷰마다 LIGHT LOCK (한 문장, 화면 쪽 + 물건)
 - PALETTE, ERA LOCK, FINISH (각 한 문장)
-- 뷰마다 화면 대응 문장(영어, 글자 그대로)과 렌즈(mm = °)
+- 뷰마다 렌즈(mm = °)
 - `Nothing else` 목록
 - 뷰 계보 (부모, 유형)
 
@@ -82,7 +82,7 @@ Nothing else: no [ ].
 Empty deserted [space], still air.
 Palette of roughly 80% [ ] — 15% [ ] — 5% [ ].
 Real material truth: [ ]. Real aged surfaces: [wear and where it is].
-[Light logic, one sentence, in place terms.] In this view [direction] is screen LEFT.
+[Light logic, one sentence: the light comes from screen [side], the [object] side.]
 [Image finish: camera body, lens, film stock.] [Era lock: season, year, place. Nothing more recent
 anywhere in frame.] No legible text anywhere.
 [Reference plate only, not for a long axis: Rule of thirds composition.]

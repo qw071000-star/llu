@@ -45,8 +45,12 @@ def check_common(text, args, out):
     if cutref:
         out.append(("WARN", f"컷 번호를 가리키는 말 {cutref[:3]}. 모델은 번호를 모른다. 가져올 내용을 직접 쓴다"))
 
-    if find(r"\b(?:left|right) hand\b|오른손|왼손", text):
-        out.append(("WARN", "'오른손/왼손'은 인물 기준으로 읽힌다. 화면 속 물건 기준('[물건] 쪽 손', 'the hand nearer the …')으로 쓴다"))
+    if find(r"(?<!screen-)(?<!screen )\b(?:left|right) hand\b|\b(?:his|her|their) (?:own )?(?:left|right)\b|(?<!화면 )(?<!화면 왼쪽 )(?:오른손|왼손)", text):
+        out.append(("WARN", "인물 기준 좌우(오른손, his left)는 뒤집혀 읽힌다. 화면 기준 + 화면 속 물건으로 쓴다: 'the screen-left hand, nearer the …'"))
+    if find(r"\b(?:north|south|east|west)(?:ern|ward)?\b(?! Korea)|동쪽|서쪽|남쪽|북쪽", text, 0):
+        out.append(("WARN", "동서남북을 썼다. 방향은 화면 기준 + 그쪽 물건으로 쓴다: 'from screen left, the [object] side'"))
+    if find(r"\b(?:LEFT|RIGHT|left|right)\b(?![- ](?:PANEL|panel|-to-))", re.sub(r"left-to-right", "", text, flags=re.I), 0) and "SCREEN direction" not in text and find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text):
+        out.append(("WARN", "인물이 있는 프롬프트에서 좌우를 썼는데 좌표 문장이 없다: 'LEFT and RIGHT are SCREEN directions, never the character's own left or right.'"))
 
     tags = set(re.findall(r"<<<\s*([^>]+?)\s*>>>", text))
     holders = sorted(t for t in tags if re.fullmatch(r"[A-Z]{1,5}|.*[\[\]].*", t))
@@ -68,9 +72,6 @@ def check_video(text, args, out):
     if find(r"\b\d{2,3}\s?mm\b|\bf/\d|\bT\d\.\d\b|\b(?:Cooke|Zeiss|ARRI|Alexa|Panavision|Kodak Vision)\b", text):
         out.append(("WARN", "렌즈 mm·조리개·장비명은 영상 모델이 듣지 않는다. 대각 화각(도) + 관찰 결과 3개로 쓴다"))
 
-    has_people = "[SCENE_CONTEXT]" in text or find(r"\b(?:hands?(?!-)|walks?|steps?|turns? (?:to|toward))\b", text)
-    if has_people and find(r"\b(?:left|right)\b", text) and "SCREEN direction" not in text:
-        out.append(("WARN", "좌우를 썼는데 좌표 문장이 없다: 'LEFT and RIGHT are SCREEN directions.'"))
 
     if find(r"about to speak|almost (?:says|speaks)|tries to speak|starts to say|on the verge of speaking|말하려다", text):
         out.append(("WARN", "'말하려다 만다'는 입술을 움직이게 한다. 말하려는 시도 자체를 없애고 숨·손으로 쓴다"))
