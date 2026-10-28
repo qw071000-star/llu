@@ -34,9 +34,10 @@ reference/                            ← [컨텍스트에 넣지 않음] 사람
   context-research.md                 Claude 컨텍스트 운영 사용자 사례 43건과 반영 내역
   source-index.md                     원본 자료 색인
   public-projects-study.md            Higgsfield 공개 프로젝트 3개(Cully Hill Boys·BESA·The Kiss) 연구
-  kit-test-report.md                  키트 시험 보고서(1차 시나리오 15개, 2차 질문 흐름·OK 기록·스킬 전체 점검)
+  kit-test-report.md                  키트 시험 보고서(1차 시나리오 15개, 2차 질문 흐름·OK 기록, 3차 서브에이전트 맹검)
 tests/                                ← [컨텍스트에 넣지 않음] 키트 점검 스크립트와 시험 프롬프트
   run_kit_tests.py                    python3 tests/run_kit_tests.py — 키트를 고칠 때마다 돌린다
+  agent-eval/                         서브에이전트 맹검 시험: 시험 작품, 시나리오 19개, 채점 결과, 기록 전체(records/)
 archive/어머니와-고등어/                ← [컨텍스트에 넣지 않음] 원본 24개. 그 작품을 이어갈 때만
 ```
 
