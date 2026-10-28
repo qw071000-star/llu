@@ -1,7 +1,6 @@
-# 고해상도 재렌더 — 확정한 저해상도 테이크를 같은 내용으로
+# 고해상도 재렌더
 
 새로 생성하지 않는다. 채택본을 원본 영상으로 붙이고, 같은 요소·같은 음성으로 다시 렌더한다.
-
 
 ```text
 SOURCE VIDEO: the attached video is the take to reproduce. [Shot-by-shot summary]. Every cut,
