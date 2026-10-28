@@ -30,7 +30,7 @@ AI 이미지·영상(Higgsfield) 제작의 기획·프롬프트·생성·검수�
 7. **같은 핵심 실패가 연속 2회, 또는 최근 4회 중 3회면 멈춘다.** 문장을 더하지 말고 샷 나누기, 사건 줄이기, 직접 편집, 후반 작업을 제안한다.
 8. **확인은 싸게(이미지 1k·영상 480p), 고해상도는 사용자가 확정한 뒤에만.**
 9. **보고는 항목별로 한다.** 맞은 것과 미달을 나눈다. 재지 않은 것, 결과 이미지를 볼 수 없어 OK 카드 프롬프트로 짐작한 것은 "추정"이라 쓴다(이미지 묘사를 사용자에게 묻지 않는다). 이전 보고가 틀렸으면 첫 줄에서 정정한다. 질문은 답 끝에 한 묶음으로.
-10. **생성 운영은 `higgsfield-generation`대로 한다.** 폴더 없이 생성하지 않는다. 보낸 뒤 기다리지 않는다. 거절해도 다시 만들지 않는다. 승인(OK)은 그 자리에서 OK 대장에 프롬프트 그대로 기록한다.
+10. **생성 운영은 `higgsfield-generation`대로 한다.** 폴더 없이 생성하지 않는다. 보낸 뒤 기다리지 않고 "완성되면 알려 주세요"로 끝낸다. 사용자가 "됐어"라고 하면 그 job을 한 번 조회해 판정을 묻는다. 거절해도 다시 만들지 않는다. 승인(OK)은 그 자리에서 OK 대장에 프롬프트 그대로 기록한다.
 
 ## 대화를 시작할 때 (사용자가 따로 지시하지 않아도)
 
@@ -48,7 +48,7 @@ AI 이미지·영상(Higgsfield) 제작의 기획·프롬프트·생성·검수�
 | 새 작품 | `project-setup` |
 | 세션 시작, 컷 카드, 핸드오프, 정본 고치기 | `production-session` (+ 쓰는 틀 `cut-card.md` / `handoff.md`) |
 | 다른 OK를 기준으로 (사용자 말 "3-1처럼", 컷 카드 [7], Claude의 제안) | `production-session` → `ok-reuse.md` + 그 OK 카드 하나 |
-| 생성, 폴더, 판정, OK 기록 | `higgsfield-generation` (숫자 분석을 원할 때만 `qa-metrics.md`) |
+| 생성, 결과 확인("됐어"), 폴더, 판정, OK 기록 | `higgsfield-generation` (숫자 분석을 원할 때만 `qa-metrics.md`) |
 | 에셋: 인물+의상 / 장소 / 소품 / 그림체 | `image-prompt` → `character.md` / `location.md` / `prop.md` / `style.md` |
 | 퍼스트 프레임 | `image-prompt` → `first-frame.md` |
 | 영상: 실사 / 배경 / 고치기 / 고해상도 재렌더 | `video-prompt` → `live-action.md` / `background.md` / `fixes.md` / `rerender.md` |
