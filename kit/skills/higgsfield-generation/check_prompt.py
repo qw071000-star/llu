@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""생성 전에 프롬프트를 기계적으로 검사한다. 과거 실수(reference/error-registry.md)를 규칙으로 옮긴 것이다.
+"""생성 전에 프롬프트를 기계적으로 검사한다. 반복해서 났던 실수를 규칙으로 옮긴 것이다.
 
 사용법:
   python3 check_prompt.py --kind video prompt.txt [--refs 3] [--seconds 8] [--must-include fixed.txt]
@@ -28,9 +28,9 @@ def find(pattern, text, flags=re.IGNORECASE):
 
 def check_common(text, args, out):
     if len(text) > 8000:
-        out.append(("WARN", f"길이 {len(text)}자. 뒤쪽 문장이 약해진다(E-29). 반복을 지우고 사건 수를 줄인다"))
+        out.append(("WARN", f"길이 {len(text)}자. 뒤쪽 문장이 약해진다. 반복을 지우고 사건 수를 줄인다"))
     elif len(text) > 5000:
-        out.append(("WARN", f"길이 {len(text)}자. 5,000자 안팎이 안전했다(E-29)"))
+        out.append(("WARN", f"길이 {len(text)}자. 5,000자 안팎이 안전했다"))
 
     placeholders = find(r"\[(?:\s*|N|NN|NAME|PERSON(?: 2)?|OBJECT|PROP|[^\]\n]*[가-힣][^\]\n]*)\]", text, 0)
     if placeholders:
@@ -38,7 +38,7 @@ def check_common(text, args, out):
 
     stale = find(r"same as (?:before|the previous)|as in the previous (?:shot|clip|cut)|continu(?:e|ing) from the previous|앞과 같|이전과 같|계속해서", text)
     if stale:
-        out.append(("WARN", f"이전 샷을 가리키는 말 {stale[:3]}. 새 생성에는 그 내용을 직접 쓴다(E-43)"))
+        out.append(("WARN", f"이전 샷을 가리키는 말 {stale[:3]}. 새 생성에는 그 내용을 직접 쓴다"))
 
     tags = set(re.findall(r"<<<\s*([^>]+?)\s*>>>", text))
     if args.refs is not None and tags and len(tags) != args.refs:
@@ -57,12 +57,12 @@ def check_video(text, args, out):
 
     has_people = "[SCENE_CONTEXT]" in text or find(r"\b(?:hands?(?!-)|walks?|steps?|turns? (?:to|toward))\b", text)
     if has_people and find(r"\b(?:left|right)\b", text) and "SCREEN direction" not in text:
-        out.append(("WARN", "좌우를 썼는데 좌표 문장이 없다: 'LEFT and RIGHT are SCREEN directions.'(E-14)"))
+        out.append(("WARN", "좌우를 썼는데 좌표 문장이 없다: 'LEFT and RIGHT are SCREEN directions.'"))
     if find(r"\b(?:left|right) hand\b|오른손|왼손", text):
-        out.append(("WARN", "'오른손/왼손'은 인물 기준으로 읽힌다. 화면 속 물건 기준('신발장 쪽 손')으로 쓴다(E-14)"))
+        out.append(("WARN", "'오른손/왼손'은 인물 기준으로 읽힌다. 화면 속 물건 기준('[물건] 쪽 손')으로 쓴다"))
 
     if find(r"about to speak|almost (?:says|speaks)|tries to speak|starts to say|on the verge of speaking|말하려다", text):
-        out.append(("WARN", "'말하려다 만다'는 입술을 움직이게 한다. 말하려는 시도 자체를 없애고 숨·손으로 쓴다(E-35)"))
+        out.append(("WARN", "'말하려다 만다'는 입술을 움직이게 한다. 말하려는 시도 자체를 없애고 숨·손으로 쓴다"))
 
     moves = find(r"(?<!no )(?<!No )(?<!without )\b(orbit(?:s|ing)?|dolly|crane|push(?:es)?[- ]in|tracking shot|arc(?:s|ing)? around)\b", text)
     static = find(r"\b(?:locked|tripod|static camera|fixed camera)\b", text)
@@ -74,7 +74,7 @@ def check_video(text, args, out):
         m = re.search(r"(\d{1,2})\s*seconds?\b", text, re.IGNORECASE)
         seconds = int(m.group(1)) if m else None
     if seconds and seconds > 15:
-        out.append(("WARN", f"길이 {seconds}초. 15초를 넘으면 둘로 나눈다(E-25)"))
+        out.append(("WARN", f"길이 {seconds}초. 15초를 넘으면 둘로 나눈다"))
 
     if "[SCENE_CONTEXT]" in text:
         pos = [text.find(f"[{b}]") for b in BLOCKS_15]
@@ -111,7 +111,7 @@ def check_image(text, args, out):
     if "HEADLESS" in text and "not an injury" not in text:
         out.append(("WARN", "머리 없는 패널에 'not an injury … no wound' 문장이 없다. 목 단면이 상처처럼 나온다"))
     if find(r"composition only|only (?:for )?the composition|구도만", text) and not find(r"reproduce|exact same photograph|\d+\s?%", text):
-        out.append(("WARN", "'구도만 참조'로는 구도가 따라오지 않는다. 좌표를 적거나 '그대로 재현 + 바꿀 것 목록'으로(E-20)"))
+        out.append(("WARN", "'구도만 참조'로는 구도가 따라오지 않는다. 좌표를 적거나 '그대로 재현 + 바꿀 것 목록'으로"))
 
 
 def main():
