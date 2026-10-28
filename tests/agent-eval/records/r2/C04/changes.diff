@@ -2,3 +2,16 @@
 # 새 파일·바뀐 파일 목록
  M project/asset-registry.md
 
+diff --git a/project/asset-registry.md b/project/asset-registry.md
+index 69082df..b726e1b 100644
+--- a/project/asset-registry.md
++++ b/project/asset-registry.md
+@@ -50,6 +50,8 @@ ACTING PROFILE: Character acting as GRANDPA. Seventy-two, lean, slightly stooped
+ VOICE: "A man in his seventies from the rural countryside. Low, dry voice; slow, few words; goes quiet under pressure."
+ ```
+ 
++초안(제안값) — CH-001 겨울 코트 (2026-10-28 · 미확정, 생성 전): 파생(추가 상태) `char_grandpa_wintercoat_v1`, 기존 시트·승인 컷 유지 (제안값) · 기준 시트 `job-ch001` · 바꿀 것: 올리브 작업 재킷 → 남색 울 더플코트, 무릎 길이 (사용자 답) · 혼 토글 4개·후드 내림·패치 주머니 2개 (제안값) · 크림 니트 조끼·흰 셔츠·다크 그레이 울 바지·갈색 가죽 구두 유지 (제안값) · 목도리·모자·장갑 없음 (제안값) · GPT Image 2.5 · 1k · 16:9 · 1장 · 저장 `fld-chars`
++
+ ### CH-002 손녀
+ 
+ | 확정 시트 job | 처리 모델 | 요소 ID | 파생 | 한계 |

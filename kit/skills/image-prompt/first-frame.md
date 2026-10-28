@@ -45,7 +45,7 @@ one change only.
 FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
 CHANGE — ADD THE PEOPLE AND PROPS at existing anchors:
 - [PERSON]: [anchor by objects, distance and contact], mid-[action], [gaze], [hands].
-- [PROP]: [position, state, who holds it, size in cm and body terms].
+- [PROP]: [position, state, who holds it, size in cm and body terms]. [Except: …]
 REFERENCE AUTHORITY:
 - <<<LOC>>> is the exact same photograph. It controls the place, the camera, the light and every object already in it.
 - <<<CHAR>>> controls only [person]'s face, hair and wardrobe. Same face, same bone structure, same hair, same wardrobe.

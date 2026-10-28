@@ -2,3 +2,26 @@
 # 새 파일·바뀐 파일 목록
  M project/asset-registry.md
 
+diff --git a/project/asset-registry.md b/project/asset-registry.md
+index 69082df..3f1fff4 100644
+--- a/project/asset-registry.md
++++ b/project/asset-registry.md
+@@ -70,12 +70,14 @@ VOICE: "A ten-year-old girl's clear, slightly hoarse voice, quiet and careful."
+ | | | | | |
+ 
+ ```text
+-IDENTITY: [ ]
+-WARDROBE: [ ]
+-ACTING PROFILE: [ ]
+-VOICE: "[ ]"
++IDENTITY: A Korean man in his early fifties with sun-tanned skin, a square jaw, narrow single-lidded dark eyes, thick dark brows, short black hair greying at the temples, a stocky medium build and slightly rounded shoulders.
++WARDROBE: A dark navy work jumper zipped to mid-chest, with two flapped chest pockets, over a pale blue collared shirt, grey cotton trousers, worn black leather shoes.
++ACTING PROFILE: [보류 — 등장 컷·대사가 정해지면 채움]
++VOICE: "[보류 — 등장 컷·대사가 정해지면 채움]"
+ ```
+ 
++> 2026-10-28 · 제안값(사용자 "그대로"). 시트 아직 생성 전 — 확정 job이 나오기 전까지 IDENTITY·WARDROBE는 초안. 직업 소품(모자·흰 면장갑·손목시계) 없음. 명찰·배지·글자 없음.
++
+ ## 장소
+ 
+ ### LC-001 시골 버스 정류장

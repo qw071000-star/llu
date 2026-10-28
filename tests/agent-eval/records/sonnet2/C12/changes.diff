@@ -1,0 +1,35 @@
+# 정본 변경 (시작 상태 대비)
+# 새 파일·바뀐 파일 목록
+ M project/cuts/3-2.md
+
+diff --git a/project/cuts/3-2.md b/project/cuts/3-2.md
+index 0e3dbd6..0d718de 100644
+--- a/project/cuts/3-2.md
++++ b/project/cuts/3-2.md
+@@ -5,18 +5,19 @@
+ [2] 저장 위치: 프로젝트 `prj-sim-0001` / 컷 폴더 `fld-3-2` / 승인 `fld-3-2-ok` / 거절 `fld-3-2-ng`
+ [3] 형식: 길이 8초 · 비율 16:9 · 크롭 없음 · 가림 구역 없음 · 모델 Seedance 2.5 · 소리 켬(대사)
+ [4] 카메라: 위치 길 건너편, 벤치 가운데 맞은편 · 높이 앉은 눈높이 · 방향 북쪽 · 고정
+-    렌즈: 대각 화각 35° · 관찰 결과 [ ] · 심도·초점 [ ]
++    렌즈: 대각 화각 약 32° (제안값; 시작 이미지 75mm 기준, 옛 35°에서 고침) · 관찰 결과 벤치와 시간표가 나란히 가득 / 뒤 논은 압축되어 흐림 / 두 사람과 시간표만 또렷 (제안값) · 심도 얕음 (제안값)
++    화면 좌표: 왼쪽~가운데 벤치(할아버지는 감나무 쪽 왼쪽 절반), 오른쪽 기둥 위 시간표(손녀), 전경 빈 길가 (제안값)
+ [5] 인물
+     할아버지 시작(0:00): 벤치 감나무 쪽 절반, 등 벽에, 두 손 가방 위, 시선 감나무 쪽 길
+     손녀 시작(0:00): 시간표 앞, 읽는 중, 시간표 쪽 손으로 시간 짚음
+-    끝(마지막 프레임): [ ]
+-    동선: [ ]
+-    시선: [ ]
++    끝(마지막 프레임): 손녀는 벤치를 향해 서고, 할아버지는 가방을 내려다봄 (3-1 모션, 제안값)
++    동선: 손녀 시간표 앞 → 벤치 쪽 작은 한 걸음. 할아버지는 제자리 (3-1 모션, 제안값)
++    시선: 할아버지 0:00–0:05 길 → 이후 가방, 손녀를 보지 않음 / 손녀 시간표 → 0:03부터 벤치 / 아무도 카메라를 보지 않음 (제안값)
+     소품: 가방 무릎 위, 닫힘
+-[6] 타이밍: [ ]
+-    이음새: 앞 컷에서 이어받는 것 3-1과 같은 순간 / 다음 컷 첫 프레임과 맞출 것 [ ]
++[6] 타이밍: 0:00–0:03 손녀 읽기 / 0:03–0:05 돌아서며 대사 한 번("할아버지, 막차 갔대.") / 0:05–0:08 할아버지 가방을 보고 엄지가 걸쇠에, 손녀 한 걸음 (3-1 모션, 제안값)
++    이음새: 앞 컷에서 이어받는 것 3-1과 같은 순간 / 다음 컷 첫 프레임과 맞출 것 없음, 3-3에서 정함 (제안값)
+ [7] 참조: ff_3-2_v1 · 시작 이미지 / char_grandpa_autumn_v1 / char_girl_raincoat_v1 / prop_doctor_bag_v1
+-    가져온 OK: 없음
++    가져온 OK: 3-1 영상 — 모션(ACTION_TIMING, PHYSICS)
+ [8] 고정 설명문: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. / A yellow raincoat over a navy school uniform, white knee socks and red rain boots. / A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. / Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+ [9] 이 컷에 적용되는 확정 사항: §2 소리 대사 컷만 켬 · §5 절제 연기 · §6 가방 닫힘
+ [10] 알려진 위험 → 막는 문장: 할아버지 시선이 카메라로 감(job-ff-3-2-old) → Nobody looks at the camera

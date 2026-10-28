@@ -9,6 +9,7 @@
 | 1차 | `r1/` | `01aeb5a` (결함 수정 전) | 이 세션과 같은 모델(Opus) | C01~C19 |
 | 2차 | `r2/` | `e01c78e` (결함 약 35건 수정 후) | Opus | C01 C04 C06 C08 C10 C12 C18 |
 | 소넷 | `sonnet/` | `e01c78e` | Sonnet | C02 C08 C10 C12 C13 C14 C17 C18 |
+| 소넷 2 (정리된 키트) | `sonnet2/` | `c4aa989`, C17·C18은 `81de8f1` | Sonnet | C02 C08 C10 C12 C13 C14 C17 C18 (+ `C18-before-fix`: "됐어" 회귀 기록) |
 
 ## 체인 폴더 안
 
@@ -29,7 +30,7 @@
 - `transcripts/`: 서브에이전트 대화 전체(jsonl, gzip). 이름은 `회차_역할_체인_모델`이다.
   - 사용자 이메일 주소는 `[email]`로 가렸다.
 - `../agents.tsv`: 에이전트 ID와 체인, 역할, 모델, 보낸 사용자 메시지.
-- 채점 결과: `../results/`(1차 `C01.md`…, 2차 `r2-*.md`).
+- 채점 결과: `../results/`(1차 `C01.md`…, 2차 `r2-*.md`, 소넷 `sonnet-*.md`, 소넷 2 `sonnet2-*.md`).
 - 진행 방법: `../player-rules.md`, `../grader-rules.md`, `../scenarios.md`, `../make_run.sh`.
 
 ## 다시 보관하기

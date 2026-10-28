@@ -5,3 +5,133 @@
  M project/shot-list.md
 ?? project/log/3-2_handoff_2026-10-28.md
 
+diff --git a/project/cuts/3-2.md b/project/cuts/3-2.md
+index 0e3dbd6..f29af36 100644
+--- a/project/cuts/3-2.md
++++ b/project/cuts/3-2.md
+@@ -16,9 +16,9 @@
+ [6] 타이밍: [ ]
+     이음새: 앞 컷에서 이어받는 것 3-1과 같은 순간 / 다음 컷 첫 프레임과 맞출 것 [ ]
+ [7] 참조: ff_3-2_v1 · 시작 이미지 / char_grandpa_autumn_v1 / char_girl_raincoat_v1 / prop_doctor_bag_v1
+-    가져온 OK: 없음
++    가져온 OK: 3-1 영상 — 모션(ACTION_TIMING, PHYSICS)
+ [8] 고정 설명문: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. / A yellow raincoat over a navy school uniform, white knee socks and red rain boots. / A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. / Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+ [9] 이 컷에 적용되는 확정 사항: §2 소리 대사 컷만 켬 · §5 절제 연기 · §6 가방 닫힘
+ [10] 알려진 위험 → 막는 문장: 할아버지 시선이 카메라로 감(job-ff-3-2-old) → Nobody looks at the camera
+-[11] 이전 시도: job-ff-3-2-old — 거절 — 할아버지가 카메라를 봄 / job-ff-3-2 — 승인
++[11] 이전 시도: job-ff-3-2-old — 거절 — 할아버지가 카메라를 봄 / job-ff-3-2 — 승인 / sim-job-3201(영상) — 승인
+ [12] 확정 프롬프트: OK 대장 "3-2 시작 이미지"(job-ff-3-2)
+diff --git a/project/ok-cuts.md b/project/ok-cuts.md
+index 46cefca..5c8c2d2 100644
+--- a/project/ok-cuts.md
++++ b/project/ok-cuts.md
+@@ -18,6 +18,7 @@
+ | 3-1 | 시작 이미지 | `job-ff-3-1` | GPT Image 2.5 · 1k | 2026-10-25 | 색감, 질감 | 없음 |
+ | 3-1 | 영상 | `job-v-3-1` | Seedance 2.5 · 480p · 8초 | 2026-10-26 | 손녀 돌아서는 속도 | 없음 |
+ | 3-2 | 시작 이미지 | `job-ff-3-2` | GPT Image 2.5 · 1k | 2026-10-27 | 전체 | 없음 |
++| 3-2 | 영상 | `sim-job-3201` | Seedance 2.5 · 480p · 8초 | 2026-10-28 | 전체 (3-1과 같은 동작·타이밍) | 없음 |
+ | 3-3 | 시작 이미지 | `job-ff-3-3` | GPT Image 2.5 · 1k | 2026-10-27 | 전체 | 없음 |
+ 
+ - **번호:** 컷은 장면-컷(`3-1`), 에셋은 에셋 ID(`CH-001`, `LC-001-V2`).
+@@ -388,6 +389,88 @@ Low dusk sun from the west, the persimmon-tree side, is the only key; the shelte
+ Exactly 2 people are visible.
+ ```
+ 
++### 3-2 영상
++
++- job: `sim-job-3201` · 승인: 2026-10-28 · 저장: 3-2 / 승인
++- 모델 · 설정: Seedance 2.5 · 480p · 8초 · 16:9 · 소리 켬 · 시드 기록 없음
++- 시작 이미지: job-ff-3-2
++- 참조(붙인 순서): 1 ff_3-2_v1 — 시작 이미지 · 2 char_grandpa_autumn_v1 · 3 char_girl_raincoat_v1 · 4 prop_doctor_bag_v1
++- 가져온 OK: 3-1 영상 — 모션(ACTION_TIMING, PHYSICS)
++- OK 이유: "좋아, 3-2 영상 OK."
++- 한계: 없음 (0:05–0:08 손녀의 한 걸음, 할아버지 엄지가 걸쇠에 닿는지는 Claude가 확인하지 못함)
++- 프롬프트(보낸 그대로):
++
++```text
++[SCENE_CONTEXT]
++Late autumn, early 1990s, a rural bus stop at dusk. A girl reads the timetable sign and tells her grandfather, seated on the bench with a bag on his lap, that the last bus has gone. He says nothing.
++
++[ACTIVE_REFERENCES]
++<<<ff_3-2_v1>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the positions and poses of the two people and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
++<<<char_grandpa_autumn_v1>>> GRANDPA (72). A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. Face, hair, body type and wardrobe 100% match this reference.
++<<<char_girl_raincoat_v1>>> GIRL (10). A yellow raincoat over a navy school uniform, white knee socks and red rain boots. Face, hair, body type and wardrobe 100% match this reference.
++<<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Its size stays the same as in the start image from start to finish.
++REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 positions. The character references have authority only over faces, hair, bodies and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
++
++[LOCATION_MAP]
++LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
++LEFT: the tree-side end of the bench. CENTRE: the rest of the bench. RIGHT: the timetable sign on its pole. FOREGROUND: the road edge.
++In this view the west, the persimmon-tree side, is screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
++
++[FIRST_FRAME_AND_SPATIAL_BLOCKING]
++(Scope: FIRST_FRAME only.)
++- GRANDPA: seated on the tree-side half of the bench, back against the wall, both hands on the bag on his lap, eyes on the empty road on the tree side.
++- GIRL: standing at the sign, facing it, mid-reading, the hand nearer the sign tracing the printed times.
++- BAG: across GRANDPA's thighs, clasp closed, his hands on top.
++Exactly 2 people are visible.
++
++[FORMAT_MODE]
++Live action. A single continuous take from 0:00 to 0:08. No cuts. 8 seconds.
++All movement is slow and even; nothing accelerates suddenly.
++
++[OPTICS]
++Diagonal field of view about 35°. The bench and the sign fill the frame side by side / the paddies behind are compressed and soft / the camera is physically far away. Both people sharp.
++
++[CAMERA]
++Fixed on a tripod at seated eye level on the far side of the road, opposite the middle of the bench, at the same position as in the start image, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
++
++[ACTION_TIMING]
++0:00–0:03 — GIRL keeps reading, the hand nearer the sign sliding down the times; GRANDPA sits still, eyes on the road.
++0:03–0:05 — GIRL turns toward the bench, eyes first, then head, then shoulders, about 1.5 s, and says the line in AUDIO once.
++0:05–0:08 — GRANDPA lowers his eyes to the bag and his thumb rests on the brass clasp; GIRL takes one small step toward the bench and stops. The shot ends with GIRL facing the bench and GRANDPA looking down at the bag.
++
++[CHARACTER_ACTING]
++GIRL: wants him to decide what they do now. Between worry and impatience; tears = failed take, a playful tone = failed take.
++GRANDPA: hides that he expected this. Between stillness and quiet resignation; a sigh or a frown = failed take, no reaction at all = failed take. He never looks at the girl.
++Neither of them looks at the camera.
++
++[PHYSICS]
++motion_owner = CHARACTER: the girl's turn and one step; the grandpa's eyes and thumb.
++motion_owner = PROP: the bag stays on his lap, closed and heavy; never lifted, never opened.
++motion_owner = CAMERA: none.
++motion_owner = ENVIRONMENT: none.
++
++[LIGHTING]
++Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
++
++[AUDIO]
++Dialogue in Korean, exactly once. GIRL: "할아버지, 막차 갔대." — a ten-year-old girl's clear, slightly hoarse voice, quiet and careful. GRANDPA does not say a single word; no attempt to speak, no lip movement. Distant wind over the paddies. No music.
++
++[STYLE]
++Live-action film look; natural skin tones, restrained saturation.
++
++[QUALITY]
++Facial features clear; skin, fabric and leather textures natural. No distortion of faces or fingers.
++
++[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
++Required:
++- Exactly two people (ENTIRE_SHOT)
++- The line is spoken exactly once, by the girl (INTERVAL 0:03–0:05)
++- The bag stays closed on his lap (ENTIRE_SHOT)
++Forbidden:
++- GRANDPA moving his lips or speaking (ENTIRE_SHOT)
++- Subtitles, text, watermarks, logos. (ENTIRE_SHOT)
++```
++
+ ### 3-3 시작 이미지
+ 
+ - job: `job-ff-3-3` · 승인: 2026-10-27 · 저장: 3-3 / 승인
+diff --git a/project/shot-list.md b/project/shot-list.md
+index bcc0c48..849a5ce 100644
+--- a/project/shot-list.md
++++ b/project/shot-list.md
+@@ -13,7 +13,7 @@
+ | 2-1 | 0:24 | 벤치에 홀로 앉아 길을 보는 할아버지 (손녀는 잠시 자리를 비움) | 승인 | LC-001-V1 | CH-001, PR-001 | `job-ff-2-1` | `job-v-2-1` | 이미지 2 / 영상 3 |
+ | 2-2 | 0:32 | 할아버지 미디엄 클로즈업, 같은 얼굴로 가방을 쓰다듬음 | 진행 | LC-001-V1 기준 새 시점 | CH-001, PR-001 | `job-ff-2-2` | | 이미지 1 |
+ | 3-1 | 0:40 | 손녀가 시간표를 읽고 "할아버지, 막차 갔대." | 승인 | LC-001-V1 | CH-001, CH-002, PR-001 | `job-ff-3-1` | `job-v-3-1` | 이미지 2 / 영상 4 |
+-| 3-2 | 0:48 | 같은 순간을 더 가깝게 (벤치와 시간표 투샷) | 진행 | LC-001-V1 기준 새 시점 | CH-001, CH-002, PR-001 | `job-ff-3-2` | | 이미지 2 |
++| 3-2 | 0:48 | 같은 순간을 더 가깝게 (벤치와 시간표 투샷) | 승인 | LC-001-V1 기준 새 시점 | CH-001, CH-002, PR-001 | `job-ff-3-2` | `sim-job-3201` | 이미지 2 |
+ | 3-3 | 0:56 | 손녀가 시간표를 한 번 더 보고 돌아선다 | 진행 | LC-001-V1 기준 새 시점 | CH-002 | `job-ff-3-3` | | 이미지 1 |
+ | 3-4 | 1:04 | 할아버지가 무릎 위 가방을 연다 | 대기 | — | CH-001, PR-001 | | | |
+ | 3-5 | 1:12 | 열린 가방 위 할아버지 손 클로즈업 | 대기 | — | CH-001, PR-001 | | | |
