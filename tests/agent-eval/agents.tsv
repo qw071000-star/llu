@@ -52,3 +52,16 @@ sonnet2-stopped	C17	player	sonnet	a621b5c3bb36ca844	t2: 됐어. / t3: 좋아, 3-
 sonnet2-before-fix	C18	player	sonnet	a9a46325ff40fd007	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
 sonnet2	C17	player	sonnet	ab2e41574b864b136	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
 sonnet2	C18	player	sonnet	abecb2b7b60fda05b	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+r4	C01	player	sonnet	acda9c832a458f7d0	t2: 장면은 3개, 나머지는 다 기본값으로 해.
+r4	C05	player	sonnet	a25d5c9dcbfa50fc8	t2: 벤치 높이, 미디엄 와이드. 나머지는 그대로.
+r4	C08	player	sonnet	afc321a0f62b157fa	t2: 카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.
+r4	C10	player	sonnet	a3f750edec10bf4f1	t2: 렌즈는 망원으로 해. 대사는 없어. 나머지는 몰라.
+r4	C11	player	sonnet	a50cd03043716738b	t2..t3 + C26 t4~t6
+r4	C12	player	sonnet	a2588ef8de4f84385	t2(물으면): 그대로.
+r4	C14	player	sonnet	a2812024f9e4ac6d9	t2(물으면): 그대로.
+r4	C17	player	sonnet	a1626f359b9f97762	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
+r4	C18	player	sonnet	a5d9de18ccc2e043d	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+r4	C24	player	sonnet	a94fe86658b86d015	t2: 그대로.
+r4	C27	player	sonnet	abc7b28f05999af35	t2: 그대로.
+r4	C28	player	sonnet	af28a96c9d80930b6	(1턴)
+r4	C29	player	sonnet	a5e9c70ae1e2ef979	(1턴)

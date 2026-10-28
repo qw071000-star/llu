@@ -111,7 +111,7 @@
    - 모델·해상도·저장 폴더(`fld-3-4`)는 묻지 않는다.
 2. `카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.`
    - 틀 1(LOCKED EDIT + ADD)이다. 여는 문장 `WITHOUT reframing`이 있고 DERIVED와 섞이지 않는다.
-   - 의상·가방·LIGHT LOCK이 글자 그대로 있다. 화면 대응 문장(서 = 화면 왼쪽)이 있다. `Exactly 1 person`. 자리표시 태그(`<<<LOC>>>`)가 남지 않는다. 손은 물건 기준이다.
+   - 의상·가방·LIGHT LOCK이 글자 그대로 있다. 좌표 문장(`LEFT and RIGHT are SCREEN directions …`)이 있다. `Exactly 1 person`. 자리표시 태그(`<<<LOC>>>`)가 남지 않는다. 손은 물건 기준이다.
    - 컷 카드 3-4([4], [5])에 값을 기록한다.
    - 검사: `--kind image --must-include grandpa+bag+light`, 참조 수 = 태그 수.
 
