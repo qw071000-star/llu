@@ -41,3 +41,4 @@ sonnet	C14	player	sonnet	a99b683a0c5983a39	t2(물으면): 그대로.
 sonnet	C17	player	sonnet	af3836e63c8749f12	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
 sonnet-stopped	C08,C10,C12,C13,C14,C17	player	sonnet	aa81e7081848a6de2,ae6eb648fcdb3fa1e,a2cad976d70f81f0c,a313998da3f3c7dab,aa95769fc751b27c2,a229a62c738a6145f	11:24 중단(기록만)
 r2	C01,C04,C06,C08,C10,C12,C18	grader	sonnet	a45504fddbda8e347	-
+sonnet	C02,C08,C10,C12,C13,C14,C17,C18	grader	sonnet	a0a930427b29f2a37	-

@@ -1,0 +1,64 @@
+[SCENE_CONTEXT]
+Early 1990s, late autumn. A rural Korean bus stop at dusk. A ten-year-old girl stands at the timetable sign beside the shelter. In this clip she reads the printed times one more time, lowers her hand, and turns slowly away from the sign toward the shelter.
+
+[ACTIVE_REFERENCES]
+<<<ff_3-3_v1>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, the timetable sign, the light, colour and brightness, and the position and pose of the girl at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
+<<<char_girl_raincoat_v1>>> GIRL (about ten). A Korean girl of about ten with a round face, straight black hair in a low ponytail and a slim build. A yellow raincoat over a navy school uniform, white knee socks and red rain boots. Face, hair, body type and wardrobe 100% match this reference.
+REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the location, light, colour and the 0:00 position. The character reference has authority only over the girl's face, hair, body and clothes.
+
+[LOCATION_MAP]
+LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+The end of the corrugated-tin-roofed shelter is at the LEFT edge. The painted metal timetable sign on its pole is on the RIGHT, and the girl stands beside it, an arm's length from the pole. The road is in the FOREGROUND; harvested paddies and low hills lie behind.
+
+[FIRST_FRAME_AND_SPATIAL_BLOCKING]
+(Scope: FIRST_FRAME only.)
+- GIRL: at the timetable sign, an arm's length from its pole, in three-quarter back view facing the sign, mid-reading, the hand nearer the sign raised to the printed times, the other arm relaxed at her side.
+- TIMETABLE SIGN: on its pole at RIGHT; the printed times are not legible.
+Exactly 1 person is visible.
+
+[FORMAT_MODE]
+Live action. A single continuous take from 0:00 to 0:08. No cuts. 8 seconds. All movement is slow and even.
+
+[OPTICS]
+Diagonal field of view about 47°. The girl and the timetable sign fill the right half of the frame / the end of the shelter sits at the left edge / the road edge and the paddies behind are all visible, without strong compression. The girl, the sign and the shelter end are sharp; the far hills are slightly soft.
+
+[CAMERA]
+Standing eye level at the near edge of the road, opposite the timetable sign, facing north. Fixed and completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
+
+[ACTION_TIMING]
+0:00–0:03 — The girl reads the timetable again. The fingertip of the hand nearer the sign moves once along the printed times and rests on one row. Her eyes stay on the sign.
+0:03–0:04 — The hand comes down slowly to her side. Her eyes stay on the sign.
+0:04–0:07 — Her eyes leave the sign a beat before her head; then head, shoulders and feet turn in that order toward the shelter at LEFT over three seconds. She turns on the spot.
+0:07–0:08 — She stands facing LEFT toward the shelter, still. The lowered hand rests on the hem of her raincoat. The shot ends with her standing still, eyes on the shelter, not on the camera.
+
+[CHARACTER_ACTING]
+GIRL: wants to be sure there is no bus left, then accepts it and turns back toward the shelter. Her hands are busy: the fingertip traces the row once, then the fingers close around the raincoat hem. Naturalistic eye life: micro-saccades, the gaze drifting and settling rather than locking, realistic blink rate, live wet catchlights, the eyes reaching the target a beat before the head turns. Range: between composed and quietly deflated; a crying face, a big sigh or a drooped head = failed take; no reaction at all is also a failed take. Head → shoulders → feet over three seconds; turning within one second = failed take. At the end she does not startle; she simply stops. Nobody looks at the camera.
+
+[PHYSICS]
+motion_owner = CHARACTER: the girl's raised hand lowers once; her body turns on the spot; the raincoat follows her turn lightly.
+motion_owner = PROP: none; the timetable sign stays still.
+motion_owner = CAMERA: none
+motion_owner = ENVIRONMENT: none
+
+[LIGHTING]
+Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+
+[AUDIO]
+No dialogue. The girl does not say a single word: no attempt to speak, no parted lips, no mouthing. Sound effects only: faint evening wind, a soft rustle of the raincoat, a quiet scuff of rubber boots on gravel during the turn. No music.
+
+[STYLE]
+Live-action film look; natural skin tones, restrained saturation.
+
+[QUALITY]
+Facial features clear; skin and fabric textures natural. No distortion of face or fingers.
+
+[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
+Required:
+- Exactly 1 person is visible. (ENTIRE_SHOT)
+- The turn takes three seconds, head → shoulders → feet. (INTERVAL 0:04–0:07)
+- She faces LEFT toward the shelter, eyes not on the camera. (FINAL_FRAME)
+Forbidden:
+- No legible text on the timetable sign; the printed times stay unreadable. (ENTIRE_SHOT)
+- No walking away; no step out of her place. (ENTIRE_SHOT)
+- No second person, no vehicle. (ENTIRE_SHOT)
+- Subtitles, watermarks, logos. (ENTIRE_SHOT)

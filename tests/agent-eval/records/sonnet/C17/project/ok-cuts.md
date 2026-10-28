@@ -18,7 +18,7 @@
 | 3-1 | 시작 이미지 | `job-ff-3-1` | GPT Image 2.5 · 1k | 2026-10-25 | 색감, 질감 | 없음 |
 | 3-1 | 영상 | `job-v-3-1` | Seedance 2.5 · 480p · 8초 | 2026-10-26 | 손녀 돌아서는 속도 | 없음 |
 | 3-2 | 시작 이미지 | `job-ff-3-2` | GPT Image 2.5 · 1k | 2026-10-27 | 전체 | 없음 |
-| 3-2 | 영상 | `sim-job-3201` | Seedance 2.5 · 480p · 8초 | 2026-10-28 | 모션(3-1과 같은 동작) | 없음 |
+| 3-2 | 영상 | `sim-job-3201` | Seedance 2.5 · 480p · 8초 | 2026-10-28 | 3-1과 같은 동작·타이밍(더 가까운 투샷) | 없음 |
 | 3-3 | 시작 이미지 | `job-ff-3-3` | GPT Image 2.5 · 1k | 2026-10-27 | 전체 | 없음 |
 
 - **번호:** 컷은 장면-컷(`3-1`), 에셋은 에셋 ID(`CH-001`, `LC-001-V2`).
@@ -395,9 +395,9 @@ Exactly 2 people are visible.
 - 모델 · 설정: Seedance 2.5 · 480p · 8초 · 16:9 · 소리 켬(대사) · 시드 알 수 없음
 - 시작 이미지: job-ff-3-2
 - 참조(붙인 순서): 1 ff_3-2_v1 — 시작 이미지 · 2 char_grandpa_autumn_v1 · 3 char_girl_raincoat_v1 · 4 prop_doctor_bag_v1
-- 가져온 OK: 3-1 영상(`job-v-3-1`) — ACTION_TIMING, PHYSICS 글자 그대로
-- OK 이유: "좋아, 3-2 영상 OK"
-- 위험 → 막는 문장: 할아버지 입 움직임 → no attempt to speak, no lip movement / 카메라 응시 → Neither of them looks at the camera (3-2 시작 이미지 거절 이유: Nobody looks at the camera) / 대사 두 번 → exactly once
+- 가져온 OK: 3-1 영상 — ACTION_TIMING, PHYSICS 글자 그대로
+- OK 이유: "좋아, 3-2 영상 OK."
+- 위험 → 막는 문장: 카메라 응시 → Neither of them looks at the camera / 할아버지 입 움직임 → no attempt to speak, no lip movement / 대사 두 번 → exactly once
 - 한계: 없음
 - 프롬프트(보낸 그대로):
 
