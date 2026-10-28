@@ -75,8 +75,14 @@ for d in skill_dirs:
     check(f"[zip] {d}.zip 내용이 소스와 같음 (다르면 pack-skills.sh 실행)", same)
 
 # 3. 지침의 스킬 지도에 적힌 스킬·파일이 실제로 있는가
-inst = read(os.path.join(KIT, "instructions.md"))
-check("[지침] instructions.md 4,000자 이하 (README 규칙)", len(inst) <= 4000, f"{len(inst)}자")
+inst_core = read(os.path.join(KIT, "instructions.md"))
+check("[지침] instructions.md 4,000자 이하 (README 규칙)", len(inst_core) <= 4000, f"{len(inst_core)}자")
+# 항상 읽히는 것 = 지침 + context/ (언제 무엇을, 꼭 물어볼 것)
+CTX = ["routing.md", "must-ask.md"]
+for f in CTX:
+    check(f"[항상] context/{f} 있음", os.path.exists(os.path.join(KIT, "context", f)))
+    check(f"[항상] 지침이 context/{f}를 가리킨다", f"context/{f}" in inst_core)
+inst = inst_core + "\n" + "\n".join(read(os.path.join(KIT, "context", f)) for f in CTX)
 for s in re.findall(r"`([a-z-]+)`(?: →|\s*\|)", inst):
     if s in ("decisions", "shot-list", "asset-registry"):
         continue
@@ -295,7 +301,7 @@ check("[맹검4] 지침 2번: 아직 보지 못한 프롬프트에는 어떤 말
 check("[맹검4] 지침 6번: 인물 기준이면 향한 쪽으로 화면 쪽, 추정", "인물이 향한 쪽" in inst and "추정" in inst)
 check("[맹검4] 지침 4번: 기본값 목록에 소리", "비율·소리·저장 폴더" in inst)
 check("[맹검4] 지침 5번: 대장과 OK 줄이 다르면 대장", "둘이 다르면 대장" in inst)
-check("[맹검4] 읽기 지도: fixes.md는 결과가 틀렸을 때", "고치기(결과가 틀림)" in inst)
+check("[맹검4] 읽기 지도: fixes.md는 결과가 틀렸을 때", "영상 결과 고치기" in inst)
 check("[맹검4] 사람 동작 속도 줄(video-prompt 모호한 말 표)", "taking the full three seconds" in vskill and "제안값으로 묻는다" in vskill.split("taking the full three seconds")[1].split("\n")[0])
 check("[맹검4] fixes.md: 승인 컷이면 새 테이크 대체를 먼저 묻는다", "새 테이크로 대체할지" in fixes)
 check("[맹검4] 별 줄: 생성 전에 한계, 2회 실패면 오버레이", "생성 전에 알린다" in vskill and "2회 실패면 후반 오버레이" in vskill)
@@ -329,7 +335,7 @@ check("[맹검5] 지침 4번: 모호한 말은 video-prompt §0 표", "`video-pr
 check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "프롬프트·생성·정본 작업일 때만" in inst and "정보·정리 질문은 생략" in inst)
 check("[맹검5] 지침: job이 대화에 없으면 묻고 컷 파일을 열지 않음", "job이 대화에 없으면 묻고" in inst)
 check("[맹검5] 읽기 지도: OK 재표시·번역은 그 카드 하나, 검사 안 함, 번역은 코드블록 밖", "재표시·번역" in inst and "검사 안 함" in inst and "코드블록 밖" in inst)
-check("[맹검5] 읽기 지도: 시트 자체 고치기만 character-edit, 퍼스트 프레임 속 인물은 first-frame", "시트 자체 고치기는 `character-edit.md`" in inst and "그 속 인물 바꾸기 포함" in inst)
+check("[맹검5] 읽기 지도: 시트 자체 고치기만 character-edit, 퍼스트 프레임 속 인물은 first-frame", "확정 시트 고치기" in inst and "프레임 속 인물 바꾸기" in inst)
 check("[맹검5] 읽기 지도: 프롬프트만 쓰면 higgsfield-generation 안 엶, 크레딧 질문", "프롬프트만 쓰면 열지 않는다" in inst and "크레딧" in inst)
 check("[맹검5] 읽기 지도: SKILL.md 먼저", "SKILL.md를 먼저" in inst)
 check("[맹검5] video-prompt: 사건은 묶어 세지 않고 샷별 사건 목록 먼저", "묶어 세지 않는다" in vskill and "샷별 사건 목록" in vskill and "합치지 말고" in vskill)
@@ -364,9 +370,12 @@ routes = {
     "생성·판정·OK 기록": ["higgsfield-generation/SKILL.md"],
     "컷 세션 시작": ["production-session/SKILL.md", "production-session/cut-card.md"],
 }
-BUDGET = 22500  # 정본·컷 카드 내용 제외. 늘려야 하면 무엇을 지울지 먼저 본다. (2026-10-28: 원본 문장 복원과 화면 기준 규칙으로 22,000 → 22,500)
+ALWAYS_BUDGET = 13000  # 지침 + context/ + 스킬 설명. 모든 대화가 읽는다
+check(f"[읽기량] 항상 읽히는 양: {always:,}자 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
+BUDGET = 17550  # 단계 파일만(항상 읽히는 양 제외). 2026-10-28: 읽기 지도를 context/로 옮기며 22,500(항상 포함, 그때 항상 몫 약 4,980)에서 분리.
+_old_budget_note = 22500  # 정본·컷 카드 내용 제외. 늘려야 하면 무엇을 지울지 먼저 본다. (2026-10-28: 원본 문장 복원과 화면 기준 규칙으로 22,000 → 22,500)
 for name, files in routes.items():
-    n = always + sum(len(read(os.path.join(SKILLS, f))) for f in files)
+    n = sum(len(read(os.path.join(SKILLS, f))) for f in files)
     check(f"[읽기량] {name}: {n:,}자 ≤ {BUDGET:,}", n <= BUDGET)
 for d in skill_dirs:
     for fn in skill_files[d]:

@@ -10,3 +10,7 @@ for dir in */; do
   python3 -m zipfile -c "../dist/$name.zip" "$name"
   echo "made kit/dist/$name.zip"
 done
+# Claude 앱 프로젝트 지침 칸에 붙일 한 파일: 지침 + 언제 무엇을 + 꼭 물어볼 것
+cd ..
+{ cat instructions.md; echo; cat context/routing.md; echo; cat context/must-ask.md; } > dist/project-instructions.md
+echo "made kit/dist/project-instructions.md"

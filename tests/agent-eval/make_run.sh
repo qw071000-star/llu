@@ -9,6 +9,7 @@ RUN="$ROOT/$ID"
 rm -rf "$RUN"; mkdir -p "$RUN/.claude" "$RUN/out" "$RUN/sim"
 cp -r "$KIT/skills" "$RUN/.claude/skills"
 cp "$KIT/project-files/CLAUDE.md" "$RUN/CLAUDE.md"
+cp -r "$KIT/context" "$RUN/.claude/context"
 if [ "$MODE" = "empty" ]; then
   mkdir -p "$RUN/project/cuts" "$RUN/project/log"
   cp "$KIT/project-files/"{decisions,asset-registry,shot-list,ok-cuts}.md "$RUN/project/"
