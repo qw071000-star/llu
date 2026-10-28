@@ -1,0 +1,15 @@
+Edit reference image 1: change only the character's outer coat, while keeping the character's identity exactly and preserving the sheet's existing three-panel structure exactly, including the intentionally HEADLESS left panel.
+
+CHANGE — OUTFIT:
+In all three panels, the outer jacket becomes a navy wool duffle coat, knee length, the hem ending at the knee. It is fastened with four horn toggles on dark rope loops, the hood is down and lies flat on the upper back, and it has two plain patch pockets at the hips. Matte, slightly worn wool with soft creases at the elbows; no zip, no logos, no prints. At the neck, the same white collared shirt collar sits over the same cream knit vest. Below the hem, the same dark grey wool trousers and scuffed brown leather shoes.
+
+REMOVE COMPLETELY:
+The faded olive work jacket and its two flapped chest pockets are GONE in every panel. Do not layer, merge or hybridize old and new clothing. No scarf, no hat, no gloves, no added layers.
+
+PRESERVE EXACTLY:
+- LEFT PANEL: keep it intentionally HEADLESS, an editorial clothing crop, not an injury: no head, no face, no wound. Do not add, infer, reconstruct or complete a head or face.
+- IDENTITY: preserve the exact same face; do not regenerate, reinterpret, beautify, age or reshape the face. Keep the same short grey crew cut.
+- STRUCTURE: preserve all three poses, body proportions, crop boundaries, panel widths, panel order, empty hands.
+- ENVIRONMENT: preserve the backdrop, lighting direction, exposure, shadows, palette, contrast and grain.
+
+ONLY CHANGE: the outer jacket becomes the navy wool knee-length duffle coat described above. The face and identity 100% identical to reference image 1.

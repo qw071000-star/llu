@@ -1,0 +1,68 @@
+[SCENE_CONTEXT]
+Late autumn, early 1990s, a rural bus stop at dusk. A girl reads the timetable sign and tells her grandfather, seated on the bench with a bag on his lap, that the last bus has gone. He says nothing.
+
+[ACTIVE_REFERENCES]
+<<<ff_3-2_v1>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the positions and poses of the two people and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
+<<<char_grandpa_autumn_v1>>> GRANDPA (72). A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. Face, hair, body type and wardrobe 100% match this reference.
+<<<char_girl_raincoat_v1>>> GIRL (10). A yellow raincoat over a navy school uniform, white knee socks and red rain boots. Face, hair, body type and wardrobe 100% match this reference.
+<<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Its size stays the same as in the start image from start to finish.
+REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 positions. The character references have authority only over faces, hair, bodies and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
+
+[LOCATION_MAP]
+LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+LEFT: the tree-side end of the bench. CENTRE: the rest of the bench. RIGHT: the timetable sign on its pole. FOREGROUND: the road edge.
+In this view the west, the persimmon-tree side, is screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
+
+[FIRST_FRAME_AND_SPATIAL_BLOCKING]
+(Scope: FIRST_FRAME only.)
+- GRANDPA: seated on the tree-side half of the bench, back against the wall, both hands on the bag on his lap, eyes on the empty road on the tree side.
+- GIRL: standing at the sign, facing it, mid-reading, the hand nearer the sign tracing the printed times.
+- BAG: across GRANDPA's thighs, clasp closed, his hands on top.
+Exactly 2 people are visible.
+
+[FORMAT_MODE]
+Live action. A single continuous take from 0:00 to 0:08. No cuts. 8 seconds.
+All movement is slow and even; nothing accelerates suddenly.
+
+[OPTICS]
+Diagonal field of view about 35°. The bench and the sign fill the frame side by side / the paddies behind are compressed and soft / the camera is physically far away. Both people sharp.
+
+[CAMERA]
+Fixed on a tripod at seated eye level on the far side of the road, opposite the middle of the bench, at the same position as in the start image, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
+
+[ACTION_TIMING]
+0:00–0:03 — GIRL keeps reading, the hand nearer the sign sliding down the times; GRANDPA sits still, eyes on the road.
+0:03–0:05 — GIRL turns toward the bench, eyes first, then head, then shoulders, about 1.5 s, and says the line in AUDIO once.
+0:05–0:08 — GRANDPA lowers his eyes to the bag and his thumb rests on the brass clasp; GIRL takes one small step toward the bench and stops. The shot ends with GIRL facing the bench and GRANDPA looking down at the bag.
+
+[CHARACTER_ACTING]
+GIRL: wants him to decide what they do now. Between worry and impatience; tears = failed take, a playful tone = failed take.
+GRANDPA: hides that he expected this. Between stillness and quiet resignation; a sigh or a frown = failed take, no reaction at all = failed take. He never looks at the girl.
+Neither of them looks at the camera.
+
+[PHYSICS]
+motion_owner = CHARACTER: the girl's turn and one step; the grandpa's eyes and thumb.
+motion_owner = PROP: the bag stays on his lap, closed and heavy; never lifted, never opened.
+motion_owner = CAMERA: none.
+motion_owner = ENVIRONMENT: none.
+
+[LIGHTING]
+Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+
+[AUDIO]
+Dialogue in Korean, exactly once. GIRL: "할아버지, 막차 갔대." — a ten-year-old girl's clear, slightly hoarse voice, quiet and careful. GRANDPA does not say a single word: no attempt to speak, no parted lips, no mouthing; his lips stay closed and still from 0:00 to 0:08. Distant wind over the paddies. No music.
+
+[STYLE]
+Live-action film look; natural skin tones, restrained saturation.
+
+[QUALITY]
+Facial features clear; skin, fabric and leather textures natural. No distortion of faces or fingers.
+
+[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
+Required:
+- Exactly two people (ENTIRE_SHOT)
+- The line is spoken exactly once, by the girl (INTERVAL 0:03–0:05)
+- The bag stays closed on his lap (ENTIRE_SHOT)
+Forbidden:
+- GRANDPA moving his lips or speaking (ENTIRE_SHOT)
+- Subtitles, text, watermarks, logos. (ENTIRE_SHOT)
