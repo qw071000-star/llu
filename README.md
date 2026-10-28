@@ -1,84 +1,45 @@
 # llu — AI 이미지·영상 제작 지침 키트
 
-「어머니와 고등어」(실사 단편), 나부코 '히브리 노예들의 합창'(수채 배경 영상), The Prompter 분석, Higgsfield 생성 기록 930건에서 확인된 규칙과 실수를 모았다. **어느 프로젝트에나 넣어 쓸 수 있게** 정리한 키트다.
+「어머니와 고등어」(실사 단편), 나부코 '히브리 노예들의 합창'(수채 배경 영상), The Prompter 분석, Higgsfield 생성 기록 930건에서 확인된 규칙과 실수를 모아 **어느 작품에나 넣어 쓰게** 만든 Claude용 키트다.
 
-목표는 네 가지다.
-1. 새 대화마다 같은 설명을 반복하지 않는다.
-2. 다른 작업에서 했던 실수를 다시 하지 않는다.
-3. 크레딧과 토큰을 헛쓰지 않는다.
-4. 결과물이 정해진 폴더에 상태(승인·거절)와 함께 정리된다.
-5. OK 받은 결과물의 설정과 프롬프트가 남아, "3-1처럼 3-2"로 다시 쓸 수 있다.
+| 누가 | 무엇을 본다 |
+|---|---|
+| 처음 쓰는 팀원 | [`TEAM-GUIDE.md`](TEAM-GUIDE.md) — 설치, 하루 작업 흐름, 문제가 생겼을 때 |
+| 에셋·이미지·영상을 만드는 사람 | Claude Docs 「AI 제작 가이드 — 에셋·장소·소품·이미지·영상」 — 만드는 법과 주의할 점 요약 |
+| 키트를 고치는 사람 | 이 파일 |
 
----
-
-> 팀원에게 처음 공유할 때는 [`TEAM-GUIDE.md`](TEAM-GUIDE.md)를 함께 보내세요. Higgsfield와 MCP를 처음 쓰는 사람을 위한 안내서입니다.
-
-## 구조 — 무엇이 언제 읽히나
+## 구조
 
 ```
-kit/                                  ← 다른 프로젝트에 넣는 것
-  instructions.md                     ← [항상] 지침 칸 / CLAUDE.md. 4,000자 이하
-  skills/                             ← [그 작업을 할 때만] 스킬 안에서도 단계 파일 하나만 읽는다
-    project-setup/                    새 작품 시작: 질문 한 번, 정본 초안, Higgsfield 폴더
-    production-session/               세션 시작·컷 카드·핸드오프·정본 관리 + ok-reuse("3-1처럼")
-    higgsfield-generation/            저장 폴더·요청 후 턴 끝내기·승인/거절 표시·OK 기록·검수·크레딧
-                                      + check_prompt.py (생성 전 프롬프트 자동 검사)
-    image-prompt/                     공통 규칙 + character / location / prop / style / first-frame
-    video-prompt/                     공통 규칙 + live-action / background / fixes / rerender
-    acting/                           인물 연기
-  project-files/                      ← [작품마다 복사해 채움] 정본 세 개 + OK 대장 + Claude Code용 CLAUDE.md
-  dist/*.zip                          ← Claude 앱에 올리는 스킬 묶음 (pack-skills.sh로 다시 만든다)
-reference/                            ← [컨텍스트에 넣지 않음] 사람이 근거를 볼 때만
-  error-registry.md                   오류 대장 E-01~E-47
-  higgsfield-history.md               Higgsfield 전 프로젝트 분석: 잘된 것·안 된 것·크레딧
-  context-research.md                 Claude 컨텍스트 운영 사용자 사례 43건과 반영 내역
-  source-index.md                     원본 자료 색인
-  public-projects-study.md            Higgsfield 공개 프로젝트 3개(Cully Hill Boys·BESA·The Kiss) 연구
-  kit-test-report.md                  키트 시험 보고서(1차 시나리오 15개, 2차 질문 흐름·OK 기록, 3차 서브에이전트 맹검)
-tests/                                ← [컨텍스트에 넣지 않음] 키트 점검 스크립트와 시험 프롬프트
-  run_kit_tests.py                    python3 tests/run_kit_tests.py — 키트를 고칠 때마다 돌린다
-  agent-eval/                         서브에이전트 맹검 시험: 시험 작품, 시나리오 19개, 채점 결과, 기록 전체(records/)
-archive/어머니와-고등어/                ← [컨텍스트에 넣지 않음] 원본 24개. 그 작품을 이어갈 때만
+kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공유한다)
+  instructions.md          [항상 읽힘] 지침 칸 / CLAUDE.md. 규칙 10개 + 읽기 지도. 4,000자 이하
+  skills/                  [그 작업 때만] 스킬 6개. 스킬 안에서도 읽기 지도가 가리키는 파일만 연다
+    project-setup/         새 작품: 질문 한 번, 정본 초안, Higgsfield 폴더
+    production-session/    세션 시작·컷 카드·핸드오프·정본 관리, ok-reuse("3-1처럼")
+    higgsfield-generation/ 생성 전 점검·폴더·승인/거절·OK 기록·크레딧 + check_prompt.py
+    image-prompt/          공통 + character / location(+ location-view, location-edit) / prop / style / first-frame
+    video-prompt/          공통 + live-action / background / fixes / rerender
+    acting/                인물 연기
+  project-files/           작품마다 복사해 채우는 정본 틀 + Claude Code용 CLAUDE.md
+  dist/*.zip               Claude 앱에 올리는 스킬 묶음 (pack-skills.sh로 다시 만든다)
+reference/                 [컨텍스트에 넣지 않음] 사람이 근거를 볼 때만
+  error-registry.md        오류 대장 E-01~E-47
+  higgsfield-history.md    Higgsfield 전 프로젝트 분석: 잘된 것·안 된 것·크레딧
+  source-index.md          원본 자료가 키트 어디에 들어갔나
+  kit-test-report.md       키트 시험 결과
+tests/                     [컨텍스트에 넣지 않음]
+  run_kit_tests.py         키트를 고칠 때마다 돌린다
+  fixtures/                검사기 통과·실패 예시 프롬프트
+  agent-eval/              서브에이전트 맹검 시험(시험 작품, 시나리오, 채점 결과)
+archive/어머니와-고등어/     [컨텍스트에 넣지 않음] 원본 문서. 그 작품을 이어갈 때나 근거 확인용
 ```
 
-**한 번에 읽히는 양 (글자 수)**
+**무엇을 언제 읽는지는 `kit/instructions.md`의 "읽기 지도" 표 하나가 정한다.** 스킬 안의 표는 그 스킬 안에서 고르는 것만 정한다.
 
-| 상황 | 예전(가이드 전부를 지식에) | 지금 |
-|---|---:|---:|
-| 모든 대화의 기본 | 약 64,600 | 약 4,600 (지침 + 스킬 설명 6개) + 정본 |
-| 퍼스트 프레임 만들기 | 약 64,600 | + 약 8,700 (이미지 공통 + first-frame) |
-| 실사 컷 영상 프롬프트 새로 쓰기 | 약 64,600 | + 약 11,200 (영상 공통 + live-action). 연기 블록을 새로 쓰면 + 약 3,100 (acting) |
-| 영상 프롬프트 고치기 | 약 64,600 | + 약 5,900 (영상 공통 + fixes) + 그 컷의 OK 카드 |
-| "3-1처럼 3-2" | 약 64,600 | 위에 + 약 5,800 (세션 운영 + ok-reuse) + 기준 OK 카드 한 장 |
-| 생성·판정·OK 기록 | 약 64,600 | + 약 4,900 (생성 운영) |
+## 설치
 
-무엇을 여는지는 `kit/instructions.md`의 "읽기 지도" 표가 정한다. `tests/run_kit_tests.py`가 작업마다 이 양을 재고 22,000자를 넘으면 실패한다.
-
----
-
-## 설치 — Claude 앱 (Projects)
-
-**1. 스킬 올리기 (계정에 한 번)**
-- 설정에서 코드 실행을 켠다. 스킬은 코드 실행이 켜져 있어야 동작한다.
-- 스킬 메뉴(Customize → Skills 또는 Settings → Capabilities)에서 `kit/dist/`의 zip 여섯 개를 하나씩 올린다.
-- 스킬은 계정 단위라 모든 프로젝트에서 같이 쓴다. 작품마다 다시 올리지 않는다.
-
-**2. 작품마다 프로젝트 만들기**
-- 커넥터에서 Higgsfield와 Claude Docs를 켠다.
-- 지침 칸에 `kit/instructions.md`를 붙인다. "이 프로젝트" 칸은 비워 둔다.
-- 첫 대화에서 하고 싶은 일을 말하면 Claude가 다음을 진행한다.
-  1. 시작 질문을 한 번에 한다.
-  2. 정본을 Claude Doc 하나로 만든다.
-  3. Higgsfield 폴더 구성을 제안한다.
-  4. "이 프로젝트" 세 줄(작품명, Higgsfield 프로젝트 ID, 정본 Doc 링크)을 알려 준다. 그걸 지침 칸에 붙이면 끝이다.
-- 프로젝트 지식에는 아무것도 올리지 않아도 된다. Docs를 쓰지 않는다면 정본 세 개와 OK 대장만 올린다.
-  - 가이드나 `reference/`, `archive/`는 올리지 않는다. 지식은 모든 대화가 전부 읽는다.
-
-**3. 스킬을 쓸 수 없는 환경이면**
-- `kit/skills/`의 파일을 프로젝트 지식에 올린다.
-- 모든 대화가 전부 읽어서 무거워지지만, 따로 첨부하지 않아도 자동으로 읽힌다.
-
-## 설치 — Claude Code (작품 리포)
+- **Claude 앱:** `TEAM-GUIDE.md` §3. 스킬 zip 6개를 계정에 올리고, 작품 프로젝트의 지침 칸에 `kit/instructions.md`를 붙인다. 프로젝트 지식에는 시나리오·콘티 정도만 넣는다. `reference/`·`archive/`는 넣지 않는다.
+- **Claude Code (작품 리포):**
 
 ```bash
 mkdir -p .claude project/cuts project/log
@@ -88,50 +49,12 @@ cp kit/project-files/CLAUDE.md CLAUDE.md
 cp kit/project-files/{decisions,asset-registry,shot-list,ok-cuts}.md project/
 ```
 
-선택 사항: 작업이 끝날 때 휴대폰 알림을 받고 싶으면 Claude Code의 Stop 훅으로 알림을 보낸다(ntfy 등, `reference/context-research.md` E절).
-
----
-
-## 새 대화
-
-시작 문구는 필요 없다. 새 대화에서 바로 일을 말하면 된다(예: "3-1 퍼스트 프레임", "인물 시트 고치자", "3-1의 모션처럼 3-2").
-Claude는 답하기 전에 다음을 스스로 한다.
-1. 정본을 읽는다.
-2. 첫 메시지로 총괄인지 컷 작업인지 판단한다.
-3. Higgsfield 폴더 상태, 마지막 핸드오프, 필요한 스킬 파일을 직접 가져온다.
-4. 그래도 모르는 것만 기본값과 함께 한 번에 묻는다.
-
-정본이 비어 있으면 새 작품으로 보고, 시작 질문부터 한다(`project-setup`).
-
----
-
-## Higgsfield 폴더
-
-처음 작업할 때 Claude가 아래 구성을 제안하고 "제가 만들까요, 직접 만드시겠어요?"라고 묻는다.
-
-```
-「작품명」
-├─ 00 에셋 / 인물 · 장소 · 소품 · 그림체
-├─ 1-1 [진행]  ─ 승인 · 거절        ← 새 결과는 컷 폴더에, 판정 후 승인·거절로 이동
-├─ 1-2 [대기]
-└─ 99 시험·보관                      ← 시험 생성, 교체된 옛 승인본
-```
-
-- 폴더 ID는 `asset-registry.md`의 폴더 표에 적힌다.
-- 결과를 보고 "좋아"라고 하면 승인 폴더로, "별로"라고 하면 거절 폴더로 옮겨진다.
-- 승인하면 그 결과물의 번호·설정·참조·프롬프트가 OK 대장(`ok-cuts.md`)에 바로 적힌다. 다른 컷을 만들 때 "3-1의 색감으로"처럼 가져다 쓴다.
-- 컷 상태는 폴더 이름(`1-1 [승인]`)과 `shot-list.md`에 같이 표시된다.
-
----
-
 ## 키트를 고칠 때
 
-- **새 실수:** `reference/error-registry.md` 맨 아래에 E-48부터 추가한다. 그 규칙을 `kit/`의 해당 파일에 한 줄로 넣는다.
-  - 모든 대화에서 지켜야 하면 `instructions.md`에, 특정 작업에서만이면 그 스킬에 넣는다.
-- **`instructions.md`는 4천 자를 넘기지 않는다.** 길어지면 스킬로 옮긴다.
-- **규칙은 한 곳에만 쓴다.** 같은 규칙을 다른 파일에 다시 쓰지 말고 주인 파일을 가리킨다. 묻는 법·읽는 범위·손과 좌우·반복 실패 한도는 지침, 정본별 쓰는 사람은 `production-session` §1, Forbidden은 `video-prompt` §1의 7번이다. 주인 표는 `tests/run_kit_tests.py` 16번에 있고, 다른 파일에 다시 적으면 점검이 실패한다.
-- **새 단계 파일을 만들면** 지침의 읽기 지도 표에 한 줄을 더한다(없으면 점검이 실패한다).
+- **새 실수:** `reference/error-registry.md` 맨 아래에 E-48부터 적고, 막는 규칙을 `kit/`의 한 파일에 한 줄로 넣는다. 모든 대화에 해당하면 `instructions.md`, 특정 작업이면 그 스킬.
+- **규칙은 한 곳에만 쓴다.** 다른 파일에는 주인 파일을 가리키기만 한다. 주인 표는 `tests/run_kit_tests.py`의 "한 곳" 점검에 있다. 예외는 프롬프트에 글자 그대로 들어가는 영어 문장(틀 안의 고정 문장)뿐이다.
+- **원본 문장을 줄이지 않는다.** 원본에서 효과가 확인된 영어 문장은 단계 파일의 틀에 그대로 둔다. 설명은 줄여도 문장은 줄이지 않는다.
+- **새 단계 파일을 만들면** 지침의 읽기 지도에 한 줄을 더한다(없으면 점검이 실패한다).
 - **한 번만 확인된 것은 "관찰"로 적는다.** 서로 다른 사례 두 개가 모이면 규칙으로 올린다.
-- **kit 안에는 규칙과 빈 틀만 둔다.** 사례, 작품 이름, 통계는 `reference/`에 둔다. 이전 작품의 고유 명사는 새 작품 프롬프트로 샌다.
-- **스킬을 고치면** `kit/pack-skills.sh`를 실행해 zip을 다시 만들고 Claude 앱에 다시 올린다.
-- **고친 뒤에는** `python3 tests/run_kit_tests.py`를 돌려 참조·용어·zip·검사 스크립트가 맞는지 확인한다.
+- **kit 안에는 규칙과 빈 틀만 둔다.** 사례·작품 이름·통계는 `reference/`에. 이전 작품의 고유 명사는 새 작품 프롬프트로 샌다.
+- **고친 뒤:** `python3 tests/run_kit_tests.py` → `kit/pack-skills.sh`로 zip 다시 만들기 → 팀에 zip 다시 배포.

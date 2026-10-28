@@ -54,14 +54,15 @@ DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framin
 WARDROBE: [asset registry sentence, verbatim].
 PRESERVE EXACTLY: camera and perspective · every object already in the place · [LIGHT LOCK, verbatim] + [the view's screen-mapping sentence from the asset registry, verbatim] · shadows, exposure, grade, grain
 ONLY CHANGE: the people and props are added exactly as described. Everything else remains 100% identical.
-Exactly [N] people are visible.
+Exactly [one person is / N people are] visible.
 ```
 
 ## 틀 2 — 카메라가 다를 때 (DERIVED VIEW)
 
 ```text
 FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
-Using <<<LOC>>> as the exact same location, generate a new view. [CAMERA: position by objects, height,
+Using <<<LOC>>> as the exact same location, generate a new view. Do not inherit its camera angle, framing
+or composition. [CAMERA: position by objects, height,
 direction, distance, shot size + camera body/lens/film stock.]
 REFERENCE AUTHORITY:
 - <<<LOC>>>: geography, materials, landmarks, light direction
@@ -76,5 +77,5 @@ PROP: [position, state, who holds it, size in cm and body terms]. [Except: …]
 [PALETTE · ERA LOCK from the asset registry, verbatim]
 Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
 [LIGHT LOCK, verbatim] [The view's screen-mapping sentence from the asset registry, verbatim]
-Exactly [N] people are visible.
+Exactly [one person is / N people are] visible.
 ```

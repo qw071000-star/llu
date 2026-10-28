@@ -58,3 +58,6 @@
 
 ## move_project_asset / rename_folder / create_folder / move_folder
 - 성공. `create_folder` 결과 ID는 이름 그대로 `fld-<이름>`으로 붙는다(예: 3-6 → `fld-3-6`, 그 아래 승인 → `fld-3-6-ok`, 거절 → `fld-3-6-ng`).
+
+## 사용자가 올린 참고 이미지
+- `job-ref-coat`: 사용자가 올린 코트 사진. 흰 배경, 옷걸이에 걸린 남색 울 더플코트(무릎 위 길이, 토글 단추 네 개, 후드). 프롬프트 없음.

@@ -1,0 +1,18 @@
+# expect: 목둘레
+Edit reference image 1: change only the character's outfit, while keeping the character's
+identity exactly and preserving the sheet's existing three-panel structure exactly, including the
+intentionally HEADLESS left panel.
+
+CHANGE — OUTFIT:
+In all three panels, a long charcoal wool coat worn open over a cream knit jumper, dark trousers, dark ankle boots.
+
+REMOVE COMPLETELY:
+The plum vest, the grey cardigan, the blue rubber apron, the sleeve covers and the rubber boots are GONE in every panel. Do not layer, merge or hybridize old and new clothing.
+
+PRESERVE EXACTLY:
+- LEFT PANEL: keep it intentionally HEADLESS, an editorial clothing crop, not an injury: no head, no face, no wound. Do not add, infer, reconstruct or complete a head or face.
+- IDENTITY: preserve the exact same face; do not regenerate, reinterpret, beautify, age or reshape the face.
+- STRUCTURE: preserve all three poses, body proportions, crop boundaries, panel widths, panel order, empty hands.
+- ENVIRONMENT: preserve the backdrop, lighting direction, exposure, shadows, palette, contrast and grain.
+
+ONLY CHANGE: the outfit in all three panels. The face and identity 100% identical to reference image 1.

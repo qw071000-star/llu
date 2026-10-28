@@ -29,7 +29,7 @@
 | 가져오는 것 | 권한 문장 |
 |---|---|
 | 색감·질감 | `<<<OK>>> controls only colour, grade, contrast and texture. Never take its subjects, composition, people or light direction.` |
-| 표정 | `<<<OK>>> controls only [PERSON]'s facial expression and gaze. Identity, hair and wardrobe come from <<<CH>>>.` |
+| 표정 | `<<<OK>>> controls only [PERSON]'s facial expression and gaze. Identity, hair and wardrobe come from <<<CHAR>>>.` |
 
 - **퍼스트 프레임 틀 1(LOCKED)이면** 색은 그 장소 뷰에서 온다. `image-prompt` → `first-frame.md`의 "다른 OK의 색감을 가져올 때"를 따른다.
 - **OK 프롬프트에 색·질감 문장이 없으면** 그 색은 참조 이미지에서 온 것이다. 문장을 지어내지 말고, 그 OK 이미지를 색 참조로 붙인다.
@@ -53,4 +53,3 @@
 
 - **컷 카드 [7]:** `가져온 OK: 3-1 영상 — 모션(ACTION_TIMING, PHYSICS)`
 - **여러 컷에 걸치는 기준:** "색감은 앞으로 전부 3-1처럼"은 `decisions.md` §3에 기준으로 적는다.
-- **새 결과가 OK되면:** 그 카드의 "가져온 OK"에 같은 줄을 적는다.

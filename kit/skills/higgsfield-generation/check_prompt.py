@@ -104,20 +104,49 @@ def check_video(text, args, out):
             out.append(("WARN", f"시간 구간 사이가 비었다: {e1:g}초 ~ {s2:g}초. 빈 구간은 모델이 멋대로 채운다"))
             break
 
+    m = re.search(r"\[CHARACTER_ACTING\](.*?)(?:\n\[[A-Z_]+\]|\Z)", text, re.S)
+    if m and len(m.group(1).strip()) > 40:
+        acting = m.group(1)
+        if "failed take" not in acting:
+            out.append(("WARN", "CHARACTER_ACTING에 감정 범위의 양 끝(… = failed take)이 없다. 연기가 넘치거나 죽는다"))
+        if not find(r"\beyes?\b|\bgaze|\blooks? (?:at|down|up|away)", acting):
+            out.append(("WARN", "CHARACTER_ACTING에 눈(eye life, gaze)이 없다. 죽은 눈이 나오기 쉽다"))
+
     if find(r"\bgradually (?:becomes|turns|changes)|\btransforms? into\b|\bmorphs? into\b|점점", text):
         out.append(("WARN", "전환을 썼다. 시작 상태와 끝 상태를 고정하고, 사이가 길면 생성을 나눈다"))
 
 
 def check_image(text, args, out):
-    if "WITHOUT reframing" in text and find(r"new view|Do not inherit its camera", text):
+    locked = "WITHOUT reframing" in text
+    if locked and find(r"new view|Do not inherit its camera", text):
         out.append(("FAIL", "LOCKED EDIT(WITHOUT reframing)와 DERIVED VIEW(new view)가 섞였다. 둘 중 하나만"))
+    elif locked and find(r"\breverse\b|\bopposite(?:-facing)? (?:view|direction)|turned round|rotate[sd]? the camera|camera (?:turns|rotates)|\b180 ?(?:degrees|°)", text):
+        out.append(("FAIL", "WITHOUT reframing(카메라 잠금)인데 반대 방향·카메라 회전을 요구한다. 반대 방향은 DERIVED VIEW로 따로 만든다"))
+    if locked and not find(r"zero reframing", text):
+        out.append(("WARN", "LOCKED EDIT 여는 문장이 표준형이 아니다(lens … zero reframing, zero recentering, zero zoom)"))
+    derived = find(r"Do not inherit its camera", text)
+    if derived and find(r"(?<!no )\breverse (?:view|angle|direction)|(?<!no )\bopposite(?:-facing)? (?:view|direction)|\bOPPOSITE-FACING\b|\bnewly observed\b", text) and "not a horizontal mirror" not in text:
+        out.append(("WARN", "반대 방향 뷰에 'not a horizontal mirror of the reference' 문장이 없다. 좌우 반전 이미지가 나온다"))
+    if find(r"Using <<<[^>]+>>> as the exact same", text) and find(r"generate (?:a |the )?(?:NEW|new|OPPOSITE|opposite)", text) and not derived:
+        out.append(("WARN", "새 시점인데 'Do not inherit its camera angle, framing or composition.'이 없다. 원본 구도가 따라온다"))
+    sheet = find(r"three-panel character reference sheet", text)
+    if sheet and not locked and not text.lstrip().startswith("Edit"):
+        if not find(r"Do not create three similar", text):
+            out.append(("WARN", "인물 시트에 일관성 잠금('Do not create three similar models')이 없다. 비슷한 세 사람이 나온다"))
+        if "HEADLESS" not in text and not find(r"ghost[- ]mannequin", text):
+            out.append(("WARN", "인물 시트 왼쪽 패널의 변형(HEADLESS … not an injury / ghost-mannequin) 문장이 없다"))
+    if find(r"^Edit reference image 1", text, re.MULTILINE) and find(r"CHANGE\s*—\s*OUTFIT", text):
+        if "neckline" not in text:
+            out.append(("WARN", "의상 수정에 목둘레 지시('At the neckline …', 'including the neckline of the headless panel')가 없다. 옛 옷깃이 남는다"))
+        if "GONE" not in text:
+            out.append(("WARN", "의상 수정에 옛 의상의 GONE 선언이 없다. 옛 옷이 섞인다"))
     has_change = re.search(r"^CHANGE\b", text, re.MULTILINE) is not None
-    has_only = "ONLY CHANGE" in text
+    has_only = "ONLY CHANGE" in text or "ONLY these changes" in text
     if has_change != has_only:
         out.append(("WARN", "CHANGE와 ONLY CHANGE는 함께 쓰고 같은 항목을 적는다"))
     if find(r"--ar\b|--v \d|--style\b|::\d", text):
         out.append(("FAIL", "다른 도구 문법(--ar, ::가중치)이 있다. 지우고 화면비는 설정으로"))
-    if find(r"\bmannequin\b", text) and not find(r"ghost[- ]mannequin", text):
+    if find(r"(?<!no )\bmannequin\b", text) and not find(r"ghost[- ]mannequin", text):
         out.append(("WARN", "'mannequin'만 쓰면 플라스틱 마네킹이 나온다. 'hollow ghost-mannequin, invisible person'"))
     if "HEADLESS" in text and "not an injury" not in text:
         out.append(("WARN", "머리 없는 패널에 'not an injury … no wound' 문장이 없다. 목 단면이 상처처럼 나온다"))

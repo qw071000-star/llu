@@ -1,0 +1,14 @@
+# expect: 반대 방향·카메라 회전
+Edit the image WITHOUT reframing: camera position, angle, lens and the entire geometry are LOCKED — same one-point perspective, same vanishing point at the centre, same corridor width and proportions, same rhythm and spacing of the doors on both walls, same everything except the direction of view. This is the REVERSE VIEW of the same corridor, shot from the opposite end along the exact same axis: the camera has turned round on the spot and looks the other way down the corridor.
+ 
+CHANGE:
+- Everything material stays identical: the same patterned carpet, the same wallpaper and dark wainscoting, the same dark wooden doors at the same spacing on both walls, the same brass wall lamps between them, the same ceiling, the same warm tungsten light and its alternating pools of light and shadow.
+- THE DOORS CARRY NO NUMBERS AT ALL: their panels are plain and unmarked, no numerals, no plates, no text anywhere in the corridor.
+- THE CORRIDOR IS ENDLESS: it recedes far into the distance with no visible end — no window, no door, no wall closing the perspective, no landing, no opening. The doors and lamps simply continue receding, smaller and smaller, the light strips and the carpet converging toward a vanishing point lost in soft darkness at the centre of the frame. The far depth dissolves into shadow: one cannot see where it stops, and it does not seem to stop.
+Empty deserted corridor, still air.
+ 
+PRESERVE EXACTLY:
+- The framing, the perspective, the corridor's width and height, the door rhythm, the materials and the light logic of the reference
+- The photographic quality and grain
+ 
+ONLY CHANGE: the direction of view, the removal of the door numbers, and the endless depth. 1930s era, nothing modern.

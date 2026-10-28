@@ -10,8 +10,9 @@
 | 연기 | `acting-guide.md` |
 | 인물 시트 | `character-sheet-guide..md` |
 | 장소 | `location-guide.md`, `location-templates.md`, `location-assets.md` |
-| 옛 장소 가이드 시리즈 | `00. 인덱스.md`, `01.`~`12.`. 정리본이 `location-templates.md`라서 새 작업에는 쓰지 않는다 |
-| 근거 원문 | `힉스필드_장소_에셋_실제_프롬프트_모음.md`, `템플릿 검증 시나리오.md`, `추가 검증 원문.md` |
+| 근거 원문 | `힉스필드_장소_에셋_실제_프롬프트_모음.md` (장소 프롬프트 원문 20개) |
 | 콘티 사이트 | `콘티 데이터 — 위치와 구조.md`, `conti.lucianwork.com 작업 정리 & 수정 가이드.md` |
 
 원래 루트에 있던 파일을 내용 변경 없이 옮겼다. 파일 이름의 앞 공백과 NFD 정규화만 정리했다.
+
+옛 장소 가이드 시리즈(`00. 인덱스`~`12.`)와 그 검증 메모 두 개는 `location-templates.md`와 중복이라 2026-10-28에 지웠다. git 이력에 남아 있다.

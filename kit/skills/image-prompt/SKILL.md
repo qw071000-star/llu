@@ -7,7 +7,7 @@ description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 �
 
 ## 단계 파일 — 하나만 연다
 
-`character.md` 인물 + 의상 시트 · `location.md` 장소(마스터, 새 시점, 상태·소품 편집) · `prop.md` 소품 · `style.md` 그림체 이미지 · `first-frame.md` 퍼스트 프레임(영상 0:00)
+`character.md` 인물 + 의상 시트 · `location.md` 장소(그 안의 표가 `location-view.md` 새 시점 / `location-edit.md` 같은 사진 수정 중 하나를 더 가리킨다) · `prop.md` 소품 · `style.md` 그림체 이미지 · `first-frame.md` 퍼스트 프레임(영상 0:00)
 
 ## 0. 쓰기 전 정보 점검
 
@@ -30,7 +30,7 @@ description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 �
 
 **① 신규인가, 편집인가.** 마음에 드는 결과가 한 번 나오면 다시 신규로 만들지 않는다. 신규로 다시 만들면 다른 사람, 다른 방이 된다. 그 결과를 참조로 물려 편집한다.
 
-**② 카메라를 유지하는가.** 두 모드를 한 프롬프트에 섞지 않는다. 섞으면 중간값으로 타협한다.
+**② 카메라를 유지하는가.** 두 모드를 한 프롬프트에 섞지 않는다. 섞으면 중간값으로 타협한다. `WITHOUT reframing`과 반대 방향·회전(`reverse`, `rotate 180`, `turned round`)을 한 프롬프트에 쓰면 모순이다.
 
 | 모드 | 언제 | 여는 문장 |
 |---|---|---|
@@ -61,6 +61,8 @@ PRIORITY: If the references conflict, <<<A>>> controls the space and the light; 
 reference controls identity and wardrobe only. Camera and shot size are defined below and override every reference.
 ```
 
+- 마지막 줄은 LOCKED EDIT이면 `Preserve <<<A>>>'s camera, geometry and placement.`로 바꾼다. 카메라를 갖는 참조는 그 사진 하나뿐이다.
+
 - **카메라를 통제하는 참조는 하나 이하로 둔다.**
 - **참조 표기를 통일한다.** 실제 첨부 순서와 맞추고, 한 프롬프트 안에서 한 표기만 쓴다.
 - **"구도만 참조"로는 구도가 따라오지 않는다.** 둘 중 하나로 쓴다.
@@ -74,8 +76,8 @@ reference controls identity and wardrobe only. Camera and shot size are defined 
 
 ```text
 [LOCKED EDIT 여는 문장]
-CHANGE — [대상과 위치(화면 기준)]: Change [현재 상태] to [새 상태]. Keep its position, scale
-and orientation locked. [국소 빛·접촉.]
+CHANGE — [대상과 위치(화면 기준)]: Change [현재 상태] to [새 상태]. Keep its [position / scale /
+orientation — only what this edit does not change] locked. [국소 빛·접촉.]
 PRESERVE EXACTLY:
 - Camera position, height, angle, lens, framing, horizon line, vanishing point and perspective
 - The architecture: [walls, doors, windows, ceiling, floor]
@@ -110,4 +112,4 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 - [ ] 고정 설명문이 에셋 대장과 글자까지 같은가
 - [ ] 크롭 띠와 가림 구역을 확인했는가
 - [ ] 자리표시 태그(`<<<LOC>>>` 등)가 남지 않았는가
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가(`higgsfield-generation` §1의 5번)
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장하고 `higgsfield-generation` 스킬 폴더의 `check_prompt.py`를 `python3 check_prompt.py --kind image 파일 --refs 태그수 [--must-include 고정문장파일]`로 돌린다(그 스킬을 열 필요는 없다). FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다

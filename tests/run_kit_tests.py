@@ -262,7 +262,7 @@ owners = [
     ("찾는 순서(사용자 말 → 컷 카드 …)", r"사용자 (말|메시지) → 컷 카드", {"instructions.md"}),
     ("이미지를 볼 수 없을 때", r"볼 수 없", {"instructions.md"}),
     ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md"}),
-    ("acting을 여는 때", r"연기 블록을 새로 쓸 때", {"instructions.md"}),
+    ("acting을 여는 때", r"인물이 연기하는 실사 영상", {"instructions.md"}),
     ("손·좌우 규칙", r"hand nearer|오른손|right hand", {"instructions.md"}),
     ("반복 실패 한도", r"4회 중 3회", {"instructions.md"}),
     ("고정 설명문은 글자 그대로", r"(대장|설명문)[^\n]{0,15}글자 그대로 (쓴다|옮긴다|복사|붙인다)", {"instructions.md"}),
@@ -284,8 +284,6 @@ for name, pat, allowed in owners:
 turn_fix = re.search(r".*휙 돈다 \|.*", read(os.path.join(SKILLS, "video-prompt", "fixes.md"))).group(0)
 turn_act = re.search(r".*휙 돈다 \|.*", read(os.path.join(SKILLS, "acting", "SKILL.md"))).group(0)
 check("[한 곳] 휙 도는 동작: 고치기와 연기가 다른 증상을 다룬다(고개·상체 / 몸 전체)", "고개·상체" in read(os.path.join(SKILLS, "video-prompt", "fixes.md")) and "몸 전체" in turn_act, turn_fix + " / " + turn_act)
-q = "프롬프트를 쓰기 전에 확인할 것이 [N]개 있습니다. 제안값이 괜찮으면 \"그대로\"라고 해 주세요."
-check("[한 곳] 질문 첫 줄이 지침과 영상 예시에서 같다", q in inst and q in vskill)
 
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)

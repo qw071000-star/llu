@@ -14,11 +14,9 @@
 | `acting-guide.md` | 연기 공리, 마스터 프로필 5인, 레지스터, 실패 아틀라스 | `acting/SKILL.md` |
 | `character-sheet-guide..md` | 3패널 인물 시트, 수정 문법 | `image-prompt/character.md` |
 | `location-guide.md` | 장소 통제(모드 판별, 권한 5단계, 좌표, 시대) | `image-prompt/SKILL.md`, `location.md` |
-| `location-templates.md` | 장소 작업별 템플릿 01~12 | `image-prompt/location.md` |
+| `location-templates.md` | 장소 작업별 템플릿 01~12 | `image-prompt/location.md`, `location-view.md`, `location-edit.md` |
 | `location-assets.md` | 장소 에셋 대장(LC-002 뷰 계보) | `kit/project-files/asset-registry.md` |
-| `00. 인덱스.md`, `01.`~`12.` | 옛 장소 가이드 시리즈. 정리본이 `location-templates.md`라서 새 작품에는 쓰지 않는다 | — |
 | `힉스필드_장소_에셋_실제_프롬프트_모음.md` | The Prompter 장소 프롬프트 원문 20개 | 근거 자료 |
-| `템플릿 검증 시나리오.md`, `추가 검증 원문.md` | 템플릿 대입 검증, 규칙 승격 기준(서로 다른 원문 2개) | 근거 자료 |
 | `콘티 데이터 — 위치와 구조.md`, `conti.lucianwork.com 작업 정리 & 수정 가이드.md` | 콘티 사이트 JSON 구조와 운영, 동기화 충돌 위험 | `production-session/SKILL.md` §6, `error-registry.md` E-40 |
 
 ## 2. Claude Docs 문서 (나부코 '히브리 노예들의 합창' 배경 영상, 2026-10-22~28)
@@ -52,7 +50,7 @@
 |---|---|---|
 | 리포 `personal`(`AGENTS.md`, 채팅 조율 문서) | 가져온 것: 메인 채팅 + 서브 채팅 체계, 받는 채팅 라벨, HANDOFF 형식, 메인만 닫는 규칙. 반면교사: 로그 문서가 80만 자를 넘어 읽기 비용이 커진 점 | `production-session/` |
 | 다른 Claude 세션(Topaz 문의) | Claude Code 세션은 Claude 앱 대화를 읽지 못한다. 그래서 파일로 공유한다 | `production-session/SKILL.md` §6 |
-| 웹 사용자 사례 30여 건 | 짧은 상시 지침, 필요할 때만 읽는 스킬, 실수마다 한 줄, 상태는 파일에, 기다리지 않기 | `reference/context-research.md` |
+| 웹 사용자 사례 30여 건 | 짧은 상시 지침, 필요할 때만 읽는 스킬, 실수마다 한 줄, 상태는 파일에, 기다리지 않기 | 키트 구조 전체(조사 문서는 2026-10-28 삭제) |
 
 ## 5. 확인하지 못한 것
 

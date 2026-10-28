@@ -17,6 +17,7 @@
 | G4 | 필요한 스킬만 연다. 스킬 안에서는 SKILL.md와 그 단계의 파일 하나만 연다. 관계없는 컷 파일을 열지 않는다 | 지침 "읽기 지도" |
 | G5 | 빈칸(`[ ]`)이 남은 프롬프트를 보여 주지 않는다 | 지침 규칙 4 |
 | G6 | 새 프롬프트는 코드블록 하나에 전문, 블록 밖에 모드·참조·모델·해상도·길이·저장 폴더 | 지침 "출력" |
+| G7 | 프롬프트를 보이기 전에 검사 스크립트를 돌렸다(메타에 실행 기록). 프롬프트만 쓰는 작업에서 검사 때문에 `higgsfield-generation` SKILL.md를 열 필요는 없다 | 지침 읽기 지도, 그 단계 SKILL.md 점검 |
 
 ## C01 — 새 작품 시작 (empty)
 
@@ -54,7 +55,8 @@
    - 프롬프트를 아직 보이지 않거나, 보여도 빈칸이 없다.
 2. `그대로 해.`
    - 틀 1로 전문을 쓴다. 3분할, HEADLESS `not an injury`, `ghost-mannequin` 오용 없음.
-   - 블록 밖에 모델 GPT Image 2.5, 1k(확인용), 16:9, 저장 `00 에셋/인물`을 적는다.
+   - 블록 밖에 모델 GPT Image 2.5, 2k(인물 시트는 처음부터 확정 해상도, `character.md`), 16:9, 저장 `00 에셋/인물`을 적는다. 정본 §2의 "확인 1k"와 다르다는 것을 한 줄로 알리면 더 좋다.
+   - 성숙한 골격(`mature adult bone structure`), 일관성 잠금 전문(`identical face, age, skin tone …`), 리얼리즘·눈 블록이 있다. 실존 인물을 닮게 하지 않는다.
    - 생성하지 않는다. 제안값을 기록한다(에셋 대장 CH-003이나 대화).
    - 검사: `check_prompt --kind image` FAIL·WARN 없음.
 
@@ -71,7 +73,8 @@
 ## C05 — 장소 반대 방향 뷰
 
 1. `정류장 반대 방향 뷰 만들어. 정류장 안에서 길 쪽을 보는 걸로.`
-   - `location.md` 틀 2(DERIVED VIEW)를 쓴다. 부모는 `job-lc001v1`.
+   - `location.md` + `location-view.md`(DERIVED VIEW)를 쓴다. 부모는 `job-lc001v1`. `WITHOUT reframing`이 없고 `Do not inherit its camera angle, framing or composition.`이 있다.
+   - 카메라를 원본 카메라와의 관계로 쓴다. `reverse` 한 단어로 대신하지 않는다.
    - 빈 칸(높이, 샷 크기, 남길 랜드마크)을 묻거나 제안한다.
 2. `벤치 높이, 미디엄 와이드. 나머지는 그대로.`
    - `not a horizontal mirror` 문장이 있다.
@@ -235,3 +238,62 @@
    - 3-6 폴더가 Higgsfield에도 에셋 대장에도 없다는 것을 알아챈다. 구성안(`3-6 [대기]` / `승인` · `거절`, 첫 생성 때 `[진행]`)을 보이고 "제가 만들까요, 직접 만드시겠어요?"라고 묻는다.
    - 3-6 정보(카메라, 버스 불빛의 거리·위치, 인원 없음, 빛)가 비어 있다. 그래서 묻는다.
    - 폴더 없이, 정보 없이 생성하지 않는다(`generate_image` 없음). 결정 미결(생성/합성)을 짚으면 더 좋다.
+
+## C20 — 장소 상태판: 형광등 켜기 (LOCKED EDIT, 변경이 둘로 읽히는 요청)
+
+1. `LC-001-V1에서 정류장 형광등만 켜진 상태판 프롬프트 만들어. 해 지고 난 직후 느낌으로.`
+   - `location.md` + `location-edit.md`를 연다. 계보는 STATE, 부모 `job-lc001v1`.
+   - "형광등 켜기"와 "해 진 직후(시간대 변경)"는 두 변경이다. LIGHT LOCK(해가 유일한 키)과도 부딪친다. 이것을 짚고 한 번에 하나로 나누자고 하거나(형광등 먼저), 떼면 성립하지 않는 두 변경으로 볼지 묻는다.
+   - 프롬프트를 보였다면: LOCKED EDIT 여는 문장이 표준형(lens · zero reframing), CHANGE / PRESERVE EXACTLY / ONLY CHANGE 항목이 같다. STATE 공식(`one state change only`)을 쓰고 형광등 번짐을 막는 문장(`lit but does NOT glow … no light spilling onto`)이 있다. 장소를 다시 묘사하지 않는다.
+   - 검사: `--kind image --refs 1` FAIL·WARN 없음.
+2. `형광등만 먼저 해.`
+   - 1턴에 프롬프트를 보이지 않았다면 1턴 기대를 여기 적용한다. 시간대 변경은 다음 단계로 남긴다.
+
+## C21 — 장소 시대 교체 (한 생성에 한 층)
+
+1. `정류장 2020년대 버전 장소 이미지가 필요해. LC-001-V1 구도 그대로.`
+   - `location-edit.md` 틀 2를 쓴다. 시대 교체는 층의 묶음이라 한 생성에 한 층이라고 알리고, 층 순서를 제안한다(예: 표지판·글자 정책 → 정류장 구조 표면 → 시설물 → 빛).
+   - 첫 층만 프롬프트로 쓰거나, 쓰기 전에 층 순서를 묻는다. 여러 층을 한 프롬프트에 섞지 않는다.
+   - 프롬프트를 보였다면: `this step changes only its [LAYER]`, 원래 요소마다 목표 시대 대응물, REMOVE, PRESERVE에 다른 층과 건물 볼륨, ONLY CHANGE가 같은 층. `1990s` 시대 잠금이 남지 않는다(목표 시대 잠금).
+   - 정본 §3(1990년대 초)과 다른 시대다. 이 작품에 쓸 것인지(별도 뷰·STATE로 기록) 묻거나 알린다.
+2. `순서는 제안대로. 첫 단계 써.` (1턴에서 묻기만 했다면)
+   - 1턴의 프롬프트 기대를 적용한다. 검사: `--kind image --refs 1` FAIL 없음.
+
+## C22 — 새 인물 시트, 정보 일부 (60대 상인)
+
+1. `생선 파는 할머니 인물 시트 프롬프트 만들어. 60대 후반이고, 짙은 고무 앞치마에 팔토시 해. 나머지는 알아서.`
+   - `character.md`를 연다. CH-004를 매긴다. "알아서"이므로 나머지 칸은 제안값으로 채우고 `(제안값)`을 붙인다. 다시 묻지 않아도 된다(묻는다면 한 번에).
+   - 틀 1: 성숙한 골격, `no babyface`, 나이 든 인물 문장(`lined forehead and crow's feet …, reddened knuckles and short unpainted nails`), 일관성 잠금 전문, 리얼리즘·눈 블록, 왼쪽 패널 변형은 기존 시트와 같은 A(HEADLESS + not an injury).
+   - 앞치마·토시는 요청한 것이라 넣는다. 그 밖의 직업 소품(칼, 생선, 바구니)은 넣지 않는다(`No profession-signaling props unless explicitly requested`).
+   - 시대물(1990년대 초) 금지 줄. 2k, 16:9, 저장 `fld-chars`. 생성하지 않는다.
+   - 검사: `--kind image` FAIL·WARN 없음.
+
+## C23 — 의상 수정 + 의상 참조 이미지
+
+1. `손녀 시트에서 노란 우비를 벗기고 남색 더플코트로 바꿔. 코트 참고 사진은 job-ref-coat야. 프롬프트만.`
+   - OK 대장 CH-002 카드(`job-ch002`)를 기준으로 틀 2를 쓴다. 참조는 2개(시트, 코트 사진). 코트 길이·여밈 같은 빈 칸은 묻거나 제안값으로.
+   - 권한 줄 세 개가 있다. 그중 `Do not transfer the face, body, pose, background or lighting from reference image 2.`가 있다.
+   - 목둘레가 세 곳에 있다(REMOVE의 `At the neckline`, PRESERVE LEFT의 `Its clothes change fully`, ONLY CHANGE의 `including the neckline of the headless panel`).
+   - REMOVE의 GONE 목록 = LEFT 줄 끝의 `no …` 목록. 남색 교복·흰 양말·빨간 장화는 그대로 둔다(우비만 바뀜).
+   - 얼굴을 다시 묘사하지 않는다.
+   - 검사: `--kind image --refs 2` FAIL·WARN 없음.
+
+## C24 — 실사 영상, 연기를 새로 (3-2, OK를 가져오지 않음)
+
+1. `3-2 영상 프롬프트 새로 써. 3-1 OK는 가져오지 말고 연기도 새로 잡아.`
+   - `video-prompt` + `live-action.md` + `acting`을 연다. `ok-reuse.md`는 열지 않는다.
+   - 컷 카드 3-2의 빈 칸을 제안값과 함께 한 번에 묻는다. 연기에 관한 것(목표, 손의 일, 비트)도 제안한다.
+2. `그대로.`
+   - `CHARACTER_ACTING`: 인물마다 상대를 향한 목표, 손의 일, 몸(호흡 포함), 눈, 감정 범위의 양 끝 failed take. 비트는 시선·사이로 쓰고 사건 수는 1~3개다.
+   - 손녀 대사가 있으면 목소리 문장이 에셋 대장과 글자 그대로. 할아버지 입 잠금 문장이 있다.
+   - 레지스터(§5: 절제, 울음·큰 몸짓 없음)를 넘지 않는다.
+   - 검사: `--kind video --refs 4 --seconds 8 --must-include grandpa+girl+bag+light` FAIL·WARN 없음(5,500자 WARN이면 이유와 숫자).
+
+## C25 — 같은 쪽 클로즈업 새 시점 (거울 문장 조건)
+
+1. `LC-001에서 시간표 표지판 클로즈업 뷰 프롬프트 만들어. 길 건너편에서 그대로 다가간 느낌으로. 표지판이 화면 절반쯤.`
+   - `location-view.md` 틀 B. 부모 `job-lc001v1`. `Do not inherit …`이 있다.
+   - 같은 쪽에서 다가가므로 `Move in from the same side and along the same line of sight; no reverse angle and no view from behind.`를 쓰고, `newly observed direction … not a horizontal mirror` 문장은 쓰지 않는다.
+   - 표지판 글자는 읽히지 않게(`text not legible`). 랜드마크 1~3개(정류장 지붕 모서리 등)를 남긴다.
+   - 화면 대응: 북쪽을 보므로 서쪽(감나무) = 화면 왼쪽. LIGHT LOCK이 글자 그대로.
+   - 검사: `--kind image --refs 1 --must-include light` FAIL·WARN 없음.

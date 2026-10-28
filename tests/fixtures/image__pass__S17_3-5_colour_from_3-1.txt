@@ -1,6 +1,6 @@
 # args: --refs 4 --must-include {FIX}/fixed_3-5_image.lines
 FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
-Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: a close shot from the road edge at seated eye level, opposite the tree-side half of the bench, about 1.5 m from the old man, framing his lap, his hands and the bag; his face is above the frame. Shot on a 35mm film camera with a 50mm lens, Kodak Portra 400 film.
+Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. Do not inherit its camera angle, framing or composition. CAMERA: a close shot from the road edge at seated eye level, opposite the tree-side half of the bench, about 1.5 m from the old man, framing his lap, his hands and the bag; his face is above the frame. Shot on a 35mm film camera with a 50mm lens, Kodak Portra 400 film.
 REFERENCE AUTHORITY:
 - <<<loc_busstop_road_v1>>>: geography, materials, landmarks, light direction
 - <<<char_grandpa_autumn_v1>>>: face, hair, wardrobe only — Same face, same bone structure, same hair, same wardrobe. Change only the pose, framing, location and lighting.

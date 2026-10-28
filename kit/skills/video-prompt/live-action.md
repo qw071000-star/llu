@@ -2,7 +2,7 @@
 
 ## 블록
 
-- 순서와 제목은 고정이다. 쓸 게 없는 블록도 제목은 남긴다.
+- 순서와 제목은 고정이다(아래 "짧은 판"만 예외). 쓸 게 없는 블록도 제목은 남긴다.
 - `PRE_SHOT_CONTINUITY`는 앞 숏에서 이어받는 상태가 있을 때만 맨 앞에 둔다.
 
 | # | 블록 | 쓰는 것 | 자주 틀리는 것 |
@@ -26,7 +26,7 @@
 
 ## 덜어내는 법
 
-- **목표 길이는 5,500자 이하.** 넘으면 장소·스타일 문장부터 줄이고, 인물이 셋 이상이면 샷을 나눈다.
+- **목표 길이는 5,500자 이하.** 넘으면 장소·스타일 문장부터 줄인다. 고정 설명문과 가져온 OK 줄은 줄이지 않는다. 인물이 셋 이상이면 줄이기보다 샷 나누기가 먼저다.
 - **장소 정보는 좌표 줄 + 네 줄까지만 쓴다.** 카메라, 전·중·후경, 빛, 필요하면 경로다. 길수록 인물 참조가 밀린다.
 - **이 샷에 나오지 않는 인물, 태그, 씬 번호는 넣지 않는다.**
 - **원하는 상태는 Required에 먼저 쓴다.**
@@ -63,7 +63,7 @@ LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
 (Scope: FIRST_FRAME only.)
 - [PERSON]: [position by objects], mid-[action], [body direction], [gaze], [hands].
 - [PROP]: [position], [state], [who holds it].
-Exactly [N] people are visible.
+Exactly [one person is / N people are] visible.
 
 [FORMAT_MODE]
 Live action. A single continuous take from 0:00 to 0:[NN]. No cuts. [NN] seconds.
@@ -82,8 +82,9 @@ zoom, no push-in, no reframing. / One move with its speed.]
 0:0[b]–0:[NN] — [continuing state]. The shot ends with [final state].
 
 [CHARACTER_ACTING]
-[PERSON]: [objective as observable action]. [Eye life]. [Range: between X and Y; X = failed take,
-Y = failed take]. [Who does not react.] Nobody looks at the camera.
+[PERSON]: [objective as observable action]. [Business: what the hands are doing]. [Body: weight, tempo,
+breath]. [Beat change shown by gaze / pause / posture]. [Eye life]. [Range: between X and Y; X = failed
+take, Y = failed take]. [Who does not react.] Nobody looks at the camera.
 
 [PHYSICS]
 motion_owner = CHARACTER: [ ]
@@ -135,5 +136,4 @@ lines stay straight / no telephoto compression.
 [망원] Diagonal field of view about 29°. The background is compressed and soft / only [person] is
 sharp / the camera is physically far away.
 [상태 머신] [OBJECT] state: [STATE_A] -> [STATE_B], exactly one transition, never reversed.
-[광원 번짐] The [lamps] are on, but their light does not bloom or spread.
 ```
