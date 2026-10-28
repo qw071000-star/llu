@@ -95,7 +95,7 @@ motion_owner = ENVIRONMENT: [none / what]
 [Practical sources as in the start image; the dominant source comes from screen [left/right], the [object] side.]
 
 [AUDIO]
-[Dialogue in [language], exactly once.] [PERSON]: "[line]" — [voice sentence]. [PERSON 2] does not say a single word:
+[Dialogue in [language], exactly once.] [PERSON]: "[line]" — [voice sentence, verbatim]. [PERSON 2] does not say a single word:
 no attempt to speak, no parted lips, no mouthing. [Sound effects]. [Music or no music.]
 
 [STYLE]
