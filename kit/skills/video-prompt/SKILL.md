@@ -25,7 +25,9 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 
 | 구분 | 필요한 정보 | 들어가는 블록 |
 |---|---|---|
+| 장면 | 이 클립에서 일어나는 일(2~4문장), 시대·장소·시간대 | `SCENE_CONTEXT` |
 | 형식 | 길이, 화면비, 모델, 소리(대사·효과음·음악 여부), 저장 폴더 | `FORMAT_MODE`, `AUDIO` |
+| 룩 | 매체·질감·색조(`decisions.md`의 룩 기준) | `STYLE` |
 | 인물 에셋 | 인물마다 요소 ID, 의상·헤어 상태 버전, 고정 설명문 | `ACTIVE_REFERENCES` |
 | 장소 | 장소 뷰 요소 ID, 화면 좌·중·우·전경의 랜드마크, 시간대 | `ACTIVE_REFERENCES`, `LOCATION_MAP` |
 | 소품 | 요소 ID, 시작 상태 → 끝 상태, 누가 어느 손(물건 기준)에 드는가, 크기 | `ACTIVE_REFERENCES`, `PHYSICS` |

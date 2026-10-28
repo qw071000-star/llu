@@ -1,0 +1,17 @@
+Create a photorealistic single wide horizontal three-panel character reference sheet of the same girl. The image is divided into three clean vertical sections with no borders, captions or text.
+
+CHARACTER IDENTITY:
+A Korean girl of about ten with a round face, straight black hair in a low ponytail and a slim build. Light warm skin with faint freckles across the nose, dark almond eyes, straight thin brows, a small nose and a neutral closed mouth. The same exact identity must be maintained wherever the face is visible.
+
+PANEL LAYOUT:
+- LEFT PANEL: a front-facing full-body wardrobe view shown strictly from the neck down. The panel is intentionally HEADLESS and ends cleanly at the base of the neck. This is an editorial clothing crop, not an injury: no head, no face, no wound, no gore, no dark opening. The plain background continues cleanly above the neckline. Both hands visible and empty, feet fully visible.
+- CENTER PANEL: a full-body rear view of the same girl from head to toe, same neutral pose.
+- RIGHT PANEL: a large front-facing close-up portrait from the upper chest upward, calm neutral expression, the gaze with a definite focal distance just behind the lens.
+
+BODY AND PROPORTIONS: a slim ten-year-old build, narrow shoulders, slightly knock-kneed stance.
+OUTFIT — IDENTICAL IN ALL THREE PANELS: A yellow raincoat over a navy school uniform, white knee socks and red rain boots. The raincoat is unbuttoned, hood down, with two flap pockets; the uniform collar is visible at the neck. One physically identical outfit seen from different views. No logos, no prints, no unintended accessories. No profession-signaling props unless explicitly requested.
+HAIR — CENTER AND RIGHT PANELS: shoulder-length straight black hair gathered in a low ponytail with a plain black elastic, a few loose strands at the temples, natural matte finish.
+REALISM: visible fine skin texture with natural pores, subtle asymmetries and uneven skin tone, no digital smoothing, no beauty filter, matte natural complexion. Eyes have genuine moisture and a small specular catchlight, one eyelid very slightly lower than the other, real iris texture.
+BACKGROUND AND LIGHTING: one continuous plain warm-grey seamless backdrop across all panels, soft frontal key light from slightly above. All panels share the same lighting direction, exposure, palette and finish.
+CONSISTENCY RULES: one person only. Do not create three similar girls. Preserve the exact left-to-right order: headless front outfit view / full-body rear view / front close-up portrait.
+no text, no watermark, no logos, no frame borders, no other people, no duplicate figures, no extra panels, no props, no beauty filter, no plastic skin, no extra fingers

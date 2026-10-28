@@ -55,7 +55,7 @@ REFERENCE AUTHORITY: the start image has sole authority over camera, framing, th
 light, colour and the 0:00 positions. The character references have authority only over faces,
 hair, bodies and clothes. The [prop] reference has authority only over its material, shape and
 state; its size follows the start image. Do not take the background, lighting, pose or panel layout
-from any reference.
+from the character or prop references.
 
 [LOCATION_MAP]
 LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.

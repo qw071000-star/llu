@@ -33,6 +33,9 @@ reference/                            ← [컨텍스트에 넣지 않음] 사람
   context-research.md                 Claude 컨텍스트 운영 사용자 사례 43건과 반영 내역
   source-index.md                     원본 자료 색인
   public-projects-study.md            Higgsfield 공개 프로젝트 3개(Cully Hill Boys·BESA·The Kiss) 연구
+  kit-test-report.md                  키트 시험 보고서(시나리오 15개, 찾아서 고친 결함 6개)
+tests/                                ← [컨텍스트에 넣지 않음] 키트 점검 스크립트와 시험 프롬프트
+  run_kit_tests.py                    python3 tests/run_kit_tests.py — 키트를 고칠 때마다 돌린다
 archive/어머니와-고등어/                ← [컨텍스트에 넣지 않음] 원본 24개. 그 작품을 이어갈 때만
 ```
 
@@ -122,3 +125,4 @@ Claude는 답하기 전에 다음을 스스로 한다.
 - **한 번만 확인된 것은 "관찰"로 적는다.** 서로 다른 사례 두 개가 모이면 규칙으로 올린다.
 - **kit 안에는 규칙과 빈 틀만 둔다.** 사례, 작품 이름, 통계는 `reference/`에 둔다. 이전 작품의 고유 명사는 새 작품 프롬프트로 샌다.
 - **스킬을 고치면** `kit/pack-skills.sh`를 실행해 zip을 다시 만들고 Claude 앱에 다시 올린다.
+- **고친 뒤에는** `python3 tests/run_kit_tests.py`를 돌려 참조·용어·zip·검사 스크립트가 맞는지 확인한다.

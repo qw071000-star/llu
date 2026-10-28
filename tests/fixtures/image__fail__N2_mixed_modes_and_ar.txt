@@ -1,0 +1,2 @@
+Edit <<<image_1>>> WITHOUT reframing. Using it, generate a new view. Do not inherit its camera angle. A plastic mannequin. --ar 21:9
+CHANGE — the lamp: turn it on.

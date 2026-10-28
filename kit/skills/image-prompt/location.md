@@ -24,6 +24,10 @@
 승인된 자식만 다음 부모가 된다. 형제 뷰는 부모 프롬프트에서 CAMERA·전중후경만 바꾼다.
 
 **쓰는 법**
+- **고정 설명문의 방향은 화면이 아니라 장소 기준으로 쓴다.** 동서남북이나 랜드마크 쪽으로 쓴다(`from the west, the [landmark] side`).
+  - 화면 기준 좌우("screen left")로 쓰면, 반대 방향 뷰에서 글자 그대로 옮길 때 빛과 배치가 뒤집힌다.
+  - 뷰마다 화면 대응을 한 줄 붙인다: `In this view the west is screen LEFT.`
+  - MASTER GEOMETRY에는 기준 시점을 함께 적는다: `(as seen from [어디], looking [방향])`
 - **시대는 물건·재질·글자·마감으로 쓴다. 색으로 쓰지 않는다.** 과거와 현재는 필름 그레인 유무로 가른다.
 - **시대·고증은 자료로 확인한다.** 의도한 시대 착오라면 그렇다고 기록한다.
 - **장비명(카메라·렌즈·필름 스톡)은 정지 이미지에만 쓴다.** 영상에는 화각(도)을 쓴다.
@@ -58,7 +62,7 @@ Nothing else: no [ ].
 Empty deserted [space], still air.
 Palette of roughly 80% [ ] — 15% [ ] — 5% [ ].
 Real material truth: [ ]. Real aged surfaces: [wear and where it is].
-[Light logic, one sentence.]
+[Light logic, one sentence, in place terms.] In this view [direction] is screen LEFT.
 [Image finish: camera body, lens, film stock.] [Era lock: season, year, place. Nothing more recent
 anywhere in frame.] No legible text anywhere.
 ```
@@ -73,7 +77,8 @@ CAMERA: [relation to the reference camera]. At [height], looking [direction].
 FRAMING: [subject] fills [amount]. Keep [1–3 landmarks]. [Excluded objects] fall outside the frame.
 CONTINUITY: preserve the exact design, materials, wear, state and placement relationships.
 This is a newly observed direction of the same physical room, not a horizontal mirror of the reference.
-[Parent's MASTER GEOMETRY · LIGHT LOCK · palette · era lock · finish — verbatim]
+[Parent's MASTER GEOMETRY with its viewpoint · LIGHT LOCK · palette · era lock · finish — verbatim]
+In this view [direction] is screen LEFT and [direction] is screen RIGHT: [landmark] is at screen [side].
 ```
 
 ## 틀 3 — LOCKED EDIT (같은 사진, 한 가지)

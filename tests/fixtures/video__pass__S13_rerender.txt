@@ -1,0 +1,6 @@
+# args: --refs 3
+SOURCE VIDEO: the attached video is the take to reproduce. One continuous 8-second shot: the girl at the timetable sign turns toward the bench and says one line; the old man on the bench lowers his eyes to the bag. Every cut, duration, line and sound stays the same.
+RESOLUTION: the source is 480p; only resolution and detail differ.
+ACTIVE REFERENCES: <<<char_grandpa_autumn_v1>>>, <<<char_girl_raincoat_v1>>>, <<<prop_doctor_bag_v1>>> — the same elements, in the same order, as the source.
+STYLE / QUALITY: the same as the source. No digital sharpening.
+Required: same number, order and length of shots as the source; any difference = failed take.

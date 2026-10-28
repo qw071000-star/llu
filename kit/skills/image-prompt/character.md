@@ -82,7 +82,7 @@ REMOVE COMPLETELY:
 [Old items by name] are GONE in every panel. Do not layer, merge or hybridize old and new clothing.
 
 PRESERVE EXACTLY:
-- LEFT PANEL: keep it intentionally HEADLESS. Do not add, infer, reconstruct or complete a head or face.
+- LEFT PANEL: keep it intentionally HEADLESS, an editorial clothing crop, not an injury: no head, no face, no wound. Do not add, infer, reconstruct or complete a head or face.
 - IDENTITY: preserve the exact same face; do not regenerate, reinterpret, beautify, age or reshape the face.
 - STRUCTURE: preserve all three poses, body proportions, crop boundaries, panel widths, panel order, empty hands.
 - ENVIRONMENT: preserve the backdrop, lighting direction, exposure, shadows, palette, contrast and grain.

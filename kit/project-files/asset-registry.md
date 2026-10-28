@@ -45,14 +45,14 @@ VOICE: "[ ]"
 ### LC-001 [장소명]
 
 ```text
-MASTER GEOMETRY ([기준 시점]): [ ]
-LIGHT LOCK: [ ]
+MASTER GEOMETRY (as seen from [어디], looking [방향]): [ ]
+LIGHT LOCK (장소 기준 방향으로): [ ]
 Nothing else: [ ]
 ```
 
-| 뷰 | 계보 | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
-|---|---|---|---|---|---|---|
-| `LC-001-V1` | MASTER | — | | | | |
+| 뷰 | 계보 | 카메라(어디서 어디를) | 화면 좌 = / 우 = | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
+|---|---|---|---|---|---|---|---|---|
+| `LC-001-V1` | MASTER | | | — | | | | |
 
 ## 소품
 

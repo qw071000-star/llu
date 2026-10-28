@@ -1,0 +1,53 @@
+# args: --refs 3
+[SCENE_CONTEXT]
+Present day. A small apartment kitchen, evening. The wife opens the plastic bag on the dining table and looks inside; her husband watches from the doorway.
+
+[ACTIVE_REFERENCES]
+<<<start01>>> START IMAGE: the exact frame at 0:00.
+<<<char_wife_home_v1>>> WIFE (58). A faded navy cardigan over a grey blouse, dark slacks, house slippers.
+REFERENCE AUTHORITY: the start image has sole authority over camera and framing.
+
+[LOCATION_MAP]
+Places are named by the objects on screen.
+LEFT EDGE: the fridge. CENTRE: the dining table. RIGHT: the doorway.
+
+[FIRST_FRAME_AND_SPATIAL_BLOCKING]
+(Scope: FIRST_FRAME only.)
+- WIFE: at the table, her right hand already untying the bag. Exactly 2 people are visible.
+
+[FORMAT_MODE]
+Live action. A single continuous take from 0:00 to 0:08. No cuts. 20 seconds.
+
+[OPTICS]
+Diagonal field of view about 63°. The table, the fridge and the doorway are fully visible in one frame.
+
+[CAMERA]
+Fixed on a tripod, eye level, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in.
+
+[ACTION_TIMING]
+0:00–0:03 — she finishes untying the bag.
+0:03–0:05.5 — she looks inside; he says the line once.
+0:06–0:08 — she stays still, the bag open.
+
+[CHARACTER_ACTING]
+Between weariness and wariness; hostility = failed take, warmth = failed take.
+
+[PHYSICS]
+She almost says something. 35mm lens, the camera slowly orbits.
+motion_owner = PROP: BAG state TIED -> OPEN, exactly one transition.
+
+[LIGHTING]
+The pendant over the table is the only key.
+
+[AUDIO]
+HUSBAND: "왔어?" — exactly once. WIFE does not say a single word. No music.
+
+[STYLE]
+A present-day live-action film.
+
+[QUALITY]
+No distortion of faces or fingers.
+
+[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
+Required: exactly two people (ENTIRE_SHOT).
+Forbidden: the bag moving to the living-room table (ENTIRE_SHOT).

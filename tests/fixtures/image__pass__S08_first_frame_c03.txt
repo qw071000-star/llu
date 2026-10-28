@@ -1,0 +1,21 @@
+# args: --refs 4 --must-include {FIX}/c03_video_fixed.lines
+Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+CHANGE — ADD THE TWO PEOPLE AND THE BAG at existing anchors:
+- The old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, his eyes on the empty road on the tree side.
+- The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the hand nearer the sign tracing the printed times.
+- The bag lies across the man's thighs, clasp closed, about the width of his lap.
+REFERENCE AUTHORITY:
+- <<<image_1>>> is the exact same photograph. It controls the place, the camera, the light and every object already in it.
+- <<<char_grandpa_autumn_v1>>> controls only the old man's face, hair and wardrobe. Same face, same bone structure, same hair, same wardrobe.
+- <<<char_girl_raincoat_v1>>> controls only the girl's face, hair and wardrobe. Same face, same bone structure, same hair, same wardrobe.
+- <<<prop_doctor_bag_v1>>> controls only the bag's shape, material and state; its size is as described above.
+DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framing.
+WARDROBE: The old man: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. The girl: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
+PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles.
+PRESERVE EXACTLY:
+- Camera position, height, angle, lens, framing, horizon line, vanishing point and perspective
+- The shelter, bench, timetable sign, persimmon tree, road and paddies
+- Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+- Shadows, exposure, colour grade, contrast and grain
+ONLY CHANGE: the old man, the girl and the bag are added exactly as described. Everything else remains 100% identical. Exactly 2 people are visible.
