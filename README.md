@@ -30,6 +30,7 @@ reference/                            ← [컨텍스트에 넣지 않음] 사람
   higgsfield-history.md               Higgsfield 전 프로젝트 분석: 잘된 것·안 된 것·크레딧
   context-research.md                 Claude 컨텍스트 운영 사용자 사례 43건과 반영 내역
   source-index.md                     원본 자료 색인
+  public-projects-study.md            Higgsfield 공개 프로젝트 3개(Cully Hill Boys·BESA·The Kiss) 연구
 archive/어머니와-고등어/                ← [컨텍스트에 넣지 않음] 원본 24개. 그 작품을 이어갈 때만
 ```
 
