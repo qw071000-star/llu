@@ -84,6 +84,9 @@ VOICE: "[ ]"
 MASTER GEOMETRY (as seen from the road, looking north): A concrete bus shelter with a corrugated tin roof stands at the centre, its open front facing the road. A wooden bench runs along its back wall. A painted metal timetable sign stands on a pole at the east side of the shelter. A bare persimmon tree stands at the west side. Harvested rice paddies stretch behind it to low hills.
 LIGHT LOCK (장소 기준 방향으로): Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
 Nothing else: no other buildings, no cars, no people, no legible text.
+PALETTE: Palette of roughly 80% faded ochre and dry straw — 15% weathered concrete grey — 5% persimmon orange.
+ERA LOCK: Late autumn, early 1990s, rural South Korea; nothing more recent anywhere in frame.
+FINISH: Photorealistic cinematic film still, ARRI Alexa LF, Cooke S4 35mm, Kodak Vision3 250D 5207, organic film grain, soft falloff, crisp natural detail.
 ```
 
 | 뷰 | 계보 | 카메라(어디서 어디를, mm = °) | 화면 대응 문장 (영어, 글자 그대로) | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |

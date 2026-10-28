@@ -2,18 +2,18 @@
 
 ## 블록
 
-- 순서와 제목은 고정이다(아래 "짧은 판"만 예외). 쓸 게 없는 블록도 제목은 남긴다.
+- 순서와 제목은 고정이다. 쓸 게 없는 블록도 제목은 남긴다.
 - `PRE_SHOT_CONTINUITY`는 앞 숏에서 이어받는 상태가 있을 때만 맨 앞에 둔다.
 
 | # | 블록 | 쓰는 것 | 자주 틀리는 것 |
 |---|---|---|---|
 | — | `PRE_SHOT_CONTINUITY` | 이어받는 위치·자세·소품 소유·빛. 이어받지 않는 것은 지금 상태로 적는다(`the bag is closed`). "previous shot" 같은 말은 쓰지 않는다 | 확인 없이 계승 |
 | 1 | `SCENE_CONTEXT` | 시대·장소·이 클립의 일, 2~4문장 | 카메라·연기를 여기 몰기 |
-| 2 | `ACTIVE_REFERENCES` | 붙인 참조마다(시작 이미지 포함) ID·역할·권한 한 줄. 인물 줄은 고정 설명문 + `100% matches the reference` | 안 붙인 태그, 붙이고 안 씀 |
+| 2 | `ACTIVE_REFERENCES` | 붙인 참조마다(시작 이미지 포함) ID·역할·권한 한 줄. 인물 줄은 고정 설명문 + `100% matches the reference`, 음성 파일을 붙였으면 `[NAME]'s voice 100% matches audio_[N]`. 한 생성에서 상태가 바뀌면 요소 둘을 붙이고 시간으로 나눈다(`[A] until 0:04, [B] from 0:04`). 일부에만 나오는 참조는 범위를 적는다(`only inside the mirror, only 0:06–0:14`) | 안 붙인 태그, 붙이고 안 씀 |
 | 3 | `LOCATION_MAP` | 좌표 문장, 카메라 위치, 전·중·후경, 광원 | "근처에", "그 문" |
 | 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | 0:00에 누가 어디서 무슨 동작 **도중인지**, 소품, 보이는 인원 수 | 숏 전체로 확대 |
-| 5 | `FORMAT_MODE` | 실사, 단일 연속 테이크, 길이 | 단일 테이크인데 컷 요구 |
-| 6 | `OPTICS` | 대각 화각(도, 시작 이미지의 mm를 SKILL.md §2 표로 환산) + 관찰 결과 3개, 심도 | mm·조리개·렌즈 브랜드 |
+| 5 | `FORMAT_MODE` | 실사, 단일 연속 테이크, 길이. 컷이 필요하면 `hard cuts only at 0:0a; the camera never cuts by itself`와 컷마다 길이·카메라·첫 프레임 인물·동작. 인물이 컷 사이에서 사라지면 컷을 걷는 도중에 걸고, 그래도 안 되면 컷을 없앤다 | 단일 테이크인데 컷 요구 |
+| 6 | `OPTICS` | 대각 화각(도, 시작 이미지의 mm를 SKILL.md §2 표로 환산) + 관찰 결과 3개, 심도. 렌즈는 샷당 하나, 화각은 컷에서만 바뀐다 | mm·조리개·렌즈 브랜드 |
 | 7 | `CAMERA` | 위치·높이·방향·고정 여부·움직임과 속도 | 복합 움직임 |
 | 8 | `ACTION_TIMING` | `0:00–0:03 —` 구간별 행동·대사, 마지막 프레임 | 빈 구간, 횟수가 바뀜 |
 | 9 | `CHARACTER_ACTING` | 목표와 행동, 눈, 감정 범위의 양 끝 = 실패 | 감정 형용사 |
@@ -22,14 +22,13 @@
 | 12 | `AUDIO` | 대사 원문, 횟수, 목소리, 효과음, 음악 여부, 말하지 않는 인물 | — |
 | 13 | `STYLE` | 매체 질감·색조 한두 줄 | 스타일이 얼굴을 통제한다고 가정 |
 | 14 | `QUALITY` | 해상감, 피부·직물 질감, 손가락 왜곡 억제 | — |
-| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 지킬 상태·횟수. Forbidden: `SKILL.md` §1의 7번 | 과거 실패 누적 |
+| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 지킬 상태·횟수 3~5개. Forbidden: `SKILL.md` §1의 7번 | 과거 실패 누적 |
 
 ## 덜어내는 법
 
-- **목표 길이는 5,500자 이하.** 넘으면 장소·스타일 문장부터 줄인다. 고정 설명문과 가져온 OK 줄은 줄이지 않는다. 인물이 셋 이상이면 줄이기보다 샷 나누기가 먼저다.
+- **길이보다 사건 수를 먼저 줄인다.** 5,500자 근처면 장소·스타일 문장부터 줄인다. 고정 설명문과 가져온 OK 줄은 줄이지 않는다. 인물이 셋 이상이면 줄이기보다 샷 나누기가 먼저다.
 - **장소 정보는 좌표 줄 + 네 줄까지만 쓴다.** 카메라, 전·중·후경, 빛, 필요하면 경로다. 길수록 인물 참조가 밀린다.
 - **이 샷에 나오지 않는 인물, 태그, 씬 번호는 넣지 않는다.**
-- **원하는 상태는 Required에 먼저 쓴다.**
 - **금지어는 범위를 좁힌다:** `no [X] on [Y]`. 금지어가 오히려 그것을 부를 수 있다.
 - **사용자가 "금지할 것을 다 넣으라"고 하면** 범주별로 묶는다(`[Faces and clothing]` `[Camera and editing]` …). 그만큼 사건 수는 더 줄인다.
 
@@ -111,19 +110,6 @@ Required:
 Forbidden:
 - [only failures that actually appeared before, each with its scope]
 - Subtitles, text, watermarks, logos. (ENTIRE_SHOT)
-```
-
-### 짧은 판 (동작 하나, 인물 하나 이하)
-
-```text
-Photorealistic cinematic shot, [place/era]. Single continuous take. Static locked-off camera:
-no pan, no zoom, no push-in, no handheld. Real-time speed, no slow motion.
-START IMAGE: use the start image exactly as the first frame. Camera position, viewing angle,
-framing, [objects] and the background are exactly as in the start image and do not change.
-SET: [one sentence]. SHOT: [what is in frame at 0:00].
-0:00-0:0[a] - [state]. 0:0[a]-0:[NN] - [state]. [What does NOT happen.]
-Lens: [as in the start image] + observable results. Audio: [ ]. Style: [ ].
-Required: [2–3]. Forbidden: [only real risks].
 ```
 
 ## 그대로 쓰는 문장

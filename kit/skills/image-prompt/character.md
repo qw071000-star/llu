@@ -24,6 +24,8 @@
 - 가운데: 후면 전신
 - 오른쪽: 가슴 위 정면 클로즈업. 컷 생성 때 얼굴 참조로 쓰는 패널
 
+**신규는 틀 1 전문으로 쓴다.** OK 대장에 있는 다른 시트의 프롬프트를 예로 베끼지 않는다(더 짧거나 옛 판일 수 있다).
+
 **신규 작성 순서:** 결과물 → 정체성 → 패널 → 체형 → 의상 → 헤어 → 리얼리즘 → 배경·조명 → 일관성 잠금 → 금지.
 
 **정체성:** 실존 배우·유명인을 닮게 만들지 않는다. 참조 이미지는 얼굴의 출처가 아니다. `beautiful`, `elegant` 같은 주관어보다 얼굴 구조의 객관적 특징을 먼저 쓴다.
@@ -70,9 +72,9 @@ Create a photorealistic single wide horizontal three-panel character reference s
 
 CHARACTER IDENTITY:
 [age, origin, skin tone and texture, face shape and bone structure (adults: mature adult bone structure,
-defined nasolabial folds), eyes with naturally muted catchlights and no oversized specular glare in the
-iris, brows, nose, mouth, neutral expression]. The same exact identity must be maintained wherever the
-face is visible.
+defined nasolabial folds), eye shape and colour, brows, nose, mouth, neutral expression]. The eyes have
+naturally muted catchlights and no oversized specular glare in the iris. The same exact identity must be
+maintained wherever the face is visible.
 
 PANEL LAYOUT:
 - LEFT PANEL: a front-facing full-body wardrobe view shown strictly from the neck down. The panel is

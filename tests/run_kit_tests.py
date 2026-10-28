@@ -194,7 +194,7 @@ for para in ["Camera", "Motion", "Keep", "Silent"]:
 for fn in ["rerender.md", "fixes.md"]:
     check(f"[질문] video-prompt/{fn}에 필요한 정보", "필요한 정보" in read(os.path.join(SKILLS, "video-prompt", fn)))
 check("[질문] 지침: 사용자가 말하지 않은 칸도 묻는다", "말하지 않은" in inst)
-check("[질문] 지침: 일부만 답하면 남은 것만 다시 묻는다", "남은 것만" in inst)
+check("[질문] 지침: 같은 항목을 두 번 묻지 않고, 일부만 답하면 남은 것은 제안값으로", "두 번 묻지 않는다" in inst and "남은 것은 제안값" in inst)
 for f, text in [("video-prompt", vskill), ("image-prompt", img_skill)]:
     check(f"[질문] {f}: 묻는 법은 지침 4번을 가리킨다", "묻는 법은 지침 4번" in text)
 
@@ -240,7 +240,7 @@ check("[맹검] 검토 상태 정의", "`검토`: 완성된 결과" in gen)
 chk = read(CHECKER)
 check("[맹검2] 길이 경계 5,500자(검사기·실사 틀)", "> 5500" in chk and "5,500자" in live)
 check("[맹검2] OK 카드와 컷 카드 구분", "`ok-cuts.md` 안의 절" in inst and "`ok-cuts.md` 안의 절" in reuse)
-check("[맹검2] 다른 컷 카드·핸드오프를 예시로도 열지 않음(읽기 지도)", "다른 컷 카드·핸드오프(형식 예시로도)" in inst)
+check("[맹검2] 다른 컷 카드·핸드오프를 예시로도 열지 않음(읽기 지도)", "다른 컷 카드·핸드오프(형식 예시로도" in inst)
 check("[맹검2] 결과 이미지를 볼 수 없을 때 규칙", "볼 수 없어" in inst and "묘사를 사용자에게 묻지 않는다" in inst)
 check("[맹검2] 거절하면 진행으로", "거절하면 그 자리에서 `진행`" in gen)
 check("[맹검2] OK 제안 전에 카드 열기", "제안하기 전에도" in reuse)
@@ -256,12 +256,12 @@ for p in glob.glob(os.path.join(SKILLS, "*", "*.md")):
     docs[os.path.relpath(p, SKILLS)] = read(p)
 owners = [
     ("묻는 법: '몰라·알아서'면 제안값", r"몰라|알아서", {"instructions.md"}),
-    ("묻는 법: 일부만 답하면 남은 것만", r"남은 것만", {"instructions.md"}),
+    ("묻는 법: 일부만 답하면 남은 것은 제안값으로", r"남은 것은 제안값", {"instructions.md"}),
     ("묻는 법: 추측하지 않는다", r"추측하지 않", {"instructions.md"}),
     ("묻는 법: 정하지 않은 값에 (제안값)", r"정하지 않은 값", {"instructions.md"}),
     ("찾는 순서(사용자 말 → 컷 카드 …)", r"사용자 (말|메시지) → 컷 카드", {"instructions.md"}),
     ("이미지를 볼 수 없을 때", r"볼 수 없", {"instructions.md"}),
-    ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md"}),
+    ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md", "production-session/cut-card.md"}),  # 카드를 쓰는 그 자리에도 한 줄(맹검 r3: 형식 보려고 다른 카드를 엶)
     ("acting을 여는 때", r"인물이 연기하는 실사 영상", {"instructions.md"}),
     ("손·좌우 규칙", r"hand nearer|오른손|right hand", {"instructions.md"}),
     ("반복 실패 한도", r"4회 중 3회", {"instructions.md"}),

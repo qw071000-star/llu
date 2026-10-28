@@ -71,6 +71,7 @@ reference controls identity and wardrobe only. Camera and shot size are defined 
 - **"그대로 재현"이면 다른 속성까지 따라온다.** 속성마다 참조를 나눈다: `Reference 1 gives the composition; take the [sky] only from reference 2.`
 - **요소 이미지를 바꾸면 프롬프트 속 설명문도 새 이미지에 맞게 고친다.**
 - **콘티 썸네일이나 모니터 촬영 사진은 참조로 붙이지 않는다.** 얼굴·옷·색이 섞인다.
+- **사용자가 가리키지 않은 이미지는 붙이지 않는다.** 프로젝트에 올라온 참고 사진이 있어도, 이 생성에 쓰라는 말이 없으면 묻는다.
 
 ## 3. 편집 문법 — CHANGE / PRESERVE EXACTLY / ONLY CHANGE
 
@@ -112,4 +113,4 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 - [ ] 고정 설명문이 에셋 대장과 글자까지 같은가
 - [ ] 크롭 띠와 가림 구역을 확인했는가
 - [ ] 자리표시 태그(`<<<LOC>>>` 등)가 남지 않았는가
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장하고 `higgsfield-generation` 스킬 폴더의 `check_prompt.py`를 `python3 check_prompt.py --kind image 파일 --refs 태그수 [--must-include 고정문장파일]`로 돌린다(그 스킬을 열 필요는 없다). FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장하고 `higgsfield-generation` 스킬 폴더의 `check_prompt.py`를 `python3 check_prompt.py --kind image 파일 --refs 태그수 [--must-include 고정문장파일]`로 돌린다(그 스킬을 열 필요는 없다). 고정 문장(에셋 대장의 의상·소품·LIGHT LOCK·화면 대응)을 넣었으면 그 문장들을 한 줄에 하나씩 파일로 저장해 `--must-include`로 넘긴다. FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다

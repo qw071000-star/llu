@@ -18,7 +18,7 @@
 
 - **새 카메라는 원본 카메라와의 관계로 쓴다.** `reverse`나 `close-up` 한 단어로 카메라 관계를 대신하지 않는다.
 - **주체는 하나.** 그 디자인·상태, 주변과의 상대 위치, 랜드마크 1~3개를 잠근다. 프레이밍과 화면상 크기는 잠그지 않는다.
-- **상속 문장은 글자 그대로 붙이고 CAMERA·FRAMING만 바꾼다.** 첫 줄 뒤에 `Use <<<image_1>>> as the sole geometry and design authority; do not inherit from discarded variants.`
+- **상속 문장은 글자 그대로 붙이고 CAMERA·FRAMING만 바꾼다.** 에셋 대장에 없는 줄(팔레트·시대 잠금·마감)은 부모 OK 카드의 프롬프트에서 글자 그대로 가져온다. 둘 다 없으면 지어내지 않고 묻는다. 첫 줄 뒤에 `Use <<<image_1>>> as the sole geometry and design authority; do not inherit from discarded variants.`
 
 ## 틀 A — 반대 방향
 
@@ -51,7 +51,7 @@ CAMERA는 두 줄 중 하나만 남긴다. 둘을 섞거나 중간 표현으로 
 
 ## 틀 B — 같은 장소의 새 시점 (클로즈업·미디엄·탑뷰·사선·낮은 시점)
 
-탑뷰·사선·낮은 시점은 부정 범위를 함께 쓴다(`not from straight above, not from the side`).
+탑뷰·사선·낮은 시점은 부정 범위를 함께 쓴다(`not from straight above, not from the side`). 상속 문장에 프레임 밖 대상이 나와도 지우지 않는다. FRAMING의 `fall outside` 줄이 이긴다.
 
 ```text
 Using <<<image_1>>> as the exact same [LOCATION] — same [materials, landmarks and light logic] —
@@ -63,8 +63,8 @@ FRAMING: [Subject] fills [amount] of the frame. Keep [1–3 landmarks] visible. 
 the tighter frame. The background [focus treatment].
 CONTINUITY: Preserve the exact design, proportions, material, wear, state and placement relationships
 of [subject and anchors]. Keep the same lighting direction, palette and era.
-[Same side: Move in from the same side and along the same line of sight; no reverse angle and no view from behind.]
-[New direction only: This is a newly observed direction of the same physical room, not a horizontal mirror of the reference.]
+Move in from the same side and along the same line of sight; no reverse angle and no view from behind.
+(새 방향이면 위 줄 대신: This is a newly observed direction of the same physical room, not a horizontal mirror of the reference.)
 [Parent's MASTER GEOMETRY with its viewpoint · LIGHT LOCK · palette · era lock · finish — verbatim]
 In this view [direction] is screen LEFT and [direction] is screen RIGHT: [landmark] is at screen [side].
 ```
