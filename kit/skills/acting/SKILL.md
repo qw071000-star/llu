@@ -1,6 +1,6 @@
 ---
 name: acting
-description: AI 영상에서 인물 연기를 쓸 때 쓴다. 15블록의 CHARACTER_ACTING을 채울 때, 인물 마스터 프로필이나 목소리 문장을 만들 때, 연기가 과하거나 죽었을 때 쓴다. 증상은 감정 과잉, 무표정, 휙 도는 동작, 말하지 않을 인물의 입 움직임, 죽은 눈, 배경 인물이 얼어붙음 같은 것이다. 다루는 것: 목표와 행동, 손의 일, 눈의 삶, 상태 쓰기, 레지스터, 검증된 문장.
+description: AI 영상에서 인물 연기를 쓸 때 쓴다. 15블록의 CHARACTER_ACTING을 새로 쓸 때, 인물 마스터 프로필이나 목소리 문장을 만들 때, 연기가 과하거나 죽었을 때 쓴다. 증상은 감정 과잉, 무표정, 휙 도는 동작, 말하지 않을 인물의 입 움직임, 죽은 눈, 배경 인물이 얼어붙음 같은 것이다. 다루는 것: 목표와 행동, 손의 일, 눈의 삶, 상태 쓰기, 레지스터, 검증된 문장.
 ---
 
 # 인물 연기
@@ -77,7 +77,7 @@ stress tic + trigger; what is hidden; the mask and what breaks it]. Eye life: [�
 | 문제 | 문장 |
 |---|---|
 | 감정이 넘치거나 꺼짐 | `between [A] and [B]; [extreme 1] = failed take, [extreme 2] = failed take` |
-| 몸이 휙 돈다 | `head → shoulders → feet over three seconds; turning within one second = failed take` |
+| 몸 전체(발까지)가 휙 돈다 | `head → shoulders → feet over three seconds; turning within one second = failed take` |
 | 말하지 않을 인물의 입 | `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` 망설임은 숨·삼킴·손으로 쓴다 |
 | 멈춤이 놀람으로 읽힘 | `does not startle; simply stops` / `the action carries through and only the eyes stay on it` |
 | 반응이 너무 크거나 없음 | `If [the reaction] is strong, it is a failed take; if there is no reaction at all, it is also a failed take.` |

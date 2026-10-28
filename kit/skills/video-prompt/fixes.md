@@ -9,7 +9,7 @@
 |---|---|
 | 빈 화면으로 시작해 인물이 들어온다 | 첫 프레임부터 정위치, 동작 도중. 등장은 "이미 걷는 중"으로 |
 | 문 열림 같은 환경 사건이 어색하다 | 그 사건을 빼고 숏 내내 한 상태로 둔다 |
-| 인물이 휙 돈다 | 부위 순서와 초: `eyes → head → shoulders, about 1.5 s; snapping = failed take` |
+| 고개·상체가 휙 돈다 | 부위 순서와 초: `eyes → head → shoulders, about 1.5 s; snapping = failed take` |
 | 말하지 않을 인물의 입이 움직인다 | 말하려는 시도 자체를 없앤다: `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` 망설임은 숨·삼킴·손으로 준다 |
 | 고개를 돌렸다가 되돌린다 | `From then until the end [his] eyes and head stay on [her]. Turning back = forbidden` |
 | 다른 인물이 반응해 버린다 | 그 인물의 시선·머리·손을 고정: `does not react in any way, never looks at [him]` |

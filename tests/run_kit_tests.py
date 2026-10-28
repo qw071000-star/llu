@@ -193,9 +193,10 @@ for para in ["Camera", "Motion", "Keep", "Silent"]:
     check(f"[질문] 배경 영상 점검표가 '{para}' 문단을 덮음", f"`{para}`" in bg_intake)
 for fn in ["rerender.md", "fixes.md"]:
     check(f"[질문] video-prompt/{fn}에 필요한 정보", "필요한 정보" in read(os.path.join(SKILLS, "video-prompt", fn)))
-for f, text in [("instructions.md", inst), ("video-prompt", vskill), ("image-prompt", img_skill)]:
-    check(f"[질문] {f}: 사용자가 말하지 않은 칸도 묻는다", "말하지 않은" in text)
-    check(f"[질문] {f}: 일부만 답하면 남은 것만 다시 묻는다", "남은 것만" in text)
+check("[질문] 지침: 사용자가 말하지 않은 칸도 묻는다", "말하지 않은" in inst)
+check("[질문] 지침: 일부만 답하면 남은 것만 다시 묻는다", "남은 것만" in inst)
+for f, text in [("video-prompt", vskill), ("image-prompt", img_skill)]:
+    check(f"[질문] {f}: 묻는 법은 지침 4번을 가리킨다", "묻는 법은 지침 4번" in text)
 
 # 13. OK 기록과 재사용
 okt = read(os.path.join(KIT, "project-files", "ok-cuts.md"))
@@ -203,7 +204,7 @@ for field in ["번호", "종류", "job", "모델", "참조(붙인 순서)", "OK 
     check(f"[OK] OK 대장 틀에 '{field}'", field in okt)
 check("[OK] 생성 운영: 승인하면 OK 기록", "OK 기록" in gen and "ok-cuts.md" in gen)
 check("[OK] 생성 운영: 프롬프트는 보낸 그대로, 기억으로 다시 쓰지 않음", "보낸 글자 그대로" in gen and "기억으로 다시 쓰지 않는다" in gen)
-check("[OK] 지침: 승인은 그 자리에서 OK 대장에", "OK 대장에 기록" in inst)
+check("[OK] 지침: 승인은 그 자리에서 OK 대장에", "그 자리에서 OK 대장에" in inst)
 check("[OK] 지침: '3-1처럼'은 OK 카드에서 가져옴", "3-1처럼" in inst and "ok-reuse.md" in inst)
 check("[OK] 컷 카드 [12]가 OK 대장을 가리킴", re.search(r"^\[12\].*OK 대장", card, re.M) is not None)
 check("[OK] 컷 카드 [7]에 가져온 OK", "가져온 OK" in card)
@@ -219,10 +220,10 @@ for f in ["shot-list.md", "asset-registry.md", "CLAUDE.md"]:
 # 14. 맹검 시험(tests/agent-eval)에서 찾은 결함이 다시 생기지 않는가
 claude_md = read(os.path.join(KIT, "project-files", "CLAUDE.md"))
 reg = read(os.path.join(KIT, "project-files", "asset-registry.md"))
-check("[맹검] 컷 카드 수정 권한이 CLAUDE.md·세션 스킬·카드에서 같다", all("[3]~[7]" in t for t in [claude_md, read(os.path.join(SKILLS, "production-session", "SKILL.md")), card]))
-check("[맹검] 컷 목록: 컷 세션이 상태·확정 job 칸을 고친다", "상태 칸과 확정 job 칸" in shot and "상태·확정 job 칸" in claude_md)
-for f, t in [("instructions.md", inst), ("video-prompt", vskill), ("image-prompt", img_skill)]:
-    check(f"[맹검] {f}: '몰라'도 제안값으로", "몰라" in t)
+sess = read(os.path.join(SKILLS, "production-session", "SKILL.md"))
+check("[맹검] 컷 카드 수정 권한은 세션 스킬 §1 한 곳", "[3]~[7] [10]~[12]" in sess and "SKILL.md` §1" in card)
+check("[맹검] 컷 목록: 컷 세션이 상태·확정 job 칸을 고친다", "상태 칸과 확정 job 칸" in sess and "production-session` §1" in shot)
+check("[맹검] 지침: '몰라'도 제안값으로", "몰라" in inst)
 nospeak = "does not say a single word: no attempt to speak, no parted lips, no mouthing"
 for f in ["video-prompt/fixes.md", "video-prompt/live-action.md", "acting/SKILL.md"]:
     check(f"[맹검] 말하지 않음 문장 통일: {f}", nospeak in read(os.path.join(SKILLS, f)).replace("\n", " "))
@@ -238,13 +239,74 @@ check("[맹검] 검토 상태 정의", "`검토`: 완성된 결과" in gen)
 # 15. 2차·소넷 맹검에서 찾은 결함
 chk = read(CHECKER)
 check("[맹검2] 길이 경계 5,500자(검사기·실사 틀)", "> 5500" in chk and "5,500자" in live)
-check("[맹검2] OK 카드와 컷 카드 구분", "`ok-cuts.md` 안의 절" in claude_md and "`ok-cuts.md` 안의 절" in read(os.path.join(SKILLS, "production-session", "SKILL.md")))
-check("[맹검2] 다른 컷 카드·핸드오프를 예시로 열지 않음", "예시로 열지 않는다" in card and "예시로 열지 않는다" in handoff)
-check("[맹검2] 결과 이미지를 볼 수 없을 때 규칙", "직접 볼 수 없" in vskill and "직접 볼 수 없" in img_skill)
+check("[맹검2] OK 카드와 컷 카드 구분", "`ok-cuts.md` 안의 절" in inst and "`ok-cuts.md` 안의 절" in reuse)
+check("[맹검2] 다른 컷 카드·핸드오프를 예시로도 열지 않음(읽기 지도)", "다른 컷 카드·핸드오프(형식 예시로도)" in inst)
+check("[맹검2] 결과 이미지를 볼 수 없을 때 규칙", "볼 수 없어" in inst and "묘사를 사용자에게 묻지 않는다" in inst)
 check("[맹검2] 거절하면 진행으로", "거절하면 그 자리에서 `진행`" in gen)
 check("[맹검2] OK 제안 전에 카드 열기", "제안하기 전에도" in reuse)
 check("[맹검2] 정정 줄이 보냄 형식보다 먼저", "`정정: …`" in gen)
-check("[맹검2] 이웃 컷은 연속성 표에서만", "이웃 컷 카드는 열지 않는다" in vskill)
+check("[맹검2] 이웃 컷은 연속성 표에서", "연속성 표에서 가져온다" in vskill and "연속성 표의 자기 행" in inst)
+
+# 16. 규칙은 한 곳에만 (같은 규칙이 두 파일에 다르게 적히면 충돌이 생긴다)
+#     (이름, 그 규칙을 알아보는 정규식, 그 규칙을 적어도 되는 파일)
+docs = {"instructions.md": inst}
+for p in glob.glob(os.path.join(KIT, "project-files", "*.md")):
+    docs["project-files/" + os.path.basename(p)] = read(p)
+for p in glob.glob(os.path.join(SKILLS, "*", "*.md")):
+    docs[os.path.relpath(p, SKILLS)] = read(p)
+owners = [
+    ("묻는 법: '몰라·알아서'면 제안값", r"몰라|알아서", {"instructions.md"}),
+    ("묻는 법: 일부만 답하면 남은 것만", r"남은 것만", {"instructions.md"}),
+    ("묻는 법: 추측하지 않는다", r"추측하지 않", {"instructions.md"}),
+    ("묻는 법: 정하지 않은 값에 (제안값)", r"정하지 않은 값", {"instructions.md"}),
+    ("찾는 순서(사용자 말 → 컷 카드 …)", r"사용자 (말|메시지) → 컷 카드", {"instructions.md"}),
+    ("이미지를 볼 수 없을 때", r"볼 수 없", {"instructions.md"}),
+    ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md"}),
+    ("acting을 여는 때", r"연기 블록을 새로 쓸 때", {"instructions.md"}),
+    ("손·좌우 규칙", r"hand nearer|오른손|right hand", {"instructions.md"}),
+    ("반복 실패 한도", r"4회 중 3회", {"instructions.md"}),
+    ("고정 설명문은 글자 그대로", r"(대장|설명문)[^\n]{0,15}글자 그대로 (쓴다|옮긴다|복사|붙인다)", {"instructions.md"}),
+    ("컷 카드 칸별 수정 권한", r"\[3\]~\[7\]", {"production-session/SKILL.md"}),
+    ("컷 목록: 컷 세션이 고치는 칸", r"상태 칸과 확정 job 칸|상태·확정 job 칸", {"production-session/SKILL.md"}),
+    ("확정 전 에셋 답은 초안 줄에", r"확정 전[^\n]{0,10}(답|에셋)", {"production-session/SKILL.md"}),
+    ("범위 밖 문제는 총괄에 올린다", r"총괄에 올릴", {"production-session/SKILL.md", "production-session/handoff.md"}),
+    ("Forbidden에 넣는 것", r"만 Forbidden에|Forbidden[^\n]{0,20}실제", {"video-prompt/SKILL.md"}),
+    ("렌즈 환산표", r"24mm 84°", {"video-prompt/SKILL.md"}),
+    ("OK 프롬프트 찾는 순서", r"get_project_asset_prompt`?\(그 job\)|결과물 상세", {"higgsfield-generation/SKILL.md"}),
+    ("판정 말과 상태(좋아·별로·나중에)", r"\"별로\"|\"나중에\"", {"higgsfield-generation/SKILL.md"}),
+    ("가져온 OK의 위험을 옮긴다", r"위험도 가져온다", {"production-session/ok-reuse.md"}),
+]
+for name, pat, allowed in owners:
+    where = sorted(f for f, t in docs.items() if re.search(pat, t))
+    extra = [f for f in where if f not in allowed]
+    check(f"[한 곳] {name}: {', '.join(sorted(allowed))}에만", not extra and where, "다른 곳: " + ", ".join(extra) if extra else "주인 파일에 없음")
+# 같은 상황에 다른 문장을 주지 않는다
+turn_fix = re.search(r".*휙 돈다 \|.*", read(os.path.join(SKILLS, "video-prompt", "fixes.md"))).group(0)
+turn_act = re.search(r".*휙 돈다 \|.*", read(os.path.join(SKILLS, "acting", "SKILL.md"))).group(0)
+check("[한 곳] 휙 도는 동작: 고치기와 연기가 다른 증상을 다룬다(고개·상체 / 몸 전체)", "고개·상체" in read(os.path.join(SKILLS, "video-prompt", "fixes.md")) and "몸 전체" in turn_act, turn_fix + " / " + turn_act)
+q = "프롬프트를 쓰기 전에 확인할 것이 [N]개 있습니다. 제안값이 괜찮으면 \"그대로\"라고 해 주세요."
+check("[한 곳] 질문 첫 줄이 지침과 영상 예시에서 같다", q in inst and q in vskill)
+
+# 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
+always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)
+routes = {
+    "인물 시트": ["image-prompt/SKILL.md", "image-prompt/character.md"],
+    "장소": ["image-prompt/SKILL.md", "image-prompt/location.md"],
+    "퍼스트 프레임": ["image-prompt/SKILL.md", "image-prompt/first-frame.md"],
+    "실사 영상": ["video-prompt/SKILL.md", "video-prompt/live-action.md"],
+    "실사 영상 + 연기 새로": ["video-prompt/SKILL.md", "video-prompt/live-action.md", "acting/SKILL.md"],
+    "\"3-1처럼\" 영상": ["video-prompt/SKILL.md", "video-prompt/live-action.md", "production-session/SKILL.md", "production-session/ok-reuse.md"],
+    "생성·판정·OK 기록": ["higgsfield-generation/SKILL.md"],
+    "컷 세션 시작": ["production-session/SKILL.md", "production-session/cut-card.md"],
+}
+BUDGET = 22000  # 정본·컷 카드 내용 제외. 늘려야 하면 무엇을 지울지 먼저 본다.
+for name, files in routes.items():
+    n = always + sum(len(read(os.path.join(SKILLS, f))) for f in files)
+    check(f"[읽기량] {name}: {n:,}자 ≤ {BUDGET:,}", n <= BUDGET)
+for d in skill_dirs:
+    for fn in skill_files[d]:
+        if fn.endswith(".md") and fn != "SKILL.md":
+            check(f"[읽기 지도] {d}/{fn}가 지침의 표에 있다", f"`{fn}`" in inst)
 
 # 11. 프롬프트 검사기: 픽스처마다 기대 결과와 같은가
 #     파일 이름: <kind>__<pass|fail>__<설명>.txt

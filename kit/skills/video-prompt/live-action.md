@@ -1,7 +1,5 @@
 # 실사·인물 컷 — 15블록
 
-연기 블록(9번)은 `acting` 스킬을 함께 읽는다.
-
 ## 블록
 
 - 순서와 제목은 고정이다. 쓸 게 없는 블록도 제목은 남긴다.
@@ -24,13 +22,12 @@
 | 12 | `AUDIO` | 대사 원문, 횟수, 목소리, 효과음, 음악 여부, 말하지 않는 인물 | — |
 | 13 | `STYLE` | 매체 질감·색조 한두 줄 | 스타일이 얼굴을 통제한다고 가정 |
 | 14 | `QUALITY` | 해상감, 피부·직물 질감, 손가락 왜곡 억제 | — |
-| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 지킬 상태·횟수. Forbidden: **실제로 나온 실패만**(이 컷 + 가져온 OK의 위험), 범위 태그와 함께. 예상 위험은 Required나 해당 블록에 | 과거 실패 누적 |
+| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 지킬 상태·횟수. Forbidden: `SKILL.md` §1의 7번 | 과거 실패 누적 |
 
 ## 덜어내는 법
 
 - **목표 길이는 5,500자 이하.** 넘으면 장소·스타일 문장부터 줄이고, 인물이 셋 이상이면 샷을 나눈다.
 - **장소 정보는 좌표 줄 + 네 줄까지만 쓴다.** 카메라, 전·중·후경, 빛, 필요하면 경로다. 길수록 인물 참조가 밀린다.
-- **인물·장소 설명문은 에셋 대장 문장을 글자 그대로 쓴다.**
 - **이 샷에 나오지 않는 인물, 태그, 씬 번호는 넣지 않는다.**
 - **원하는 상태는 Required에 먼저 쓴다.**
 - **금지어는 범위를 좁힌다:** `no [X] on [Y]`. 금지어가 오히려 그것을 부를 수 있다.
@@ -137,9 +134,6 @@ Required: [2–3]. Forbidden: [only real risks].
 lines stay straight / no telephoto compression.
 [망원] Diagonal field of view about 29°. The background is compressed and soft / only [person] is
 sharp / the camera is physically far away.
-[속도] All movement is slow and even; each action flows into the next without a hard start or stop.
 [상태 머신] [OBJECT] state: [STATE_A] -> [STATE_B], exactly one transition, never reversed.
-[연기 범위] Between [state A] and [state B]. [extreme 1] = failed take; [extreme 2] = failed take.
-[말하지 않음] [Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.
 [광원 번짐] The [lamps] are on, but their light does not bloom or spread.
 ```
