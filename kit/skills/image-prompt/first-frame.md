@@ -2,8 +2,6 @@
 
 ## 필요한 정보
 
-값은 컷 카드 [4]~[5]에 적고, 영상도 같은 값을 쓴다.
-
 | 필요한 정보 | 틀의 자리 |
 |---|---|
 | 컷 카메라가 확정 장소 뷰와 같은가 (장소 뷰 job). 컷 목록의 장소 뷰가 확정 뷰 그대로면 "같음(틀 1)"을 제안한다 | 모드: 틀 1 / 틀 2 |
@@ -14,7 +12,7 @@
 | 인물마다 시작 위치(앵커·거리·접촉), 하던 동작, 시선, 손 | `CHANGE` / `BLOCKING` |
 | 보이는 인원 수 | `Exactly [N] people` |
 | 최종 화면비 | 설정 |
-| 고정 설명문과 부딪치는 이 컷만의 것(소품이 열림 상태 등) | `Except` 한 줄(고정 문장은 그대로 두고 뒤에 `Except: in this frame the bag is open.`) |
+| 고정 설명문과 부딪치는 이 컷만의 것(소품이 열림 상태 등) | `Except` 한 줄 |
 
 ## 규칙
 
@@ -24,13 +22,9 @@
   - 카메라가 다르면: `DERIVED VIEW`로 새 시점을 만든다(틀 2).
   - 틀 1에서 인물·소품을 더하는 것은 한 변경으로 친다(빈 장소에 그 컷의 사람을 놓는 일).
   - 같은 카메라인데 새 시점으로 만들면 장소 뷰와 첫 프레임의 구도가 어긋난다.
-- **장소 뷰, 인물 시트, 소품 요소를 권한 블록으로 묶는다.** CAMERA 블록이 모든 참조를 이긴다.
 - **인물은 기존 앵커에 둔다.**
   - 위치는 거리와 접촉으로 쓴다. "근처에"는 지켜지지 않는다.
   - 동작 도중의 상태로 쓴다.
-- **인물 시트의 배경·조명·포즈는 `DO NOT TRANSFER`에 적는다.**
-- **콘티 썸네일은 참조로 붙이지 않는다.** 그 구도가 필요하면 같은 구도의 빈 장소 이미지를 먼저 만들어 장소 참조로 쓴다.
-- **소품 크기는 cm와 신체 기준으로 적는다.**
 - **이웃 컷과 비교한다.** 컷 목록의 앞뒤 줄과 연속성 표(인물 자리·자세, 소품 상태)로 본다.
   - 연속성 표에 인물 자리가 없으면 같은 인물이 나온 직전 승인 시작 이미지의 OK 카드에서 BLOCKING 줄을 가져와 제안한다. 자리를 새로 지어내지 않는다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
 - **다른 OK의 색감을 가져올 때**
@@ -77,6 +71,6 @@ WARDROBE: [asset registry sentence, verbatim].
 PROP: [position, state, who holds it, size in cm and body terms]. [Except: …]
 [PALETTE · ERA LOCK from the asset registry, verbatim]
 Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
-[LIGHT LOCK for this new view: the light comes from screen [side], the [object] side]
+[LIGHT LOCK for this new view: the light comes from screen [left/right], the [object] side]
 Exactly [one person is / N people are] visible.
 ```

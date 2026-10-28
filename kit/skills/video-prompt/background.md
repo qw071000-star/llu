@@ -9,8 +9,8 @@
 - **끝 상태, 페이드인, 다음 컷과의 이음새는 쓰지 않는다.**
 - **움직임의 양은 화면 비율(%)로 쓴다.** 미터나 초 단위 위치는 지켜지지 않는다.
 - **서두르는 것처럼 보이면 사건을 하나 뺀다.**
-- **카메라·길이·소리는 정본을 따른다.** 정본 기본이 고정 카메라면 `Camera: completely locked off …` 문장을 쓴다. 움직이려면 사용자가 정한다.
-- **소리:** 무음이면 옵션에서 끄고, 끌 수 없으면 `Silent` 문단을 쓴다. 효과음이 기본이면 `Silent` 대신 `Sound` 문단을 쓴다.
+- **카메라·길이·소리는 정본을 따른다.** 움직이려면 사용자가 정한다.
+- **소리:** 무음이면 옵션에서 끄고, 끌 수 없으면 `Silent` 문단을 쓴다.
 
 ## 틀
 
@@ -20,7 +20,7 @@ height] over the whole clip. The horizon stays level; no rotation, no tilt, no z
 
 Motion: [only things already in the image that move, each with direction and pace].
 
-Keep the [medium] look, every [shape list], and the light direction from the [side] exactly as in the
+Keep the [medium] look, every [shape list], and the light from screen [left/right], the [object] side, exactly as in the
 image; only the things named above move, slowly and without morphing or melting.
 
 Silent: no dialogue, no music, no sound effects.

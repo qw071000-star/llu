@@ -290,6 +290,9 @@ always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md"
 routes = {
     "인물 시트": ["image-prompt/SKILL.md", "image-prompt/character.md"],
     "장소": ["image-prompt/SKILL.md", "image-prompt/location.md"],
+    "장소 새 시점": ["image-prompt/SKILL.md", "image-prompt/location.md", "image-prompt/location-view.md"],
+    "장소 편집": ["image-prompt/SKILL.md", "image-prompt/location.md", "image-prompt/location-edit.md"],
+    "인물 + 대사": ["image-prompt/SKILL.md", "image-prompt/character.md", "acting/SKILL.md"],
     "퍼스트 프레임": ["image-prompt/SKILL.md", "image-prompt/first-frame.md"],
     "실사 영상": ["video-prompt/SKILL.md", "video-prompt/live-action.md"],
     "실사 영상 + 연기 새로": ["video-prompt/SKILL.md", "video-prompt/live-action.md", "acting/SKILL.md"],

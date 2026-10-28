@@ -18,7 +18,7 @@
 | 8 | `ACTION_TIMING` | `0:00–0:03 —` 구간별 행동·대사, 마지막 프레임 | 빈 구간, 횟수가 바뀜 |
 | 9 | `CHARACTER_ACTING` | 목표와 행동, 눈, 감정 범위의 양 끝 = 실패. 새로 쓰면 `acting`을 연다 | 감정 형용사 |
 | 10 | `PHYSICS` | `motion_owner`별 무게·접촉 | 누가 움직이는지 불분명 |
-| 11 | `LIGHTING` | 실제 광원 하나를 지배광으로, 방향 | 참조 사진 룩으로 단정 |
+| 11 | `LIGHTING` | 실제 광원 하나를 지배광으로, 방향(화면 쪽 + 그쪽 물건) | 참조 사진 룩으로 단정 |
 | 12 | `AUDIO` | 대사 원문, 횟수, 목소리, 효과음, 음악 여부, 말하지 않는 인물 | — |
 | 13 | `STYLE` | 매체 질감·색조 한두 줄 | 스타일이 얼굴을 통제한다고 가정 |
 | 14 | `QUALITY` | 해상감, 피부·직물 질감, 손가락 왜곡 억제 | — |
@@ -92,7 +92,7 @@ motion_owner = CAMERA: [none / one move]
 motion_owner = ENVIRONMENT: [none / what]
 
 [LIGHTING]
-[Practical sources as in the start image; the dominant source and its direction.]
+[Practical sources as in the start image; the dominant source comes from screen [left/right], the [object] side.]
 
 [AUDIO]
 [Dialogue in [language], exactly once.] [PERSON]: "[line]" — [voice sentence]. [PERSON 2] does not say a single word:
@@ -115,8 +115,6 @@ Forbidden:
 ## 그대로 쓰는 문장
 
 ```text
-[장소 참조] Controls geometry, materials, light and atmosphere ONLY — not framing.
-(시작 이미지가 있으면 빛은 시작 이미지 권한이다: `light and atmosphere`를 빼고 쓴다.)
 [첫 프레임] [Person] is already in place at 0:00, mid-[action]. No empty establishing frame.
 [광각] Diagonal field of view about 63°. [A], [B] and [C] are fully visible in one frame / straight
 lines stay straight / no telephoto compression.

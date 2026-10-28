@@ -1,6 +1,6 @@
 # 장소 — 같은 사진 수정 (LOCKED EDIT)
 
-카메라를 잠그는 작업이다. 여는 문장과 `CHANGE / PRESERVE EXACTLY / ONLY CHANGE` 문법은 `SKILL.md` §1·§3에 있다. 카메라가 같이 바뀌면 `location-view.md`로 나눈다.
+카메라를 잠그는 작업이다. 여는 문장과 `CHANGE / PRESERVE EXACTLY / ONLY CHANGE` 문법은 `SKILL.md` §1·§3에 있다.
 
 ## 필요한 정보
 
@@ -42,7 +42,6 @@ REMOVE  Remove [object] from [location]. Continue [revealed surface] naturally t
 - 상태를 바꿨더니 디자인이 달라짐 → `The same [object], [its parts], dimensions and orientation remain unchanged; only its [state] changes.`
 - 더한 대상이 구조를 가림 → `Place the new subject within the existing [anchor], at its established scale, without moving or covering adjacent landmarks.`
 - 주변까지 다시 설계됨 → `Every unnamed object and surface remains in its exact position, scale, orientation, material and colour.`
-- 켠 불빛이 방을 밝힘 → `lit but does NOT glow: no halo, no bloom, no light spilling onto [surfaces]`
 
 ## 틀 2 — 시대·재료·디자인 교체 (한 생성에 한 층)
 
@@ -85,7 +84,7 @@ ONLY CHANGE: [LAYER]. Everything else remains identical.
     image: [new real space]. Do not copy its camera angle, framing, materials, lighting or original context.
     CAMERA: [new camera position, height, direction and distance]]
 PRESERVE THE LAYOUT ([A: as framed in the reference / B: directions as seen from [viewpoint]]; LEFT and
-RIGHT are SCREEN directions):
+RIGHT are SCREEN directions, never the character's own left or right):
 - [Anchor] on the LEFT [relation]
 - [Anchor] at the CENTRE [relation]
 - [Anchor] on the RIGHT [relation]

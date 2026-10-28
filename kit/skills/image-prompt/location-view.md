@@ -1,6 +1,6 @@
 # 장소 — 새 시점 (DERIVED VIEW)
 
-카메라를 바꾸는 작업이다. `WITHOUT reframing`을 쓰지 않는다. 같은 사진의 수정이면 `location-edit.md`.
+카메라를 바꾸는 작업이다.
 
 ## 필요한 정보
 
@@ -12,13 +12,13 @@
 | 주체 하나, 화면 점유율, 남길 랜드마크 1~3개, 프레임 밖으로 뺄 것 | `FRAMING` |
 | 반대 방향이면: 카메라 방식(먼 끝으로 이동 / 제자리 180°), 새 방향의 종점, 반복 요소, 번호·표지 | 틀 A |
 | 부모의 MASTER GEOMETRY · 팔레트 · 시대 잠금 · 마감 (에셋 대장, 글자 그대로) | 상속 줄 |
-| 이 뷰의 LIGHT LOCK(화면 쪽 + 물건). 반대 방향이면 좌우를 뒤집어 새로 쓴다 | 마지막 줄 |
+| 이 뷰의 LIGHT LOCK(화면 쪽 + 물건) | 마지막 줄 |
 
 ## 공통
 
 - **새 카메라는 원본 카메라와의 관계로 쓴다.** `reverse`나 `close-up` 한 단어로 카메라 관계를 대신하지 않는다.
 - **주체는 하나.** 그 디자인·상태, 주변과의 상대 위치, 랜드마크 1~3개를 잠근다. 프레이밍과 화면상 크기는 잠그지 않는다.
-- **상속 문장은 글자 그대로 붙이고 CAMERA·FRAMING만 바꾼다.** 에셋 대장에 없는 줄(팔레트·시대 잠금·마감)은 부모 OK 카드의 프롬프트에서 글자 그대로 가져온다. 둘 다 없으면 지어내지 않고 묻는다. MASTER GEOMETRY의 좌우는 부모 시점 기준이라, 이 뷰의 화면 좌우는 `In this view …` 줄이 정한다. 첫 줄 뒤에 `Use <<<image_1>>> as the sole geometry and design authority; do not inherit from discarded variants.`
+- **상속 문장에서 CAMERA·FRAMING만 바꾼다.** 에셋 대장에 없는 줄(팔레트·시대 잠금·마감)은 부모 OK 카드의 프롬프트에서 글자 그대로 가져온다. 둘 다 없으면 지어내지 않고 묻는다. MASTER GEOMETRY의 좌우는 부모 시점 기준이라, 이 뷰의 화면 좌우는 `In this view …` 줄이 정한다. 첫 줄 뒤에 `Use <<<image_1>>> as the sole geometry and design authority; do not inherit from discarded variants.`
 
 ## 틀 A — 반대 방향
 

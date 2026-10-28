@@ -1,13 +1,9 @@
 ---
 name: image-prompt
-description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 쓴다. GPT Image, Nano Banana, Seedream에 해당한다. 대상은 에셋 제작과 영상 시작용 퍼스트 프레임이다. 에셋은 장소, 소품, 인물+의상 시트, 그림체 이미지다. 공통 규칙은 이 파일에 있다. 신규와 편집의 구분, 참조 권한, 편집 문법, 크롭이다. 종류별 규칙과 빈 틀은 따로 있는 파일을 그 종류일 때만 읽는다.
+description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 쓴다. GPT Image, Nano Banana, Seedream에 해당한다. 대상은 에셋 제작과 영상 시작용 퍼스트 프레임이다. 에셋은 장소, 소품, 인물+의상 시트, 그림체 이미지다.
 ---
 
 # 이미지 프롬프트 — 공통
-
-## 단계 파일 — 하나만 연다
-
-`character.md` 인물 시트 신규 · `character-edit.md` 확정 시트 고치기 · `location.md` 장소(그 안의 표가 `location-view.md` 새 시점 / `location-edit.md` 같은 사진 수정 중 하나를 더 가리킨다) · `prop.md` 소품 · `style.md` 그림체 이미지 · `first-frame.md` 퍼스트 프레임(영상 0:00)
 
 ## 0. 쓰기 전 정보 점검
 
@@ -35,7 +31,7 @@ description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 �
 | 모드 | 언제 | 여는 문장 |
 |---|---|---|
 | `LOCKED EDIT` | 같은 사진의 수정본 | `Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.` |
-| `DERIVED VIEW` | 같은 장소의 새 시점 | `Using <<<image_1>>> as the exact same location, generate a new view from [위치], looking [방향]. Do not inherit its camera angle, framing or composition.` |
+| `DERIVED VIEW` | 같은 장소의 새 시점 | `Using <<<image_1>>> as the exact same location, generate a new view from [position by on-screen objects], looking toward [object]. Do not inherit its camera angle, framing or composition.` |
 
 **③ 참조가 무엇을 통제하는가.**
 
@@ -62,15 +58,12 @@ reference controls identity and wardrobe only. Camera and shot size are defined 
 ```
 
 - 마지막 줄은 LOCKED EDIT이면 `Preserve <<<A>>>'s camera, geometry and placement.`로 바꾼다. 카메라를 갖는 참조는 그 사진 하나뿐이다.
-
-- **카메라를 통제하는 참조는 하나 이하로 둔다.**
-- **참조 표기를 통일한다.** 실제 첨부 순서와 맞추고, 한 프롬프트 안에서 한 표기만 쓴다.
 - **"구도만 참조"로는 구도가 따라오지 않는다.** 둘 중 하나로 쓴다.
   - 참조를 덩어리별 좌표로 읽어 적는다.
   - "그대로 재현 + 바꿀 것 목록"으로 쓴다.
 - **"그대로 재현"이면 다른 속성까지 따라온다.** 속성마다 참조를 나눈다: `Reference 1 gives the composition; take the [sky] only from reference 2.`
 - **요소 이미지를 바꾸면 프롬프트 속 설명문도 새 이미지에 맞게 고친다.**
-- **콘티 썸네일이나 모니터 촬영 사진은 참조로 붙이지 않는다.** 얼굴·옷·색이 섞인다.
+- **콘티 썸네일이나 모니터 촬영 사진은 참조로 붙이지 않는다.** 얼굴·옷·색이 섞인다. 그 구도가 필요하면 같은 구도의 빈 장소 이미지를 먼저 만들어 장소 참조로 쓴다.
 - **사용자가 가리키지 않은 이미지는 붙이지도, 제안하지도 않는다.** 프로젝트에 참고 사진이 있어도 마찬가지다. 사용자가 말로 사양을 줬으면 말로만 쓴다.
 
 ## 3. 편집 문법 — CHANGE / PRESERVE EXACTLY / ONLY CHANGE
@@ -89,14 +82,14 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 
 - **보존 목록을 변경보다 구체적으로 쓴다.** 그러지 않으면 나머지도 조금씩 새로 그린다.
 - **CHANGE와 ONLY CHANGE의 항목을 같게 한다.**
-- **사소하고 명확한 변경은 짧은 지시로도 된다.** Seedream·Nano Banana는 짧은 한국어 지시도 잘 따랐다.
+- **사소하고 명확한 변경은 짧은 영어 지시로도 된다**(관찰: Seedream·Nano Banana).
 
 ## 4. 크롭과 가림 구역
 
 - **최종 상영 비율에서 보이는 띠를 먼저 계산한다.** 핵심 요소는 그 띠 안에 둔다.
 - **가림 구역(자막, 출연자)에는 주요 피사체를 두지 않는다.** 가려져도 되는 부수 요소만 둔다.
 - **부감 각도를 높이면 하늘과 먼 대상이 띠 밖으로 밀려난다.** 그것들이 보여야 하면 각도를 낮춘다.
-- **% 좌표와 숫자는 대략만 지켜진다.** 구역 단위(왼쪽 1/3, 위 가운데)로 쓴다. 정확해야 하면 배치 스케치(색 블록)를 참조로 쓰고 "배치만 따르라"고 쓴다.
+- **% 좌표와 숫자는 대략만 지켜진다.** 화면 구역 단위(왼쪽 1/3, 위 가운데)로 쓴다. 정확해야 하면 배치 스케치(색 블록)를 참조로 쓰고 "배치만 따르라"고 쓴다.
 
 ## 5. 모델 메모
 
@@ -107,10 +100,7 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 
 ## 6. 보내기 전 점검 (검사 스크립트가 잡지 못하는 것)
 
-- [ ] 참조마다 권한, 가져오지 않을 것, 충돌 우선순위를 적었는가
-- [ ] 변경은 한 가지이고, 보존 목록이 더 구체적인가
-- [ ] 편집에서 얼굴이나 장소를 다시 묘사하지 않았는가
 - [ ] 고정 설명문이 에셋 대장과 글자까지 같은가
 - [ ] 크롭 띠와 가림 구역을 확인했는가
 - [ ] 자리표시 태그(`<<<LOC>>>` 등)가 남지 않았는가
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장하고 `higgsfield-generation` 스킬 폴더의 `check_prompt.py`를 `python3 check_prompt.py --kind image 파일 --refs 태그수 [--must-include 고정문장파일]`로 돌린다(그 스킬을 열 필요는 없다). 고정 문장(에셋 대장의 의상·소품·LIGHT LOCK·화면 대응)을 넣었으면 그 문장들을 한 줄에 하나씩 파일로 저장해 `--must-include`로 넘긴다. FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장하고 `higgsfield-generation` 스킬 폴더의 `check_prompt.py`를 `python3 check_prompt.py --kind image 파일 --refs 태그수 [--must-include 고정문장파일]`로 돌린다(그 스킬을 열 필요는 없다). 고정 문장(에셋 대장의 의상·소품·LIGHT LOCK·좌표 문장)을 넣었으면 그 문장들을 한 줄에 하나씩 파일로 저장해 `--must-include`로 넘긴다. FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다

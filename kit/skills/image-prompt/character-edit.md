@@ -1,6 +1,6 @@
 # 인물 + 의상 시트 — 확정된 시트 고치기
 
-기준은 OK 대장의 그 인물 시트 카드(job)다. 새로 만들지 않는다. 신규 시트 규칙(규격·변형 A/B)은 `character.md`에 있고, 여기 틀에 필요한 문장은 이미 들어 있다.
+기준은 OK 대장의 그 인물 시트 카드(job)다. 새로 만들지 않는다. 고치기에는 이 파일만 연다(`character.md`는 새 시트용이다). 틀에 필요한 문장은 이미 들어 있다.
 
 ## 필요한 정보
 
@@ -9,9 +9,9 @@
 | 기준 시트 job, 바꿀 것(의상 = `Outfit` 줄 / 헤어), 새 상태(머리→발, 신발까지) | 틀 1 `CHANGE` |
 | 없앨 옛 항목(신발·작은 소품까지 이름으로), 새 목둘레 | 틀 1 `REMOVE COMPLETELY` |
 | 시대를 옮기는 수정인가 | 틀 1 `Era move` 줄 |
-| 사용자가 의상·헤어 참조 이미지를 가리켰는가(가리키지 않았으면 말로 쓴다. "이걸로"인데 이미지가 없으면 묻는다) | 틀 1 권한 줄 |
+| 사용자가 의상·헤어 참조 이미지를 가리켰는가("이걸로"인데 이미지가 없으면 묻는다) | 틀 1 권한 줄 |
 | 나이를 바꾸는가("50대처럼"): 목표 나이, 나이 표지(주름·피부·헤어 색·자세·손) | 틀 2 `CHANGE — AGE`, `IDENTITY BONES` |
-| 머리 없는 패널 변형(기준 시트와 같게) | 틀의 LEFT PANEL 줄 |
+| 머리 없는 패널 변형 A / B(기준 시트와 같게) | 틀 1 LEFT PANEL 줄(A / B) |
 
 ## 규칙
 
@@ -24,7 +24,7 @@
 - 시대를 옮기면 CHANGE에 `nothing that dates the decade`를 붙이고 그 시대를 만드는 요소(머리 기름, 넓은 넥타이, 로고, 스니커즈 등)를 이름으로 지운다.
 - 새 의상은 재단 네 가지(길이·여밈·칼라·주머니)를 쓰고, 직업을 드러내는 소품이 붙지 않게 `No profession-signaling props.`를 넣는다.
 - 의상·헤어 참조 이미지를 붙이면 틀 1의 권한 줄 세 개를 넣는다. `Do not transfer the face …` 줄은 예외 없이 넣는다.
-- 나이를 바꾸면 틀 2를 쓴다. 나이 표지는 한 변경으로 친다. 의상은 그대로 두고, 결과는 새 상태 요소(`char_<인물>_<나이>_v1`)로 둔다.
+- 나이를 바꾸면 틀 2를 쓴다. `IDENTITY BONES` 줄은 틀 그대로 쓰고 얼굴 특징(코·눈 모양 등)을 새로 지어 넣지 않는다.
 - 결과에서 오른쪽 얼굴이 딴 사람이 되면: 얼굴 묘사를 지우고 `Change the hair around the existing face; do not regenerate, reinterpret, beautify, age or reshape the face.`
 - 확정되면 에셋 대장의 그 인물에 새 상태 줄(WARDROBE 고정 문장, job)을 더한다. 옛 상태는 지우지 않는다.
 
@@ -56,6 +56,8 @@ PRESERVE EXACTLY:
   clothing crop, not an injury. Do not add, infer, reconstruct or complete a head or face in that panel.
   Keep the clean neck crop and the uninterrupted plain background above it. [Outfit: Its clothes change
   fully: [new outfit summary], no [old 1], no [old 2].]
+- [B ghost-mannequin sheet: instead of the LEFT PANEL line above] LEFT PANEL: a front-facing full-body wardrobe view: the outfit holds its own shape as if worn by an invisible person, hollow ghost-mannequin product photography, no mannequin material visible anywhere, the collar opening is empty and shows the dark hollow inside the garment, cut off cleanly just above the shoulder line with NO head, NO neck and no shoulder stump protruding, no plastic torso, no stand, no pole, no base, real human hands emerge from the ends of both sleeves hanging relaxed slightly away from the sides, the shoes stay on the floor at the bottom of the trousers.
+  [Outfit: Its clothes change fully: [new outfit summary], no [old 1], no [old 2].]
 - IDENTITY: preserve the exact same face — identical facial features, bone structure, skin, age, eye
   shape, nose, lips and expression. Do not regenerate, reinterpret, beautify, age or reshape the face.
 - STRUCTURE: preserve all three poses, body proportions, crop boundaries, panel widths, panel order and
