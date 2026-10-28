@@ -103,7 +103,7 @@ FINISH: Photorealistic cinematic film still, ARRI Alexa LF, Cooke S4 35mm, Kodak
 |---|---|---|---|---|
 | `prop_doctor_bag_v1` | 3-1 장면 프레임에서 잘라 만듦 | 폭 약 40cm, 할아버지 무릎 폭 | 무겁다, 손잡이에서 처진다, 각이 서지 않는다 | 닫힘 → 열림 (3-4에서 한 번) |
 
-고정 설명문: `A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles.`
+고정 설명문: `A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull.`
 
 ## 그림체
 

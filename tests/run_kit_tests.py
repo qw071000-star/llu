@@ -285,6 +285,38 @@ turn_fix = re.search(r".*휙 돈다 \|.*", read(os.path.join(SKILLS, "video-prom
 turn_act = re.search(r".*휙 돈다 \|.*", read(os.path.join(SKILLS, "acting", "SKILL.md"))).group(0)
 check("[한 곳] 휙 도는 동작: 고치기와 연기가 다른 증상을 다룬다(고개·상체 / 몸 전체)", "고개·상체" in read(os.path.join(SKILLS, "video-prompt", "fixes.md")) and "몸 전체" in turn_act, turn_fix + " / " + turn_act)
 
+# 18. r4 맹검에서 찾은 결함
+def sk(f):
+    return read(os.path.join(SKILLS, f))
+ff = sk("image-prompt/first-frame.md")
+fixes = sk("video-prompt/fixes.md")
+check("[맹검4] 지침 2번: 아직 보지 못한 프롬프트에는 어떤 말도 생성 지시가 아님", "아직 보지 못한" in inst and "직전에 보낼지 물었을 때만" in inst)
+check("[맹검4] 지침 6번: 인물 기준이면 향한 쪽으로 화면 쪽, 추정", "인물이 향한 쪽" in inst and "추정" in inst)
+check("[맹검4] 지침 4번: 기본값 목록에 소리", "비율·소리·저장 폴더" in inst)
+check("[맹검4] 지침 5번: 대장과 OK 줄이 다르면 대장", "둘이 다르면 대장" in inst)
+check("[맹검4] 읽기 지도: 이미 쓴 줄 바꾸기도 fixes.md", "이미 쓴 줄" in inst)
+check("[맹검4] fixes.md: 사람 동작 속도 줄", "사람 동작이 너무 빠르다" in fixes and "failed take" in fixes.split("사람 동작이 너무 빠르다")[1].split("\n")[0])
+check("[맹검4] fixes.md: 승인 컷이면 새 테이크 대체를 먼저 묻는다", "새 테이크로 대체할지" in fixes)
+check("[맹검4] fixes.md 별 줄: 생성 전이면 한계와 대안", "생성 전이면 이 한계" in fixes)
+check("[맹검4] video-prompt: fixes.md는 결과가 틀렸거나 이미 쓴 줄, acting 먼저", "`fixes.md`는 결과가 틀렸거나" in vskill and "먼저 `acting`" in vskill)
+check("[맹검4] background.md: SKILL §0 배경 표(Keep 포함)", "`SKILL.md` §0의 배경 표" in sk("video-prompt/background.md") and "`Keep`" in sk("video-prompt/background.md"))
+check("[맹검4] live-action: 덜어내는 순서와 WARN을 남기는 조건", "장소 → 스타일 → 환경" in live and "WARN을 남긴다" in live)
+check("[맹검4] acting: 목표 양식 예, 사건 수·비트 수 따로", "[상대]에게/에게서 + 동사" in sk("acting/SKILL.md") and "비트 수" in sk("acting/SKILL.md"))
+check("[맹검4] ok-reuse: 강한 입 잠금 문장 인라인", nospeak in reuse)
+check("[맹검4] ok-reuse: '카드처럼'은 형식", "카드처럼 써\"는 형식" in reuse)
+check("[맹검4] 생성 운영: 크레딧 근거, 재생성이면 '바꾼 것'", "근거(비용 메모 / get_cost / 추정)" in gen and "- 바꾼 것:" in gen)
+check("[맹검4] OK 대장 카드에 draft·만료일", "draft_job_id" in okt and "만료일" in okt)
+check("[맹검4] 컷 카드 [10]은 난 실패", card_fields.get("10", "").startswith("난 실패"))
+check("[맹검4] 컷 목록 생성/크레딧 칸의 주인", "생성/크레딧 칸은 총괄" in sess)
+check("[맹검4] 새 컷이어도 이웃 컷 파일은 열지 않음", "새 컷이어도 이웃 컷 카드" in sess and "OK 카드 한 장" in ff)
+check("[맹검4] first-frame: 장소 뷰 칸이 비면 모드를 첫 질문으로", "비어 있으면 첫 질문으로" in ff)
+check("[맹검4] first-frame: 반대쪽 카메라면 좌우 뒤집기, 틀 2에 In this view 줄", "좌우가 뒤집힌다" in ff and "In this view [landmark]" in ff.split("## 틀 2")[1])
+check("[맹검4] first-frame·location: 틀 2를 바로 쓰는 조건", "이 컷만 쓰면 틀 2" in ff and "한 컷만 쓰면 퍼스트 프레임 틀 2" in sk("image-prompt/location.md"))
+check("[맹검4] first-frame: 나이만 바꾸는 컷은 character-edit 틀 2", "`character-edit.md` 틀 2" in ff)
+check("[맹검4] image-prompt §3 LOCKED EDIT 틀에 WARDROBE 줄", "WARDROBE: [asset registry sentence, verbatim]" in img_skill.split("## 3.")[1].split("## 4.")[0])
+check("[맹검4] location-view: 높이는 값으로", "높이는 값으로" in sk("image-prompt/location-view.md"))
+check("[맹검4] prop.md: 확정 소품 고치기와 어느 결과인가", "확정 소품 고치기" in sk("image-prompt/prop.md") and "_v2" in sk("image-prompt/prop.md") and "어느 결과" in sk("image-prompt/prop.md"))
+
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)
 routes = {

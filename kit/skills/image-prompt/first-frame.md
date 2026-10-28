@@ -4,7 +4,7 @@
 
 | 필요한 정보 | 틀의 자리 |
 |---|---|
-| 컷 카메라가 확정 장소 뷰와 같은가 (장소 뷰 job). 컷 목록의 장소 뷰가 확정 뷰 그대로면 "같음(틀 1)"을 제안한다 | 모드: 틀 1 / 틀 2 |
+| 컷 카메라가 확정 장소 뷰와 같은가 (장소 뷰 job). 컷 목록의 장소 뷰가 확정 뷰 그대로이거나 비어 있으면 첫 질문으로 묻고 "같음(틀 1)"을 제안한다 | 모드: 틀 1 / 틀 2 |
 | 장소 뷰 job, 그 뷰의 LIGHT LOCK | `<<<LOC>>>`, `PRESERVE EXACTLY` |
 | 인물마다 요소 ID, 의상 상태, 고정 설명문 | `REFERENCE AUTHORITY`, `WARDROBE` |
 | 소품: 위치, 상태, 누가 드는가, 크기(cm + 신체) | `PROP` |
@@ -12,21 +12,23 @@
 | 인물마다 시작 위치(앵커·거리·접촉), 하던 동작, 시선, 손 | `CHANGE` / `BLOCKING` |
 | 보이는 인원 수 | `Exactly [N] people` |
 | 최종 화면비 | 설정 |
-| 고정 설명문과 부딪치는 이 컷만의 것(소품이 열림 상태 등) | `Except` 한 줄 |
+| 고정 설명문과 부딪치는 이 컷만의 것(소품이 열림 상태, 들고 있다고 쓴 가방이 무릎 위 등) | `Except` 한 줄 |
 
 ## 규칙
 
 - **그 컷 영상의 0:00 상태를 만든다.** 썸네일 순간이 아니다.
 - **모드를 먼저 고른다.**
   - 컷의 카메라가 확정된 장소 뷰와 같으면: 그 뷰를 `LOCKED EDIT`으로 쓰고 인물·소품만 더한다(틀 1).
-  - 카메라가 다르면: `DERIVED VIEW`로 새 시점을 만든다(틀 2).
+  - 카메라가 다르면: `DERIVED VIEW`로 새 시점을 만든다(틀 2). 그 시점을 이 컷만 쓰면 틀 2로 바로 쓰고, 여러 컷이 쓰면 장소 뷰를 먼저 확정하자고 제안한다(`location.md`).
+  - 카메라가 장소 뷰의 반대쪽을 보면 화면 좌우가 뒤집힌다(뷰의 왼쪽 랜드마크·광원이 화면 오른쪽). 틀 2 끝의 `In this view …` 줄과 LIGHT LOCK을 화면 기준으로 다시 쓰고 "전 → 후"로 보인다.
   - 틀 1에서 인물·소품을 더하는 것은 한 변경으로 친다(빈 장소에 그 컷의 사람을 놓는 일).
   - 같은 카메라인데 새 시점으로 만들면 장소 뷰와 첫 프레임의 구도가 어긋난다.
 - **인물은 기존 앵커에 둔다.**
   - 위치는 거리와 접촉으로 쓴다. "근처에"는 지켜지지 않는다.
   - 동작 도중의 상태로 쓴다.
 - **이웃 컷과 비교한다.** 컷 목록의 앞뒤 줄과 연속성 표(인물 자리·자세, 소품 상태)로 본다.
-  - 연속성 표에 인물 자리가 없으면 같은 인물이 나온 직전 승인 시작 이미지의 OK 카드에서 BLOCKING 줄을 가져와 제안한다. 자리를 새로 지어내지 않는다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
+  - 연속성 표에 인물 자리가 없으면 같은 인물이 나온 직전 승인 시작 이미지의 OK 카드 한 장에서 BLOCKING 줄을 가져와 제안한다. 자리를 새로 지어내지 않는다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
+- **나이만 바꾸는 컷 편집**은 승인 시작 이미지를 LOCKED EDIT(`SKILL.md` §3)로 고치고, 나이 표지는 `character-edit.md` 틀 2의 `CHANGE — AGE` 목록에서 고른다. 표지를 지어내지 않는다.
 - **다른 OK의 색감을 가져올 때**
   - 틀 1(LOCKED)이면 색은 그 장소 뷰에서 온다. 색 기준 OK가 같은 뷰에서 나왔으면 이미 같은 색이니 색 참조를 붙이지 않는다.
   - 다른 뷰면 틀 2로 쓰고 색 참조를 붙인다. 틀 1을 꼭 써야 하면 한 생성에 한 가지 원칙대로 두 단계(인물 추가 → 색 편집)로 나눈다.
@@ -71,6 +73,7 @@ WARDROBE: [asset registry sentence, verbatim].
 PROP: [position, state, who holds it, size in cm and body terms]. [Except: …]
 [PALETTE · ERA LOCK from the asset registry, verbatim]
 Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
+In this view [landmark] is at screen [side] and [landmark] is at screen [side].
 [LIGHT LOCK for this new view: the light comes from screen [left/right], the [object] side]
 Exactly [one person is / N people are] visible.
 ```

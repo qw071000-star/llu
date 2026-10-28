@@ -7,6 +7,8 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 
 ## 0. 쓰기 전 정보 점검
 
+**단계 파일:** 새 프롬프트는 `live-action.md` / `background.md`. `fixes.md`는 결과가 틀렸거나 이미 쓴 프롬프트의 줄을 바꿀 때만 연다. `CHARACTER_ACTING`을 새로 쓰면 먼저 `acting`을 연다. 프롬프트만 쓸 때 `higgsfield-generation`은 열지 않는다(검사 스크립트만 쓴다).
+
 실사 컷(15블록)이면 아래 표를 채운다. 표의 각 줄은 15블록의 한 블록에 들어간다.
 
 | 구분 | 필요한 정보 | 들어가는 블록 |

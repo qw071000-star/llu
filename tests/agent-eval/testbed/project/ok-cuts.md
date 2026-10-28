@@ -104,7 +104,7 @@ CAMERA: wide shot, camera at standing eye level on the far side of the two-lane 
 THE DOMINANT ELEMENT: the low dusk sun raking in from screen left across the shelter's concrete face.
 SPATIAL GEOGRAPHY (as seen from the road; LEFT and RIGHT are SCREEN directions, never the character's own left or right):
 At the CENTRE, a concrete bus shelter with a corrugated tin roof, its open front facing the camera. A wooden bench runs along its back wall. At the RIGHT of the shelter, a painted metal timetable sign on a single pole. At the LEFT, a bare persimmon tree with a few orange fruits left on the top branches. Behind the shelter, harvested rice paddies stretch to low hills. In the foreground, the cracked asphalt edge of the road.
-Nothing else: no cars, no people, no animals, no modern signage, no vending machines, no power banks or phones.
+Nothing else: no other buildings, no cars, no people, no legible text.
 Empty deserted bus stop, still air.
 Palette of roughly 80% dry ochre and grey concrete — 15% deep blue dusk sky — 5% persimmon orange.
 Real material truth: rough cast concrete with rain streaks, rusted tin ridges, a bench worn pale where people sit.
@@ -154,7 +154,7 @@ Late autumn, early 1990s, a rural bus stop at dusk. An old man sits alone on the
 [ACTIVE_REFERENCES]
 <<<ff_2-1_v1>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the position and pose of the man and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
 <<<char_grandpa_autumn_v1>>> GRANDPA (72). A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. Face, hair, body type and wardrobe 100% match this reference.
-<<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Its size stays the same as in the start image from start to finish.
+<<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull. Its size stays the same as in the start image from start to finish.
 REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 position. The character reference has authority only over face, hair, body and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
 
 [LOCATION_MAP]
@@ -235,7 +235,7 @@ DO NOT TRANSFER: the character sheet's backdrop, studio lighting, pose or framin
 PRIORITY: the CAMERA block overrides every reference.
 BLOCKING: the old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, mid-stroke with the hand nearer the tree on the leather; his eyes on the empty road on the tree side, the face calm and heavy-lidded.
 WARDROBE: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes.
-PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. It lies across his thighs, clasp closed.
+PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull. It lies across his thighs, clasp closed.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
 Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 Exactly 1 person is visible.
@@ -266,7 +266,7 @@ REFERENCE AUTHORITY:
 - <<<prop_doctor_bag_v1>>> controls only the bag's shape, material and state; its size is as described above.
 DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framing.
 WARDROBE: The old man: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. The girl: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
-PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles.
+PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull.
 PRESERVE EXACTLY:
 - Camera position, height, angle, lens, framing, horizon line, vanishing point and perspective
 - The shelter, bench, timetable sign, persimmon tree, road and paddies
@@ -294,7 +294,7 @@ Late autumn, early 1990s, a rural bus stop at dusk. A girl reads the timetable s
 <<<ff_3-1_v2>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the positions and poses of the two people and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
 <<<char_grandpa_autumn_v1>>> GRANDPA (72). A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. Face, hair, body type and wardrobe 100% match this reference.
 <<<char_girl_raincoat_v1>>> GIRL (10). A yellow raincoat over a navy school uniform, white knee socks and red rain boots. Face, hair, body type and wardrobe 100% match this reference.
-<<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Its size stays the same as in the start image from start to finish.
+<<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull. Its size stays the same as in the start image from start to finish.
 REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 positions. The character references have authority only over faces, hair, bodies and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
 
 [LOCATION_MAP]
@@ -382,7 +382,7 @@ BLOCKING:
 - The old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, his eyes on the empty road on the tree side.
 - The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the hand nearer the sign tracing the printed times.
 WARDROBE: The old man: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. The girl: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
-PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. It lies across the man's thighs, clasp closed.
+PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull. It lies across the man's thighs, clasp closed.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
 Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.
 Exactly 2 people are visible.

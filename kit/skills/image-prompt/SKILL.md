@@ -77,11 +77,13 @@ PRESERVE EXACTLY:
 - The architecture: [walls, doors, windows, ceiling, floor]
 - Every unnamed object in its exact position, scale, orientation, material and colour
 - Existing light sources, shadows, exposure and reflections; colour grade, contrast, grain, depth of field
+[인물이 보이면] WARDROBE: [asset registry sentence, verbatim].
 ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 ```
 
 - **보존 목록을 변경보다 구체적으로 쓴다.** 그러지 않으면 나머지도 조금씩 새로 그린다.
 - **CHANGE와 ONLY CHANGE의 항목을 같게 한다.**
+- **인물이 보이면 `WARDROBE:` 줄을 둔다.** 그 문장은 검사의 `--must-include` 파일에도 넣는다.
 - **사소하고 명확한 변경은 짧은 영어 지시로도 된다**(관찰: Seedream·Nano Banana).
 
 ## 4. 크롭과 가림 구역
