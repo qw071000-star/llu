@@ -24,7 +24,7 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 | 인물 에셋 | 인물마다 요소 ID, 의상·헤어 상태 버전, 고정 설명문, 대사가 있으면 목소리 문장 | `ACTIVE_REFERENCES`, `AUDIO` |
 | 장소 | 장소 뷰 요소 ID, 화면 좌·중·우·전경의 랜드마크, 시간대 | `ACTIVE_REFERENCES`, `LOCATION_MAP` |
 | 소품 | 요소 ID, 시작 상태 → 끝 상태, 누가 어느 손(물건 기준)에 드는가, 크기 | `ACTIVE_REFERENCES`, `PHYSICS` |
-| 시작 이미지 | 퍼스트 프레임 job (없으면 퍼스트 프레임부터 만들자고 묻는다), 끝 프레임을 쓸지 | `ACTIVE_REFERENCES` |
+| 시작 이미지 | 퍼스트 프레임 job과 요소 이름(OK 대장의 그 시작 이미지 카드. 없으면 퍼스트 프레임부터 만들자고 묻는다), 끝 프레임을 쓸지 | `ACTIVE_REFERENCES` |
 | 카메라 | 위치(물건 기준), 높이, 방향, 고정 또는 움직임 한 가지(종류·속도·양) | `CAMERA` |
 | 렌즈 | 대각 화각(도), 관찰 결과 3개, 심도·초점 이동 | `OPTICS` |
 | 인물 위치 | 인물마다 시작 위치(0:00, 물건 기준)·자세·하던 동작, 끝 위치(마지막 프레임) | `FIRST_FRAME_AND_SPATIAL_BLOCKING`, `ACTION_TIMING` |
