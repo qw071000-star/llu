@@ -326,7 +326,7 @@ check("[맹검5] 모호한 말 표: 움직임 추가면 사건이 늘었다고 �
 check("[맹검5] 모호한 말 표: 걸음 나이(보폭·팔·발·무게중심, 반대 걸음 = failed take)", all(w in vague for w in ["[step size]", "[arm swing]", "[feet lifted or dragged]", "[centre of weight]", "walk = failed take"]))
 check("[맹검5] fixes.md: 모호한 말 줄은 옮기고 SKILL 표를 가리킴", "\"모호한 말\" 표" in fixes and not re.search(r"구름이 더|풀도 흔들|별이 더 반짝|taking the full", fixes))
 check("[맹검5] 지침 4번: 모호한 말은 video-prompt §0 표", "`video-prompt` §0 \"모호한 말\" 표" in inst)
-check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "프롬프트·생성·정본 작업일 때만" in inst and "정보·정리 질문에는 생략해도" in inst)
+check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "프롬프트·생성·정본 작업일 때만" in inst and "정보·정리 질문은 생략" in inst)
 check("[맹검5] 지침: job이 대화에 없으면 묻고 컷 파일을 열지 않음", "job이 대화에 없으면 묻고" in inst)
 check("[맹검5] 읽기 지도: OK 재표시·번역은 그 카드 하나, 검사 안 함, 번역은 코드블록 밖", "재표시·번역" in inst and "검사 안 함" in inst and "코드블록 밖" in inst)
 check("[맹검5] 읽기 지도: 시트 자체 고치기만 character-edit, 퍼스트 프레임 속 인물은 first-frame", "시트 자체 고치기는 `character-edit.md`" in inst and "그 속 인물 바꾸기 포함" in inst)
