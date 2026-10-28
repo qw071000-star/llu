@@ -1,7 +1,7 @@
 Generate a rural bus stop at dusk.
 CAMERA: wide shot, camera at standing eye level on the far side of the two-lane road, looking at the shelter's open front, the shelter read slightly at an angle, not square-on.
 THE DOMINANT ELEMENT: the low dusk sun raking in from screen left across the shelter's concrete face.
-SPATIAL GEOGRAPHY (as seen from the road; LEFT and RIGHT are SCREEN directions):
+SPATIAL GEOGRAPHY (as seen from the road; LEFT and RIGHT are SCREEN directions, never the character's own left or right):
 At the CENTRE, a concrete bus shelter with a corrugated tin roof, its open front facing the camera. A wooden bench runs along its back wall. At the RIGHT of the shelter, a painted metal timetable sign on a single pole. At the LEFT, a bare persimmon tree with a few orange fruits left on the top branches. Behind the shelter, harvested rice paddies stretch to low hills. In the foreground, the cracked asphalt edge of the road.
 Nothing else: no cars, no people, no animals, no modern signage, no vending machines, no power banks or phones.
 Empty deserted bus stop, still air.

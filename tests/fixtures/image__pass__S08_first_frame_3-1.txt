@@ -1,6 +1,6 @@
 # args: --refs 4 --must-include {FIX}/fixed_3-1_video.lines
 Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 CHANGE — ADD THE TWO PEOPLE AND THE BAG at existing anchors:
 - The old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, his eyes on the empty road on the tree side.
 - The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the hand nearer the sign tracing the printed times.

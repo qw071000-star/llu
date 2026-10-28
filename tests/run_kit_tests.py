@@ -263,7 +263,7 @@ owners = [
     ("이미지를 볼 수 없을 때", r"볼 수 없", {"instructions.md"}),
     ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md", "production-session/cut-card.md", "production-session/SKILL.md"}),  # 카드를 쓰는 그 자리에도 한 줄(맹검 r3: 형식 보려고 다른 카드를 엶)
     ("acting을 여는 때", r"인물이 연기하는 실사 영상", {"instructions.md"}),
-    ("방향은 화면 기준(손 포함)", r"screen-left hand|모든 방향은 화면", {"instructions.md"}),
+    ("방향은 화면 기준(손 포함)", r"모든 방향은 화면", {"instructions.md"}),
     ("반복 실패 한도", r"4회 중 3회", {"instructions.md"}),
     ("고정 설명문은 글자 그대로", r"(대장|설명문)[^\n]{0,15}글자 그대로 (쓴다|옮긴다|복사|붙인다)", {"instructions.md"}),
     ("컷 카드 칸별 수정 권한", r"\[3\]~\[7\]", {"production-session/SKILL.md"}),

@@ -8,7 +8,7 @@ Present day. A fish stall in a covered Korean traditional market, mid-morning. T
 REFERENCE AUTHORITY: the character reference has authority only over face, hair, body and clothes. Do not take the background, lighting, pose or panel layout from the character reference.
 
 [LOCATION_MAP]
-LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+LEFT and RIGHT are SCREEN directions, never the character's own left or right. Places are named by the objects on screen.
 LEFT EDGE: the stack of blue ice boxes. CENTRE: the stall table with the fish on ice, the woman behind it. RIGHT: the market aisle. FOREGROUND: the table edge.
 
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]

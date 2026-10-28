@@ -10,7 +10,7 @@ Late autumn, early 1990s, a rural bus stop at dusk. A girl reads the timetable s
 REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 positions. The character references have authority only over faces, hair, bodies and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
 
 [LOCATION_MAP]
-LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+LEFT and RIGHT are SCREEN directions, never the character's own left or right. Places are named by the objects on screen.
 LEFT: the tree-side end of the bench. CENTRE: the rest of the bench. RIGHT: the timetable sign on its pole. FOREGROUND: the road edge.
 The persimmon tree is at screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
 

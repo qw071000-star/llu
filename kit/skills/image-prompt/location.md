@@ -61,7 +61,7 @@
 - **글자:** `[Hand-lettered signage], text not legible. No legible text anywhere.` 실제 문구를 따옴표로 넣지 않는다. 넣으면 모델이 쓰려고 한다.
 
 **기록:** 확정되면 에셋 대장에 적는다. MASTER GEOMETRY는 승인 전에는 컷 프롬프트에 넣지 않는다.
-- MASTER GEOMETRY (3~4문장, 기준 시점 포함)
+- MASTER GEOMETRY (3~4문장, 기준 시점 포함. 미터·높이는 근거가 있을 때만)
 - 뷰마다 LIGHT LOCK (한 문장, 화면 쪽 + 물건)
 - PALETTE, ERA LOCK, FINISH (각 한 문장)
 - 뷰마다 렌즈(mm = °)
@@ -98,7 +98,7 @@ Using [<<<A>>>, <<<B>>>] as the same building's material and architectural regis
 Do not copy the reference rooms' camera, framing, furniture or layout.
 CAMERA: [as 틀 1].
 THE DOMINANT ELEMENT: [ ].
-SPATIAL GEOGRAPHY (directions as seen from [camera position]; LEFT and RIGHT are SCREEN directions):
+SPATIAL GEOGRAPHY (directions as seen from [camera position]; LEFT and RIGHT are SCREEN directions, never the character's own left or right):
 At the FAR END, [ ]. The RIGHT wall [ ]. At the LEFT, [ ]. [Floor, ceiling, openings and circulation.]
 FUNCTION: [required landmarks, furniture and fixtures], arranged for [real use], with a clear entry,
 circulation path and working zone. Nothing else: no [ ].

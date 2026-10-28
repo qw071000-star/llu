@@ -22,6 +22,7 @@
 - **목둘레를 세 곳에 쓴다:** REMOVE의 `At the neckline …`, PRESERVE LEFT 줄, ONLY CHANGE의 `including the neckline of the headless panel`. 수정에서 가장 자주 실패하는 곳이다.
 - **목록을 맞춘다:** CHANGE의 새 의상 목록 = PRESERVE LEFT 줄의 `Its clothes change fully:` 뒤 목록, REMOVE의 GONE 목록 = 그 줄 끝의 `no A, no B`. 어긋나면 옛 옷이 반쯤 그려진다.
 - 시대를 옮기면 CHANGE에 `nothing that dates the decade`를 붙이고 그 시대를 만드는 요소(머리 기름, 넓은 넥타이, 로고, 스니커즈 등)를 이름으로 지운다.
+- 새 의상은 재단 네 가지(길이·여밈·칼라·주머니)를 쓰고, 직업을 드러내는 소품이 붙지 않게 `No profession-signaling props.`를 넣는다.
 - 의상·헤어 참조 이미지를 붙이면 틀 1의 권한 줄 세 개를 넣는다. `Do not transfer the face …` 줄은 예외 없이 넣는다.
 - 나이를 바꾸면 틀 2를 쓴다. 나이 표지는 한 변경으로 친다. 의상은 그대로 두고, 결과는 새 상태 요소(`char_<인물>_<나이>_v1`)로 둔다.
 - 결과에서 오른쪽 얼굴이 딴 사람이 되면: 얼굴 묘사를 지우고 `Change the hair around the existing face; do not regenerate, reinterpret, beautify, age or reshape the face.`

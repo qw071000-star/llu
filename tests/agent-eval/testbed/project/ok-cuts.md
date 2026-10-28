@@ -102,7 +102,7 @@ no text, no watermark, no logos, no frame borders, no other people, no duplicate
 Generate a rural bus stop at dusk.
 CAMERA: wide shot, camera at standing eye level on the far side of the two-lane road, looking at the shelter's open front, the shelter read slightly at an angle, not square-on.
 THE DOMINANT ELEMENT: the low dusk sun raking in from screen left across the shelter's concrete face.
-SPATIAL GEOGRAPHY (as seen from the road; LEFT and RIGHT are SCREEN directions):
+SPATIAL GEOGRAPHY (as seen from the road; LEFT and RIGHT are SCREEN directions, never the character's own left or right):
 At the CENTRE, a concrete bus shelter with a corrugated tin roof, its open front facing the camera. A wooden bench runs along its back wall. At the RIGHT of the shelter, a painted metal timetable sign on a single pole. At the LEFT, a bare persimmon tree with a few orange fruits left on the top branches. Behind the shelter, harvested rice paddies stretch to low hills. In the foreground, the cracked asphalt edge of the road.
 Nothing else: no cars, no people, no animals, no modern signage, no vending machines, no power banks or phones.
 Empty deserted bus stop, still air.
@@ -124,7 +124,7 @@ Image finish: ARRI Alexa Mini, 35mm lens, Kodak Vision3 250D. Era lock: late aut
 - 프롬프트(보낸 그대로):
 
 ```text
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: an extreme wide shot from the harvested paddies behind the reference camera, across the road, at standing eye level, looking toward the shelter; the shelter is small at the right third of the frame. Shot on an ARRI Alexa Mini with a 50mm lens, Kodak Vision3 250D.
 REFERENCE AUTHORITY:
 - <<<loc_busstop_road_v1>>>: geography, materials, landmarks, light direction
@@ -158,7 +158,7 @@ Late autumn, early 1990s, a rural bus stop at dusk. An old man sits alone on the
 REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 position. The character reference has authority only over face, hair, body and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
 
 [LOCATION_MAP]
-LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+LEFT and RIGHT are SCREEN directions, never the character's own left or right. Places are named by the objects on screen.
 LEFT EDGE: the bare persimmon tree. CENTRE: the concrete shelter with the bench along its back wall. RIGHT: the timetable sign on its pole. FOREGROUND: the empty road edge.
 The persimmon tree is at screen LEFT. GRANDPA stays on the bench.
 
@@ -225,7 +225,7 @@ Forbidden:
 - 프롬프트(보낸 그대로):
 
 ```text
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: a medium close shot from the near edge of the road at seated eye level, opposite the tree-side half of the bench, about 2 m from the old man, framing him from the top of the head to the bag on his lap. Shot on an ARRI Alexa Mini with an 85mm lens, Kodak Vision3 250D.
 REFERENCE AUTHORITY:
 - <<<loc_busstop_road_v1>>>: geography, materials, landmarks, light direction
@@ -254,7 +254,7 @@ Exactly 1 person is visible.
 
 ```text
 Edit <<<loc_busstop_road_v1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 CHANGE — ADD THE TWO PEOPLE AND THE BAG at existing anchors:
 - The old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, his eyes on the empty road on the tree side.
 - The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the hand nearer the sign tracing the printed times.
@@ -298,7 +298,7 @@ Late autumn, early 1990s, a rural bus stop at dusk. A girl reads the timetable s
 REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 positions. The character references have authority only over faces, hair, bodies and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
 
 [LOCATION_MAP]
-LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+LEFT and RIGHT are SCREEN directions, never the character's own left or right. Places are named by the objects on screen.
 LEFT EDGE: the bare persimmon tree. CENTRE: the concrete shelter with the bench along its back wall. RIGHT: the timetable sign on its pole. FOREGROUND: the empty road edge.
 The persimmon tree is at screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
 
@@ -369,7 +369,7 @@ Forbidden:
 - 프롬프트(보낸 그대로):
 
 ```text
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: a medium two-shot from the far side of the road at seated eye level, opposite the middle of the bench; the bench and the timetable sign fill the frame side by side, the paddies behind compressed and soft. Shot on an ARRI Alexa Mini with a 75mm lens, Kodak Vision3 250D.
 REFERENCE AUTHORITY:
 - <<<loc_busstop_road_v1>>>: geography, materials, landmarks, light direction
@@ -400,7 +400,7 @@ Exactly 2 people are visible.
 - 프롬프트(보낸 그대로):
 
 ```text
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: a medium shot from the near edge of the road at standing eye level, opposite the timetable sign; the girl and the sign fill the right half of the frame, the end of the shelter at the left edge; the bench is out of frame. Shot on an ARRI Alexa Mini with a 50mm lens, Kodak Vision3 250D.
 REFERENCE AUTHORITY:
 - <<<loc_busstop_road_v1>>>: geography, materials, landmarks, light direction

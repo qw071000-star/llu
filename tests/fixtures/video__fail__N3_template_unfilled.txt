@@ -17,7 +17,7 @@ state; its size follows the start image. Do not take the background, lighting, p
 from any reference.
 
 [LOCATION_MAP]
-LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+LEFT and RIGHT are SCREEN directions, never the character's own left or right. Places are named by the objects on screen.
 [LEFT EDGE / CENTRE / RIGHT / FOREGROUND.] [Where each person stays, by objects.]
 
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]

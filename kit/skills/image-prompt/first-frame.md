@@ -10,7 +10,7 @@
 | 장소 뷰 job, 그 뷰의 LIGHT LOCK | `<<<LOC>>>`, `PRESERVE EXACTLY` |
 | 인물마다 요소 ID, 의상 상태, 고정 설명문 | `REFERENCE AUTHORITY`, `WARDROBE` |
 | 소품: 위치, 상태, 누가 드는가, 크기(cm + 신체) | `PROP` |
-| 카메라: 위치(화면 속 물건으로)·높이·무엇을 보는지·거리·샷 크기 (틀 2는 장비명도) | `CAMERA` |
+| 카메라: 위치(화면 속 물건으로)·높이·무엇을 보는지(발·손 인서트처럼 아래를 보면 높이와 아래 방향을 함께)·거리·샷 크기 (틀 2는 장비명도) | `CAMERA` |
 | 인물마다 시작 위치(앵커·거리·접촉), 하던 동작, 시선, 손 | `CHANGE` / `BLOCKING` |
 | 보이는 인원 수 | `Exactly [N] people` |
 | 최종 화면비 | 설정 |
@@ -22,6 +22,7 @@
 - **모드를 먼저 고른다.**
   - 컷의 카메라가 확정된 장소 뷰와 같으면: 그 뷰를 `LOCKED EDIT`으로 쓰고 인물·소품만 더한다(틀 1).
   - 카메라가 다르면: `DERIVED VIEW`로 새 시점을 만든다(틀 2).
+  - 틀 1에서 인물·소품을 더하는 것은 한 변경으로 친다(빈 장소에 그 컷의 사람을 놓는 일).
   - 같은 카메라인데 새 시점으로 만들면 장소 뷰와 첫 프레임의 구도가 어긋난다.
 - **장소 뷰, 인물 시트, 소품 요소를 권한 블록으로 묶는다.** CAMERA 블록이 모든 참조를 이긴다.
 - **인물은 기존 앵커에 둔다.**
@@ -42,7 +43,7 @@
 Edit <<<LOC>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and
 perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with
 one change only.
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 CHANGE — ADD THE PEOPLE AND PROPS at existing anchors:
 - [PERSON]: [anchor by objects, distance and contact], mid-[action], [gaze], [hands].
 - [PROP]: [position, state, who holds it, size in cm and body terms].
@@ -60,13 +61,13 @@ Exactly [one person is / N people are] visible.
 ## 틀 2 — 카메라가 다를 때 (DERIVED VIEW)
 
 ```text
-FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 Using <<<LOC>>> as the exact same location, generate a new view. Do not inherit its camera angle, framing
-or composition. [CAMERA: position by objects, height,
+or composition. [If the camera faces the other way: This is a newly observed direction of the same physical room, not a horizontal mirror of the reference.] [CAMERA: position by objects, height,
 direction, distance, shot size + camera body/lens/film stock.]
 REFERENCE AUTHORITY:
 - <<<LOC>>>: geography, materials, landmarks, light direction
-- <<<CHAR>>>: face, hair, wardrobe only — Same face, same bone structure, same hair, same wardrobe.
+- <<<CHAR>>>: face, hair, wardrobe only — Use the person in this reference. Same face, same bone structure, same hair, same wardrobe.
   Change only the pose, framing, location and lighting.
 - <<<PROP>>>: shape, material and state only; size as described below
 DO NOT TRANSFER: the character sheet's backdrop, studio lighting, pose or framing.
