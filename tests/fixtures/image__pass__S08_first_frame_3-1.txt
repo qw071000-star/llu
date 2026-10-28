@@ -1,4 +1,4 @@
-# args: --refs 4 --must-include {FIX}/c03_video_fixed.lines
+# args: --refs 4 --must-include {FIX}/fixed_3-1_video.lines
 Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.
 FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
 CHANGE — ADD THE TWO PEOPLE AND THE BAG at existing anchors:

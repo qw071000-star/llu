@@ -1,4 +1,11 @@
 # args: --refs 3
+# expect: 좌표 문장
+# expect: 오른손/왼손
+# expect: mm
+# expect: 말하려다
+# expect: 카메라 동작 하나
+# expect: 15초를 넘으면
+# expect: 빈 구간
 [SCENE_CONTEXT]
 Present day. A small apartment kitchen, evening. The wife opens the plastic bag on the dining table and looks inside; her husband watches from the doorway.
 

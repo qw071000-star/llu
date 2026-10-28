@@ -7,6 +7,7 @@
 2. 다른 작업에서 했던 실수를 다시 하지 않는다.
 3. 크레딧과 토큰을 헛쓰지 않는다.
 4. 결과물이 정해진 폴더에 상태(승인·거절)와 함께 정리된다.
+5. OK 받은 결과물의 설정과 프롬프트가 남아, "3-1처럼 3-2"로 다시 쓸 수 있다.
 
 ---
 
@@ -16,16 +17,16 @@
 
 ```
 kit/                                  ← 다른 프로젝트에 넣는 것
-  instructions.md                     ← [항상] 지침 칸 / CLAUDE.md. 약 3,500자
+  instructions.md                     ← [항상] 지침 칸 / CLAUDE.md. 4,000자 이하
   skills/                             ← [그 작업을 할 때만] 스킬 안에서도 단계 파일 하나만 읽는다
     project-setup/                    새 작품 시작: 질문 한 번, 정본 초안, Higgsfield 폴더
-    production-session/               세션 시작·컷 카드·핸드오프·정본 관리
-    higgsfield-generation/            저장 폴더·요청 후 턴 끝내기·승인/거절 표시·검수·크레딧
+    production-session/               세션 시작·컷 카드·핸드오프·정본 관리 + ok-reuse("3-1처럼")
+    higgsfield-generation/            저장 폴더·요청 후 턴 끝내기·승인/거절 표시·OK 기록·검수·크레딧
                                       + check_prompt.py (생성 전 프롬프트 자동 검사)
     image-prompt/                     공통 규칙 + character / location / prop / style / first-frame
     video-prompt/                     공통 규칙 + live-action / background / fixes / rerender
     acting/                           인물 연기
-  project-files/                      ← [작품마다 복사해 채움] 정본 세 개 + Claude Code용 CLAUDE.md
+  project-files/                      ← [작품마다 복사해 채움] 정본 세 개 + OK 대장 + Claude Code용 CLAUDE.md
   dist/*.zip                          ← Claude 앱에 올리는 스킬 묶음 (pack-skills.sh로 다시 만든다)
 reference/                            ← [컨텍스트에 넣지 않음] 사람이 근거를 볼 때만
   error-registry.md                   오류 대장 E-01~E-47
@@ -33,7 +34,7 @@ reference/                            ← [컨텍스트에 넣지 않음] 사람
   context-research.md                 Claude 컨텍스트 운영 사용자 사례 43건과 반영 내역
   source-index.md                     원본 자료 색인
   public-projects-study.md            Higgsfield 공개 프로젝트 3개(Cully Hill Boys·BESA·The Kiss) 연구
-  kit-test-report.md                  키트 시험 보고서(시나리오 15개, 찾아서 고친 결함 6개)
+  kit-test-report.md                  키트 시험 보고서(1차 시나리오 15개, 2차 질문 흐름·OK 기록·스킬 전체 점검)
 tests/                                ← [컨텍스트에 넣지 않음] 키트 점검 스크립트와 시험 프롬프트
   run_kit_tests.py                    python3 tests/run_kit_tests.py — 키트를 고칠 때마다 돌린다
 archive/어머니와-고등어/                ← [컨텍스트에 넣지 않음] 원본 24개. 그 작품을 이어갈 때만
@@ -43,10 +44,11 @@ archive/어머니와-고등어/                ← [컨텍스트에 넣지 않�
 
 | 상황 | 예전(가이드 전부를 지식에) | 지금 |
 |---|---:|---:|
-| 모든 대화의 기본 | 약 64,600 | 약 5,000 (지침 + 스킬 설명 6개) + 정본 |
-| 퍼스트 프레임 만들기 | 약 64,600 | + 약 9,400 (이미지 공통 + first-frame + 생성 운영) |
-| 실사 컷 영상 프롬프트 새로 쓰기 | 약 64,600 | + 약 17,100 (영상 공통 + live-action + acting + 생성 운영) |
-| 영상 프롬프트 고치기 | 약 64,600 | + 약 5,000 (영상 공통 + fixes) + 그 job의 확정 프롬프트 |
+| 모든 대화의 기본 | 약 64,600 | 약 5,400 (지침 + 스킬 설명 6개) + 정본 |
+| 퍼스트 프레임 만들기 | 약 64,600 | + 약 12,800 (이미지 공통 + first-frame + 생성 운영) |
+| 실사 컷 영상 프롬프트 새로 쓰기 | 약 64,600 | + 약 18,600 (영상 공통 + live-action + acting + 생성 운영) |
+| 영상 프롬프트 고치기 | 약 64,600 | + 약 5,900 (영상 공통 + fixes) + 그 컷의 OK 카드 |
+| "3-1처럼 3-2" | 약 64,600 | 위에 + 약 5,500 (세션 운영 + ok-reuse) + 기준 OK 카드 한 장 |
 
 ---
 
@@ -65,7 +67,7 @@ archive/어머니와-고등어/                ← [컨텍스트에 넣지 않�
   2. 정본을 Claude Doc 하나로 만든다.
   3. Higgsfield 폴더 구성을 제안한다.
   4. "이 프로젝트" 세 줄(작품명, Higgsfield 프로젝트 ID, 정본 Doc 링크)을 알려 준다. 그걸 지침 칸에 붙이면 끝이다.
-- 프로젝트 지식에는 아무것도 올리지 않아도 된다. Docs를 쓰지 않는다면 정본 세 개만 올린다.
+- 프로젝트 지식에는 아무것도 올리지 않아도 된다. Docs를 쓰지 않는다면 정본 세 개와 OK 대장만 올린다.
   - 가이드나 `reference/`, `archive/`는 올리지 않는다. 지식은 모든 대화가 전부 읽는다.
 
 **3. 스킬을 쓸 수 없는 환경이면**
@@ -79,7 +81,7 @@ mkdir -p .claude project/cuts project/log
 cp kit/instructions.md .claude/instructions.md
 cp -r kit/skills .claude/skills
 cp kit/project-files/CLAUDE.md CLAUDE.md
-cp kit/project-files/{decisions,asset-registry,shot-list}.md project/
+cp kit/project-files/{decisions,asset-registry,shot-list,ok-cuts}.md project/
 ```
 
 선택 사항: 작업이 끝날 때 휴대폰 알림을 받고 싶으면 Claude Code의 Stop 훅으로 알림을 보낸다(ntfy 등, `reference/context-research.md` E절).
@@ -88,7 +90,7 @@ cp kit/project-files/{decisions,asset-registry,shot-list}.md project/
 
 ## 새 대화
 
-시작 문구는 필요 없다. 새 대화에서 바로 일을 말하면 된다(예: "C03 퍼스트 프레임", "인물 시트 고치자").
+시작 문구는 필요 없다. 새 대화에서 바로 일을 말하면 된다(예: "3-1 퍼스트 프레임", "인물 시트 고치자", "3-1의 모션처럼 3-2").
 Claude는 답하기 전에 다음을 스스로 한다.
 1. 정본을 읽는다.
 2. 첫 메시지로 총괄인지 컷 작업인지 판단한다.
@@ -106,14 +108,15 @@ Claude는 답하기 전에 다음을 스스로 한다.
 ```
 「작품명」
 ├─ 00 에셋 / 인물 · 장소 · 소품 · 그림체
-├─ C01 [진행]  ─ 승인 · 거절        ← 새 결과는 컷 폴더에, 판정 후 승인·거절로 이동
-├─ C02 [대기]
+├─ 1-1 [진행]  ─ 승인 · 거절        ← 새 결과는 컷 폴더에, 판정 후 승인·거절로 이동
+├─ 1-2 [대기]
 └─ 99 시험·보관                      ← 시험 생성, 교체된 옛 승인본
 ```
 
 - 폴더 ID는 `asset-registry.md`의 폴더 표에 적힌다.
 - 결과를 보고 "좋아"라고 하면 승인 폴더로, "별로"라고 하면 거절 폴더로 옮겨진다.
-- 컷 상태는 폴더 이름(`C01 [승인]`)과 `shot-list.md`에 같이 표시된다.
+- 승인하면 그 결과물의 번호·설정·참조·프롬프트가 OK 대장(`ok-cuts.md`)에 바로 적힌다. 다른 컷을 만들 때 "3-1의 색감으로"처럼 가져다 쓴다.
+- 컷 상태는 폴더 이름(`1-1 [승인]`)과 `shot-list.md`에 같이 표시된다.
 
 ---
 

@@ -1,9 +1,10 @@
-# args: --refs 4 --seconds 8 --must-include {FIX}/c03_video_fixed.lines
+# args: --refs 4 --seconds 8 --must-include {FIX}/fixed_3-1_video.lines
+# expect: 고정 문장이 글자 그대로
 [SCENE_CONTEXT]
 Late autumn, early 1990s, a rural bus stop at dusk. An old man sits on the shelter bench with a heavy leather bag on his lap. His granddaughter reads the timetable sign, turns and tells him the last bus has gone. He says nothing and looks down at the bag.
 
 [ACTIVE_REFERENCES]
-<<<c03_ff_v2>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the positions and poses of the two people and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
+<<<ff_3-1_v2>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the positions and poses of the two people and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
 <<<char_grandpa_autumn_v1>>> GRANDPA (72). An old green jacket with a knitted vest and grey trousers. Face, hair, body type and wardrobe 100% match this reference.
 <<<char_girl_raincoat_v1>>> GIRL (10). A yellow raincoat over a navy school uniform, white knee socks and red rain boots. Face, hair, body type and wardrobe 100% match this reference.
 <<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Its size stays the same as in the start image from start to finish.

@@ -2,11 +2,18 @@
 
 ## 필요한 정보
 
-영상 정보 점검표(`video-prompt` §0)의 다음 줄과 같다. 값도 같게 써서 영상과 일관되게 한다.
-- 인물 에셋, 장소, 소품
-- 카메라, 렌즈
-- 인물마다 시작 위치·자세·하던 동작·손·시선
-- 빛(지배 광원과 방향), 최종 화면비
+값은 컷 카드 [4]~[5]와 같다. 영상 정보 점검표(`video-prompt` §0)와 같은 값을 써서 영상과 일관되게 한다.
+
+| 필요한 정보 | 틀의 자리 |
+|---|---|
+| 컷 카메라가 확정 장소 뷰와 같은가 (장소 뷰 job) | 모드: 틀 1 / 틀 2 |
+| 장소 뷰 job, LIGHT LOCK, 이 뷰의 화면 대응 줄 | `<<<LOC>>>`, `PRESERVE EXACTLY` |
+| 인물마다 요소 ID, 의상 상태, 고정 설명문 | `REFERENCE AUTHORITY`, `WARDROBE` |
+| 소품: 위치, 상태, 누가 드는가, 크기(cm + 신체) | `PROP` |
+| 카메라: 위치(물건 기준)·높이·방향·거리·샷 크기 (틀 2는 장비명도) | `CAMERA` |
+| 인물마다 시작 위치(앵커·거리·접촉), 하던 동작, 시선, 손 | `CHANGE` / `BLOCKING` |
+| 보이는 인원 수 | `Exactly [N] people` |
+| 최종 화면비 | 설정 |
 
 ## 규칙
 
@@ -61,5 +68,7 @@ PRIORITY: the CAMERA block overrides every reference.
 BLOCKING: [each person at an existing anchor: distance and contact, mid-[action]].
 WARDROBE: [asset registry sentence, verbatim].
 PROP: [position, state, who holds it, size in cm and body terms].
-[Nothing else / palette / material truth / light logic / era lock]
+[Nothing else / palette / material truth / era lock — from the asset registry]
+[LIGHT LOCK, verbatim] [This view's screen mapping: In this view [direction] is screen LEFT.]
+Exactly [N] people are visible.
 ```

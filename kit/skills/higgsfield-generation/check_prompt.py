@@ -40,6 +40,11 @@ def check_common(text, args, out):
     if stale:
         out.append(("WARN", f"이전 샷을 가리키는 말 {stale[:3]}. 새 생성에는 그 내용을 직접 쓴다"))
 
+    body = re.sub(r"<<<[^>]*>>>", "", text)
+    cutref = find(r"\b(?:shot|cut|scene|take)\s*#?\s*\d+(?:-\d+)?\b|(?:컷|장면|샷)\s*\d+(?:-\d+)?|(?<![\d:.])\b\d{1,3}-\d{1,3}\b(?=\s*(?:처럼|과 같|와 같|의 |컷|번))", body)
+    if cutref:
+        out.append(("WARN", f"컷 번호를 가리키는 말 {cutref[:3]}. 모델은 번호를 모른다. 가져올 내용을 직접 쓴다"))
+
     tags = set(re.findall(r"<<<\s*([^>]+?)\s*>>>", text))
     if args.refs is not None and tags and len(tags) != args.refs:
         out.append(("FAIL", f"프롬프트 속 참조 태그 {len(tags)}개, 붙일 참조 {args.refs}개. 정확히 맞춘다"))

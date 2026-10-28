@@ -1,3 +1,4 @@
+# expect: 채우지 않은 빈칸
 [SCENE_CONTEXT]
 [Era]. [Place, time of day]. [What happens in this clip, 2–4 sentences, only this clip.]
 

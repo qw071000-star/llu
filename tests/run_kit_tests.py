@@ -76,6 +76,7 @@ for d in skill_dirs:
 
 # 3. 지침의 스킬 지도에 적힌 스킬·파일이 실제로 있는가
 inst = read(os.path.join(KIT, "instructions.md"))
+check("[지침] instructions.md 4,000자 이하 (README 규칙)", len(inst) <= 4000, f"{len(inst)}자")
 for s in re.findall(r"`([a-z-]+)`(?: →|\s*\|)", inst):
     if s in ("decisions", "shot-list", "asset-registry"):
         continue
@@ -86,14 +87,21 @@ for line in inst.splitlines():
         for fn in re.findall(r"`([a-z-]+\.md)`", m.group(2)):
             check(f"[지침] {m.group(1)}/{fn} 있음", fn in skill_files.get(m.group(1), []))
 
-# 4. 스킬 안에서 가리키는 파일이 같은 스킬 폴더에 있는가
-external = {"decisions.md", "asset-registry.md", "shot-list.md", "instructions.md", "SKILL.md"}
+# 4. 스킬 안에서 가리키는 파일이 있는가 (같은 스킬 폴더, 또는 "`다른스킬` → `파일`"이면 그 스킬)
+external = {"decisions.md", "asset-registry.md", "shot-list.md", "ok-cuts.md", "instructions.md", "SKILL.md"}
+for name in external - {"instructions.md", "SKILL.md"}:
+    check(f"[정본 틀] project-files/{name} 있음", os.path.exists(os.path.join(KIT, "project-files", name)))
 for d in skill_dirs:
     for fn in skill_files[d]:
         if not fn.endswith(".md"):
             continue
-        for ref in set(re.findall(r"`([a-z0-9-]+\.(?:md|py))`", read(os.path.join(SKILLS, d, fn)))):
-            if ref in external:
+        text = read(os.path.join(SKILLS, d, fn))
+        cross = {}
+        for other, ref in re.findall(r"`([a-z-]+)` → `([a-z0-9-]+\.md)`", text):
+            cross[ref] = other
+            check(f"[참조] {d}/{fn} → {other}/{ref}", ref in skill_files.get(other, []))
+        for ref in set(re.findall(r"`([a-z0-9-]+\.(?:md|py))`", text)):
+            if ref in external or ref in cross:
                 continue
             check(f"[참조] {d}/{fn} → {ref}", ref in skill_files[d])
 
@@ -106,12 +114,19 @@ for d in skill_dirs:
         if not fn.endswith(".md"):
             continue
         text = read(os.path.join(SKILLS, d, fn))
-        for other, num in re.findall(r"`([a-z-]+)`\s*§(\d+)", text):
-            if other in skill_dirs:
-                check(f"[§] {d}/{fn} → {other} §{num}", num in headings(os.path.join(SKILLS, other, "SKILL.md")))
-        for num in re.findall(r"(?<![`\w])§(\d+)", text):
-            if re.search(rf"`[a-z-]+`\s*§{num}", text) and num not in headings(os.path.join(SKILLS, d, fn)):
+        spans = []
+        for m in re.finditer(r"`([a-z-]+(?:\.md)?)`\s*((?:§\d+[·, ]*)+)", text):
+            spans.append(m.span())
+            other = m.group(1)
+            for num in re.findall(r"§(\d+)", m.group(2)):
+                if other in skill_dirs:
+                    check(f"[§] {d}/{fn} → {other} §{num}", num in headings(os.path.join(SKILLS, other, "SKILL.md")))
+                elif other.endswith(".md") and os.path.exists(os.path.join(KIT, "project-files", other)):
+                    check(f"[§] {d}/{fn} → {other} §{num}", re.search(rf"^## §{num}\.", read(os.path.join(KIT, "project-files", other)), re.M) is not None)
+        for m in re.finditer(r"(?<![`\w])§(\d+)", text):
+            if any(a <= m.start() < b for a, b in spans):
                 continue
+            num = m.group(1)
             check(f"[§] {d}/{fn} 안의 §{num}", num in headings(os.path.join(SKILLS, d, fn)) or num in headings(os.path.join(SKILLS, d, "SKILL.md")))
 
 # 6. 컷 카드·핸드오프 칸 번호 참조
@@ -157,33 +172,79 @@ tmpl = re.search(r"## 빈 틀.*?```text\n(.*?)```", live, re.S).group(1)
 order = [tmpl.find(f"[{b}]") for b in ["SCENE_CONTEXT", "ACTIVE_REFERENCES", "LOCATION_MAP", "FIRST_FRAME_AND_SPATIAL_BLOCKING", "FORMAT_MODE", "OPTICS", "CAMERA", "ACTION_TIMING", "CHARACTER_ACTING", "PHYSICS", "LIGHTING", "AUDIO", "STYLE", "QUALITY", "REQUIRED_AND_FORBIDDEN_CONSTRAINTS"]]
 check("[빈 틀] 15블록 틀에 블록이 모두 있고 순서대로", all(o >= 0 for o in order) and order == sorted(order))
 
+# 12. 이미지 종류마다: 틀의 항목이 "필요한 정보" 표에 있는가 (사용자에게 물을 칸이 빠지지 않게)
+boiler = {"CENTER PANEL", "LEFT PANEL", "RIGHT PANEL", "CONSISTENCY RULES", "ENVIRONMENT", "REALISM", "STRUCTURE",
+          "ONLY CHANGE", "PRESERVE EXACTLY", "CONTINUITY", "DO NOT TRANSFER", "PRIORITY", "REFERENCE AUTHORITY"}
+img_skill = read(os.path.join(SKILLS, "image-prompt", "SKILL.md"))
+for word in ["모델", "해상도", "화면비", "저장 폴더", "붙일 이미지"]:
+    check(f"[질문] image-prompt 공통 점검표에 '{word}'", word in img_skill.split("## 0.")[1].split("## 1.")[0])
+for kind in ["character", "location", "prop", "style", "first-frame"]:
+    t = read(os.path.join(SKILLS, "image-prompt", f"{kind}.md"))
+    check(f"[질문] {kind}.md에 '필요한 정보' 표(틀의 자리)", "## 필요한 정보" in t and "틀의 자리" in t)
+    intake_i = t.split("## 필요한 정보")[1].split("\n## ")[0]
+    labels = set()
+    for x in re.findall(r"```text\n(.*?)```", t, re.S):
+        labels |= set(re.findall(r"^-?\s*([A-Z][A-Z ]{2,}[A-Z])(?: —[^:\n]*)?:", x, re.M))
+        labels |= set(re.findall(r"(?<![A-Z])([A-Z][a-z]+(?: [a-z]+)?):", x))
+    for label in sorted(labels - boiler):
+        check(f"[질문] {kind}.md 틀의 '{label}'을 채울 정보가 표에 있음", label in intake_i)
+bg_intake = intake.split("배경·풍경 영상")[1]
+for para in ["Camera", "Motion", "Keep", "Silent"]:
+    check(f"[질문] 배경 영상 점검표가 '{para}' 문단을 덮음", f"`{para}`" in bg_intake)
+for fn in ["rerender.md", "fixes.md"]:
+    check(f"[질문] video-prompt/{fn}에 필요한 정보", "필요한 정보" in read(os.path.join(SKILLS, "video-prompt", fn)))
+for f, text in [("instructions.md", inst), ("video-prompt", vskill), ("image-prompt", img_skill)]:
+    check(f"[질문] {f}: 사용자가 말하지 않은 칸도 묻는다", "말하지 않은" in text)
+    check(f"[질문] {f}: 일부만 답하면 남은 것만 다시 묻는다", "남은 것만" in text)
+
+# 13. OK 기록과 재사용
+okt = read(os.path.join(KIT, "project-files", "ok-cuts.md"))
+for field in ["번호", "종류", "job", "모델", "참조(붙인 순서)", "OK 이유", "한계", "프롬프트(보낸 그대로)", "가져온 OK"]:
+    check(f"[OK] OK 대장 틀에 '{field}'", field in okt)
+check("[OK] 생성 운영: 승인하면 OK 기록", "OK 기록" in gen and "ok-cuts.md" in gen)
+check("[OK] 생성 운영: 프롬프트는 보낸 그대로, 기억으로 다시 쓰지 않음", "보낸 글자 그대로" in gen and "기억으로 다시 쓰지 않는다" in gen)
+check("[OK] 지침: 승인은 그 자리에서 OK 대장에", "OK 대장에 기록" in inst)
+check("[OK] 지침: '3-1처럼'은 OK 카드에서 가져옴", "3-1처럼" in inst and "ok-reuse.md" in inst)
+check("[OK] 컷 카드 [12]가 OK 대장을 가리킴", "OK 대장" in card_fields.get("12", "") or "OK 대장" in card.split("[12]")[1])
+check("[OK] 컷 카드 [7]에 가져온 OK", "가져온 OK" in card)
+reuse = read(os.path.join(SKILLS, "production-session", "ok-reuse.md"))
+for word in ["모션", "색감", "표정", "카메라", "목소리", "번호만"]:
+    check(f"[OK] ok-reuse.md 표에 '{word}'", word in reuse)
+check("[OK] 정본 Doc 탭에 OK 컷", "OK 컷" in read(os.path.join(SKILLS, "project-setup", "SKILL.md")))
+for f in ["higgsfield-generation/SKILL.md", "production-session/cut-card.md", "production-session/handoff.md"]:
+    check(f"[번호] {f}: 옛 번호 형식(C01, C##) 없음", not re.search(r"C\d\d|C##|C\[##\]", read(os.path.join(SKILLS, f))))
+for f in ["shot-list.md", "asset-registry.md", "CLAUDE.md"]:
+    check(f"[번호] project-files/{f}: 옛 번호 형식 없음", not re.search(r"C\d\d|C##", read(os.path.join(KIT, "project-files", f))))
+
 # 11. 프롬프트 검사기: 픽스처마다 기대 결과와 같은가
-#     파일 이름: <kind>__<pass|fail>__<설명>.txt, 옵션은 첫 줄 주석 "# args: --refs 3"
+#     파일 이름: <kind>__<pass|fail>__<설명>.txt
+#     맨 위 주석 줄: "# args: --refs 3" (검사기 옵션), "# expect: 문구" (fail이면 결과에 이 문구가 있어야 함)
 for path in sorted(glob.glob(os.path.join(FIX, "*.txt"))):
     base = os.path.basename(path)
     kind, expect, _ = base.split("__", 2)
-    text = read(path)
-    args = []
-    first = text.splitlines()[0] if text else ""
-    if first.startswith("# args:"):
-        args = first[len("# args:"):].split()
-        body = "\n".join(text.splitlines()[1:])
-        tmp = os.path.join(FIX, ".tmp_" + base)
-        with open(tmp, "w", encoding="utf-8") as f:
-            f.write(body)
-        target = tmp
-    else:
-        target = path
+    lines = read(path).splitlines()
+    args, expects = [], []
+    while lines and lines[0].startswith("# "):
+        head = lines.pop(0)
+        if head.startswith("# args:"):
+            args = head[len("# args:"):].split()
+        elif head.startswith("# expect:"):
+            expects.append(head[len("# expect:"):].strip())
+    tmp = os.path.join(FIX, ".tmp_" + base)
+    with open(tmp, "w", encoding="utf-8") as f:
+        f.write("\n".join(lines))
+    target = tmp
     args = [a.replace("{FIX}", FIX) for a in args]
     r = subprocess.run([sys.executable, CHECKER, "--kind", kind, target] + args, capture_output=True, text=True)
-    if target != path:
-        os.remove(target)
+    os.remove(target)
     fails = [l for l in r.stdout.splitlines() if l.startswith("FAIL")]
     warns = [l for l in r.stdout.splitlines() if l.startswith("WARN")]
     if expect == "pass":
         check(f"[검사기] {base}: FAIL·WARN 없음", not fails and not warns, " / ".join(fails + warns)[:300])
     else:
         check(f"[검사기] {base}: 문제를 잡음", bool(fails or warns), r.stdout.strip()[:300])
+        for e in expects:
+            check(f"[검사기] {base}: '{e}'를 잡음", e in r.stdout, r.stdout.strip()[:300])
 
 # 결과
 bad = [r for r in results if not r[0]]

@@ -1,9 +1,11 @@
-# args: --refs 4 --seconds 8 --must-include {FIX}/c03_video_fixed.lines
+# args: --refs 4 --seconds 8 --must-include {FIX}/fixed_3-2_video.lines
+# expect: 컷 번호
+# expect: 고정 문장이 글자 그대로
 [SCENE_CONTEXT]
 Late autumn, early 1990s, a rural bus stop at dusk. A girl reads the timetable sign and tells her grandfather, seated on the bench with a bag on his lap, that the last bus has gone. He says nothing.
 
 [ACTIVE_REFERENCES]
-<<<c03_ff_v2>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the positions and poses of the two people and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
+<<<ff_3-2_v1>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter, bench, sign, tree, the light, colour and brightness, and the positions and poses of the two people and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
 <<<char_grandpa_autumn_v1>>> GRANDPA (72). A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. Face, hair, body type and wardrobe 100% match this reference.
 <<<char_girl_raincoat_v1>>> GIRL (10). A yellow raincoat over a navy school uniform, white knee socks and red rain boots. Face, hair, body type and wardrobe 100% match this reference.
 <<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Its size stays the same as in the start image from start to finish.
@@ -11,7 +13,7 @@ REFERENCE AUTHORITY: the start image has sole authority over camera, framing, th
 
 [LOCATION_MAP]
 LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
-LEFT EDGE: the bare persimmon tree. CENTRE: the concrete shelter with the bench along its back wall. RIGHT: the timetable sign on its pole. FOREGROUND: the empty road edge.
+LEFT: the tree-side end of the bench. CENTRE: the rest of the bench. RIGHT: the timetable sign on its pole. FOREGROUND: the road edge.
 In this view the west, the persimmon-tree side, is screen LEFT. GRANDPA stays on the bench. GIRL stays between the sign and the bench and never steps into the road.
 
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]
@@ -26,13 +28,13 @@ Live action. A single continuous take from 0:00 to 0:08. No cuts. 8 seconds.
 All movement is slow and even; nothing accelerates suddenly.
 
 [OPTICS]
-Diagonal field of view about 63°. The tree, the whole shelter and the sign are fully visible in one frame / straight lines stay straight / no telephoto compression. Deep focus.
+Diagonal field of view about 35°. The bench and the sign fill the frame side by side / the paddies behind are compressed and soft / the camera is physically far away. Both people sharp.
 
 [CAMERA]
-Fixed on a tripod at standing eye level on the far side of the road, at the same position as in the start image, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
+Fixed on a tripod at seated eye level on the far side of the road, opposite the middle of the bench, at the same position as in the start image, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
 
 [ACTION_TIMING]
-0:00–0:03 — GIRL keeps reading, the hand nearer the sign sliding down the times; GRANDPA sits still, eyes on the road.
+0:00–0:03 — the same motion as in shot 3-1.
 0:03–0:05 — GIRL turns toward the bench, eyes first, then head, then shoulders, about 1.5 s, and says the line in AUDIO once.
 0:05–0:08 — GRANDPA lowers his eyes to the bag and his thumb rests on the brass clasp; GIRL takes one small step toward the bench and stops. The shot ends with GIRL facing the bench and GRANDPA looking down at the bag.
 

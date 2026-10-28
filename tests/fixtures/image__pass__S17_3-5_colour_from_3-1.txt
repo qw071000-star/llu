@@ -1,0 +1,16 @@
+# args: --refs 4 --must-include {FIX}/fixed_3-5_image.lines
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+Using <<<loc_busstop_road_v1>>> as the exact same location, generate a new view. CAMERA: a close shot from the road edge at seated eye level, opposite the tree-side half of the bench, about 1.5 m from the old man, framing his lap, his hands and the bag; his face is above the frame. Shot on a 35mm film camera with a 50mm lens, Kodak Portra 400 film.
+REFERENCE AUTHORITY:
+- <<<loc_busstop_road_v1>>>: geography, materials, landmarks, light direction
+- <<<char_grandpa_autumn_v1>>>: face, hair, wardrobe only — Same face, same bone structure, same hair, same wardrobe. Change only the pose, framing, location and lighting.
+- <<<prop_doctor_bag_v1>>>: shape, material and state only; size as described below
+- <<<ff_3-1_v2>>> controls only colour, grade, contrast and texture. Never take its subjects, composition, people or light direction.
+DO NOT TRANSFER: the character sheet's backdrop, studio lighting, pose or framing.
+PRIORITY: the CAMERA block overrides every reference.
+BLOCKING: the old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, the thumb of the hand nearer the tree on the brass clasp.
+WARDROBE: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes.
+PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. It lies across his thighs, clasp closed, about the width of his lap.
+Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
+Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT.
+Exactly 1 person is visible.
