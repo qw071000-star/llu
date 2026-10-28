@@ -227,7 +227,7 @@ check("[맹검] 지침: '몰라'도 제안값으로", "몰라" in inst)
 nospeak = "does not say a single word: no attempt to speak, no parted lips, no mouthing"
 for f in ["video-prompt/fixes.md", "video-prompt/live-action.md", "acting/SKILL.md"]:
     check(f"[맹검] 말하지 않음 문장 통일: {f}", nospeak in read(os.path.join(SKILLS, f)).replace("\n", " "))
-check("[맹검] 렌즈 mm → 화각 환산표", "50mm 47°" in vskill and "시작 이미지가 이긴다" in vskill)
+check("[맹검] 렌즈 mm → 화각 환산표", "50mm=47°" in vskill and "시작 이미지가 이긴다" in vskill)
 check("[맹검] 가져온 OK의 위험도 옮긴다", "위험도 가져온다" in reuse and "위험 → 막는 문장" in okt)
 check("[맹검] OK 대장 예시는 지우라고 표시", "예시" in okt and "지운다" in okt)
 for word in ["PALETTE", "ERA LOCK", "이 뷰의 LIGHT LOCK", "초안(제안값)", "알려진 실패"]:
@@ -271,7 +271,8 @@ owners = [
     ("확정 전 에셋 답은 초안 줄에", r"확정 전[^\n]{0,10}(답|에셋)", {"production-session/SKILL.md"}),
     ("범위 밖 문제는 총괄에 올린다", r"총괄에 올릴", {"production-session/SKILL.md", "production-session/handoff.md"}),
     ("Forbidden에 넣는 것", r"만 Forbidden에|Forbidden[^\n]{0,20}실제", {"video-prompt/SKILL.md"}),
-    ("렌즈 환산표", r"24mm 84°", {"video-prompt/SKILL.md"}),
+    ("렌즈 환산표", r"24mm=84°", {"video-prompt/SKILL.md"}),
+    ("모호한 말 → 값·문장(속도·별·사람 동작·걸음)", r"taking the full three seconds|2회 실패면 후반|\[centre of weight\]|이동량\(화면 %\)", {"video-prompt/SKILL.md"}),
     ("OK 프롬프트 찾는 순서", r"get_project_asset_prompt`?\(그 job\)|결과물 상세", {"higgsfield-generation/SKILL.md"}),
     ("판정 말과 상태(좋아·별로·나중에)", r"\"별로\"|\"나중에\"", {"higgsfield-generation/SKILL.md"}),
     ("가져온 OK의 위험을 옮긴다", r"위험도 가져온다", {"production-session/ok-reuse.md"}),
@@ -294,11 +295,11 @@ check("[맹검4] 지침 2번: 아직 보지 못한 프롬프트에는 어떤 말
 check("[맹검4] 지침 6번: 인물 기준이면 향한 쪽으로 화면 쪽, 추정", "인물이 향한 쪽" in inst and "추정" in inst)
 check("[맹검4] 지침 4번: 기본값 목록에 소리", "비율·소리·저장 폴더" in inst)
 check("[맹검4] 지침 5번: 대장과 OK 줄이 다르면 대장", "둘이 다르면 대장" in inst)
-check("[맹검4] 읽기 지도: 이미 쓴 줄 바꾸기도 fixes.md", "이미 쓴 줄" in inst)
-check("[맹검4] fixes.md: 사람 동작 속도 줄", "사람 동작이 너무 빠르다" in fixes and "failed take" in fixes.split("사람 동작이 너무 빠르다")[1].split("\n")[0])
+check("[맹검4] 읽기 지도: fixes.md는 결과가 틀렸을 때", "고치기(결과가 틀림)" in inst)
+check("[맹검4] 사람 동작 속도 줄(video-prompt 모호한 말 표)", "taking the full three seconds" in vskill and "제안값으로 묻는다" in vskill.split("taking the full three seconds")[1].split("\n")[0])
 check("[맹검4] fixes.md: 승인 컷이면 새 테이크 대체를 먼저 묻는다", "새 테이크로 대체할지" in fixes)
-check("[맹검4] fixes.md 별 줄: 생성 전이면 한계와 대안", "생성 전이면 이 한계" in fixes)
-check("[맹검4] video-prompt: fixes.md는 결과가 틀렸거나 이미 쓴 줄, acting 먼저", "`fixes.md`는 결과가 틀렸거나" in vskill and "먼저 `acting`" in vskill)
+check("[맹검4] 별 줄: 생성 전에 한계, 2회 실패면 오버레이", "생성 전에 알린다" in vskill and "2회 실패면 후반 오버레이" in vskill)
+check("[맹검4] video-prompt: fixes.md는 결과가 틀렸을 때, acting 먼저", "`fixes.md`는 결과가 틀렸을 때만" in vskill and "먼저 `acting`" in vskill)
 check("[맹검4] background.md: SKILL §0 배경 표(Keep 포함)", "`SKILL.md` §0의 배경 표" in sk("video-prompt/background.md") and "`Keep`" in sk("video-prompt/background.md"))
 check("[맹검4] live-action: 덜어내는 순서와 WARN을 남기는 조건", "장소 → 스타일 → 환경" in live and "WARN을 남긴다" in live)
 check("[맹검4] acting: 목표 양식 예, 사건 수·비트 수 따로", "[상대]에게/에게서 + 동사" in sk("acting/SKILL.md") and "비트 수" in sk("acting/SKILL.md"))
@@ -316,6 +317,37 @@ check("[맹검4] first-frame: 나이만 바꾸는 컷은 character-edit 틀 2", 
 check("[맹검4] image-prompt §3 LOCKED EDIT 틀에 WARDROBE 줄", "WARDROBE: [asset registry sentence, verbatim]" in img_skill.split("## 3.")[1].split("## 4.")[0])
 check("[맹검4] location-view: 높이는 값으로", "높이는 값으로" in sk("image-prompt/location-view.md"))
 check("[맹검4] prop.md: 확정 소품 고치기와 어느 결과인가", "확정 소품 고치기" in sk("image-prompt/prop.md") and "_v2" in sk("image-prompt/prop.md") and "어느 결과" in sk("image-prompt/prop.md"))
+
+# 19. r5 맹검에서 찾은 결함
+vague = vskill.split("**모호한 말 → 값·문장**")[1].split("**묻는 법")[0] if "**모호한 말 → 값·문장**" in vskill else ""
+for word in ["속도", "움직임 추가", "작고 반복되는 요소", "사람 동작 속도", "걸음 나이", "동작 여럿"]:
+    check(f"[맹검5] video-prompt §0 모호한 말 표에 '{word}'", word in vague)
+check("[맹검5] 모호한 말 표: 움직임 추가면 사건이 늘었다고 알림", "사건이 하나 늘었다" in vague)
+check("[맹검5] 모호한 말 표: 걸음 나이(보폭·팔·발·무게중심, 반대 걸음 = failed take)", all(w in vague for w in ["[step size]", "[arm swing]", "[feet lifted or dragged]", "[centre of weight]", "walk = failed take"]))
+check("[맹검5] fixes.md: 모호한 말 줄은 옮기고 SKILL 표를 가리킴", "\"모호한 말\" 표" in fixes and not re.search(r"구름이 더|풀도 흔들|별이 더 반짝|taking the full", fixes))
+check("[맹검5] 지침 4번: 모호한 말은 video-prompt §0 표", "`video-prompt` §0 \"모호한 말\" 표" in inst)
+check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "프롬프트·생성·정본 작업일 때만" in inst and "정보·정리 질문에는 생략해도" in inst)
+check("[맹검5] 지침: job이 대화에 없으면 묻고 컷 파일을 열지 않음", "job이 대화에 없으면 묻고" in inst)
+check("[맹검5] 읽기 지도: OK 재표시·번역은 그 카드 하나, 검사 안 함, 번역은 코드블록 밖", "재표시·번역" in inst and "검사 안 함" in inst and "코드블록 밖" in inst)
+check("[맹검5] 읽기 지도: 시트 자체 고치기만 character-edit, 퍼스트 프레임 속 인물은 first-frame", "시트 자체 고치기는 `character-edit.md`" in inst and "그 속 인물 바꾸기 포함" in inst)
+check("[맹검5] 읽기 지도: 프롬프트만 쓰면 higgsfield-generation 안 엶, 크레딧 질문", "프롬프트만 쓰면 열지 않는다" in inst and "크레딧" in inst)
+check("[맹검5] 읽기 지도: SKILL.md 먼저", "SKILL.md를 먼저" in inst)
+check("[맹검5] video-prompt: 사건은 묶어 세지 않고 샷별 사건 목록 먼저", "묶어 세지 않는다" in vskill and "샷별 사건 목록" in vskill and "합치지 말고" in vskill)
+check("[맹검5] video-prompt: 나가기 = 마지막 프레임에 몸 절반이 프레임 밖", "몸 절반이 프레임 밖" in vskill)
+check("[맹검5] video-prompt: 렌즈 표에 없는 mm는 두 값 사이", "가까운 두 값 사이" in vskill)
+check("[맹검5] video-prompt 점검표: 소리 칸이 비면 대사 유무, 문 경첩 쪽", "대사 유무를 묻는다" in vskill and "경첩 쪽" in vskill)
+bg = sk("video-prompt/background.md")
+check("[맹검5] background: 정본 기본값은 묻지 않음, Keep은 제안값, 매체가 다르면 시작 이미지부터", "묻지 않고" in bg and "`Keep`은 사용자가 말하지 않아도 제안값" in bg and "시작 이미지부터 새로" in bg)
+check("[맹검5] ok-reuse: 가져온 줄은 쪼개지 않고 새 문장, 전체를 --must-include", "쪼개거나 사이에 끼우지 않고" in reuse and "`;`·`,`로 잇지 않는다" in reuse and "전체를 `--must-include`" in reuse)
+check("[맹검5] live-action: WARN 이유에 줄여 본 항목과 글자 수", "줄여 본 항목과 줄인 글자 수" in live)
+check("[맹검5] production-session: [1]이 비거나 다른 방향이면 제안값으로 고치고 확인", "[1]과 다른 방향" in sess and "`(제안값)`으로 고치고" in sess)
+check("[맹검5] production-session: 생성/크레딧 칸에 '이미지 N / 영상 N · 약 N 크레딧'", "`이미지 N / 영상 N · 약 N 크레딧`" in sess)
+check("[맹검5] 컷 카드 [7]: [1]에 다른 컷과 같게가 있으면 그 OK", "[1]에 \"3-1과 같게\"" in card)
+check("[맹검5] first-frame 틀 2: 반대편이면 필수 표시, 하늘·색은 PALETTE·LIGHT LOCK", "반대편 카메라면 필수" in ff.split("## 틀 2")[1] and "PALETTE·LIGHT LOCK과 부딪치는지" in ff)
+prop = sk("image-prompt/prop.md")
+check("[맹검5] prop.md: 시트가 필요한가, 차량·건물급은 장면 프레임에서", "시트가 필요한가" in prop and "차량·건물급" in prop)
+check("[맹검5] 생성 운영: 크레딧 질문은 기록만 합치고 추정은 근거를 밝힘", "크레딧 얼마나 썼어" in gen and "무엇으로 셈했는지 밝힌다" in gen)
+check("[맹검5] decisions 틀에 비용 메모 줄", "비용 메모" in read(os.path.join(KIT, "project-files", "decisions.md")))
 
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)

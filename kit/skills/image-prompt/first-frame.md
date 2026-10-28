@@ -28,6 +28,7 @@
   - 동작 도중의 상태로 쓴다.
 - **이웃 컷과 비교한다.** 컷 목록의 앞뒤 줄과 연속성 표(인물 자리·자세, 소품 상태)로 본다.
   - 연속성 표에 인물 자리가 없으면 같은 인물이 나온 직전 승인 시작 이미지의 OK 카드 한 장에서 BLOCKING 줄을 가져와 제안한다. 자리를 새로 지어내지 않는다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
+- **하늘·색을 바꾸면** 에셋 대장의 PALETTE·LIGHT LOCK과 부딪치는지 짚고 묻는다.
 - **나이만 바꾸는 컷 편집**은 승인 시작 이미지를 LOCKED EDIT(`SKILL.md` §3)로 고치고, 나이 표지는 `character-edit.md` 틀 2의 `CHANGE — AGE` 목록에서 고른다. 표지를 지어내지 않는다.
 - **다른 OK의 색감을 가져올 때**
   - 틀 1(LOCKED)이면 색은 그 장소 뷰에서 온다. 색 기준 OK가 같은 뷰에서 나왔으면 이미 같은 색이니 색 참조를 붙이지 않는다.
@@ -73,7 +74,8 @@ WARDROBE: [asset registry sentence, verbatim].
 PROP: [position, state, who holds it, size in cm and body terms]. [Except: …]
 [PALETTE · ERA LOCK from the asset registry, verbatim]
 Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
+[아래 두 줄: 반대편 카메라면 필수. 이 표시 줄은 지운다]
 In this view [landmark] is at screen [side] and [landmark] is at screen [side].
-[LIGHT LOCK for this new view: the light comes from screen [left/right], the [object] side]
+LIGHT LOCK for this view: the light comes from screen [left/right], the [object] side.
 Exactly [one person is / N people are] visible.
 ```
