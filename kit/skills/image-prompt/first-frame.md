@@ -2,7 +2,7 @@
 
 ## 필요한 정보
 
-값은 컷 카드 [4]~[5]와 같다. 영상 정보 점검표(`video-prompt` §0)와 같은 값을 써서 영상과 일관되게 한다.
+값은 컷 카드 [4]~[5]와 같다. 영상과 같은 값을 쓴다. video-prompt를 따로 열 필요는 없다.
 
 | 필요한 정보 | 틀의 자리 |
 |---|---|
@@ -14,6 +14,7 @@
 | 인물마다 시작 위치(앵커·거리·접촉), 하던 동작, 시선, 손 | `CHANGE` / `BLOCKING` |
 | 보이는 인원 수 | `Exactly [N] people` |
 | 최종 화면비 | 설정 |
+| 고정 설명문과 부딪치는 이 컷만의 것(있으면) | `Except` |
 
 ## 규칙
 
@@ -29,7 +30,8 @@
 - **의상 문장은 에셋 대장 문장을 글자 그대로 쓴다.** 인물 시트의 배경·조명·포즈는 `DO NOT TRANSFER`에 적는다.
 - **콘티 썸네일은 참조로 붙이지 않는다.** 그 구도가 필요하면 같은 구도의 빈 장소 이미지를 먼저 만들어 장소 참조로 쓴다.
 - **소품 크기는 cm와 신체 기준으로 적는다.**
-- **이웃 컷과 비교한다.** 컷 목록의 앞뒤 줄과 연속성 표(인물 자리·자세, 소품 상태)로 본다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
+- **이웃 컷과 비교한다.** 컷 목록의 앞뒤 줄과 연속성 표(인물 자리·자세, 소품 상태)로 본다. 이웃 컷 카드는 열지 않는다.
+  - 연속성 표에 인물 자리가 없으면 같은 인물이 나온 직전 승인 시작 이미지의 OK 카드에서 BLOCKING 줄을 가져와 제안한다. 자리를 새로 지어내지 않는다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
 - **다른 OK의 색감을 가져올 때**
   - 틀 1(LOCKED)이면 색은 그 장소 뷰에서 온다. 색 기준 OK가 같은 뷰에서 나왔으면 이미 같은 색이니 색 참조를 붙이지 않는다.
   - 다른 뷰면 틀 2로 쓰고 색 참조를 붙인다. 틀 1을 꼭 써야 하면 한 생성에 한 가지 원칙대로 두 단계(인물 추가 → 색 편집)로 나눈다.
@@ -70,7 +72,7 @@ DO NOT TRANSFER: the character sheet's backdrop, studio lighting, pose or framin
 PRIORITY: the CAMERA block overrides every reference.
 BLOCKING: [each person at an existing anchor: distance and contact, mid-[action]].
 WARDROBE: [asset registry sentence, verbatim].
-PROP: [position, state, who holds it, size in cm and body terms].
+PROP: [position, state, who holds it, size in cm and body terms]. [Except: …]
 [PALETTE · ERA LOCK from the asset registry, verbatim]
 Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
 [LIGHT LOCK, verbatim] [The view's screen-mapping sentence from the asset registry, verbatim]

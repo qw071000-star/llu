@@ -86,9 +86,9 @@ LIGHT LOCK (장소 기준 방향으로): Low dusk sun from the west, the persimm
 Nothing else: no other buildings, no cars, no people, no legible text.
 ```
 
-| 뷰 | 계보 | 카메라(어디서 어디를) | 화면 좌 = / 우 = | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
+| 뷰 | 계보 | 카메라(어디서 어디를, mm = °) | 화면 대응 문장 (영어, 글자 그대로) | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
 |---|---|---|---|---|---|---|---|---|
-| `LC-001-V1` | MASTER | 길 건너편 서서 눈높이, 북쪽(정류장 정면)을 봄 | 서(감나무) / 동(시간표) | — | `job-lc001v1` | GPT Image 2.5 | 확정 | 감 열매 조금 많음 |
+| `LC-001-V1` | MASTER | 길 건너편 서서 눈높이, 북쪽(정류장 정면)을 봄, 35mm = 63° | `In this view the west, the persimmon-tree side, is screen LEFT.` | — | `job-lc001v1` | GPT Image 2.5 | 확정 | 감 열매 조금 많음 |
 
 요소 이름: `loc_busstop_road_v1` = LC-001-V1
 

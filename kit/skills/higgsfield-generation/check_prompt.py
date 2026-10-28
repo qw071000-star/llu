@@ -29,8 +29,8 @@ def find(pattern, text, flags=re.IGNORECASE):
 def check_common(text, args, out):
     if len(text) > 8000:
         out.append(("WARN", f"길이 {len(text)}자. 뒤쪽 문장이 약해진다. 반복을 지우고 사건 수를 줄인다"))
-    elif len(text) > 5000:
-        out.append(("WARN", f"길이 {len(text)}자. 5,000자 안팎이 안전했다"))
+    elif len(text) > 5500:
+        out.append(("WARN", f"길이 {len(text)}자. 5,500자 이하가 안전했다. 남기려면 이 숫자를 그대로 적고 이유를 쓴다"))
 
     placeholders = find(r"\[(?:\s*|N|NN|NAME|PERSON(?: 2)?|OBJECT|PROP|[^\]\n]*[가-힣][^\]\n]*)\]", text, 0)
     if placeholders:

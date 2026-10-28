@@ -235,6 +235,17 @@ check("[맹검] 자리표시 태그 안내(image-prompt)", "자리표시" in img
 check("[맹검] \"다시 만들어\" 확인 규칙", "그 확인이다" in gen)
 check("[맹검] 검토 상태 정의", "`검토`: 완성된 결과" in gen)
 
+# 15. 2차·소넷 맹검에서 찾은 결함
+chk = read(CHECKER)
+check("[맹검2] 길이 경계 5,500자(검사기·실사 틀)", "> 5500" in chk and "5,500자" in live)
+check("[맹검2] OK 카드와 컷 카드 구분", "`ok-cuts.md` 안의 절" in claude_md and "`ok-cuts.md` 안의 절" in read(os.path.join(SKILLS, "production-session", "SKILL.md")))
+check("[맹검2] 다른 컷 카드·핸드오프를 예시로 열지 않음", "예시로 열지 않는다" in card and "예시로 열지 않는다" in handoff)
+check("[맹검2] 결과 이미지를 볼 수 없을 때 규칙", "직접 볼 수 없" in vskill and "직접 볼 수 없" in img_skill)
+check("[맹검2] 거절하면 진행으로", "거절하면 그 자리에서 `진행`" in gen)
+check("[맹검2] OK 제안 전에 카드 열기", "제안하기 전에도" in reuse)
+check("[맹검2] 정정 줄이 보냄 형식보다 먼저", "`정정: …`" in gen)
+check("[맹검2] 이웃 컷은 연속성 표에서만", "이웃 컷 카드는 열지 않는다" in vskill)
+
 # 11. 프롬프트 검사기: 픽스처마다 기대 결과와 같은가
 #     파일 이름: <kind>__<pass|fail>__<설명>.txt
 #     맨 위 주석 줄: "# args: --refs 3" (검사기 옵션), "# expect: 문구" (fail이면 결과에 이 문구가 있어야 함)
