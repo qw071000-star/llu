@@ -76,6 +76,53 @@ Scene_01 · Scene_02 · Scene_03 · Scene_05   ← 고른 것만 (Scene_01은 �
 Editing                             ← Cinematic Video Editor 결과
 ```
 
+### 폴더별 항목 수 (공개 폴더 API, 2026-10-28)
+
+**The Kiss** (380개)
+
+| 폴더 | 개수 | 비율 |
+|---|---:|---:|
+| Test_Images | 229 | 60% |
+| Test_Videos | 94 | 25% |
+| Characters / Props / Locations | 17 / 14 / 8 | 10% |
+| Editing | 7 | |
+| Scene_01~05 (최종) | 6 | 2% |
+| Sound / Watermarks | 1 / 4 | |
+
+- 시도가 전체의 85%이고, 장면 폴더에 남긴 최종본은 6개다.
+
+**BESA** (675개)
+
+| 폴더 | 개수 |
+|---|---:|
+| SCENES (장면 25개) | 294 |
+| UPSCALED | 169 |
+| Poster | 58 |
+| BEST | 30 |
+| AUDIO | 24 |
+| Locations | 23 |
+| Character sheets | 22 |
+| Approved generations | 15 |
+| Props | 11 |
+| Deleted generations | 9 |
+| SOUND TRACK | 7 |
+
+- 장면당 생성 수는 0~44개, 평균 약 12개다. 가장 많은 장면은 "11. Mother's curse"(44개), "18. Ride back home"(30개), "4. The promise"(26개)다.
+
+**Cully Hill Boys** (473,039개)
+
+| 폴더 | 개수 |
+|---|---:|
+| PRE PROD | 34,388 (7%) |
+| 1 ACT | 146,471 |
+| 2 ACT | 140,693 |
+| 3 ACT | 125,007 |
+| 4 ACT | 25,918 |
+| 0 Regenerations | 562 |
+
+- PRE PROD 안: ASSETS 12,021, Costumes 5,960, 룩 테스트 v1~v5 합계 14,864, Character Test 611
+- 장면 폴더 하나에 수백~3만여 개(예: "98-99-100" 34,739개)를 생성하고 골랐다.
+
 ## 3. 장면 하나를 만드는 흐름 (생성 기록으로 재구성)
 
 **BESA "4. The promise"**
@@ -136,7 +183,9 @@ Editing                             ← Cinematic Video Editor 결과
 
 ## 7. 프롬프트까지 보려면
 
-- **권한 허용:** 웹페이지가 쓰는 Higgsfield API(`fnf-api-gw.higgsfield.ai`) 읽기를 이 세션에 허용한다.
+- **API 결과:** 사용자가 API 읽기를 허용한 뒤에도 폴더 목록(`/folders/{id}/children`)만 열렸다.
+  - 생성물과 프롬프트를 주는 주소(`/assets/...`)는 Cloudflare 봇 확인 화면이 막는다.
+  - 봇 차단은 우회하지 않았다.
 - **직접 복사:** 로그인한 브라우저에서 `https://higgsfield.ai/generate?projectId=<스냅샷 폴더 ID>`를 열고 필요한 샷의 프롬프트를 복사해 준다.
 - **Cully Hill Boys:** 공개 자료의 사내 Claude 스킬 3개 파일을 받아 주면 키트와 직접 비교할 수 있다.
 
