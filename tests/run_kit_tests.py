@@ -258,10 +258,10 @@ owners = [
     ("묻는 법: '몰라·알아서'면 제안값", r"몰라|알아서", {"instructions.md"}),
     ("묻는 법: 일부만 답하면 남은 것은 제안값으로", r"남은 것은 제안값", {"instructions.md"}),
     ("묻는 법: 추측하지 않는다", r"추측하지 않", {"instructions.md"}),
-    ("묻는 법: 정하지 않은 값에 (제안값)", r"정하지 않은 값", {"instructions.md"}),
+    ("묻는 법: 말하지 않은 값에 (제안값)", r"직접 말하지 않은 값", {"instructions.md"}),
     ("찾는 순서(사용자 말 → 컷 카드 …)", r"사용자 (말|메시지) → 컷 카드", {"instructions.md"}),
     ("이미지를 볼 수 없을 때", r"볼 수 없", {"instructions.md"}),
-    ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md", "production-session/cut-card.md"}),  # 카드를 쓰는 그 자리에도 한 줄(맹검 r3: 형식 보려고 다른 카드를 엶)
+    ("읽는 범위: 다른 컷 카드를 열지 않는다", r"다른 컷 카드|이웃 컷 카드|예시로", {"instructions.md", "production-session/cut-card.md", "production-session/SKILL.md"}),  # 카드를 쓰는 그 자리에도 한 줄(맹검 r3: 형식 보려고 다른 카드를 엶)
     ("acting을 여는 때", r"인물이 연기하는 실사 영상", {"instructions.md"}),
     ("손·좌우 규칙", r"hand nearer|오른손|right hand", {"instructions.md"}),
     ("반복 실패 한도", r"4회 중 3회", {"instructions.md"}),

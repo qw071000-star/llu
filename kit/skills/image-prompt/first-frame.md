@@ -76,6 +76,6 @@ WARDROBE: [asset registry sentence, verbatim].
 PROP: [position, state, who holds it, size in cm and body terms]. [Except: …]
 [PALETTE · ERA LOCK from the asset registry, verbatim]
 Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
-[LIGHT LOCK, verbatim] [The view's screen-mapping sentence from the asset registry, verbatim]
+[LIGHT LOCK, verbatim] [Screen mapping for this new view: In this view [direction] is screen LEFT … — write it for this camera]
 Exactly [one person is / N people are] visible.
 ```

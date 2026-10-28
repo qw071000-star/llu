@@ -20,6 +20,7 @@
 - **장소를 다시 묘사하지 않는다.** 모호한 대상을 넓히지 않는다.
 - **A에서 B로 옮기는 편집은 한 생성으로 하지 않는다.** REMOVE → ADD 두 단계로 나누거나 뷰를 나눈다.
 - **빛·시간대만 바꾸는 상태판은 STATE다.** 점유 인원만 바꿀 때는 기존 앵커에, 얼굴 없이 더한다.
+- **빛을 바꾸는 편집이면** 부모의 LIGHT LOCK을 PRESERVE에서 빼고, 바뀌는 광원만 CHANGE에 쓴다. 바뀌지 않는 광원은 PRESERVE에 남긴다. 확정되면 그 STATE 뷰의 LIGHT LOCK을 에셋 대장에 따로 적는다.
 
 ## 틀 1 — 사물 편집과 상태판
 
@@ -47,7 +48,7 @@ REMOVE  Remove [object] from [location]. Continue [revealed surface] naturally t
 
 시대는 `1960s style` 한 줄이 아니라 층의 묶음이다. 원래 요소마다 목표 시대 대응물을 지정하고, 새 건축 볼륨을 만들지 않는다. 한 층을 바꿔 확정하고 그 확정본을 다음 층의 부모로 쓴다.
 
-층: `IDENTITY AND TEXT`(무문자 정책) · `STRUCTURAL SURFACES` · `DOORS, WINDOWS AND FRAMES` · `FURNITURE / VEHICLES / FIXTURES` · `LIGHTING` · `IMAGE CHARACTER`(grain, sharpness, contrast, exposure)
+층: `IDENTITY AND TEXT`(간판·표지판의 글자 정책) · `STRUCTURAL SURFACES`(벽·바닥·지붕·도로 포장) · `DOORS, WINDOWS AND FRAMES` · `FURNITURE / VEHICLES / FIXTURES`(벤치·표지판 기둥·가로등·차) · `LIGHTING` · `IMAGE CHARACTER`(grain, sharpness, contrast, exposure). 한 요소는 한 층에만 넣는다. `ONLY CHANGE`에는 그 층 이름을 쓴다.
 
 ```text
 [LOCKED EDIT opening — SKILL.md §1]

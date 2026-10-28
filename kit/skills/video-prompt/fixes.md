@@ -9,7 +9,7 @@
 | 빈 화면으로 시작해 인물이 들어온다 | 첫 프레임부터 정위치, 동작 도중. 등장은 "이미 걷는 중"으로 |
 | 문 열림 같은 환경 사건이 어색하다 | 그 사건을 빼고 숏 내내 한 상태로 둔다 |
 | 고개·상체가 휙 돈다 | 부위 순서와 초: `head → shoulders → feet over three seconds; turning within one second = failed take`. 고개만 돌면 `eyes → head` 순서만 쓴다 |
-| 말하지 않을 인물의 입이 움직인다 | 말하려는 시도 자체를 없앤다: `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` 망설임은 숨·삼킴·손으로 준다 |
+| 말하지 않을 인물의 입이 움직인다 | 말하려는 시도 자체를 없앤다: `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` 프롬프트에 `no lip movement` 같은 약한 문장이 이미 있으면 더하지 말고 이 문장으로 바꾼다. 망설임은 숨·삼킴·손으로 준다 |
 | 고개를 돌렸다가 되돌린다 | `From then until the end [his] eyes and head stay on [her]. Turning back = forbidden` |
 | 다른 인물이 반응해 버린다 | 그 인물의 시선·머리·손을 고정: `does not react in any way, never looks at [him]` |
 | 소품이 다른 손으로 가거나, 커지거나, 다른 곳으로 간다 | 소품 요소를 붙이고 손(물건 기준), 내려놓지 않음, 크기 = 시작 이미지를 적는다. 같은 종류 물건이 둘이면 이름으로 구분 |

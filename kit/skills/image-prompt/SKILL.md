@@ -71,7 +71,7 @@ reference controls identity and wardrobe only. Camera and shot size are defined 
 - **"그대로 재현"이면 다른 속성까지 따라온다.** 속성마다 참조를 나눈다: `Reference 1 gives the composition; take the [sky] only from reference 2.`
 - **요소 이미지를 바꾸면 프롬프트 속 설명문도 새 이미지에 맞게 고친다.**
 - **콘티 썸네일이나 모니터 촬영 사진은 참조로 붙이지 않는다.** 얼굴·옷·색이 섞인다.
-- **사용자가 가리키지 않은 이미지는 붙이지 않는다.** 프로젝트에 올라온 참고 사진이 있어도, 이 생성에 쓰라는 말이 없으면 묻는다.
+- **사용자가 가리키지 않은 이미지는 붙이지도, 제안하지도 않는다.** 프로젝트에 참고 사진이 있어도 마찬가지다. 사용자가 말로 사양을 줬으면 말로만 쓴다.
 
 ## 3. 편집 문법 — CHANGE / PRESERVE EXACTLY / ONLY CHANGE
 
