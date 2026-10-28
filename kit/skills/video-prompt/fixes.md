@@ -2,6 +2,7 @@
 
 **필요한 정보:** 틀린 결과의 job, 그 job의 프롬프트(OK 대장 카드 또는 `get_project_asset_prompt`), 사용자가 말한 증상(말 그대로).
 - 증상이 모호하면("이상해") 어느 구간·어느 인물인지 묻는다. 표에서 후보 두세 개를 보이고 고르게 한다.
+- 같은 증상을 막는 문장이 프롬프트에 이미 있으면 더하지 않고 그 문장을 바꾼다.
 - 고칠 것은 한 생성에 한 가지다. 바꿀 줄을 "전 → 후"로 보이고 확인받는다.
 
 | 증상 | 수정 |
@@ -9,7 +10,7 @@
 | 빈 화면으로 시작해 인물이 들어온다 | 첫 프레임부터 정위치, 동작 도중. 등장은 "이미 걷는 중"으로 |
 | 문 열림 같은 환경 사건이 어색하다 | 그 사건을 빼고 숏 내내 한 상태로 둔다 |
 | 인물이 휙 돈다 | 부위 순서와 초: `eyes → head → shoulders, about 1.5 s; snapping = failed take` |
-| 말하지 않을 인물의 입이 움직인다 | 말하려는 시도 자체를 없앤다: `no attempt to speak, no parted lips, no mouthing` |
+| 말하지 않을 인물의 입이 움직인다 | 말하려는 시도 자체를 없앤다: `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` 망설임은 숨·삼킴·손으로 준다 |
 | 고개를 돌렸다가 되돌린다 | `From then until the end [his] eyes and head stay on [her]. Turning back = forbidden` |
 | 다른 인물이 반응해 버린다 | 그 인물의 시선·머리·손을 고정: `does not react in any way, never looks at [him]` |
 | 소품이 다른 손으로 가거나, 커지거나, 다른 곳으로 간다 | 소품 요소를 붙이고 손(물건 기준), 내려놓지 않음, 크기 = 시작 이미지를 적는다. 같은 종류 물건이 둘이면 이름으로 구분 |

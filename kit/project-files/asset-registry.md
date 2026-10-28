@@ -3,6 +3,7 @@
 > 고정 설명문은 프롬프트에 글자 그대로 붙인다. 바꿔야 하면 새 버전(v2)을 만들고, 옛 것은 폐기 목록으로 옮긴다.
 > 확정 이미지의 정본은 Higgsfield 저장본이다. job ID로 직접 열어 확인한다.
 > 확정 에셋을 만든 프롬프트와 설정은 OK 대장(`ok-cuts.md`)의 에셋 ID 카드에 있다.
+> 확정 전 에셋은 고정 문장 자리를 비워 두고, 그 에셋 절의 `초안(제안값):` 줄에 답과 제안값을 적는다. 확정되면 고정 문장으로 옮긴다.
 
 ## Higgsfield 저장 폴더
 
@@ -37,9 +38,11 @@
 ```text
 IDENTITY: [ ]
 WARDROBE: [ ]
-ACTING PROFILE: [ ]
+ACTING PROFILE (참고용. 장면마다 그 장면의 행동으로 다시 쓴다): [ ]
 VOICE: "[ ]"
+알려진 실패 → 막는 문장: [예: 말하지 않는 장면에서 입이 움직임 → [NAME] does not say a single word: no attempt to speak, no parted lips, no mouthing.]
 ```
+초안(제안값): [ ]
 
 ## 장소
 
@@ -48,12 +51,16 @@ VOICE: "[ ]"
 ```text
 MASTER GEOMETRY (as seen from [어디], looking [방향]): [ ]
 LIGHT LOCK (장소 기준 방향으로): [ ]
-Nothing else: [ ]
+PALETTE: [ ]
+ERA LOCK: [ ]
+FINISH (정지 이미지용 카메라·렌즈·필름): [ ]
+Nothing else (빈 장소용): [ ]
 ```
+초안(제안값): [ ]
 
-| 뷰 | 계보 | 카메라(어디서 어디를) | 화면 좌 = / 우 = | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
+| 뷰 | 계보 | 카메라(어디서 어디를, mm = °) | 화면 대응 문장 (영어, 글자 그대로) | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
 |---|---|---|---|---|---|---|---|---|
-| `LC-001-V1` | MASTER | | | — | | | | |
+| `LC-001-V1` | MASTER | | `In this view the [direction], the [landmark] side, is screen LEFT.` | — | | | | |
 
 ## 소품
 
@@ -62,6 +69,9 @@ Nothing else: [ ]
 | 요소 ID | 출처 | 크기 (cm · 신체 기준) | 물성 | 상태 머신 |
 |---|---|---|---|---|
 | | | | | |
+
+고정 설명문 (재질·모양·크기·사용 흔적만. 상태·자세·손은 쓰지 않는다): `[ ]`
+초안(제안값): [ ]
 
 ## 그림체
 

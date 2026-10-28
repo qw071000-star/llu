@@ -49,9 +49,11 @@
   - REMOVE: 드러날 표면을 지정하고 `no residual shadow, indentation, fragment or duplicate`
   - 켠 광원이 번지면: `lit but does NOT glow: no halo, no bloom`
 
-**기록:** 확정되면 에셋 대장에 적는다.
+**기록:** 확정 전 답은 에셋 대장의 그 장소 `초안(제안값)` 줄에 둔다. 확정되면 에셋 대장에 적는다.
 - MASTER GEOMETRY (3~4문장)
 - LIGHT LOCK (한 문장)
+- PALETTE, ERA LOCK, FINISH (각 한 문장)
+- 뷰마다 화면 대응 문장(영어, 글자 그대로)과 렌즈(mm = °)
 - `Nothing else` 목록
 - 뷰 계보
 

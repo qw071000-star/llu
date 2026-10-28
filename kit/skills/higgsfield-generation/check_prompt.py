@@ -36,7 +36,7 @@ def check_common(text, args, out):
     if placeholders:
         out.append(("FAIL", f"채우지 않은 빈칸 {len(placeholders)}개: {', '.join(sorted(set(placeholders))[:5])}"))
 
-    stale = find(r"same as (?:before|the previous)|as in the previous (?:shot|clip|cut)|continu(?:e|ing) from the previous|앞과 같|이전과 같|계속해서", text)
+    stale = find(r"same as (?:before|the previous)|(?:as in |from )?the previous (?:shot|clip|cut|take)|continu(?:e|ing) from the previous|앞과 같|이전과 같|계속해서", text)
     if stale:
         out.append(("WARN", f"이전 샷을 가리키는 말 {stale[:3]}. 새 생성에는 그 내용을 직접 쓴다"))
 
@@ -45,7 +45,15 @@ def check_common(text, args, out):
     if cutref:
         out.append(("WARN", f"컷 번호를 가리키는 말 {cutref[:3]}. 모델은 번호를 모른다. 가져올 내용을 직접 쓴다"))
 
+    if find(r"\b(?:left|right) hand\b|오른손|왼손", text):
+        out.append(("WARN", "'오른손/왼손'은 인물 기준으로 읽힌다. 화면 속 물건 기준('[물건] 쪽 손', 'the hand nearer the …')으로 쓴다"))
+
     tags = set(re.findall(r"<<<\s*([^>]+?)\s*>>>", text))
+    holders = sorted(t for t in tags if re.fullmatch(r"[A-Z]{1,5}|.*[\[\]].*", t))
+    if holders:
+        out.append(("FAIL", f"자리표시 태그가 남았다: {', '.join(holders)}. 실제 요소 이름이나 image_N으로 바꾼다"))
+    if not tags:
+        tags = set(re.findall(r"\breference image (\d+)\b", text, re.IGNORECASE))
     if args.refs is not None and tags and len(tags) != args.refs:
         out.append(("FAIL", f"프롬프트 속 참조 태그 {len(tags)}개, 붙일 참조 {args.refs}개. 정확히 맞춘다"))
 
@@ -63,8 +71,6 @@ def check_video(text, args, out):
     has_people = "[SCENE_CONTEXT]" in text or find(r"\b(?:hands?(?!-)|walks?|steps?|turns? (?:to|toward))\b", text)
     if has_people and find(r"\b(?:left|right)\b", text) and "SCREEN direction" not in text:
         out.append(("WARN", "좌우를 썼는데 좌표 문장이 없다: 'LEFT and RIGHT are SCREEN directions.'"))
-    if find(r"\b(?:left|right) hand\b|오른손|왼손", text):
-        out.append(("WARN", "'오른손/왼손'은 인물 기준으로 읽힌다. 화면 속 물건 기준('[물건] 쪽 손')으로 쓴다"))
 
     if find(r"about to speak|almost (?:says|speaks)|tries to speak|starts to say|on the verge of speaking|말하려다", text):
         out.append(("WARN", "'말하려다 만다'는 입술을 움직이게 한다. 말하려는 시도 자체를 없애고 숨·손으로 쓴다"))

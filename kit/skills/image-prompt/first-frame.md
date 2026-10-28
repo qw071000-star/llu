@@ -29,7 +29,10 @@
 - **의상 문장은 에셋 대장 문장을 글자 그대로 쓴다.** 인물 시트의 배경·조명·포즈는 `DO NOT TRANSFER`에 적는다.
 - **콘티 썸네일은 참조로 붙이지 않는다.** 그 구도가 필요하면 같은 구도의 빈 장소 이미지를 먼저 만들어 장소 참조로 쓴다.
 - **소품 크기는 cm와 신체 기준으로 적는다.**
-- **이웃 컷과 비교한다.** 시점과 구도가 겹치지 않는지, 빛 방향이 같은지 본다.
+- **이웃 컷과 비교한다.** 컷 목록의 앞뒤 줄과 연속성 표(인물 자리·자세, 소품 상태)로 본다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
+- **다른 OK의 색감을 가져올 때**
+  - 틀 1(LOCKED)이면 색은 그 장소 뷰에서 온다. 색 기준 OK가 같은 뷰에서 나왔으면 이미 같은 색이니 색 참조를 붙이지 않는다.
+  - 다른 뷰면 틀 2로 쓰고 색 참조를 붙인다. 틀 1을 꼭 써야 하면 한 생성에 한 가지 원칙대로 두 단계(인물 추가 → 색 편집)로 나눈다.
 
 ## 틀 1 — 카메라가 확정된 장소 뷰와 같을 때 (LOCKED EDIT + ADD)
 
@@ -47,7 +50,7 @@ REFERENCE AUTHORITY:
 - <<<PROP>>> controls only [prop]'s shape, material and state; its size is as described above.
 DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framing.
 WARDROBE: [asset registry sentence, verbatim].
-PRESERVE EXACTLY: camera and perspective · every object already in the place · [LIGHT LOCK, verbatim] + [this view's screen mapping] · shadows, exposure, grade, grain
+PRESERVE EXACTLY: camera and perspective · every object already in the place · [LIGHT LOCK, verbatim] + [the view's screen-mapping sentence from the asset registry, verbatim] · shadows, exposure, grade, grain
 ONLY CHANGE: the people and props are added exactly as described. Everything else remains 100% identical.
 Exactly [N] people are visible.
 ```
@@ -68,7 +71,8 @@ PRIORITY: the CAMERA block overrides every reference.
 BLOCKING: [each person at an existing anchor: distance and contact, mid-[action]].
 WARDROBE: [asset registry sentence, verbatim].
 PROP: [position, state, who holds it, size in cm and body terms].
-[Nothing else / palette / material truth / era lock — from the asset registry]
-[LIGHT LOCK, verbatim] [This view's screen mapping: In this view [direction] is screen LEFT.]
+[PALETTE · ERA LOCK from the asset registry, verbatim]
+Nothing else except the people and props named above: [the registry's Nothing else list, without its no-people item].
+[LIGHT LOCK, verbatim] [The view's screen-mapping sentence from the asset registry, verbatim]
 Exactly [N] people are visible.
 ```

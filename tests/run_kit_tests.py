@@ -205,7 +205,7 @@ check("[OK] 생성 운영: 승인하면 OK 기록", "OK 기록" in gen and "ok-c
 check("[OK] 생성 운영: 프롬프트는 보낸 그대로, 기억으로 다시 쓰지 않음", "보낸 글자 그대로" in gen and "기억으로 다시 쓰지 않는다" in gen)
 check("[OK] 지침: 승인은 그 자리에서 OK 대장에", "OK 대장에 기록" in inst)
 check("[OK] 지침: '3-1처럼'은 OK 카드에서 가져옴", "3-1처럼" in inst and "ok-reuse.md" in inst)
-check("[OK] 컷 카드 [12]가 OK 대장을 가리킴", "OK 대장" in card_fields.get("12", "") or "OK 대장" in card.split("[12]")[1])
+check("[OK] 컷 카드 [12]가 OK 대장을 가리킴", re.search(r"^\[12\].*OK 대장", card, re.M) is not None)
 check("[OK] 컷 카드 [7]에 가져온 OK", "가져온 OK" in card)
 reuse = read(os.path.join(SKILLS, "production-session", "ok-reuse.md"))
 for word in ["모션", "색감", "표정", "카메라", "목소리", "번호만"]:
@@ -215,6 +215,25 @@ for f in ["higgsfield-generation/SKILL.md", "production-session/cut-card.md", "p
     check(f"[번호] {f}: 옛 번호 형식(C01, C##) 없음", not re.search(r"C\d\d|C##|C\[##\]", read(os.path.join(SKILLS, f))))
 for f in ["shot-list.md", "asset-registry.md", "CLAUDE.md"]:
     check(f"[번호] project-files/{f}: 옛 번호 형식 없음", not re.search(r"C\d\d|C##", read(os.path.join(KIT, "project-files", f))))
+
+# 14. 맹검 시험(tests/agent-eval)에서 찾은 결함이 다시 생기지 않는가
+claude_md = read(os.path.join(KIT, "project-files", "CLAUDE.md"))
+reg = read(os.path.join(KIT, "project-files", "asset-registry.md"))
+check("[맹검] 컷 카드 수정 권한이 CLAUDE.md·세션 스킬·카드에서 같다", all("[3]~[7]" in t for t in [claude_md, read(os.path.join(SKILLS, "production-session", "SKILL.md")), card]))
+check("[맹검] 컷 목록: 컷 세션이 상태·확정 job 칸을 고친다", "상태 칸과 확정 job 칸" in shot and "상태·확정 job 칸" in claude_md)
+for f, t in [("instructions.md", inst), ("video-prompt", vskill), ("image-prompt", img_skill)]:
+    check(f"[맹검] {f}: '몰라'도 제안값으로", "몰라" in t)
+nospeak = "does not say a single word: no attempt to speak, no parted lips, no mouthing"
+for f in ["video-prompt/fixes.md", "video-prompt/live-action.md", "acting/SKILL.md"]:
+    check(f"[맹검] 말하지 않음 문장 통일: {f}", nospeak in read(os.path.join(SKILLS, f)).replace("\n", " "))
+check("[맹검] 렌즈 mm → 화각 환산표", "50mm 47°" in vskill and "시작 이미지가 이긴다" in vskill)
+check("[맹검] 가져온 OK의 위험도 옮긴다", "위험도 가져온다" in reuse and "위험 → 막는 문장" in okt)
+check("[맹검] OK 대장 예시는 지우라고 표시", "예시" in okt and "지운다" in okt)
+for word in ["PALETTE", "ERA LOCK", "화면 대응 문장", "초안(제안값)", "알려진 실패"]:
+    check(f"[맹검] 에셋 대장 틀에 '{word}'", word in reg)
+check("[맹검] 자리표시 태그 안내(image-prompt)", "자리표시" in img_skill)
+check("[맹검] \"다시 만들어\" 확인 규칙", "그 확인이다" in gen)
+check("[맹검] 검토 상태 정의", "`검토`: 완성된 결과" in gen)
 
 # 11. 프롬프트 검사기: 픽스처마다 기대 결과와 같은가
 #     파일 이름: <kind>__<pass|fail>__<설명>.txt

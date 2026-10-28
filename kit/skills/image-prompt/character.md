@@ -8,7 +8,7 @@
 | 체형, 어깨, 자세 | `BODY AND PROPORTIONS` |
 | 의상: 겉옷 → 여밈 → 깃·주머니 → 안옷 → 하의 → 신발, 허용 액세서리 | `OUTFIT` |
 | 헤어: 길이, 질감, 가르마, 뒷모습, 색, 마감 | `HAIR` |
-| 배경 색·질감, 조명 방향과 질 | `BACKGROUND AND LIGHTING` |
+| 배경 색·질감, 조명 방향과 질 (작품 공통. 첫 확정 시트의 줄을 그대로 쓴다) | `BACKGROUND AND LIGHTING` |
 | 시트 규격(작품 공통, 바꾸지 않음) | `PANEL LAYOUT` |
 | 수정이면: 기준 시트 job, 바꿀 것 하나(의상 또는 헤어), 없앨 옛 항목 | 틀 2 `CHANGE`, `REMOVE COMPLETELY` |
 | 대사가 있는 인물이면: 연기 프로필, 목소리 문장 | 에셋 대장 (`acting` §6·§7) |

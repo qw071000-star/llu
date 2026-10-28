@@ -9,13 +9,13 @@
 
 | # | 블록 | 쓰는 것 | 자주 틀리는 것 |
 |---|---|---|---|
-| — | `PRE_SHOT_CONTINUITY` | 이어받는 위치·자세·소품 소유·빛. 이어받지 않는 것도 적는다 | 확인 없이 계승 |
+| — | `PRE_SHOT_CONTINUITY` | 이어받는 위치·자세·소품 소유·빛. 이어받지 않는 것은 지금 상태로 적는다(`the bag is closed`). "previous shot" 같은 말은 쓰지 않는다 | 확인 없이 계승 |
 | 1 | `SCENE_CONTEXT` | 시대·장소·이 클립의 일, 2~4문장 | 카메라·연기를 여기 몰기 |
-| 2 | `ACTIVE_REFERENCES` | 붙인 참조마다 ID·역할·권한 한 줄. 인물 줄은 고정 설명문 + `100% matches the reference` | 안 붙인 태그, 붙이고 안 씀 |
+| 2 | `ACTIVE_REFERENCES` | 붙인 참조마다(시작 이미지 포함) ID·역할·권한 한 줄. 인물 줄은 고정 설명문 + `100% matches the reference` | 안 붙인 태그, 붙이고 안 씀 |
 | 3 | `LOCATION_MAP` | 좌표 문장, 카메라 위치, 전·중·후경, 광원 | "근처에", "그 문" |
 | 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | 0:00에 누가 어디서 무슨 동작 **도중인지**, 소품, 보이는 인원 수 | 숏 전체로 확대 |
 | 5 | `FORMAT_MODE` | 실사, 단일 연속 테이크, 길이 | 단일 테이크인데 컷 요구 |
-| 6 | `OPTICS` | 대각 화각(도) + 관찰 결과 3개, 심도 | mm·조리개·렌즈 브랜드 |
+| 6 | `OPTICS` | 대각 화각(도, 시작 이미지의 mm를 SKILL.md §2 표로 환산) + 관찰 결과 3개, 심도 | mm·조리개·렌즈 브랜드 |
 | 7 | `CAMERA` | 위치·높이·방향·고정 여부·움직임과 속도 | 복합 움직임 |
 | 8 | `ACTION_TIMING` | `0:00–0:03 —` 구간별 행동·대사, 마지막 프레임 | 빈 구간, 횟수가 바뀜 |
 | 9 | `CHARACTER_ACTING` | 목표와 행동, 눈, 감정 범위의 양 끝 = 실패 | 감정 형용사 |
@@ -24,7 +24,7 @@
 | 12 | `AUDIO` | 대사 원문, 횟수, 목소리, 효과음, 음악 여부, 말하지 않는 인물 | — |
 | 13 | `STYLE` | 매체 질감·색조 한두 줄 | 스타일이 얼굴을 통제한다고 가정 |
 | 14 | `QUALITY` | 해상감, 피부·직물 질감, 손가락 왜곡 억제 | — |
-| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 지킬 상태·횟수. Forbidden: **실제로 나온 실패만**, 범위 태그와 함께 | 과거 실패 누적 |
+| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 지킬 상태·횟수. Forbidden: **실제로 나온 실패만**(이 컷 + 가져온 OK의 위험), 범위 태그와 함께 | 과거 실패 누적 |
 
 ## 덜어내는 법
 
@@ -37,7 +37,7 @@
 
 ## 빈 틀
 
-블록 밖에 한국어로 적는다: 모델, 해상도, 길이, 화면비, 소리, 시작·끝 이미지 job, 붙인 요소(순서대로), 위험 목록, 저장 폴더.
+블록 밖에 한국어로 적는다: 모델, 해상도, 길이, 화면비, 소리, 시작·끝 이미지 job, 붙인 요소(시작 이미지 포함, 순서대로. 이 수가 검사 스크립트의 `--refs`), 위험 목록, 저장 폴더.
 
 ```text
 [SCENE_CONTEXT]
@@ -97,8 +97,8 @@ motion_owner = ENVIRONMENT: [none / what]
 [Practical sources as in the start image; the dominant source and its direction.]
 
 [AUDIO]
-[Dialogue in [language], exactly once.] [PERSON]: "[line]" — [voice sentence]. [PERSON 2] does not say
-a single word. [Sound effects]. [Music or no music.]
+[Dialogue in [language], exactly once.] [PERSON]: "[line]" — [voice sentence]. [PERSON 2] does not say a single word:
+no attempt to speak, no parted lips, no mouthing. [Sound effects]. [Music or no music.]
 
 [STYLE]
 [Medium, look, skin tones, saturation.]
@@ -139,6 +139,6 @@ sharp / the camera is physically far away.
 [속도] All movement is slow and even; each action flows into the next without a hard start or stop.
 [상태 머신] [OBJECT] state: [STATE_A] -> [STATE_B], exactly one transition, never reversed.
 [연기 범위] Between [state A] and [state B]. [extreme 1] = failed take; [extreme 2] = failed take.
-[말하지 않음] [Person] does not say a single word; no attempt to speak, no lip movement.
+[말하지 않음] [Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.
 [광원 번짐] The [lamps] are on, but their light does not bloom or spread.
 ```

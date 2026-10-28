@@ -1,0 +1,10 @@
+# args: --refs 2
+# expect: 자리표시 태그
+# expect: 오른손/왼손
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+Using <<<LOC>>> as the exact same location, generate a new view. CAMERA: a medium shot at seated eye level.
+REFERENCE AUTHORITY:
+- <<<LOC>>>: geography, materials, landmarks, light direction
+- <<<char_grandpa_autumn_v1>>>: face, hair, wardrobe only.
+BLOCKING: the old man sits on the bench, his right hand on the bag.
+Exactly 1 person is visible.
