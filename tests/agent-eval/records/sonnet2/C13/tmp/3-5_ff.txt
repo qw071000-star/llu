@@ -1,0 +1,15 @@
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions.
+Using <<<image_1>>> as the exact same location, generate a new view. CAMERA: a tripod-fixed close-up from inside the shelter, in front of the bench, about 50 cm in front of the old man's knees, looking north toward the shelter's back wall (the same direction as <<<image_1>>>). The lens sits slightly above the bag's open mouth and tilts down about 30° onto the opening and his hand. 85mm lens, shallow depth of field, focus on the hand and the bag's rim. The hand and the bag's open mouth fill most of the frame. His face is out of frame.
+REFERENCE AUTHORITY:
+- <<<image_1>>>: geography, materials, landmarks, light direction
+- <<<image_2>>> controls only the old man's hand, sleeve and wardrobe. Same wardrobe. Change only the pose, framing, location and lighting.
+- <<<image_3>>>: shape and material only; its state is open as described below and its size is as described below
+- <<<image_4>>> controls only colour, grade, contrast and texture. Never take its subjects, composition, people or light direction.
+DO NOT TRANSFER: the character sheet's backdrop, studio lighting, pose or framing. From <<<image_4>>>: the girl, the bench, the timetable sign, its framing.
+PRIORITY: the CAMERA block overrides every reference.
+BLOCKING: The old man sits on the persimmon-tree half of the bench, his back against the shelter wall. The bag lies across his thighs. The hand nearer the persimmon tree rests with its fingertips lightly on the rim of the bag's open mouth, fingers loosely curled, mid-pause, not reaching inside. His other hand, out of frame, holds a handle of the bag. A natural hand with five fingers and correct anatomy.
+WARDROBE: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. Only the jacket sleeve, the white shirt cuff and a part of the vest are in frame.
+PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Except: the bag is OPEN here, its brass clasp undone and its mouth open, about as wide as his lap; the inside is dark and nothing inside is identifiable. Ignore the closed state in <<<image_3>>>.
+Nothing else except the old man's hand and the bag: no other buildings, no cars, no legible text.
+Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west, the persimmon-tree side, is screen LEFT.
+Exactly 1 person is visible, only the hand and sleeve.

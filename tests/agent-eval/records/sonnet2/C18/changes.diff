@@ -1,0 +1,35 @@
+# 정본 변경 (시작 상태 대비)
+# 새 파일·바뀐 파일 목록
+ M project/cuts/3-2.md
+ M project/shot-list.md
+
+diff --git a/project/cuts/3-2.md b/project/cuts/3-2.md
+index 0e3dbd6..1680ea1 100644
+--- a/project/cuts/3-2.md
++++ b/project/cuts/3-2.md
+@@ -16,9 +16,9 @@
+ [6] 타이밍: [ ]
+     이음새: 앞 컷에서 이어받는 것 3-1과 같은 순간 / 다음 컷 첫 프레임과 맞출 것 [ ]
+ [7] 참조: ff_3-2_v1 · 시작 이미지 / char_grandpa_autumn_v1 / char_girl_raincoat_v1 / prop_doctor_bag_v1
+-    가져온 OK: 없음
++    가져온 OK: 3-1 영상(job-v-3-1) — 모션(ACTION_TIMING, PHYSICS) 글자 그대로
+ [8] 고정 설명문: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. / A yellow raincoat over a navy school uniform, white knee socks and red rain boots. / A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. / Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+ [9] 이 컷에 적용되는 확정 사항: §2 소리 대사 컷만 켬 · §5 절제 연기 · §6 가방 닫힘
+-[10] 알려진 위험 → 막는 문장: 할아버지 시선이 카메라로 감(job-ff-3-2-old) → Nobody looks at the camera
+-[11] 이전 시도: job-ff-3-2-old — 거절 — 할아버지가 카메라를 봄 / job-ff-3-2 — 승인
++[10] 알려진 위험 → 막는 문장: 할아버지 시선이 카메라로 감(job-ff-3-2-old) → Nobody looks at the camera / 할아버지 입 움직임(sim-job-3299) → GRANDPA does not say a single word: no attempt to speak, no parted lips, no mouthing. His lips stay closed and still from 0:00 to 0:08. (사용자 확인: "다시 만들어", 2026-10-28, 적용함)
++[11] 이전 시도: job-ff-3-2-old — 거절 — 할아버지가 카메라를 봄 / job-ff-3-2 — 승인 / sim-job-3299 — 보냄 — 약 40 크레딧(Seedance 2.5 480p 8초, 3-2 영상 1회) / sim-job-3299 — 거절 — 0:04–0:06 할아버지 입술이 달싹임(막는 문장이 있었는데도 남. 대사 구간과 겹쳐 같이 움직인 것으로 추정) / sim-job-3201 — 보냄 — 약 40 크레딧(Seedance 2.5 480p 8초, 3-2 영상 2회째, AUDIO 한 줄만 변경)
+ [12] 확정 프롬프트: OK 대장 "3-2 시작 이미지"(job-ff-3-2)
+diff --git a/project/shot-list.md b/project/shot-list.md
+index 74e132f..9b821bb 100644
+--- a/project/shot-list.md
++++ b/project/shot-list.md
+@@ -13,7 +13,7 @@
+ | 2-1 | 0:24 | 벤치에 홀로 앉아 길을 보는 할아버지 (손녀는 잠시 자리를 비움) | 승인 | LC-001-V1 | CH-001, PR-001 | `job-ff-2-1` | `job-v-2-1` | 이미지 2 / 영상 3 |
+ | 2-2 | 0:32 | 할아버지 미디엄 클로즈업, 같은 얼굴로 가방을 쓰다듬음 | 진행 | LC-001-V1 기준 새 시점 | CH-001, PR-001 | `job-ff-2-2` | | 이미지 1 |
+ | 3-1 | 0:40 | 손녀가 시간표를 읽고 "할아버지, 막차 갔대." | 승인 | LC-001-V1 | CH-001, CH-002, PR-001 | `job-ff-3-1` | `job-v-3-1` | 이미지 2 / 영상 4 |
+-| 3-2 | 0:48 | 같은 순간을 더 가깝게 (벤치와 시간표 투샷) | 진행 | LC-001-V1 기준 새 시점 | CH-001, CH-002, PR-001 | `job-ff-3-2` | | 이미지 2 |
++| 3-2 | 0:48 | 같은 순간을 더 가깝게 (벤치와 시간표 투샷) | 진행 | LC-001-V1 기준 새 시점 | CH-001, CH-002, PR-001 | `job-ff-3-2` | | 이미지 2 / 영상 2 |
+ | 3-3 | 0:56 | 손녀가 시간표를 한 번 더 보고 돌아선다 | 진행 | LC-001-V1 기준 새 시점 | CH-002 | `job-ff-3-3` | | 이미지 1 |
+ | 3-4 | 1:04 | 할아버지가 무릎 위 가방을 연다 | 대기 | — | CH-001, PR-001 | | | |
+ | 3-5 | 1:12 | 열린 가방 위 할아버지 손 클로즈업 | 대기 | — | CH-001, PR-001 | | | |

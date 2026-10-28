@@ -1,0 +1,18 @@
+# 정본 변경 (시작 상태 대비)
+# 새 파일·바뀐 파일 목록
+ M project/asset-registry.md
+
+diff --git a/project/asset-registry.md b/project/asset-registry.md
+index 69082df..3070760 100644
+--- a/project/asset-registry.md
++++ b/project/asset-registry.md
+@@ -89,6 +89,9 @@ Nothing else: no other buildings, no cars, no people, no legible text.
+ | 뷰 | 계보 | 카메라(어디서 어디를) | 화면 좌 = / 우 = | 부모 job | 확정 job | 처리 모델 | 상태 | 한계 |
+ |---|---|---|---|---|---|---|---|---|
+ | `LC-001-V1` | MASTER | 길 건너편 서서 눈높이, 북쪽(정류장 정면)을 봄 | 서(감나무) / 동(시간표) | — | `job-lc001v1` | GPT Image 2.5 | 확정 | 감 열매 조금 많음 |
++| `LC-001-V2` | VIEW (반대 방향, DERIVED) | 정류장 안 뒷벽 벤치 가운데 바로 앞(제안값), 벤치 높이 약 45cm(사용자 답), 남쪽(길) 정면(제안값), 미디엄 와이드(사용자 답) | 동(시간표) / 서(감나무) | `job-lc001v1` | | GPT Image 2.5 (요청) | 진행 (프롬프트 확인 중) | |
++
++- LC-001-V2 정보 점검 답 (2026-10-28): 지배 요소 = 개구부 액자 속 빈 길 + 화면 오른쪽(서)에서 드는 노을빛 (제안값) · 남쪽 먼 배경 = 길 건너 추수한 논이 평평하게 이어지다 먼 낮은 산줄기 (제안값, 길 남쪽 논은 `job-ff-1-1`) · 남김 = 개구부 액자, 화면 왼쪽 시간표 기둥(뒷면), 화면 오른쪽 감나무 가지 / 뺌 = 벤치·뒷벽, 북쪽 논·산 (제안값) · 저장 `fld-locs` · 확정 시 요소 이름 `loc_busstop_inside_v1`
+ 
+ 요소 이름: `loc_busstop_road_v1` = LC-001-V1
+ 

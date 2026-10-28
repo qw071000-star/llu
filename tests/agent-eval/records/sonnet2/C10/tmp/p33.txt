@@ -1,0 +1,66 @@
+[SCENE_CONTEXT]
+Late autumn, early 1990s, a rural bus stop at dusk. A girl checks the timetable sign one more time, finds nothing has changed, and turns away from it toward the bench. She says nothing.
+
+[ACTIVE_REFERENCES]
+<<<ff_3-3_v1>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the end of the shelter, the timetable sign, the light, colour and brightness, and the position and pose of the girl at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
+<<<char_girl_raincoat_v1>>> GIRL (10). A yellow raincoat over a navy school uniform, white knee socks and red rain boots. Face, hair, body type and wardrobe 100% match this reference.
+REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 position. The character reference has authority only over face, hair, body and clothes. Do not take the background, lighting, pose or panel layout from the character reference.
+
+[LOCATION_MAP]
+LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+LEFT EDGE: the end of the concrete shelter with its corrugated tin roof; the bench is behind it, out of frame. RIGHT HALF: the timetable sign on its pole, and the girl an arm's length from the pole. FOREGROUND: the empty edge of the road. BEHIND: harvested paddies to low hills.
+In this view the west, the persimmon-tree side, is screen LEFT. GIRL stays where she stands and never steps into the road.
+
+[FIRST_FRAME_AND_SPATIAL_BLOCKING]
+(Scope: FIRST_FRAME only.)
+- GIRL: standing at the timetable sign, an arm's length from its pole, facing the sign in three-quarter back view, mid-reading, the hand nearer the sign raised to the printed times, the other arm relaxed at her side.
+Exactly 1 person is visible.
+
+[FORMAT_MODE]
+Live action. A single continuous take from 0:00 to 0:08. No cuts. 8 seconds.
+All movement is slow and even; nothing accelerates suddenly.
+
+[OPTICS]
+Diagonal field of view about 47°. The girl and the timetable sign fill the right half of the frame / the end of the shelter sits at the left edge / the bench is out of frame. The girl is sharp and the far paddies are slightly soft.
+
+[CAMERA]
+Fixed on a tripod at standing eye level at the near edge of the road, opposite the timetable sign, looking north, at the same position as in the start image, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
+
+[ACTION_TIMING]
+0:00–0:04 — GIRL keeps reading; the hand nearer the sign moves once down the printed times, then does not startle; simply stops and rests there.
+0:04–0:06 — GIRL turns toward the bench, out of frame at screen LEFT, on the spot with no step: eyes first, then head, then shoulders, about 1.5 s, her feet pivoting last. The hand nearer the sign leaves the sign and lowers to her side.
+0:06–0:08 — GIRL stands still where she began, her body turned toward screen LEFT in three-quarter front view, both hands at her sides, her eyes on the bench side out of frame. The shot ends with her standing like this.
+
+[CHARACTER_ACTING]
+GIRL: checks the times once more and accepts that nothing has changed; her hand does the checking. Her eyes leave the timetable a beat before her head turns: continuous naturalistic eye life, the gaze drifting and settling rather than locking, realistic blink rate, live wet catchlights. Between worry and resignation; tears, a sigh or a big gesture = failed take, no reaction at all = failed take. Turning within one second = failed take.
+Nobody looks at the camera.
+
+[PHYSICS]
+motion_owner = CHARACTER: the girl's hand along the times, then her turn (eyes, head, shoulders, feet); no step.
+motion_owner = PROP: none; the timetable sign and its pole stay fixed.
+motion_owner = CAMERA: none.
+motion_owner = ENVIRONMENT: none.
+
+[LIGHTING]
+Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. In this view the west is screen LEFT, so the light falls on the girl from screen LEFT.
+
+[AUDIO]
+No dialogue. GIRL does not say a single word: no attempt to speak, no parted lips, no mouthing. Distant wind over the paddies and the soft rustle of her raincoat as she turns. No music.
+
+[STYLE]
+Live-action film look; natural skin tones, restrained saturation.
+
+[QUALITY]
+Facial features clear; skin and fabric textures natural. No distortion of faces or fingers.
+
+[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
+Required:
+- Exactly one person (ENTIRE_SHOT)
+- The camera stays locked and the framing stays as in the start image (ENTIRE_SHOT)
+- The turn happens once, toward screen LEFT, on the spot (INTERVAL 0:04–0:06)
+- The print on the timetable stays illegible marks, not readable text (ENTIRE_SHOT)
+- The girl ends turned toward screen LEFT, hands at her sides (FINAL_FRAME)
+Forbidden:
+- GIRL looking at the camera (ENTIRE_SHOT)
+- GIRL moving her lips (ENTIRE_SHOT)
+- Subtitles, text, watermarks, logos. (ENTIRE_SHOT)

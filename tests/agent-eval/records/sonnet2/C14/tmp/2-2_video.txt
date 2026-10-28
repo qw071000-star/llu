@@ -1,0 +1,65 @@
+[SCENE_CONTEXT]
+Late autumn, early 1990s, a rural bus stop at dusk. An old man sits alone on the bench with a bag on his lap, seen in a medium close shot. His hand strokes the leather of the bag once more and comes to rest. He watches the empty road. Nothing comes.
+
+[ACTIVE_REFERENCES]
+<<<ff_2-2_v1>>> START IMAGE: the exact frame at 0:00. The camera position, lens, framing, composition, the shelter wall and bench, the light, colour and brightness, and the position and pose of the man and the bag at 0:00 are exactly this image. The video begins from this image and continues from it without any cut, jump or reframing.
+<<<char_grandpa_autumn_v1>>> GRANDPA (72). A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. Face, hair, body type and wardrobe 100% match this reference.
+<<<prop_doctor_bag_v1>>> A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, hanging heavy from its handles. Its size stays the same as in the start image from start to finish.
+REFERENCE AUTHORITY: the start image has sole authority over camera, framing, the place, the light, colour and the 0:00 position. The character reference has authority only over face, hair, body and clothes. The bag reference has authority only over its material, shape and state; its size follows the start image. Do not take the background, lighting, pose or panel layout from the character or bag references.
+
+[LOCATION_MAP]
+LEFT and RIGHT are SCREEN directions. Places are named by the objects on screen.
+CENTRE: GRANDPA on the tree-side half of the bench, his back against the shelter's back wall. FOREGROUND: the empty road edge, where the camera stands about 2 m from him.
+In this view the west, the persimmon-tree side, is screen LEFT. GRANDPA stays on the bench.
+
+[FIRST_FRAME_AND_SPATIAL_BLOCKING]
+(Scope: FIRST_FRAME only.)
+- GRANDPA: seated on the tree-side half of the bench, back against the shelter wall, both hands on the bag on his lap, mid-stroke with the hand nearer the tree moving over the leather; his eyes on the empty road on the tree side, the face calm and heavy-lidded.
+- BAG: across his thighs, clasp closed.
+Exactly 1 person is visible.
+
+[FORMAT_MODE]
+Live action. A single continuous take from 0:00 to 0:08. No cuts. 8 seconds.
+All movement is slow and even; nothing accelerates suddenly.
+
+[OPTICS]
+Diagonal field of view about 29°. The background wall is compressed and soft / only his face and the bag's brass clasp are sharp / the camera is physically far away. Shallow depth of field.
+
+[CAMERA]
+Fixed on a tripod at seated eye level at the near edge of the road, about 2 m from GRANDPA, opposite the tree-side half of the bench, at the same position as in the start image, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
+
+[ACTION_TIMING]
+0:00–0:03 — GRANDPA's hand nearer the tree, already moving over the leather, strokes slowly once more and stops; his eyes stay on the road.
+0:03–0:08 — both of his hands rest on the bag, still; one slow blink; his eyes stay on the road. The shot ends with him still watching the road, both hands resting on the closed bag.
+
+[CHARACTER_ACTING]
+GRANDPA: waits without hoping. Between stillness and quiet resignation; a sigh or a frown = failed take, a smile = failed take. His eyes stay on the empty road on the tree side with slow, heavy blinks. His eyes never drop to the bag.
+He never looks at the camera.
+
+[PHYSICS]
+motion_owner = CHARACTER: the grandpa's hand nearer the tree on the leather (one stroke only) and his eyes.
+motion_owner = PROP: the bag stays on his lap, closed and heavy; never lifted, never opened.
+motion_owner = CAMERA: none.
+motion_owner = ENVIRONMENT: none.
+
+[LIGHTING]
+Low dusk sun from the west, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+
+[AUDIO]
+No dialogue. GRANDPA does not say a single word; no attempt to speak, no lip movement. Distant wind over the paddies. No music.
+
+[STYLE]
+Live-action film look; natural skin tones, restrained saturation.
+
+[QUALITY]
+Facial features clear; skin, fabric and leather textures natural. No distortion of faces or fingers.
+
+[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
+Required:
+- Exactly one person (ENTIRE_SHOT)
+- The bag stays closed on his lap (ENTIRE_SHOT)
+- His eyes stay on the empty road on the tree side (ENTIRE_SHOT)
+- The stroke happens once, then both hands rest on the bag (INTERVAL 0:00–0:03, FINAL_FRAME)
+Forbidden:
+- GRANDPA moving his lips (ENTIRE_SHOT)
+- Subtitles, text, watermarks, logos. (ENTIRE_SHOT)
