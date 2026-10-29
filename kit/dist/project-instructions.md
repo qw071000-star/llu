@@ -44,7 +44,7 @@ Do not require a start phrase or attachment.
 
 - **New prompt:** the full text in one code block (also when saved to a file). Outside the block, one plain line each: mode, references (ID, role), model, resolution, length, save folder.
 - **Editing a confirmed prompt:** only the changed lines as "전 → 후" (full text only when the user must paste it). A rewrite is a new prompt (also a template-2 first frame with a new camera). Edit prompts (LOCKED EDIT, age edit) show the full text plus each changed value as "전 → 후" outside the block.
-- **Check:** before showing a prompt, save it under `tmp/` and run the line below exactly, as a single standalone Bash call (no `cd` in any call, the shell keeps its directory; no `&&`, pipes or absolute paths). Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number. Delete the `tmp/` files afterwards. If it cannot run, say so.
+- **Check:** before showing a prompt, save it under `tmp/` and run the line below exactly, as a single standalone Bash call (no `cd`, `&&`, pipes or absolute paths). No `cd` in earlier calls either.. Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number. Delete the `tmp/` files afterwards. If it cannot run, say so.
   - Image: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
   - Video: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
 - **Before ending the turn:** answers received are on the existing cut card / registry with `(제안값)`. A question-only turn creates no new card file.
@@ -58,7 +58,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 - Map each new request to one task number below.
 - **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"). Start the answer with one line "[N]번 [작업명]으로 진행합니다."
 - **Ask first only when two or more tasks fit** (e.g. "3-6 별 더 반짝" with no 3-6 video yet: 14 or 15?), **in one line, and open nothing yet:** "[N]번 [작업명]으로 이해했습니다. 이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." Open the skill only after the user agrees or picks a number.
-- Several tasks in one message: list them as numbers in a proposed order and do only the first.
+- Several tasks in one message: list them as numbers in a proposed order and do only the first; for each deferred one say in one line why it waits.
 - Vague wording inside a task ("구름 더 느리게", "50대처럼", "좀 더 영화같이"): do not guess and do not regenerate. Propose concrete values from the skill's own tables and ask.
 
 ## 2. Tasks
@@ -78,8 +78,8 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 11 | 퍼스트·끝 프레임 | "퍼스트 프레임", "끝 프레임", "시작 이미지", "3-4 뒤에서 본 첫 프레임", swapping a person in a frame | `image-prompt` → `first-frame.md` |
 | 12 | 이미지 결과 일부 고치기 | "여기만 고쳐" on an image result | `image-prompt` §3 + that kind's file |
 | 13 | 실사·인물 영상 | "3-2 영상", "걸어 나가는 영상" | `video-prompt` → `live-action.md`; open `acting` only on the turn that writes the prompt |
-| 14 | 배경 영상 | "배경 영상", landscape | `video-prompt` → `background.md` |
-| 15 | 영상 결과 고치기 | "이상해", "입이 움직여", "너무 빨라" on a video result | `video-prompt` (§0 table for speed·stars·gait) → `fixes.md` for other symptoms |
+| 14 | 배경 영상 | "배경 영상", landscape | `video-prompt` → `background.md` (open it before asking) |
+| 15 | 영상 결과 고치기 | "이상해", "입이 움직여", "너무 빨라" on a video result | `video-prompt` §0 only for speed·stars·gait; `fixes.md` only for other symptoms |
 | 16 | 다른 OK처럼 | "3-1처럼", "2-1 표정 그대로" | `production-session` → `ok-reuse.md` + that one OK card, with task 11/13/14 |
 | 17 | 고해상도 | "1080p", "2k" | `video-prompt` → `rerender.md` |
 | 18 | 생성 보내기 | "이미지로 만들어", "영상으로 만들어", "보내" (prompt already shown) | `higgsfield-generation` |
@@ -87,7 +87,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 20 | 크레딧·폴더 | "크레딧", "폴더 만들어" | `higgsfield-generation` (open its §2 folder part only on the turn that creates folders) |
 | 21 | 마지막 프레임·러프컷 (Claude Code) | "마지막 프레임", "이어 붙여", "러프컷" | `assembly` |
 | 22 | 색 맞추기 (Claude Code) | "색 맞춰", "톤 통일", "더 노래" | `color-continuity` |
-| 23 | OK 프롬프트 다시 보기·번역 | "프롬프트 다시", "한국어로" | that one OK card (no check). Generation text stays English; a translation is for reading, outside the code block |
+| 23 | OK 프롬프트 다시 보기·번역 | "프롬프트 다시", "한국어로" | that one OK card (no check). The English original as is; **a translation is plain text, never in a code block** |
 
 ## 3. What not to open
 
@@ -105,17 +105,17 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 
 ### Never ask
 
-Model, check resolution, aspect ratio, default sound, save folder, look and era, lens (start image mm is the default), length. When canon (`decisions.md`, registry folder table) has them, show one line "기본값으로 씀: …". Background video: no camera move question unless the user mentioned movement (canon fixed → default line).
+Model, check resolution, aspect ratio, default sound, save folder, look and era, lens (start image mm is the default), length. When canon (`decisions.md`, registry folder table) has them, show one line "기본값으로 씀: …". Background video: no camera move question unless the user mentioned movement.
 
 ### Flag first (ask which way before the prompt)
 
 - User's words differ from canon, an OK, the start image, or cut card [1] → which one (and: this cut only, or the whole work?).
 - The request changes an approved cut → replace it with a new take?
 - A pointed-to image ("이걸로") is not in the conversation → ask for that image only; defer items that need it.
-- The cut number is not in `shot-list.md` → ask only what the cut is; defer camera, people, props and folder.
+- The cut number is not in `shot-list.md` → ask only what the cut is (a new cut, or a `대기` cut misnamed?); defer camera, people, props and folder.
 - Several tasks in one message → propose an order (task numbers) and ask only about the first.
 - Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (`3-6 [대기]` with `승인`/`거절` under it) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
-- Generation: the user has not said "만들어"/"보내" on a prompt they saw → ask whether to send. High resolution only after the user confirms. Same core failure twice in a row → stop (instructions rule 8).
+- Generation: no "만들어"/"보내" on a prompt the user saw → ask whether to send.
 
 ## Per task (beyond the skill's table)
 

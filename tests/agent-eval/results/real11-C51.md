@@ -12,7 +12,7 @@
 - 끝의 "다음에 쓸 수 있는 작업" 두 가지는 요청 밖 제안이지만 질문 한 묶음 안이라 경미.
 
 ## 키트 결함
-- `kit/context/tasks.md:34`(23번 행) "a translation is for reading, outside the code block"가 표의 마지막 칸 끝에 묻혀 있다. 제안: 같은 문장을 `kit/instructions.md` Output의 "New prompt" 불릿에 한 줄 더 쓰거나 `kit/skills/production-session/ok-reuse.md` 맨 위에 "Translation: plain text, never a code block"을 넣는다.
+- `kit/context/tasks.md:39`(23번 행) "a translation is for reading, outside the code block"가 표의 마지막 칸 끝에 묻혀 있다. 제안: 같은 문장을 `kit/instructions.md` Output의 "New prompt" 불릿에 한 줄 더 쓰거나 `kit/skills/production-session/ok-reuse.md` 맨 위에 "Translation: plain text, never a code block"을 넣는다.
 
 ## 총평
 번역 자체는 충실했으나 코드블록에 넣어 "번역은 블록 밖" 규칙을 어겼다.

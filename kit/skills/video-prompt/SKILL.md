@@ -75,7 +75,7 @@ How to ask is instructions rule 4. If there are more than 10 questions, group th
 
 | To decide | Standard |
 |---|---|
-| Length | Follow the canon's cut length. If the canon has none: dialogue/action live action 5-10 s, background 10-15 s. Split anything over 15 s |
+| Length | **The canon's cut length first** (`decisions.md`). Only if canon has none: dialogue/action live action 5-10 s, background 10-15 s. Split anything over 15 s |
 | Lens conversion | Diagonal field of view (full-frame): 24mm=84° · 28mm=75° · 35mm=63° · 50mm=47° · 65mm=37° · 75mm=32° · 85mm=29° · 100mm=24° · 135mm=18°. For a mm not in the table, interpolate between the two nearest (105mm ≈ 23°). If the cut card and the start image disagree, the start image wins (tell the user and proceed) |
 | Chaining | The later generation takes the designated frame of the earlier generation as `start_image`. The later generation's 0:00 is the storyboard time as is, with no lead-in margin (editing handles go only at the end). `PRE_SHOT_CONTINUITY` carries only the inherited state; do not carry over the previous video's framing or lens |
 | Location | One location per generation. Confirm a new location as an image first |

@@ -16,7 +16,7 @@
 - 1단계 프롬프트에 형광등 꺼짐 + 달·별 없음 → 거의 검은 이미지가 나올 위험을 스스로 짚음(좋음).
 
 ## 키트 결함
-- `kit/instructions.md` Output "Editing a confirmed prompt" 줄(전 → 후)이 "Edit prompts (LOCKED EDIT, …)" 괄호 안에만 있어 눈에 띄지 않는다. 제안: `kit/skills/image-prompt/location-edit.md` Rules 끝에 "Show 전 → 후 for each changed value outside the block" 한 줄을 넣는다.
+- `kit/instructions.md:46`(Output "Editing a confirmed prompt") 줄(전 → 후)이 "Edit prompts (LOCKED EDIT, …)" 괄호 안에만 있어 눈에 띄지 않는다. 제안: `kit/skills/image-prompt/character-edit.md:18`에는 이미 "Outside the block, show each changed value as 전 → 후" 줄이 있으니(23c0c1a에서 추가) 같은 한 줄을 `location-edit.md` Rules와 `image-prompt/SKILL.md` §3에도 넣는다.
 
 ## 총평
 시간대와 불 켜기를 나눠 1단계가 최종 모습이 아님을 알렸으나, 2턴에 전 → 후 줄이 빠졌다.

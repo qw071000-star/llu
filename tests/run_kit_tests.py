@@ -380,10 +380,10 @@ for word in ["Speed (", "Add motion", "Small repeating elements", "Speed of a pe
 check("[맹검5] 모호한 말 표: 움직임 추가면 사건이 늘었다고 알림", "\"one more event was added\"" in vague)
 check("[맹검5] 모호한 말 표: 걸음 나이(보폭·팔·발·무게중심, 반대 걸음 = failed take)", all(w in vague for w in ["[step size]", "[arm swing]", "[feet lifted or dragged]", "[centre of weight]", "walk = failed take"]))
 check("[맹검5] fixes.md: 모호한 말 줄은 옮기고 SKILL 표를 가리킴", "§0 \"vague phrases\" table" in fixes and not re.search(r"구름|풀도 흔들|별이 더 반짝|taking the full|Halve/double", fixes))
-check("[맹검5] tasks §1: 모호한 말은 스킬 자기 표로 값을 제안(영상 고치기 줄은 §0 표)", "Propose concrete values from the skill's own tables and ask" in inst and "§0 table for speed·stars·gait" in inst)  # 옛 routing §2 표는 일부러 뺌
+check("[맹검5] tasks §1: 모호한 말은 스킬 자기 표로 값을 제안(영상 고치기 줄은 §0 표)", "Propose concrete values from the skill's own tables and ask" in inst and "§0 only for speed·stars·gait" in inst)  # 옛 routing §2 표는 일부러 뺌
 check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "only for prompt, generation or canon work" in inst and "skip it for information questions" in inst)
 check("[맹검5] 지침: 컷 번호도 job도 없을 때만 묻고 컷 파일을 열지 않음", "Ask only when there is neither cut number nor job, and then open no cut files" in inst)
-check("[맹검5] 할 일 목록: OK 재표시·번역은 그 카드 하나, 검사 안 함, 번역은 코드블록 밖", "다시 보기·번역" in inst and "(no check)" in inst and "outside the code block" in inst)
+check("[맹검5] 할 일 목록: OK 재표시·번역은 그 카드 하나, 검사 안 함, 번역은 코드블록 밖", "다시 보기·번역" in inst and "(no check)" in inst and "never in a code block" in inst)
 check("[맹검5] 할 일 목록: 시트 자체 고치기만 character-edit, 퍼스트 프레임 속 인물은 first-frame", "on the sheet itself" in _task_rows.get(5, "") and re.search(r"person|character|인물", _task_rows.get(11, "")) is not None, _task_rows.get(11, ""))
 check("[맹검5] 할 일 목록: 프롬프트만 쓰면 higgsfield-generation 안 엶, 크레딧 질문", "(prompt already shown)" in _task_rows.get(18, "") and "크레딧" in inst)
 check("[맹검5] 할 일 목록: SKILL.md 먼저", "Open the SKILL.md first" in inst)
@@ -468,8 +468,8 @@ check("[실행2] 지침 3번은 보이는 법을 적지 않는다(출력에만)"
 check("[실행2] 지침 6번: 옆모습도 화면 쪽 + 물건, nearer the camera만은 안 됨", "`the screen-left hand, farther from the sign`" in inst_core and "Never a hand without a screen side (`nearer the camera`, `road-side hand`)" in inst_core)
 check("[실행2] live-action 맨 위: 질문 턴에는 acting을 열지 않음", "Do not open `acting` in a question turn" in live.split("## Blocks")[0])
 check("[실행2] 생성 운영 §6: 비용 메모가 비면 get_cost 없이 채우지 않음", "If the cost memo is empty, say there is no unit price" in gen.split("## 6.")[1])
-check("[실행2] 할 일 목록: OK 재표시는 생성용 영어 원문 그대로", "Generation text stays English" in _task_rows.get(23, ""))
-check("[실행2] 할 일 목록: 속도·별·걸음은 video-prompt §0 표, fixes.md는 그 밖", "(§0 table for speed·stars·gait) → `fixes.md` for other symptoms" in _task_rows.get(15, ""))
+check("[실행2] 할 일 목록: OK 재표시는 생성용 영어 원문 그대로", "English original as is" in _task_rows.get(23, ""))
+check("[실행2] 할 일 목록: 속도·별·걸음은 video-prompt §0 표, fixes.md는 그 밖", "§0 only for speed·stars·gait; `fixes.md` only for other symptoms" in _task_rows.get(15, ""))
 check("[실행2] 시트 고치기에 character.md는 안 엶(character-edit.md 머리로 옮김)", "`image-prompt` → `character-edit.md`" in _task_rows.get(5, "") and "Open only this file for editing (`character.md` is for new sheets)" in ce)
 check("[실행2] location.md 틀 아래: 블록 밖 줄은 지침 출력대로(모드 신규)", "Write the lines outside the block as in instructions \"Output\"" in sk("image-prompt/location.md") and "`모드: 신규`" in sk("image-prompt/location.md"))
 check("[실행2] 생성 운영 §2: 폴더 묻는 문장은 must-ask 한 곳", "제가 만들까요" not in gen and "제가 만들까요" in ctx_ask)

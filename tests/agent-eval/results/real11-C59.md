@@ -11,8 +11,8 @@
 - G1 위반 없음. 질문 항목 3개 중 실질 질문은 구름 속도 하나뿐이어야 하는데 기본값 줄에 넣을 항목을 질문으로 올림(`must-ask.md` Never ask: camera/length).
 
 ## 키트 결함
-- `kit/skills/video-prompt/SKILL.md:78`의 "background 10-15 s" 기본값이 "Follow the canon's cut length"와 같은 칸에 붙어 있어 정본 길이(8초)를 두고 10~15초를 고르는 오독이 난다. 제안: "(canon first: `decisions.md` §1 cut length; the 10-15 s default applies only when the canon has none)"을 앞에 명시하고, `kit/context/tasks.md` 14번 행에 "open `background.md` before asking"을 굵게 쓴다.
-- `kit/context/tasks.md:33` 근처 규칙 "Several tasks in one message"는 `must-ask.md`와 중복되어 있으나, 첫 작업만 묻되 나머지 둘이 막힌 이유(3-2 확정 영상 없음, 3-4 정보 부족)를 한 줄씩 알리라는 문장은 없다. 제안: "Name in one line why each deferred task is blocked, ask nothing about it."
+- `kit/skills/video-prompt/SKILL.md:78`의 "background 10-15 s" 기본값이 "Follow the canon's cut length"와 같은 칸에 붙어 있어 정본 길이(8초)를 두고 10~15초를 고르는 오독이 난다. 제안: "(canon first: `decisions.md` §1 cut length; the 10-15 s default applies only when the canon has none)"을 앞에 명시하고, `kit/context/tasks.md:30` 14번 행에 "open `background.md` before asking"을 굵게 쓴다.
+- `kit/context/tasks.md:10`·`must-ask.md:17`의 "Several tasks in one message" 규칙에는 첫 작업만 묻되 나머지 둘이 막힌 이유(3-2 확정 영상 없음, 3-4 정보 부족)를 한 줄씩 알리라는 문장이 없다. 제안: "Name in one line why each deferred task is blocked, ask nothing about it."
 
 ## 총평
 순서 제안·첫 작업만 질문은 지켰으나 배경 영상 규칙(카메라·길이 기본값)을 읽지 않아 정본과 어긋난 질문을 만들었다.

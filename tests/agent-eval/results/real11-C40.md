@@ -13,7 +13,7 @@
 - 2턴 카드 갱신이 [5]에 "머리: …" 줄을 새로 넣어 카드 틀의 [5] 항목 이름과 다른 줄이 늘었으나 허용 범위.
 
 ## 키트 결함
-- C31과 같다: LOCKED EDIT 답에서 "전 → 후"가 빠질 수 있다. `kit/instructions.md` Output "Editing a confirmed prompt" 줄이 한 불릿에 여러 규칙을 담고 있다. 제안: 같은 문장을 `kit/skills/image-prompt/SKILL.md` §3 끝에 "After the code block, list each changed value as 전 → 후" 한 줄로 반복한다.
+- C31과 같다: LOCKED EDIT 답에서 "전 → 후"가 빠질 수 있다. `kit/instructions.md:46`(Output "Editing a confirmed prompt") 줄이 한 불릿에 여러 규칙을 담고 있다. 제안: `character-edit.md:18`처럼 `kit/skills/image-prompt/SKILL.md` §3(LOCKED EDIT 문법)과 `first-frame.md` 틀 1 끝에 "Outside the block, show each changed value as 전 → 후" 한 줄을 넣는다.
 
 ## 총평
 세 변경 분리·정본 충돌·승인 컷 처리는 정확했으나 2턴 답에 전 → 후 줄이 없다.

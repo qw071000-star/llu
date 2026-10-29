@@ -12,7 +12,7 @@
 - "기본값으로 씀: … 소리 켬(효과음만)" — draft 확정은 설정이 이미 정해진 것이라 무해.
 
 ## 키트 결함
-1. `kit/skills/video-prompt/rerender.md:3`(첫 불릿)와 `kit/context/tasks.md:35`(17번 행 `Open`)에 "비용 견적(`get_cost`)을 `[TOOL]`로 직접 조회하고 크레딧을 알린 뒤 확인을 받는다"가 없다. 17번은 `video-prompt`만 열어 `higgsfield-generation` §1 4번이 안 읽힌다. 제안: `rerender.md` 맨 위에 "Before sending: quote the 1080p cost with `get_cost: true` (a `[TOOL]` read, no generation), show the number with its basis, and ask once to send" 한 줄.
+1. `kit/skills/video-prompt/rerender.md:3`(첫 불릿)와 `kit/context/tasks.md:33`(17번 행 `Open`)에 "비용 견적(`get_cost`)을 `[TOOL]`로 직접 조회하고 크레딧을 알린 뒤 확인을 받는다"가 없다. 17번은 `video-prompt`만 열어 `higgsfield-generation` §1 4번이 안 읽힌다. 제안: `rerender.md` 맨 위에 "Before sending: quote the 1080p cost with `get_cost: true` (a `[TOOL]` read, no generation), show the number with its basis, and ask once to send" 한 줄.
 
 ## 총평
 draft_job_id 길은 정확했으나 견적 조회를 사용자에게 떠넘기고 시뮬레이션 인용에 `[TOOL]` 줄을 빼 먹었다.

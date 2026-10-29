@@ -68,6 +68,8 @@ reference controls identity and wardrobe only. Camera and shot size are defined 
 
 ## 3. Edit grammar — CHANGE / PRESERVE EXACTLY / ONLY CHANGE
 
+**Every edit prompt: outside the block, show each changed value as "전 → 후", one line each.**
+
 ```text
 [LOCKED EDIT 여는 문장]
 CHANGE — [대상과 위치(화면 기준)]: Change [현재 상태] to [새 상태]. Keep its [position / scale /

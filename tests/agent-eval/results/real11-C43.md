@@ -13,7 +13,7 @@
 - 제안 문장(걸음)이 한국어로 적힘 — 프롬프트가 아니라 제안 설명이므로 G2 충족. 프롬프트 영어 문장은 다음 턴에 쓴다.
 
 ## 키트 결함
-- `kit/context/tasks.md:30`(15번 행)의 "`video-prompt` (§0 table for speed·stars·gait) → `fixes.md` for other symptoms"는 화살표 때문에 두 파일을 다 여는 것으로 읽힌다. 제안: "`video-prompt` SKILL.md §0 only for speed·stars·gait; add `fixes.md` only for other symptoms"로 고친다.
+- `kit/context/tasks.md:31`(15번 행)의 "`video-prompt` (§0 table for speed·stars·gait) → `fixes.md` for other symptoms"는 화살표 때문에 두 파일을 다 여는 것으로 읽힌다. 제안: "`video-prompt` SKILL.md §0 only for speed·stars·gait; add `fixes.md` only for other symptoms"로 고친다.
 
 ## 총평
 원 프롬프트가 없음을 [TOOL]로 확인하고, 걸음 나이를 §0 틀의 구체 값으로 제안했다.

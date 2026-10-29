@@ -13,7 +13,7 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 - User's words differ from canon, an OK, the start image, or cut card [1] → which one (and: this cut only, or the whole work?).
 - The request changes an approved cut → replace it with a new take?
 - A pointed-to image ("이걸로") is not in the conversation → ask for that image only; defer items that need it.
-- The cut number is not in `shot-list.md` → ask only what the cut is; defer camera, people, props and folder.
+- The cut number is not in `shot-list.md` → ask only what the cut is (a new cut, or a `대기` cut misnamed?); defer camera, people, props and folder.
 - Several tasks in one message → propose an order (task numbers) and ask only about the first.
 - Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (`3-6 [대기]` with `승인`/`거절` under it) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
 - Generation: no "만들어"/"보내" on a prompt the user saw → ask whether to send.
