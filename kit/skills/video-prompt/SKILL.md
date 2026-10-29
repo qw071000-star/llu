@@ -1,6 +1,6 @@
 ---
 name: video-prompt
-description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seedance, Kling, image-to-video, 시작·끝 프레임 영상에 해당한다. 실사·인물 컷은 15블록, 배경·풍경·그림체는 4문단이다. 결과가 틀렸을 때는 증상별 수정 파일을 읽는다.
+description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seedance, Kling, image-to-video, 시작·끝 프레임 영상에 해당한다. 실사·인물 컷은 15블록, 배경·풍경·그림체는 4문단이다. 결과가 틀리면 증상별 수정 파일을 읽는다.
 ---
 
 # 영상 프롬프트 — 공통

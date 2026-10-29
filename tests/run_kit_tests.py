@@ -366,7 +366,8 @@ try:
 except Exception:
     sj = {}
 ASM_CMD = "python3 .claude/skills/assembly/assemble.py"
-check("[실행] project-files/settings.json: 검사기·조립 스크립트와 tmp/ 지우기만 허용", sj == {"permissions": {"allow": [f"Bash({ALLOW_CMD}:*)", f"Bash({ASM_CMD}:*)", "Bash(rm tmp/*)"]}}, str(sj))
+COLOR_CMD = "python3 .claude/skills/color-continuity/color.py"
+check("[실행] project-files/settings.json: 검사기·조립·색 스크립트와 tmp/ 지우기만 허용", sj == {"permissions": {"allow": [f"Bash({ALLOW_CMD}:*)", f"Bash({ASM_CMD}:*)", f"Bash({COLOR_CMD}:*)", "Bash(rm tmp/*)"]}}, str(sj))
 check("[실행] README 설치에 settings.json 복사", "cp kit/project-files/settings.json .claude/settings.json" in read(os.path.join(ROOT, "README.md")))
 check("[실행] make_run.sh가 settings.json을 복사", '"$RUN/.claude/settings.json"' in read(os.path.join(ROOT, "tests", "agent-eval", "make_run.sh")))
 check("[실행] real_run.py --allowedTools 검사기", f'"--allowedTools", "Bash({ALLOW_CMD}:*)"' in read(os.path.join(ROOT, "tests", "agent-eval", "real_run.py")))
@@ -539,17 +540,18 @@ check("[실제8] 시험 작품 OK 대장: 2-1 영상 draft 예·만료일(목록
 _media = os.path.join(ROOT, "tests", "agent-eval", "testbed", "media")
 check("[실제8] 시험 작품 media/: 2-1·3-1 시험 영상(각 100KB 이하), make_run.sh가 복사", all(os.path.exists(os.path.join(_media, f)) and os.path.getsize(os.path.join(_media, f)) <= 100_000 for f in ["2-1.mp4", "3-1.mp4"]) and '"$HERE/testbed/media" "$RUN/media"' in read(os.path.join(ROOT, "tests", "agent-eval", "make_run.sh")))
 _chains = json.load(open(os.path.join(ROOT, "tests", "agent-eval", "real-chains.json"), encoding="utf-8"))
-check("[실제8] 새 스킬 시나리오 C53~C56: scenarios.md와 real-chains.json", all(f"## {c} " in read(os.path.join(ROOT, "tests", "agent-eval", "scenarios.md")) and c in _chains for c in ["C53", "C54", "C55", "C56"]))
+check("[실제8] 새 스킬 시나리오 C53~C56: scenarios.md와 real-chains.json", all(f"## {c} " in read(os.path.join(ROOT, "tests", "agent-eval", "scenarios.md")) and c in _chains for c in ["C53", "C54", "C55", "C56", "C57", "C58"]))
 
 # 16d. 새 스킬: assembly(러프컷·프레임), shot-design(장면 컷 설계)
 import shutil
 import tempfile
-EXPECT_SKILLS = ["acting", "assembly", "higgsfield-generation", "image-prompt", "production-session", "project-setup", "shot-design", "video-prompt"]
-check("[스킬 수] 스킬 8개", skill_dirs == EXPECT_SKILLS, ", ".join(skill_dirs))
-check("[스킬 수] zip 8개", sorted(os.path.basename(p)[:-4] for p in glob.glob(os.path.join(KIT, "dist", "*.zip"))) == EXPECT_SKILLS)
-check("[스킬 수] README·TEAM-GUIDE가 8개로 적음", "스킬 8개" in read(os.path.join(ROOT, "README.md")) and "스킬 8개" in read(os.path.join(ROOT, "TEAM-GUIDE.md")) and "assembly.zip" in read(os.path.join(ROOT, "TEAM-GUIDE.md")) and "shot-design.zip" in read(os.path.join(ROOT, "TEAM-GUIDE.md")))
+EXPECT_SKILLS = ["acting", "assembly", "color-continuity", "higgsfield-generation", "image-prompt", "production-session", "project-setup", "shot-design", "video-prompt"]
+check("[스킬 수] 스킬 9개", skill_dirs == EXPECT_SKILLS, ", ".join(skill_dirs))
+check("[스킬 수] zip 9개", sorted(os.path.basename(p)[:-4] for p in glob.glob(os.path.join(KIT, "dist", "*.zip"))) == EXPECT_SKILLS)
+_tg = read(os.path.join(ROOT, "TEAM-GUIDE.md"))
+check("[스킬 수] README·TEAM-GUIDE가 9개로 적음", "스킬 9개" in read(os.path.join(ROOT, "README.md")) and "스킬 9개" in _tg and all(f"{s}.zip" in _tg for s in EXPECT_SKILLS))
 _r1 = ctx_route.split("## 1.")[1].split("## 2.")[0]
-for s, word in [("assembly", "마지막 프레임"), ("shot-design", "컷 나눠")]:
+for s, word in [("assembly", "마지막 프레임"), ("shot-design", "컷 나눠"), ("color-continuity", "더 노래")]:
     check(f"[새 스킬] routing §1에 `{s}` 줄", any(f"`{s}`" in l and word in l for l in _r1.splitlines()))
     check(f"[새 스킬] must-ask에 `{s}` 항목", f"(`{s}`)" in ctx_ask)
 asm = sk("assembly/SKILL.md")
@@ -575,6 +577,45 @@ if shutil.which("ffmpeg") and shutil.which("ffprobe"):
         check("[assembly] 입력을 출력으로 주면 거절", r.returncode == 1 and "덮어쓰지 않는다" in r.stderr and os.path.getsize(a) > 0)
         r = subprocess.run([sys.executable, ASM, "frame", a, "9", os.path.join(td, "x.png")], capture_output=True, text=True)
         check("[assembly] 영상 밖 시각이면 거절", r.returncode == 1 and "영상 밖" in r.stderr)
+# 16f. 새 스킬: color-continuity(컷 간 색 맞추기)
+col = sk("color-continuity/SKILL.md")
+COL = os.path.join(SKILLS, "color-continuity", "color.py")
+for sub_ in ["measure", "match", "compare"]:
+    check(f"[color] SKILL 명령 '{sub_}'가 허용 패턴과 같은 글자", f"`{COLOR_CMD} {sub_} " in col)
+check("[color] 출력은 media/color/, 원본 덮어쓰지 않음, 승인 전 제안만, 크면 다시 만들기(LIGHT LOCK·PALETTE)", all(w in col for w in ["`media/color/`", "원본은 덮어쓰지 않는다", "승인 전에는 제안만", "LIGHT LOCK·PALETTE", "`decisions.md` §3"]))
+check("[color] description에 사용자 말", all(w in frontmatter(col)["description"] for w in ["색이 컷마다 달라", "3-2가 더 노래", "3-1이랑 색 맞춰", "밝기 맞춰", "톤 통일", "LUT"]))
+check("[color] routing §2: 확정 파일끼리 색 맞추기와 ok-reuse(생성 색감)를 가름", any("`color-continuity`" in l and "`ok-reuse.md`" in l for l in ctx_route.split("## 2.")[1].split("## 3.")[0].splitlines()))
+_ca = ctx_ask.split("(`color-continuity`)")[1].split("## ")[0] if "(`color-continuity`)" in ctx_ask else ""
+check("[color] must-ask: 묻는다 기준·맞출 컷 / 묻지 않는다 측정값 / 먼저 짚는다 다시 만들기", "기준 컷" in _ca and "맞출 컷" in _ca and "측정값" in _ca.split("묻지 않는다")[1] and "다시 만들기" in _ca.split("먼저 짚는다")[1])
+check("[color] decisions 틀 §3에 기준 색 컷 줄", "기준 색 컷" in read(os.path.join(KIT, "project-files", "decisions.md")).split("## §3")[1].split("## §4")[0])
+check("[color] real_run.py --allowedTools에 color.py", f'"Bash({COLOR_CMD}:*)"' in read(os.path.join(ROOT, "tests", "agent-eval", "real_run.py")))
+r = subprocess.run([sys.executable, COL], capture_output=True, text=True)
+check("[color] color.py 인자 없이: 종료 1, 한국어 사용법", r.returncode == 1 and "하위 명령이 없다" in r.stderr, r.stderr[:200])
+if shutil.which("ffmpeg") and shutil.which("ffprobe"):
+    def _rows(out):
+        return {l.split("|")[1].strip(): [float(x) for x in l.split("|")[3:6]] for l in out.splitlines() if l.startswith("| ") and ".mp4" in l}
+    with tempfile.TemporaryDirectory() as td:
+        ref, off = os.path.join(td, "ref.mp4"), os.path.join(td, "off.mp4")
+        for vf, out in [("null", ref), ("eq=brightness=0.1,colorbalance=rs=0.2,colorchannelmixer=bb=0.85", off)]:
+            subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "lavfi", "-i", "testsrc=size=160x90:rate=24:duration=1",
+                            "-vf", vf, "-pix_fmt", "yuv420p", out], check=True)
+        fixed, cmp_ = os.path.join(td, "color", "off_m.mp4"), os.path.join(td, "color", "cmp.png")
+        r = subprocess.run([sys.executable, COL, "match", ref, off, fixed], capture_output=True, text=True)
+        check("[color] match: ffmpeg 명령과 쓴 필터(colorchannelmixer·eq)를 출력, 결과 파일 생김", r.returncode == 0 and "$ ffmpeg" in r.stdout and "쓴 필터: colorchannelmixer=" in r.stdout and ",eq=contrast=" in r.stdout and os.path.exists(fixed), (r.stdout + r.stderr)[-300:])
+        r = subprocess.run([sys.executable, COL, "measure", ref, off, fixed], capture_output=True, text=True)
+        rows = _rows(r.stdout)
+        if r.returncode == 0 and len(rows) == 3:
+            d0 = sum(abs(a - b) for a, b in zip(rows["off.mp4"], rows["ref.mp4"]))
+            d1 = sum(abs(a - b) for a, b in zip(rows["off_m.mp4"], rows["ref.mp4"]))
+            check(f"[color] measure → match → measure: Y·U·V 차이 합이 줄어듦({d0:.1f} → {d1:.1f})", d1 < d0 / 2)
+        else:
+            check("[color] measure: 표를 출력", False, (r.stdout + r.stderr)[-300:])
+        r = subprocess.run([sys.executable, COL, "compare", ref, off, fixed, cmp_], capture_output=True, text=True)
+        check("[color] compare: 비교 이미지 생김", r.returncode == 0 and os.path.exists(cmp_) and os.path.getsize(cmp_) > 0, (r.stdout + r.stderr)[-300:])
+        r = subprocess.run([sys.executable, COL, "match", ref, off, off], capture_output=True, text=True)
+        check("[color] 입력을 출력으로 주면 거절", r.returncode == 1 and "덮어쓰지 않는다" in r.stderr and os.path.getsize(off) > 0)
+        r = subprocess.run([sys.executable, COL, "measure", os.path.join(td, "없음.mp4")], capture_output=True, text=True)
+        check("[color] 없는 파일이면 한국어 오류", r.returncode == 1 and "파일이 없다" in r.stderr)
 sd = sk("shot-design/SKILL.md")
 check("[shot-design] 블로킹은 지침 6번, 정본 수정은 production-session §1을 가리킴", "지침 6번" in sd and "`production-session` §1" in sd)
 check("[shot-design] 리버스는 location-view.md를 가리키고 LIGHT LOCK 문장을 쓰지 않음", "`image-prompt` → `location-view.md`" in sd and "light comes from" not in sd)
@@ -597,6 +638,7 @@ routes = {
     "컷 세션 시작": ["production-session/SKILL.md", "production-session/cut-card.md"],
     "장면 컷 설계": ["shot-design/SKILL.md"],
     "프레임·러프컷": ["assembly/SKILL.md"],
+    "색 맞추기": ["color-continuity/SKILL.md"],
 }
 ALWAYS_BUDGET = 13000  # 지침 + context/ + 스킬 설명. 모든 대화가 읽는다
 check(f"[읽기량] 항상 읽히는 양: {always:,}자 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)

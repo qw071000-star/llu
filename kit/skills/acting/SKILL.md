@@ -1,6 +1,6 @@
 ---
 name: acting
-description: AI 영상의 인물 연기를 쓸 때 쓴다. 인물이 연기하는 실사 컷의 CHARACTER_ACTING을 새로 쓸 때, 반복 등장 인물의 마스터 프로필·목소리 문장을 만들 때 쓴다. 목표와 비트, 몸과 호흡, 손의 일, 거리·지위, 듣기와 말, 눈의 삶, 앙상블, 레지스터, 보내기 전 점검을 다룬다. 만든 영상의 연기 수정은 video-prompt의 fixes.md다.
+description: 인물이 연기하는 AI 실사 영상 컷의 CHARACTER_ACTING을 새로 쓸 때, 반복 등장 인물의 마스터 프로필·목소리 문장을 만들 때 쓴다. 만든 영상의 연기 수정은 video-prompt의 fixes.md다.
 ---
 
 # 인물 연기

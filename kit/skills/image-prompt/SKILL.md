@@ -1,6 +1,6 @@
 ---
 name: image-prompt
-description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 쓴다. GPT Image, Nano Banana, Seedream에 해당한다. 대상은 에셋 제작과 영상 시작용 퍼스트 프레임이다. 에셋은 장소, 소품, 인물+의상 시트, 그림체 이미지다.
+description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 쓴다. GPT Image, Nano Banana, Seedream에 해당한다. 대상은 에셋(장소, 소품, 인물+의상 시트, 그림체)과 영상 시작용 퍼스트 프레임이다.
 ---
 
 # 이미지 프롬프트 — 공통

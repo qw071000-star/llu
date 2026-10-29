@@ -1,6 +1,6 @@
 ---
 name: project-setup
-description: 새 AI 이미지·영상 작품을 시작할 때 쓴다. "새 작품 시작", "프로젝트 세팅", "처음부터 준비" 같은 요청이나, 정본(decisions.md, asset-registry.md, shot-list.md, ok-cuts.md)이 비어 있을 때 해당한다.
+description: 새 AI 이미지·영상 작품을 시작할 때 쓴다. "새 작품 시작", "프로젝트 세팅", "처음부터 준비" 같은 요청이나, 정본이 비어 있을 때 해당한다.
 ---
 
 # 새 작품 시작

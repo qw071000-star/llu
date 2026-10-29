@@ -1,6 +1,6 @@
 ---
 name: higgsfield-generation
-description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정리할 때 쓴다(Seedance, Kling, GPT Image, Nano Banana, Seedream 등). 생성 전 점검, 저장 프로젝트·폴더, 보낸 뒤 턴 끝내기, 결과 확인, 승인(OK)·거절·보류 표시와 OK 대장 기록, 해상도 단계, 크레딧 기록·질문.
+description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정리할 때 쓴다. 생성 전 점검, 저장 프로젝트·폴더, 보낸 뒤 턴 끝내기, 결과 확인, 승인(OK)·거절·보류 표시와 OK 대장 기록, 해상도 단계, 크레딧 기록·질문.
 ---
 
 # Higgsfield 생성 운영

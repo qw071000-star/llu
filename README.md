@@ -18,7 +18,7 @@ kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공�
   instructions.md          [항상 읽힘] 규칙 11개, 대화 시작 순서, 출력. 4,000자 이하
   context/                 [항상 읽힘] routing.md = 언제 무엇을 여나(사용자 말 → 스킬 → 단계 파일)
                                      must-ask.md = 작업마다 꼭 물어볼 것 / 묻지 않을 것 / 먼저 짚을 것
-  skills/                  [그 작업 때만] 스킬 8개. 스킬 안에서도 routing.md가 가리키는 파일만 연다
+  skills/                  [그 작업 때만] 스킬 9개. 스킬 안에서도 routing.md가 가리키는 파일만 연다
     project-setup/         새 작품: 질문 한 번, 정본 초안, Higgsfield 폴더
     production-session/    세션 시작·컷 카드·핸드오프·정본 관리, ok-reuse("3-1처럼")
     higgsfield-generation/ 생성 전 점검·폴더·승인/거절·OK 기록·크레딧 + check_prompt.py
@@ -27,6 +27,7 @@ kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공�
     acting/                인물 연기
     shot-design/           대본 한 장면 → 블로킹·180도 선·커버리지·컷 길이(컷 카드 이전, 제안만)
     assembly/              Claude Code + ffmpeg: 마지막·지정 프레임, 러프컷 concat, 경계 비교 + assemble.py
+    color-continuity/      Claude Code + ffmpeg: 컷 간 색·밝기 재기, 기준 컷에 1차 맞춤, 비교 이미지 + color.py
   project-files/           작품마다 복사해 채우는 정본 틀 + Claude Code용 CLAUDE.md·settings.json
   dist/*.zip               Claude 앱에 올리는 스킬 묶음 (pack-skills.sh로 다시 만든다)
   dist/project-instructions.md  Claude 앱 지침 칸에 붙일 한 파일(지침 + context 둘)
@@ -46,7 +47,7 @@ archive/어머니와-고등어/     [컨텍스트에 넣지 않음] 원본 문�
 
 ## 설치
 
-- **Claude 앱:** `TEAM-GUIDE.md` §3. 스킬 zip 8개를 계정에 올리고, 작품 프로젝트의 지침 칸에 `kit/dist/project-instructions.md`(지침 + routing + must-ask)를 붙인다. 프로젝트 지식에는 시나리오·콘티 정도만 넣는다. `reference/`·`archive/`는 넣지 않는다.
+- **Claude 앱:** `TEAM-GUIDE.md` §3. 스킬 zip 9개를 계정에 올리고, 작품 프로젝트의 지침 칸에 `kit/dist/project-instructions.md`(지침 + routing + must-ask)를 붙인다. 프로젝트 지식에는 시나리오·콘티 정도만 넣는다. `reference/`·`archive/`는 넣지 않는다.
 - **Claude Code (작품 리포):**
 
 ```bash
@@ -55,7 +56,7 @@ cp kit/instructions.md .claude/instructions.md
 cp -r kit/context .claude/context
 cp -r kit/skills .claude/skills
 cp kit/project-files/CLAUDE.md CLAUDE.md
-cp kit/project-files/settings.json .claude/settings.json   # 검사기(check_prompt.py)·조립(assemble.py) 실행 허용
+cp kit/project-files/settings.json .claude/settings.json   # 검사기(check_prompt.py)·조립(assemble.py)·색(color.py) 실행 허용
 cp kit/project-files/{decisions,asset-registry,shot-list,ok-cuts}.md project/
 echo "tmp/" >> .gitignore   # 검사용 임시 프롬프트 파일(지침 "검사")
 ```

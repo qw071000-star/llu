@@ -20,7 +20,7 @@ session = None
 for n, msg in enumerate(spec["turns"], 1):
     cmd = ["claude", "-p", msg, "--model", spec.get("model", "sonnet"), "--output-format", "stream-json", "--verbose",
            "--permission-mode", "acceptEdits", "--disallowedTools", "mcp__*",
-           "--allowedTools", "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)", "Bash(python3 .claude/skills/assembly/assemble.py:*)", "--append-system-prompt", SIM]
+           "--allowedTools", "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)", "Bash(python3 .claude/skills/assembly/assemble.py:*)", "Bash(python3 .claude/skills/color-continuity/color.py:*)", "--append-system-prompt", SIM]
     if session: cmd += ["--resume", session]
     r = subprocess.run(cmd, cwd=run, capture_output=True, text=True, timeout=900)
     skills, reads, tools, bash, final = [], [], [], [], ""

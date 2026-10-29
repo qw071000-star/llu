@@ -3,6 +3,7 @@
     "allow": [
       "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)",
       "Bash(python3 .claude/skills/assembly/assemble.py:*)",
+      "Bash(python3 .claude/skills/color-continuity/color.py:*)",
       "Bash(rm tmp/*)"
     ]
   }
