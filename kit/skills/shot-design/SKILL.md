@@ -24,7 +24,7 @@ This is the stage before the cut card (`production-session`). Design one scene i
 ## 3. Rules
 
 - **Use a cut that crosses the 180-degree line only when intended,** and mark it in the table as `선 넘음(의도: …)`.
-- **A reverse shot flips screen left/right.** That view's LIGHT LOCK must be written anew, so point to `image-prompt` → `location-view.md` (template A). Do not write the LIGHT LOCK sentence here.
+- **When the user says "리버스", put the camera opposite the master view**; do not swap it for a 90° side shot. **A reverse shot flips screen left/right.** That view's LIGHT LOCK must be written anew, so point to `image-prompt` → `location-view.md` (template A). Do not write the LIGHT LOCK sentence here.
 - **Make neighboring cuts connect.** The previous cut's end state (character positions, gaze, prop state) is the next cut's start state. Write it in the table's `끝 → 다음 시작` column.
 - **AI constraints:** one location per generation, one camera movement (or static), and a location/view that does not exist yet is made as an image first.
 - **Do not edit the canon before the user confirms.** Until the user says "확정" or "그대로", do not touch `shot-list.md`; only show proposals. Who edits after confirmation follows `production-session` §1.

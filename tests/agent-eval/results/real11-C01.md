@@ -9,11 +9,11 @@
 검사기: 프롬프트 없음.
 
 추가 발견
-- 1턴 답이 `tasks.md` §1의 첫 줄 "[1]번 새 작품 시작으로 진행합니다."로 시작하지 않고 `instructions.md` "Starting a conversation" 4의 3줄 보고로 시작했다. 판단 줄에 번호가 있어 내용은 같다. 점수에는 넣지 않음.
+- 1턴 답이 `tasks.md` §1의 첫 줄 "[1]번 새 작품 시작으로 진행합니다."로 시작하지 않고 `instructions.md:41`의 3줄 보고로 시작했다. 판단 줄에 번호가 있어 내용은 같다. 점수에는 넣지 않음.
 - `asset-registry.md` 컷 폴더 표의 1-1 예시 줄을 "(컷 카드를 발행할 때 만든다)"로 바꿈 — 예시 흔적 제거로 적절.
 - `decisions.md` 미결 2번 "장면당 약 60초(약 7~8컷)"는 사용자가 안 한 배분을 '지금 가정'으로 적음. 미결 표의 가정 칸이라 허용 범위.
 - `PLAYER-RULES.md`·`SKILLS-INDEX.md` 삭제는 하네스 쪽 일.
 
-키트 결함: `kit/instructions.md` "Starting a conversation" 4(3줄 보고)와 `kit/context/tasks.md` §1 "Start the answer with one line [N]번…"이 둘 다 '첫머리'를 차지해 플레이어가 한쪽만 고른다(아래 종합 목록 1번). 그 외 없음.
+키트 결함: `kit/instructions.md:22`("First line, exactly"), `:41`(3줄 보고)와 `kit/context/tasks.md:8`("Start the answer with one line [N]번…")이 둘 다 '첫머리'를 차지해 플레이어가 한쪽만 고른다(아래 종합 목록 1번). 그 외 없음.
 
 총평: 질문 한 번에·필수 재질문·승인 후 폴더 생성·예시 흔적 제거까지 정확. real9과 같은 PASS 3.

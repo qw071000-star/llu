@@ -705,7 +705,7 @@ routes = {
     "색 맞추기": ["color-continuity/SKILL.md"],
 }
 # 2026-10-29: 영어 키트로 바꾸며 글자 수(항상 13,000자, 단계 17,550자) 대신 추정 토큰. 값 = 그때 추정을 250 단위로 올림.
-ALWAYS_BUDGET = 5000  # 그때 약 4,937 (CLAUDE.md + 지침 + tasks + must-ask + 스킬 설명 9개)
+ALWAYS_BUDGET = 5250  # 영어판 약 5,073 (CLAUDE.md + 지침 + tasks + must-ask + 스킬 설명 9개). 옛 한국어판은 약 7,000
 check(f"[읽기량] 항상 읽히는 양: 추정 {always:,.0f}토큰 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
 BUDGET = 7500  # 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
 _route_tok = {}

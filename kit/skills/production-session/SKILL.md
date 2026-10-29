@@ -34,7 +34,7 @@ Principle: **keep memory in documents; sessions are written to and thrown away.*
 ## 3. Cut session
 
 **On start Claude gathers** (instructions, "when starting a conversation").
-1. Read the cut card. If none, build a draft (on the turn that writes the received values, not on a question-only turn) from that cut's line and the continuity table in `shot-list.md`, the relevant asset/folder in `asset-registry.md`, and the relevant lines in `decisions.md` (`cut-card.md`). Even for a new cut, do not open neighboring cut cards or handoffs (`context/tasks.md` §3).
+1. Read the cut card. If none, build a draft (only on a turn that writes values the user gave: `context/tasks.md` §3) from that cut's line and the continuity table in `shot-list.md`, the relevant asset/folder in `asset-registry.md`, and the relevant lines in `decisions.md` (`cut-card.md`). Even for a new cut, do not open neighboring cut cards or handoffs (`context/tasks.md` §3).
 2. Check current state in the Higgsfield cut folder (`list_folders`, `list_project_assets`): the state in the folder name, the number of results in the `승인` and `거절` folders, results awaiting review.
 3. If that cut number has a last handoff, read it and continue from [6] next steps. If that step is a user confirmation, ask that confirmation together with the proposed values for the card's empty fields, in one go.
 4. If that cut has ever received OK, read its card in the OK ledger.

@@ -16,6 +16,7 @@ Done with `color.py` (ffmpeg/ffprobe) in Claude Code's Bash. Do not use MCP. Cre
 
 - The reference is one OK cut, chosen by the user (suggestion: a cut whose OK ledger `OK 이유` is "색감").
 - Record the chosen reference on the `기준 색 컷` line of `decisions.md` §3 (canon edits: `production-session` §1). If it exists, do not ask.
+- Cuts to match: every cut with a filled `확정 영상` field in `shot-list.md`, teammates' cuts included.
 - Files are `media/<cut number>.mp4` (`.png` for images). If missing, ask which job to put where.
 
 ## 3. Recipes
