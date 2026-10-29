@@ -622,6 +622,21 @@ check("[shot-design] 리버스는 location-view.md를 가리키고 LIGHT LOCK �
 check("[shot-design] 180도 선 넘음 표시·컷 길이 기준·새 뷰 필요", all(w in sd for w in ["선 넘음(의도", "15초 이하", "2~4초", "새 뷰 필요"]))
 check("[shot-design] 틀은 코드블록 하나(블로킹 메모·커버리지)", sd.count("```") == 2 and "블로킹 메모" in sd.split("```")[1] and "커버리지" in sd.split("```")[1])
 
+# 16g. 실제 Claude Code 시험 9회차(real9)에서 찾은 결함
+_must = read(os.path.join(KIT, "context", "must-ask.md"))
+_asm = sk("assembly/assemble.py"); _col = sk("color-continuity/color.py")
+check("[실제9] 지침 검사 줄에 --must-include", inst_core.count("--must-include tmp/문장파일") == 2)
+check("[실제9] 지침 6번: 카메라를 보면 자기 왼손 = 화면 오른쪽", "카메라를 보면 자기 왼손 = 화면 오른쪽" in inst_core)
+check("[실제9] routing §3: 이웃 컷 연기는 OK 대장 목록 줄로만, 질문 턴에 카드 파일 안 만듦", "이웃 컷 연기는 OK 대장 목록 줄의 OK 이유로만" in ctx_route and "카드 파일도 만들지 않는다" in ctx_route)
+check("[실제9] must-ask: 폴더는 list_folders로 확인, shot-design 길이·유지/교체", "`list_folders`로 확인" in _must and "컷 길이" in _must and "유지·교체" in _must)
+check("[실제9] assemble.py: lastframe 길이, concat 입력별 해상도·길이·총 길이", "영상 길이" in _asm and "총 {" in _asm)
+check("[실제9] color.py: 맞춘 뒤 재서 밝기 보정, 전후 숫자, 벌어지면 경고", "한 번 더 보정" in _col and "맞추기 전" in _col and "차이가 더 벌어졌다" in _col)
+check("[실제9] shot-design: 대본 없으면 제안 설계까지, 기존 job 유지·교체", "질문과 같은 답에 제안 설계" in sk("shot-design/SKILL.md") and "유지·교체를 묻는다" in sk("shot-design/SKILL.md"))
+check("[실제9] video §0 동작 여럿: 나가기는 끝 프레임 상태", "나가기는 끝 프레임 상태" in vskill)
+check("[실제9] prop.md: 글자 읽히지 않게, 시트 없으면 대장 초안 안 씀, 못 본 배경은 existing background", "행선지가 읽히지 않게" in prop and "에셋 대장 초안 줄(지침 4번)을 쓰지 않는다" in prop and "the existing background" in prop)
+check("[실제9] location-edit: 중간 단계는 원 시대 이름을 되풀이하지 않음", "원 시대 이름을 되풀이하지 않는다" in sk("image-prompt/location-edit.md"))
+check("[실제9] first-frame: 같은 카메라 그림체 변경은 LOCKED EDIT", "그림체·질감만 바꾸면 `LOCKED EDIT`" in sk("image-prompt/first-frame.md"))
+
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)
 routes = {

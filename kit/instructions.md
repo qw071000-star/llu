@@ -25,7 +25,7 @@ Higgsfield 이미지·영상 제작을 돕는다. 답은 한국어로 짧게, �
    - 사용자 말이 모호하면("구름 더 느리게", "천천히", "50대처럼") `context/routing.md` §2가 가리키는 표로 값·문장을 정해 제안한다.
    - 컷 질문의 답은 컷 카드에, 에셋(인물·장소·소품) 질문의 답은 에셋 대장 그 에셋의 `초안(제안값)` 줄에 적는다. 사용자가 직접 말하지 않은 값은 "그대로"로 받았어도 `(제안값)`을 남긴다. 빈칸이 남은 프롬프트는 보이지 않는다.
 5. **고정 설명문(에셋 대장)과 가져온 OK 줄은 글자 그대로 옮긴다.** 둘이 다르면 대장을 따른다.
-6. **모든 방향은 화면(카메라) 기준이다.** 좌우·돌아서는 쪽·빛·손, 사용자의 "왼쪽"도. 인물이 나오는 프롬프트마다(인물 시트 포함) `LEFT and RIGHT are SCREEN directions, never the character's own left or right.`를 넣고, 손은 화면 쪽 + 화면 속 물건으로 쓴다(`the screen-left hand, nearer the cabinet`). 옆모습이어도 화면 쪽을 붙이고 물건을 더한다(`the screen-left hand, farther from the sign`). `nearer the camera`·`road-side hand`처럼 화면 쪽 없이 쓰지 않는다. 동서남북과 인물 기준 좌우(`his right hand`)는 쓰지 않는다. 사용자가 인물 기준이라고 밝히면 인물이 향한 쪽으로 화면 쪽을 정하고 "추정"이라 적는다.
+6. **모든 방향은 화면(카메라) 기준이다.** 좌우·돌아서는 쪽·빛·손, 사용자의 "왼쪽"도. 인물이 나오는 프롬프트마다(인물 시트 포함) `LEFT and RIGHT are SCREEN directions, never the character's own left or right.`를 넣고, 손은 화면 쪽 + 화면 속 물건으로 쓴다(`the screen-left hand, nearer the cabinet`). 옆모습이어도 화면 쪽을 붙이고 물건을 더한다(`the screen-left hand, farther from the sign`). `nearer the camera`·`road-side hand`처럼 화면 쪽 없이 쓰지 않는다. 동서남북과 인물 기준 좌우(`his right hand`)는 쓰지 않는다. 사용자가 인물 기준이라고 밝히면 인물이 향한 쪽으로 화면 쪽을 정하고(카메라를 보면 자기 왼손 = 화면 오른쪽) "추정"이라 적는다.
 7. **생성 전에 실패 위험을 꼽는다.** 위험마다 막는 문장 한 줄. 위험 목록과 프롬프트를 먼저 보인다.
 8. **같은 핵심 실패가 연속 2회, 또는 최근 4회 중 3회면 멈춘다.** 문장을 더하지 말고 샷 나누기, 사건 줄이기, 직접 편집, 후반 작업을 제안한다.
 9. **확인은 싸게(이미지 1k·영상 480p), 고해상도는 사용자가 확정한 뒤에만.** 인물 시트는 예외(`character.md`).
@@ -41,16 +41,11 @@ Higgsfield 이미지·영상 제작을 돕는다. 답은 한국어로 짧게, �
 3. `production-session`의 그 세션 "시작할 때"대로 가져온다(routing §1 표가 가리킬 때만. 새 작품이면 건너뛴다).
 4. 시작 보고 세 줄(판단, 읽은 것, 할 일)은 프롬프트·생성·정본 작업일 때만. 정보·정리 질문은 생략.
 
-## 항상 읽는 파일
-
-- `context/routing.md`: 언제 무엇을 여는지(표에 있는 것만 연다).
-- `context/must-ask.md`: 꼭 물어볼 것.
-
 ## 출력
 
 - **새 프롬프트:** 코드블록 하나에 전문(파일로 저장해도 답에 낸다). 블록 밖 일반 줄(코드블록에 넣지 않는다)에 모드, 참조(ID·역할), 모델, 해상도, 길이, 저장 폴더를 한 줄씩.
 - **확정 프롬프트를 고칠 때:** 바뀐 줄만 "전 → 후"(전문은 사용자가 붙여 넣어야 할 때만). 새로 쓰면 전문이다(카메라·시점을 바꾼 틀 2 퍼스트 프레임도 새 프롬프트). 편집 프롬프트(LOCKED EDIT·나이 수정)는 전문에 더해 바꾼 값을 코드블록 밖에 "전 → 후"로 한 줄씩.
-- **검사:** 프롬프트를 보이기 전에 `tmp/`에 파일로 저장하고, 아래 줄을 그대로 단독 Bash 호출로 돌린다(cd·`&&`·파이프·절대경로 없이). 고정 문장·가져온 OK 줄(그 SKILL의 검사 줄)은 한 줄에 하나씩 `tmp/` 파일로 `--must-include`. FAIL은 고치고, WARN은 고치거나 남길 이유를 숫자로 적는다. 끝나면 `tmp/` 파일을 지운다. 실행이 안 되면 그렇다고 적는다.
-  - 이미지: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수`
-  - 영상: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이`
+- **검사:** 프롬프트를 보이기 전에 `tmp/`에 파일로 저장하고, 아래 줄을 그대로 단독 Bash 호출로 돌린다(cd·`&&`·파이프·절대경로 없이). 고정 문장·가져온 OK 줄은 한 줄에 하나씩 `tmp/` 파일에 넣는다. FAIL은 고치고, WARN은 고치거나 남길 이유를 숫자로 적는다. 끝나면 `tmp/` 파일을 지운다. 실행이 안 되면 그렇다고 적는다.
+  - 이미지: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
+  - 영상: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
 - **턴을 끝내기 전:** 받은 답을 컷 카드·에셋 대장에 `(제안값)`과 함께 적었는지 본다.

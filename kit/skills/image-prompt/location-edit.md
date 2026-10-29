@@ -65,6 +65,8 @@ ONLY CHANGE: [LAYER]. Everything else remains identical.
 [Era lock of the target scene]
 ```
 
+여러 단계 시대 교체의 중간 단계는 이번 층만 목표 시대로 쓰고, 나머지 층은 `unchanged from the parent image`로 둔다. 마지막 줄의 목표 시대 잠금은 마지막 층에서만 쓰고, 중간 단계에서는 원 시대 이름을 되풀이하지 않는다.
+
 **교정**
 - 건물 형태까지 새로 설계됨 → `Preserve every building volume, roofline, wall position, opening, gate and planting location; change only the named design layer.`
 - 시대가 섞임 → `Remove every [source-era] vehicle, fixture, sign, handle and light. Nothing from the source era remains unless explicitly preserved.` (명사는 이번 층의 것만)

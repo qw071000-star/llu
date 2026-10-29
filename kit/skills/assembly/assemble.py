@@ -72,11 +72,11 @@ def probe(path):
 
 
 def lastframe(video, out):
-    probe(video)
+    info = probe(video)
     need_output(out, [video])
     run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-sseof", "-1", "-i", video,
          "-update", "1", "-an", out])
-    print(f"마지막 프레임: {out}")
+    print(f"마지막 프레임({info['w']}x{info['h']}, 영상 길이 {info['dur']:.2f}초의 끝): {out}")
 
 
 def frame(video, sec, out):
@@ -98,6 +98,9 @@ def concat(out, videos):
         die("영상을 둘 이상 준다.")
     infos = [probe(v) for v in videos]
     need_output(out, videos)
+    for v, i in zip(videos, infos):
+        print(f"- {os.path.basename(v)}: {i['w']}x{i['h']}, {i['fps']:.2f} fps, {i['dur']:.2f}초, 소리 {'있음' if i['audio'] else '없음'}")
+    print(f"총 {sum(i['dur'] for i in infos):.2f}초")
     first = infos[0]
     same = all((i["w"], i["h"], i["rate"], i["codec"], i["pix"], i["audio"]) ==
                (first["w"], first["h"], first["rate"], first["codec"], first["pix"], first["audio"]) for i in infos)

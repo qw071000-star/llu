@@ -147,19 +147,38 @@ def match(ref, tgt, out):
     std_after = b["Ystd"] * y_after / max(b["Yrgb"], 1.0)
     contrast = clamp(a["Ystd"] / max(std_after, 1.0), CONTRAST, "대비", cut)
     bright = clamp((a["Yrgb"] - contrast * (y_after - 127.5) - 127.5) / 255.0, BRIGHT, "밝기", cut)
-    filt = (f"colorchannelmixer=rr={gains['R']:.3f}:gg={gains['G']:.3f}:bb={gains['B']:.3f},"
-            f"eq=contrast={contrast:.3f}:brightness={bright:.3f}")
-    cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", tgt, "-vf", filt]
-    if is_image(out):
-        cmd += ["-frames:v", "1", "-update", "1", out]
-    else:
-        cmd += ["-map", "0:v", "-map", "0:a?", "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
-                "-pix_fmt", "yuv420p", "-c:a", "copy", out]
-    run(cmd)
+    def render(bright):
+        filt = (f"colorchannelmixer=rr={gains['R']:.3f}:gg={gains['G']:.3f}:bb={gains['B']:.3f},"
+                f"eq=contrast={contrast:.3f}:brightness={bright:.3f}")
+        cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-i", tgt, "-vf", filt]
+        if is_image(out):
+            cmd += ["-frames:v", "1", "-update", "1", out]
+        else:
+            cmd += ["-map", "0:v", "-map", "0:a?", "-c:v", "libx264", "-crf", "18", "-preset", "veryfast",
+                    "-pix_fmt", "yuv420p", "-c:a", "copy", out]
+        run(cmd)
+        return filt
+
+    filt = render(bright)
+    c = measure_one(out)
+    # 어림한 밝기가 빗나가면 잰 차이만큼 한 번 더 보정한다(Y 1 ≈ 밝기 1/219)
+    if abs(c["Y"] - a["Y"]) > 1.5:
+        bright = clamp(bright - (c["Y"] - a["Y"]) / 219.0, BRIGHT, "밝기", cut)
+        os.remove(out)
+        print("밝기를 잰 값으로 한 번 더 보정한다.")
+        filt = render(bright)
+        c = measure_one(out)
     print(f"\n쓴 필터: {filt}")
     if cut:
         print(f"안전 범위로 잘랐다: {', '.join(cut)}. 차이가 커서 1차 맞춤으로 다 줄지 않는다. 다시 만들기를 검토한다.")
     print(f"맞춘 파일: {out} (원본은 그대로)")
+    before = {k: b[k] - a[k] for k in "YUV"}
+    after = {k: c[k] - a[k] for k in "YUV"}
+    print("기준 대비 ΔY · ΔU · ΔV: 맞추기 전 " + " · ".join(f"{before[k]:+.1f}" for k in "YUV")
+          + " → 맞춘 뒤 " + " · ".join(f"{after[k]:+.1f}" for k in "YUV"))
+    worse = [k for k in "YUV" if abs(after[k]) > abs(before[k]) + 0.5]
+    if worse:
+        print(f"차이가 더 벌어졌다: {', '.join(worse)}. 이 맞춤은 쓰지 않는 것을 제안하고, 다시 만들기를 검토한다.")
 
 
 def middle(path, png):
