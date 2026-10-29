@@ -384,7 +384,7 @@ check("[실행] routing: 영상 요청이면 video-prompt §0·§2", "`video-pro
 check("[실행] routing: 그 컷 번호의 핸드오프만, 이웃 OK 카드는 기준이 아니면 안 엶", "그 컷 번호의 마지막 핸드오프" in ctx_route and "기준 OK가 아니면 열지 않는다" in ctx_route)
 check("[실행] routing: 총괄 시작은 반영 안 된 핸드오프만", "아직 반영되지 않은 핸드오프만" in ctx_route)
 check("[실행] must-ask: '이걸로'인데 이미지 없으면 그것만", "그 이미지 하나만 묻고" in ctx_ask)
-check("[실행] must-ask: 컷 폴더 없으면 구성안과 누가 만들지", "폴더 구성안과 누가 만들지" in ctx_ask)
+check("[실행] must-ask: 컷 폴더 없으면 구성안과 누가 만들지", "제가 만들까요, 직접 만드시겠어요?" in ctx_ask and "`3-6 [대기]`" in ctx_ask)
 check("[실행] must-ask 실사 영상: 시작 이미지 없으면 영상 질문 보류", "영상 질문은 보류" in ctx_ask)
 check("[실행] must-ask 실사 영상: 새 장소면 장소 마스터 항목을 함께", "\"장소 — 마스터\" 항목을 이 질문과 한 번에" in ctx_ask)
 check("[실행] must-ask 실사 영상: 이웃 컷 OK 연기와 반대면 짚기", "이웃 컷 OK의 연기" in ctx_ask)
@@ -408,6 +408,32 @@ check("[실행] location-view: 카메라가 구조물 안이면 Except 한 줄",
 check("[실행] location-view: LIGHT LOCK 뒤에 덧붙이지 않음", "LIGHT LOCK 줄은 글자 그대로 끝낸다" in loc_view)
 ce = sk("image-prompt/character-edit.md")
 check("[실행] character-edit 틀 1: GONE·No trace·no 목록이 [old 1]~[old 3] 세 자리", ce.count("[old 1], [old 2], [old 3]") >= 2 and ce.count("no [old 1], no [old 2], no [old 3]") >= 3)
+
+# 21. 실제 실행 2회차 채점 결함
+out_sec = inst_core.split("## 출력")[1]
+check("[실행2] 지침 출력: 고치면 전 → 후만, 새로 쓰면 전문, 편집 프롬프트는 둘 다", "**확정 프롬프트를 고칠 때:**" in out_sec and "새로 쓰면 전문" in out_sec and "LOCKED EDIT·나이 수정" in out_sec)
+check("[실행2] 지침 출력: 블록 밖 줄은 코드블록에 넣지 않음", "코드블록에 넣지 않는다" in out_sec)
+check("[실행2] 지침 3번은 보이는 법을 출력에 맡김", "보이는 법은 \"출력\"" in inst_core)
+check("[실행2] 지침 6번: 옆모습은 물건 기준, nearer the camera만은 안 됨", "the hand farther from the sign" in inst_core and "`nearer the camera`만으로 쓰지 않는다" in inst_core)
+check("[실행2] live-action 맨 위: 질문 턴에는 acting을 열지 않음", "질문 턴에는 `acting`을 열지 않는다" in live.split("## 블록")[0])
+check("[실행2] 생성 운영 §6: 비용 메모가 비면 get_cost 없이 채우지 않음", "비용 메모가 비어 있으면 단가가 없다" in gen.split("## 6.")[1])
+check("[실행2] routing: OK 재표시는 생성용 영어 원문 그대로", "생성용은 영어 원문 그대로" in ctx_route)
+check("[실행2] routing: 속도·별·걸음은 §2, fixes.md는 그 밖", "속도·별·걸음 같은 말은 아래 §2" in ctx_route)
+check("[실행2] routing: 시트 고치기에 character.md는 안 엶", "`character-edit.md` (`character.md`는 열지 않는다)" in ctx_route)
+check("[실행2] location.md 틀 아래: 블록 밖 줄은 지침 출력대로(모드 신규)", "블록 밖 줄은 지침 \"출력\"대로" in sk("image-prompt/location.md") and "`모드: 신규`" in sk("image-prompt/location.md"))
+check("[실행2] 생성 운영 §2: 폴더 묻는 문장은 must-ask 한 곳", "제가 만들까요" not in gen and "제가 만들까요" in ctx_ask)
+for name, txt in [("video-prompt", vskill), ("image-prompt", img_skill)]:
+    check(f"[실행2] {name} 검사 명령: 단독 Bash 호출(cd·&&·파이프·절대경로 없이)", "단독 Bash 호출로(cd·`&&`·파이프·절대경로 없이)" in txt)
+check("[실행2] must-ask 장소 수정: 나누면 앞세운 변경 먼저", "사용자가 앞세운 변경을 먼저" in ctx_ask)
+check("[실행2] image-prompt 태그: 꺾쇠는 두고 이름만, 여는 줄 예", "꺾쇠는 두고 안의 이름만" in img_skill and "`Edit <<<loc_…_v1>>> WITHOUT reframing`" in img_skill)
+check("[실행2] location-view: 부모 카메라가 대상 밖 + 안에서 보면 먼 끝으로 이동", "부모 카메라가 대상 밖이고 사용자가 \"안에서\" 보면 먼 끝으로 이동" in loc_view)
+check("[실행2] must-ask 퍼스트 프레임: 인원 수는 정본에 없을 때만", "보이는 인원 수(정본에 없을 때만)" in ctx_ask)
+check("[실행2] must-ask 실사 영상: 시작 이미지 없을 때 허용·보류 범위", "사건 수 점검·샷 나누기·끝 프레임 상태 제안" in ctx_ask and "보류: 연기·소리·타이밍·카메라 움직임" in ctx_ask)
+check("[실행2] location-edit: 새 LIGHT LOCK에 광원의 화면 쪽, 모르면 묻기", "광원의 화면 쪽 + 물건을 쓰고, 위치를 모르면 묻는다" in loc_edit)
+check("[실행2] first-frame 틀 1: PROP 크기는 CHANGE를 가리킴", "its size is as described in CHANGE above." in ff and "its size is as described above." not in ff)
+check("[실행2] 검사기: 손을 nearer the camera로만 쓰면 WARN", "손을 카메라 쪽으로만 썼다" in chk and os.path.exists(os.path.join(FIX, "image__fail__N14_hand_nearer_camera_only.txt")))
+rr = read(os.path.join(ROOT, "tests", "agent-eval", "real_run.py"))
+check("[실행2] real_run.py: 메타에 Bash 명령 문자열(bash)", '"bash": bash' in rr and 'bash.append(i.get("command", ""))' in rr)
 
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)

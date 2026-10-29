@@ -47,10 +47,15 @@ def check_common(text, args, out):
 
     if find(r"(?<!screen-)(?<!screen )\b(?:left|right) hand\b|\b(?:his|her|their) (?:own )?(?:left|right)\b|(?<!화면 )(?<!화면 왼쪽 )(?:오른손|왼손)", text):
         out.append(("WARN", "인물 기준 좌우(오른손, his left)는 뒤집혀 읽힌다. 화면 기준 + 화면 속 물건으로 쓴다: 'the screen-left hand, nearer the …'"))
-    for m in re.finditer(r"\bhand,? (?:nearer|closer)\b", text, re.IGNORECASE):
+    for m in re.finditer(r"\bhand,? (?:nearer|closer)\b(?!(?: to)? the camera)", text, re.IGNORECASE):
         before = re.split(r"[.;\n]", text[max(0, m.start() - 40):m.start()])[-1]
         if not re.search(r"screen[- ](?:left|right)", before, re.IGNORECASE):
             out.append(("WARN", f"'{text[max(0, m.start() - 4):m.end() + 12].strip()}'에 화면 쪽이 없다. 'the screen-left hand, nearer the …'처럼 화면 쪽 + 물건으로 쓴다"))
+            break
+    for m in re.finditer(r"\bhands?\b[^.;\n]{0,20}?\b(?:nearer|closer|nearest|closest)(?: to)? the camera\b", text, re.IGNORECASE):
+        clause = re.split(r"[.;\n]", text[max(0, m.start() - 40):m.start()])[-1] + m.group(0) + re.split(r"[.;\n]", text[m.end():m.end() + 40])[0]
+        if not re.search(r"screen[- ](?:left|right)|\b(?:nearer|closer|nearest|closest|farther|further)(?: to| from)? the (?!camera\b)\w+", clause, re.IGNORECASE):
+            out.append(("WARN", f"'{m.group(0).strip()}'처럼 손을 카메라 쪽으로만 썼다. 옆모습이면 화면 속 물건 기준('the hand farther from the …'), 아니면 화면 쪽 + 물건('the screen-left hand, nearer the …')으로 쓴다"))
             break
     if find(r"\b(?:north|south|east|west)(?:ern|ward)?\b(?! Korea)|동쪽|서쪽|남쪽|북쪽", text, 0):
         out.append(("WARN", "동서남북을 썼다. 방향은 화면 기준 + 그쪽 물건으로 쓴다: 'from screen left, the [object] side'"))

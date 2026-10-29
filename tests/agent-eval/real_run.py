@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """실제 Claude Code로 체인을 돌린다: 키트를 설치한 시험 폴더에서 사용자 말만 넣는다.
 ./real_run.py <체인ID> [run_root]   — 턴은 real-chains.json에서 읽는다.
-턴마다 out/turnN.md(답 전문)와 out/turnN.meta.json(부른 Skill, 연 파일, 도구)을 남긴다."""
+턴마다 out/turnN.md(답 전문)와 out/turnN.meta.json(부른 Skill, 연 파일, 도구, Bash 명령)을 남긴다."""
 import json, os, subprocess, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 cid = sys.argv[1]
@@ -23,7 +23,7 @@ for n, msg in enumerate(spec["turns"], 1):
            "--allowedTools", "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)", "--append-system-prompt", SIM]
     if session: cmd += ["--resume", session]
     r = subprocess.run(cmd, cwd=run, capture_output=True, text=True, timeout=900)
-    skills, reads, tools, final = [], [], [], ""
+    skills, reads, tools, bash, final = [], [], [], [], ""
     for line in r.stdout.splitlines():
         try: e = json.loads(line)
         except Exception: continue
@@ -37,6 +37,7 @@ for n, msg in enumerate(spec["turns"], 1):
                     else:
                         tools.append(c["name"])
                         if c["name"] == "Bash":
+                            bash.append(i.get("command", ""))
                             import re as _re
                             for f in _re.findall(r"(\.claude/[\w./-]+\.md|project/[\w./-]+\.md)", i.get("command", "")):
                                 reads.append(f + " (bash)")
@@ -44,6 +45,6 @@ for n, msg in enumerate(spec["turns"], 1):
             final = e.get("result", ""); session = e.get("session_id", session)
     os.makedirs(os.path.join(run, "out"), exist_ok=True)
     open(os.path.join(run, "out", f"turn{n}.md"), "w").write(f"<!-- 사용자: {msg} -->\n\n{final}\n")
-    json.dump({"user": msg, "skills": skills, "reads": reads, "tools": tools, "rc": r.returncode, "stderr": r.stderr[-500:]},
+    json.dump({"user": msg, "skills": skills, "reads": reads, "tools": tools, "bash": bash, "rc": r.returncode, "stderr": r.stderr[-500:]},
               open(os.path.join(run, "out", f"turn{n}.meta.json"), "w"), ensure_ascii=False, indent=1)
     print(f"{cid} turn{n}: skills={skills} reads={len(reads)} rc={r.returncode}", flush=True)

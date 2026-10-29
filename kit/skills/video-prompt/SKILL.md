@@ -89,4 +89,4 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 
 ## 4. 보내기 전 점검 (검사 스크립트가 잡지 못하는 것)
 
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장하고 작품 리포 루트에서 `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video 파일 --refs 붙일요소수 --seconds 길이 [--must-include 고정문장파일]`로 돌린다. 고정 문장·가져온 OK 줄은 한 줄에 하나씩 파일로 저장해 `--must-include`로 넘긴다. FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장해 작품 리포 루트에서 `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video 파일 --refs 붙일요소수 --seconds 길이 [--must-include 고정문장파일]`로 돌린다. 이 한 줄 그대로, 단독 Bash 호출로(cd·`&&`·파이프·절대경로 없이). 고정 문장·가져온 OK 줄은 한 줄에 하나씩 파일로 저장해 `--must-include`로 넘긴다. FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다

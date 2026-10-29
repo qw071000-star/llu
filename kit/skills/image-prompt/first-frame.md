@@ -49,7 +49,7 @@ CHANGE — ADD THE PEOPLE AND PROPS at existing anchors:
 REFERENCE AUTHORITY:
 - <<<LOC>>> is the exact same photograph. It controls the place, the camera, the light and every object already in it.
 - <<<CHAR>>> controls only [person]'s face, hair and wardrobe. Same face, same bone structure, same hair, same wardrobe.
-- <<<PROP>>> controls only [prop]'s shape, material and state; its size is as described above.
+- <<<PROP>>> controls only [prop]'s shape, material and state; its size is as described in CHANGE above.
 DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framing.
 WARDROBE: [asset registry sentence, verbatim].
 PRESERVE EXACTLY: camera and perspective · every object already in the place · [this view's LIGHT LOCK, verbatim] · shadows, exposure, grade, grain

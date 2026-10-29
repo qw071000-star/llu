@@ -81,6 +81,8 @@ anywhere in frame.] No legible text anywhere.
 [Reference plate only, not for a long axis: Rule of thirds composition.]
 ```
 
+블록 밖 줄은 지침 "출력"대로 쓴다: `모드: 신규`, 참조(틀 1은 없음, 1-B는 A·B), 모델, 해상도, 저장 폴더.
+
 ## 틀 1-B — 같은 건물의 새 공간 (새 MASTER)
 
 참조에서 공통으로 반복되는 것만 건물 규칙으로 잠근다. 재료군, 문·창·창틀의 언어, 조명 방식·색온도, 시대, 관리 상태가 그것이다. 참조에 없는 평면을 사실처럼 주장하지 않는다. 영구 구조와 동선을 먼저, 기능 가구를 다음에 쓴다.
