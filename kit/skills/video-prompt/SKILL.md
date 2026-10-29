@@ -54,7 +54,7 @@ For a background/landscape video (4 paragraphs), fill only the next table.
 | Age of the walk ("걸음이 젊어", the walk is young) | Write it as stride, arms, feet, centre of weight, and close the opposite walk: `"[name] walk" — [step size], [arm swing], [feet lifted or dragged], [centre of weight]. A [opposite] walk = failed take.` |
 | Several actions ("…하고 …하고 나가", does X, does Y, leaves) | Count events per §2. Propose writing the exit as an end-frame state (half the body outside the frame, already walking) |
 
-How to ask is instruction 4. If there are more than 10 questions, group them under subheadings (camera / characters / timing) within one message. Do not split them across several turns.
+How to ask is instructions rule 4. If there are more than 10 questions, group them under subheadings (camera / characters / timing) within one message. Do not split them across several turns.
 
 **Keep the answers in cut card [4]-[6].** The first frame and retries use the same values; if a value changes, fix the card first.
 
@@ -91,4 +91,4 @@ How to ask is instruction 4. If there are more than 10 questions, group them und
 
 ## 4. Pre-send check (what the check script cannot catch)
 
-- [ ] Did you run the check script before showing it (command/procedure in the instruction "검사")? Put into `--must-include tmp/고정문장파일` (a file of the fixed sentences): the asset registry's fixed sentences and imported OK lines
+- [ ] Did you run the check script before showing it (command/procedure in instructions "Check")? Put into `--must-include tmp/고정문장파일` (a file of the fixed sentences): the asset registry's fixed sentences and imported OK lines

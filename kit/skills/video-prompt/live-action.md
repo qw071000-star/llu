@@ -36,7 +36,7 @@ Do not open `acting` in a question turn.
 
 ## Empty template
 
-In addition to the lines outside the blocks (instruction "출력"), write in Korean: aspect ratio, sound, start/end image jobs, attached elements (start image included, in order; this count is the check script's `--refs`), risk list.
+In addition to the lines outside the blocks (instructions "Output"), write in Korean: aspect ratio, sound, start/end image jobs, attached elements (start image included, in order; this count is the check script's `--refs`), risk list.
 
 ```text
 [SCENE_CONTEXT]
@@ -89,7 +89,7 @@ take, Y = failed take]. [Who does not react.] Nobody looks at the camera.
 
 [PHYSICS]
 motion_owner = CHARACTER: [ ]
-motion_owner = PROP: [state machine, exactly N transitions; weight, contact]
+motion_owner = PROP: [`상태 머신`, exactly N transitions; weight, contact]
 motion_owner = CAMERA: [none / one move]
 motion_owner = ENVIRONMENT: [none / what]
 

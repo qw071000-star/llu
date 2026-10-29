@@ -16,7 +16,7 @@ Fill in the "required information" table of that asset type's file and the commo
 | References | image jobs to attach, their attach order, the role of each |
 | Mode | new / edit, whether the camera is kept (§1) |
 
-What to ask is in `context/must-ask.md`; how to ask is in guideline no. 4.
+What to ask is in `context/must-ask.md`; how to ask is in instructions rule 4.
 
 **Reference tags:** `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>` in the templates are placeholders. Keep the angle brackets and replace only the name inside with the real element name or the attach-order name (`<<<loc_…_v1>>>`, `<<<image_1>>>`). The opening line works the same way: `Edit <<<loc_…_v1>>> WITHOUT reframing`. Number of references = number of tags = number of attached images.
 
@@ -105,4 +105,4 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 - [ ] Is the fixed description sentence identical to the asset registry, down to the letter?
 - [ ] Did you check the crop band and occlusion zones?
 - [ ] Is no placeholder tag (`<<<LOC>>>` etc.) left?
-- [ ] Did you run the check script before showing it? (command and procedure: guideline "검사"). Put into `--must-include tmp/fixed-sentence-file`: the wardrobe, prop, LIGHT LOCK and coordinate sentences from the asset registry
+- [ ] Did you run the check script before showing it? (command and procedure: instructions "Check"). Put into `--must-include tmp/fixed-sentence-file`: the wardrobe, prop, LIGHT LOCK and coordinate sentences from the asset registry

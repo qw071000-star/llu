@@ -3,7 +3,7 @@
 **Information needed:** the job of the wrong result, that job's prompt (OK ledger card or `get_project_asset_prompt`), the symptom as the user stated it (verbatim).
 - If the symptom is vague ("이상해", it looks off), ask which interval and which character. Show two or three candidates from the table and let them choose.
 - Speed, added motion, stars, speed of a person's action ("너무 빠르다", too fast), walk age, and several actions use the matching row of the `SKILL.md` §0 "vague phrases" table. The table below covers all other symptoms.
-- Show the line to change as "전 → 후" and get confirmation (instruction 3). For an approved cut, first ask whether to replace it with a new take (the same take cannot be reproduced).
+- Show the line to change as "전 → 후" and get confirmation (instructions rule 3). For an approved cut, first ask whether to replace it with a new take (the same take cannot be reproduced).
 
 | Symptom | Fix |
 |---|---|

@@ -11,7 +11,7 @@ description: Use when generating images or video with Higgsfield or organizing t
 2. Is the `folder_id` to save to decided (§2)?
 3. Is the resolution a check-quality one? Send Seedance 2.5 video with `draft: true` (after approval, finalize the same take at 1080p; `video-prompt` → `rerender.md`).
 4. For a first-time model/setting, did you get a quote with `get_cost: true`? If the OK ledger list or the `decisions.md` §2 cost memo has the same model, resolution and length, it is not the first time.
-5. Did it pass `check_prompt.py` in this skill's folder? Run it **before showing** the prompt (command and procedure: see the guidelines, "검사". The command must match the allow pattern in `.claude/settings.json` character for character to run without approval. In the Claude app, only the path changes to that skill folder).
+5. Did it pass `check_prompt.py` in this skill's folder? Run it **before showing** the prompt (command and procedure: see instructions "Check". The command must match the allow pattern in `.claude/settings.json` character for character to run without approval. In the Claude app, only the path changes to that skill folder).
 
 ## 2. Save location
 
@@ -21,7 +21,7 @@ description: Use when generating images or video with Higgsfield or organizing t
 - Without it, the result is saved outside the project and cannot be tracked.
 - Do not rely on the project auto-create setting (`get_preferences`).
 
-**When there is no folder:** show the structure below adapted to the work and ask who will create it (the question sentence is in must-ask "모든 작업").
+**When there is no folder:** show the structure below adapted to the work and ask who will create it (the question sentence is in must-ask "All tasks").
 
 ```
 「작품명」 (Higgsfield 프로젝트)
@@ -58,7 +58,7 @@ Polling status repeatedly reprocesses the whole conversation each time. Leave th
 완성되면 알려 주세요. 분석이나 개선점, 다른 컷과의 비교가 필요하면 말씀해 주세요.
 ```
 
-**Credit logging:** every time you send, write `job — 보냄 — 약 N 크레딧` in cut card [11] and raise the counts in the cut list 생성/크레딧 cell (`이미지 n / 영상 n · 약 N 크레딧`). If the `decisions.md` §2 cost memo has that setting, use its value; otherwise use the `get_cost` quote. If neither exists, write `알 수 없음` instead of a number (guideline 10). Also attach the basis (cost memo / get_cost) to the credits in the after-sending format.
+**Credit logging:** every time you send, write `job — 보냄 — 약 N 크레딧` in cut card [11] and raise the counts in the cut list 생성/크레딧 cell (`이미지 n / 영상 n · 약 N 크레딧`). If the `decisions.md` §2 cost memo has that setting, use its value; otherwise use the `get_cost` quote. If neither exists, write `알 수 없음` instead of a number (instructions rule 10). Also attach the basis (cost memo / get_cost) to the credits in the after-sending format.
 
 **Do not**
 - Do not repeat `jobs_wait` or status polling.

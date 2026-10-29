@@ -15,7 +15,7 @@ This is the stage before the cut card (`production-session`). Design one scene i
 
 ## 2. What to produce
 
-1. **Blocking memo:** at scene start and at each major beat, write character and object positions as screen side + an on-screen object in the master view (instructions item 6). Write movement as "from where → to where".
+1. **Blocking memo:** at scene start and at each major beat, write character and object positions as screen side + an on-screen object in the master view (instructions rule 6). Write movement as "from where → to where".
 2. **180-degree line:** which two characters (or character and object) it is drawn between, and which side of that line the camera is on (by an on-screen object).
 3. **Coverage table:** whichever of master, two-shot, reverse, insert, reaction the scene needs. For each shot: camera position and height, field of view (°) and shot size, and the location view used. If no suitable view exists, write `새 뷰 필요` (making it is `image-prompt` → `location-view.md`).
 4. **Cut length allocation:** 1–3 events per cut, at most 15 seconds per cut, 2–4 seconds per dialogue line. Split the cut if exceeded.

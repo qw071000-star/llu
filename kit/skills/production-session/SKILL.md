@@ -13,7 +13,7 @@ Principle: **keep memory in documents; sessions are written to and thrown away.*
 |---|---|---|
 | `decisions.md` confirmed decisions | Edits | Does not edit. New rules go in handoff [3] |
 | `asset-registry.md` asset/folder ledger | Edits. Answers before confirmation go on that asset's `초안(제안값)` line; the fixed-sentence field is filled after confirmation | New cut folder IDs only |
-| `shot-list.md` cut list / continuity table | Edits | Only the two fields on its own line (`context/routing.md` §3). The lead edits the `생성/크레딧` field from the handoff (§4) |
+| `shot-list.md` cut list / continuity table | Edits | Only the two fields on its own line (`context/tasks.md` §3). The lead edits the `생성/크레딧` field from the handoff (§4) |
 | `ok-cuts.md` OK ledger | The session that approves adds the card in place | (same as left) |
 | Cut card `cuts/<cut number>.md` | Issues it. Writes [1] [2] [8] [9] | Writes [3]~[7] [10]~[12]. If [1] is empty, or the user gives a direction different from [1], edit it that turn as `(제안값)` and get confirmation through handoff [5]. If there is no card, build a draft (v0) from the canon using the `cut-card.md` template |
 | Logs (handoffs, trial-and-error, old prompts) | Append only | Append only |

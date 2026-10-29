@@ -34,7 +34,7 @@ For the first empty-space master use Template 1; for a previously unseen space o
 
 Only an approved child becomes the next parent. Do not derive from a discarded variant. Do not attach children to each other. For a sibling view, change only CAMERA·FRAMING (foreground/midground/background) from the parent prompt and keep the rest identical to the letter.
 
-**Writing directions (guideline no. 6: all in screen terms)**
+**Writing directions (instructions rule 6: all in screen terms)**
 - In MASTER GEOMETRY, write the reference viewpoint first in parentheses: `(directions as seen from [camera position], looking at [what])`.
 - Write LIGHT LOCK as the screen side of that view + the object on that side: `Low dusk sun from screen left, the [object] side, is the only key.` Because the object has a name, the light stays the same even if the view changes.
 - There is one LIGHT LOCK per view. For the opposite-direction view, flip left and right and write that view's LIGHT LOCK anew (`from screen right, the [object] side`), and record it on that view's line in the asset registry.
@@ -82,7 +82,7 @@ anywhere in frame.] No legible text anywhere.
 [Reference plate only, not for a long axis: Rule of thirds composition.]
 ```
 
-Write the lines outside the block as in guideline "출력": `모드: 신규`, references (none for Template 1; A·B for 1-B), model, resolution, save folder.
+Write the lines outside the block as in instructions "Output": `모드: 신규`, references (none for Template 1; A·B for 1-B), model, resolution, save folder.
 
 ## Template 1-B (틀 1-B) — new space in the same building (new MASTER)
 
