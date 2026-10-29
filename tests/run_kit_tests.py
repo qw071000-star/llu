@@ -382,7 +382,7 @@ check("[실행] routing: 컷의 '뒤에서 본' 첫 프레임 → first-frame", 
 check("[실행] routing: 영상이면 acting은 프롬프트 쓰는 턴에", "프롬프트를 쓰는 턴에 `acting`을 연다" in ctx_route)
 check("[실행] routing: 영상 요청이면 video-prompt §0·§2", "`video-prompt` SKILL.md(§0" in ctx_route and "§2 사건 수" in ctx_route)
 check("[실행] routing: 그 컷 번호의 핸드오프만, 이웃 OK 카드는 기준이 아니면 안 엶", "그 컷 번호의 마지막 핸드오프" in ctx_route and "기준 OK가 아니면 열지 않는다" in ctx_route)
-check("[실행] routing: 총괄 시작은 반영 안 된 핸드오프만", "아직 반영되지 않은 핸드오프만" in ctx_route)
+check("[실행] routing: 총괄 시작도 칸이 채워진 컷의 핸드오프는 열지 않음", "생성/크레딧 칸이 채워진 컷의 핸드오프는 열지 않는다" in ctx_route)
 check("[실행] must-ask: '이걸로'인데 이미지 없으면 그것만", "그 이미지 하나만 묻고" in ctx_ask)
 check("[실행] must-ask: 컷 폴더 없으면 구성안과 누가 만들지", "제가 만들까요, 직접 만드시겠어요?" in ctx_ask and "`3-6 [대기]`" in ctx_ask)
 check("[실행] must-ask 실사 영상: 시작 이미지 없으면 영상 질문 보류", "영상 질문은 보류" in ctx_ask)
@@ -446,7 +446,7 @@ check("[실행3] 지침 시작 2번: 컷 번호면 컷 목록 확정 job 먼저(
 check("[실행3] must-ask: job 질문은 컷 번호도 job도 없을 때", "컷 번호도 job도 대화에 없을 때" in ctx_ask and "어느 job인지(컷 번호도 job도 없으면)" in ctx_ask)
 route3 = ctx_route.split("## 3.")[1]
 check("[실행3] routing §3: 카드에 답을 적을 때 cut-card.md, 새 카드도 그 틀 복사", "컷 카드에 답을 적을 때는 `production-session` → `cut-card.md`" in route3 and "`cut-card.md` 틀을 복사해" in route3)
-check("[실행3] routing: 총괄 시작 핸드오프는 생성/크레딧 칸이 빈 컷만", "컷 목록 생성/크레딧 칸이 빈 컷의 것만" in ctx_route)
+check("[실행3] routing: 총괄 시작 핸드오프는 생성/크레딧 칸이 빈 컷만", "(빈 컷의 것만)" in ctx_route)
 ex = card.split("칸을 채운 예")[1] if "칸을 채운 예" in card else ""
 check("[실행3] cut-card: 가상의 값으로 채운 예(칸 번호 형식)", "가상의 값" in ex and len(re.findall(r"^\[\d+\] ", ex, re.M)) >= 4 and len(card) <= 2000, f"{len(card)}자")
 check("[실행3] cut-card 예의 손도 화면 쪽", "the screen-left hand" in ex)

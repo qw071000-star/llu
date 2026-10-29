@@ -62,7 +62,7 @@ defined nasolabial folds), eye shape and colour, brows, nose, mouth, neutral exp
 naturally muted catchlights and no oversized specular glare in the iris. The same exact identity must be
 maintained wherever the face is visible.
 
-PANEL LAYOUT:
+PANEL LAYOUT (LEFT and RIGHT are SCREEN directions, never the character's own left or right):
 - LEFT PANEL: a front-facing full-body wardrobe view shown strictly from the neck down. The panel is
   intentionally HEADLESS and ends cleanly at the base of the neck. This is an editorial clothing crop,
   not an injury: no head, no face, no wound, no gore, no dark opening. The plain background continues

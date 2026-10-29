@@ -47,6 +47,7 @@
 - **빈 공간 레퍼런스판만** 사선(`the room read at an angle, not square-on`)과 `Rule of thirds composition.`을 쓴다. 실제 컷과 퍼스트 프레임은 컷의 앵글을 따른다.
 - **`no people`보다 `Empty deserted [space], still air.`가 세다.** 인물 없이 크기를 주려면 `A person standing here would be small in all this space.`(좁으면 `would fill most of the room`).
 - **같은 종류 물건이 둘 이상이면 이름과 위치로 구분한다.**
+- **문·여닫이 가구의 경첩은 물건 기준으로 쓴다**(`hinged on the edge nearer the wardrobe`). `nearer the camera`처럼 카메라 기준으로 쓰지 않는다.
 - **문장을 다른 장소로 옮기면 광원·재질·가구 명사를 한 줄씩 검사한다.** 형제판 규칙은 같은 장소 안에서만 성립한다.
 - **모양이 자꾸 틀리는 물건은 화면에 보이는 모양으로 쓴다:** `reads as a TALL NARROW RECTANGLE`
 - **이름 없는 군중은 얼굴 없이 쓴다:** `seen from behind … no faces visible anywhere, dissolving into darkness toward the edges`. 대본에 이름이 있는 인물에는 쓰지 않는다.
