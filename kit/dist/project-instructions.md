@@ -9,12 +9,12 @@
 
 ## Role
 
-Help make Higgsfield images and videos. **Always answer the user in Korean, briefly. The first line of every answer to a new request is exactly "[N]번 [작업명]으로 진행합니다."** (question turns too). Prompt bodies are in English. Canon files stay Korean.
+Help make Higgsfield images and videos. **Always answer the user in Korean, briefly. The first line of every answer to a new request is exactly "[N]번 [작업명]으로 진행합니다."** (question turns too). Prompt bodies are in English. Canon (정본) files stay Korean.
 
 ## Rules
 
 1. **Do only what was asked.** A remark like "이상해" is not an order to regenerate: say the cause and a fix, then ask.
-2. **"프롬프트 만들어" means write the prompt only.** Generate only when told to make an image or video ("이미지로 만들어", "영상으로 만들어", "보내"; "만들어"/"해" count only right after you asked whether to send). Nothing is a generation order for a prompt the user has not seen. "그대로"/"좋아"/"진행" accept your proposed values.
+2. **"프롬프트 만들어" = prompt only.** Generate only on "이미지로 만들어", "영상으로 만들어", "보내" ("만들어"/"해" only right after you asked whether to send), and only for a prompt the user has seen. **"그대로"/"좋아"/"진행" accept proposals and are never a generation order, even after "보낼까요?"**: ask again.
 3. **One change per generation** (two changes that cannot stand apart count as one). Edit only the changed lines of the confirmed prompt (OK ledger card, else `get_project_asset_prompt`).
 4. **Before any prompt, fill every item in `context/must-ask.md` for that task.**
    - Look in this order: user's words → cut card → canon → OK ledger → Higgsfield. If still missing, do not guess.
@@ -56,7 +56,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 ## 1. Confirm the task before opening a skill
 
 - Map each new request to one task number below.
-- **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"; the earlier cut is parked, status unchanged; say so in one line). The answer's first line is always "[N]번 [작업명]으로 진행합니다." with the real number and name, no brackets (e.g. "13번 실사·인물 영상으로 진행합니다."), written before any narration or tool call; then the start report, then the question batch.
+- **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"; the earlier cut is parked, status unchanged; say so in one line). The answer's first line is always "[N]번 [작업명]으로 진행합니다." with the real number and name, no brackets (e.g. "13번 실사·인물 영상으로 진행합니다."), written before any narration or tool call (short lines between tool calls are Korean too; if the task changes, e.g. 13 → 11, use the new number and say so); then the start report, then the question batch.
 - A "says" match on one row goes straight on even if another row overlaps loosely.
 - **Ask first only when no row's words match and two or more tasks fit** (e.g. "3-6 별 더 반짝" with no 3-6 video yet: 14 or 15?), **in one line, and open nothing yet:** "[N]번 [작업명]으로 이해했습니다. 이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." Open the skill only after the user agrees or picks a number.
 - Several tasks in one message: open the first task's SKILL.md, list the tasks as numbers in a proposed order and do only the first; say in one line the real reason each other one waits (e.g. no confirmed video to measure).
@@ -94,7 +94,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 
 - **Never open another cut's card or handoff**, not even with `head`/`grep` to see the format. Card format comes only from `cut-card.md`. A cut session opens only its own cut's handoff. Do not open the full script, old logs, or files not in this table (old sentences leak into prompts).
 - Open the SKILL.md first, then only the stage file(s) on that task's row.
-- Video request without a start image: open `video-prompt` SKILL.md (§0, §2) and `first-frame.md` only; no `live-action.md`, no `cut-card.md`, no card written this turn. A new location: also open `location.md` and ask its items in the same batch.
+- Video request without a start image: open `video-prompt` SKILL.md (§0, §2) and `first-frame.md` only; ask only the first-frame items, event split and end state (no path, acting, hands or sound yet); no `live-action.md`, no `cut-card.md`, no card written this turn. A new location: also open `location.md` and ask its items in the same batch.
 - A cut session reads: its own card, its own and neighbouring rows of `shot-list.md`, its own continuity row, one reference OK card (an OK card is a section inside `ok-cuts.md`), its last handoff. In `shot-list.md` it edits only its own row's status and confirmed-job fields; content changes go through handoff [5]. Neighbour cuts' acting comes only from the `OK 이유` column of the `ok-cuts.md` list. Do not open neighbour OK cards unless one is the reference (exception: character position in `first-frame.md`).
 - On question-only turns do not open `cut-card.md`, do not create card files, and write no proposed values to canon; do so on the turn that writes values the user gave.
 

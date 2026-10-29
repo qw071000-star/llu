@@ -48,7 +48,7 @@ def check_common(text, args, out):
     if find(r"(?<!screen-)(?<!screen )\b(?:left|right) hand\b|\b(?:his|her|their) (?:own )?(?:left|right)\b|(?<!화면 )(?<!화면 왼쪽 )(?:오른손|왼손)", text):
         out.append(("WARN", "인물 기준 좌우(오른손, his left)는 뒤집혀 읽힌다. 화면 기준 + 화면 속 물건으로 쓴다: 'the screen-left hand, nearer the …'"))
     # "no people", "no other people", "no persons"는 인물이 없다는 말이다. 지운 뒤 인물 여부를 본다
-    people = find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", re.sub(r"\b(?:no|without)\s+(?:[\w-]+(?:,\s*|\s+or\s+|\s+and\s+))*(?:other\s+)?(?:people|persons?|figures?)\b", "", text, flags=re.I))
+    people = find(r"\b(?:person|man|woman|girl|boy|people|character sheet)\b|\[PERSON\]", re.sub(r"\b(?:no|without)\s+(?:[\w-]+(?:,\s*|\s+or\s+|\s+and\s+))*(?:other\s+)?(?:people|persons?|figures?)\b", "", text, flags=re.I))
     camera_only = set()
     for m in re.finditer(r"\bhands?\b[^.;\n]{0,20}?\b(?:nearer|closer|nearest|closest)(?: to)? the camera\b", text, re.IGNORECASE):
         clause = re.split(r"[.;\n]", text[max(0, m.start() - 40):m.start()])[-1] + m.group(0) + re.split(r"[.;\n]", text[m.end():m.end() + 40])[0]
@@ -57,7 +57,7 @@ def check_common(text, args, out):
             camera_only.add(m.start())
             break
     # 단수 hand마다 앞 4단어(같은 구절) 안에 screen-left/right. hand-lettered 같은 합성어와 hands는 뺀다
-    for m in re.finditer(r"(?<![-\w])hand(?![-\w])", text, re.IGNORECASE) if people else ():
+    for m in re.finditer(r"(?<![-\w])hand(?![-\w'’])", text, re.IGNORECASE) if people else ():
         before = re.split(r"[.;:\n]", text[max(0, m.start() - 60):m.start()])[-1]
         if m.start() in camera_only or re.search(r"screen[- ](?:left|right)\S*(?:\s+\S+){0,3}\s*$", before, re.IGNORECASE):
             continue

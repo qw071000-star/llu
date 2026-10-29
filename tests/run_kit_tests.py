@@ -371,7 +371,7 @@ def sk(f):
 ff = sk("image-prompt/first-frame.md")
 fixes = sk("video-prompt/fixes.md")
 ff_t2 = ff.split("## Template 2")[1]
-check("[맹검4] 지침 2번: 아직 보지 못한 프롬프트에는 어떤 말도 생성 지시가 아님", "Nothing is a generation order for a prompt the user has not seen" in inst and "count only right after you asked whether to send" in inst)
+check("[맹검4] 지침 2번: 본 프롬프트에만 생성, 그대로·좋아·진행은 보낼까요? 뒤에도 생성 지시가 아님", "only for a prompt the user has seen" in inst and "only right after you asked whether to send" in inst and "never a generation order, even after \"보낼까요?\"" in inst)
 check("[맹검4] 지침 6번: 인물 기준이면 향한 쪽으로 화면 쪽, 추정", "convert it from the way the character faces" in inst and "추정" in inst)
 check("[맹검4] 지침 4번: 기본값 목록에 소리", "aspect, sound, save folder" in inst)
 check("[맹검4] 지침 5번: 대장과 OK 줄이 다르면 대장", "If they differ, the registry wins" in inst)
@@ -529,7 +529,7 @@ check("[실행3] cut-card: 가상의 값으로 채운 예(칸 번호 형식)", "
 check("[실행3] cut-card 예의 손도 화면 쪽", "the screen-left hand" in ex)
 check("[실행3] character-edit 틀 2: 젊게 할 때 표지와 no beauty filter", "When making younger" in ce and "no beauty filter" in ce.split("## Template 2")[1])
 check("[실행3] scenarios C10 2턴: 망원이 시작 이미지와 달라 한 번 묻기도 PASS", "한 번 묻는 것도 PASS" in read(os.path.join(ROOT, "tests", "agent-eval", "scenarios.md")).split("## C10")[1].split("## C11")[0])
-check("[실행3] 검사기: 단수 hand 앞에 화면 쪽이 없으면 WARN(합성어·복수 제외)", "(?<![-\\w])hand(?![-\\w])" in chk and os.path.exists(os.path.join(FIX, "image__fail__N15_side_hand_without_screen_side.txt")))
+check("[실행3] 검사기: 단수 hand 앞에 화면 쪽이 없으면 WARN(합성어·복수 제외)", "(?<![-\\w])hand(?![-\\w'’])" in chk and os.path.exists(os.path.join(FIX, "image__fail__N15_side_hand_without_screen_side.txt")))
 for lp in sorted(glob.glob(os.path.join(FIX, "*.lines")) + glob.glob(os.path.join(ROOT, "tests", "agent-eval", "testbed", "grade", "*.lines")) + [os.path.join(ROOT, "tests", "agent-eval", "testbed", "project", "ok-cuts.md")]):
     r = subprocess.run([sys.executable, CHECKER, "--kind", "image", lp], capture_output=True, text=True)
     check(f"[실행3] 손 규칙에 걸리지 않음: {os.path.relpath(lp, ROOT)}", "화면 쪽이 없다" not in r.stdout and "카메라 쪽으로만" not in r.stdout, r.stdout.strip()[:200])
@@ -734,7 +734,7 @@ routes = {
     "색 맞추기": ["color-continuity/SKILL.md"],
 }
 # 2026-10-29: 영어 키트로 바꾸며 글자 수(항상 13,000자, 단계 17,550자) 대신 추정 토큰. 값 = 그때 추정을 250 단위로 올림.
-ALWAYS_BUDGET = 5250  # 영어판 약 5,073 (CLAUDE.md + 지침 + tasks + must-ask + 스킬 설명 9개). 옛 한국어판은 약 7,000
+ALWAYS_BUDGET = 5400  # 영어판 약 5,300(생성 규칙·시작 이미지 없음 목록 추가 후). 처음 약 5,073 (CLAUDE.md + 지침 + tasks + must-ask + 스킬 설명 9개). 옛 한국어판은 약 7,000
 check(f"[읽기량] 항상 읽히는 양: 추정 {always:,.0f}토큰 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
 BUDGET = 7500  # 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
 _route_tok = {}

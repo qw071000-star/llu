@@ -38,7 +38,7 @@
 
 ## 3. How to carry it over
 
-- If the imported motion has more than 3 events, the proposal is to split the shot (`video-prompt` §2), not to keep it whole.
+0. **Motion imported from an approved OK may exceed 3 events** (it already worked): keep it verbatim and say the event count in one line. The `video-prompt` §2 limit applies to new motion.
 
 1. **In a brought line, change only** the names, objects, and time ranges that differ in this cut. If something must be added, do not split that line or insert into the middle; write it as a new sentence after the period (do not join with `;` or `,`). Exception: if the brought line's mouth lock is weaker than `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.`, raise it to this sentence. Leave remaining sentences as they are. Put the whole brought line in the `--must-include` file.
 2. **Show changed words as "before → after".**
