@@ -88,7 +88,7 @@ Higgsfield도 MCP도 처음인 팀원을 위한 안내서입니다. 이 문서 �
 
 | 파일 | 어디에 넣나 | 내용 |
 |---|---|---|
-| `kit/dist/project-instructions.md` | 프로젝트 **지침 칸** | 항상 지킬 규칙(`instructions.md`) + 언제 무엇을 쓰나(`context/routing.md`) + 꼭 물어볼 것(`context/must-ask.md`) |
+| `kit/dist/project-instructions.md` | 프로젝트 **지침 칸** | 항상 지킬 규칙(`instructions.md`) + 할 일 목록(`context/tasks.md`) + 꼭 물어볼 것(`context/must-ask.md`) |
 | `project-setup` 스킬 | 계정 스킬 | 새 작품 시작: 질문, 정본 Doc 만들기, Higgsfield 폴더 구성 |
 | `production-session` 스킬 | 계정 스킬 | 총괄·컷 대화 운영, 컷 카드와 핸드오프 형식, OK 컷을 기준으로 쓰기("3-1처럼") |
 | `higgsfield-generation` 스킬 | 계정 스킬 | 저장 폴더, 요청 후 기다리지 않기, 승인·거절 표시, OK 기록, 해상도·크레딧, 프롬프트 자동 검사 |
