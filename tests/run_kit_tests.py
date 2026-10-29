@@ -333,7 +333,7 @@ check("[맹검5] 모호한 말 표: 걸음 나이(보폭·팔·발·무게중심
 check("[맹검5] fixes.md: 모호한 말 줄은 옮기고 SKILL 표를 가리킴", "\"모호한 말\" 표" in fixes and not re.search(r"구름이 더|풀도 흔들|별이 더 반짝|taking the full", fixes))
 check("[맹검5] 지침 4번: 모호한 말은 video-prompt §0 표", "`video-prompt` §0 \"모호한 말\" 표" in inst)
 check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "프롬프트·생성·정본 작업일 때만" in inst and "정보·정리 질문은 생략" in inst)
-check("[맹검5] 지침: job이 대화에 없으면 묻고 컷 파일을 열지 않음", "job이 대화에 없으면 묻고" in inst)
+check("[맹검5] 지침: 컷 번호도 job도 없을 때만 묻고 컷 파일을 열지 않음", "컷 번호도 job도 없을 때만 묻고, 컷 파일은 열지 않는다" in inst)
 check("[맹검5] 읽기 지도: OK 재표시·번역은 그 카드 하나, 검사 안 함, 번역은 코드블록 밖", "재표시·번역" in inst and "검사 안 함" in inst and "코드블록 밖" in inst)
 check("[맹검5] 읽기 지도: 시트 자체 고치기만 character-edit, 퍼스트 프레임 속 인물은 first-frame", "확정 시트 고치기" in inst and "프레임 속 인물 바꾸기" in inst)
 check("[맹검5] 읽기 지도: 프롬프트만 쓰면 higgsfield-generation 안 엶, 크레딧 질문", "프롬프트만 쓰면 열지 않는다" in inst and "크레딧" in inst)
@@ -414,7 +414,7 @@ out_sec = inst_core.split("## 출력")[1]
 check("[실행2] 지침 출력: 고치면 전 → 후만, 새로 쓰면 전문, 편집 프롬프트는 둘 다", "**확정 프롬프트를 고칠 때:**" in out_sec and "새로 쓰면 전문" in out_sec and "LOCKED EDIT·나이 수정" in out_sec)
 check("[실행2] 지침 출력: 블록 밖 줄은 코드블록에 넣지 않음", "코드블록에 넣지 않는다" in out_sec)
 check("[실행2] 지침 3번은 보이는 법을 출력에 맡김", "보이는 법은 \"출력\"" in inst_core)
-check("[실행2] 지침 6번: 옆모습은 물건 기준, nearer the camera만은 안 됨", "the hand farther from the sign" in inst_core and "`nearer the camera`만으로 쓰지 않는다" in inst_core)
+check("[실행2] 지침 6번: 옆모습도 화면 쪽 + 물건, nearer the camera만은 안 됨", "`the screen-left hand, farther from the sign`" in inst_core and "`nearer the camera`·`road-side hand`처럼 화면 쪽 없이 쓰지 않는다" in inst_core)
 check("[실행2] live-action 맨 위: 질문 턴에는 acting을 열지 않음", "질문 턴에는 `acting`을 열지 않는다" in live.split("## 블록")[0])
 check("[실행2] 생성 운영 §6: 비용 메모가 비면 get_cost 없이 채우지 않음", "비용 메모가 비어 있으면 단가가 없다" in gen.split("## 6.")[1])
 check("[실행2] routing: OK 재표시는 생성용 영어 원문 그대로", "생성용은 영어 원문 그대로" in ctx_route)
@@ -434,6 +434,28 @@ check("[실행2] first-frame 틀 1: PROP 크기는 CHANGE를 가리킴", "its si
 check("[실행2] 검사기: 손을 nearer the camera로만 쓰면 WARN", "손을 카메라 쪽으로만 썼다" in chk and os.path.exists(os.path.join(FIX, "image__fail__N14_hand_nearer_camera_only.txt")))
 rr = read(os.path.join(ROOT, "tests", "agent-eval", "real_run.py"))
 check("[실행2] real_run.py: 메타에 Bash 명령 문자열(bash)", '"bash": bash' in rr and 'bash.append(i.get("command", ""))' in rr)
+
+# 22. 실제 실행 3회차 채점 결함
+check("[실행3] must-ask 폴더 질문에 제안값(제가 만든다)", "직접 만드시겠어요?\"라고 묻는다(제안: 제가 만든다)" in ctx_ask)
+check("[실행3] prop.md: 크기는 수치(차량급은 m + 사람), 수락 뒤 카드 줄만 인용·코드블록 없음", "크기(수치로: cm, 차량급은 m + 사람 기준)" in prop and "그 카드 줄만 인용한다. 코드블록은 내지 않는다" in prop)
+cred = gen.split("## 6.")[1]
+check("[실행3] 생성 운영 §6: '얼마나 썼어'는 기록 칸·알 수 없음만, 추정은 원할 때 get_cost 부른 뒤", "기록된 칸과 \"알 수 없음\"" in cred and "사용자가 원할 때만, `get_cost`를 실제로 부른 뒤" in cred and "단가로 셈하면" not in cred)
+check("[실행3] production-session §3: 다음 할 일이 확인이면 확인과 빈 칸 제안값을 한 번에", "그 일이 사용자 확인이면 그 확인과 카드 빈 칸의 제안값을 한 번에 묻는다" in sess)
+start2 = inst_core.split("## 대화를 시작할 때")[1].split("\n3.")[0]
+check("[실행3] 지침 시작 2번: 컷 번호면 컷 목록 확정 job 먼저(팀원 작업이면 get_project_asset_prompt)", "컷 목록 그 줄의 확정 job을 먼저" in start2 and "get_project_asset_prompt" in start2 and "job이 대화에 없으면 묻고" not in start2)
+check("[실행3] must-ask: job 질문은 컷 번호도 job도 없을 때", "컷 번호도 job도 대화에 없을 때" in ctx_ask and "어느 job인지(컷 번호도 job도 없으면)" in ctx_ask)
+route3 = ctx_route.split("## 3.")[1]
+check("[실행3] routing §3: 카드에 답을 적을 때 cut-card.md, 새 카드도 그 틀 복사", "컷 카드에 답을 적을 때는 `production-session` → `cut-card.md`" in route3 and "`cut-card.md` 틀을 복사해" in route3)
+check("[실행3] routing: 총괄 시작 핸드오프는 생성/크레딧 칸이 빈 컷만", "컷 목록 생성/크레딧 칸이 빈 컷의 것만" in ctx_route)
+ex = card.split("칸을 채운 예")[1] if "칸을 채운 예" in card else ""
+check("[실행3] cut-card: 가상의 값으로 채운 예(칸 번호 형식)", "가상의 값" in ex and len(re.findall(r"^\[\d+\] ", ex, re.M)) >= 4 and len(card) <= 2000, f"{len(card)}자")
+check("[실행3] cut-card 예의 손도 화면 쪽", "the screen-left hand" in ex)
+check("[실행3] character-edit 틀 2: 젊게 할 때 표지와 no beauty filter", "젊게 할 때" in ce and "no beauty filter" in ce.split("## 틀 2")[1])
+check("[실행3] scenarios C10 2턴: 망원이 시작 이미지와 달라 한 번 묻기도 PASS", "한 번 묻는 것도 PASS" in read(os.path.join(ROOT, "tests", "agent-eval", "scenarios.md")).split("## C10")[1].split("## C11")[0])
+check("[실행3] 검사기: 단수 hand 앞에 화면 쪽이 없으면 WARN(합성어·복수 제외)", "(?<![-\\w])hand(?![-\\w])" in chk and os.path.exists(os.path.join(FIX, "image__fail__N15_side_hand_without_screen_side.txt")))
+for lp in sorted(glob.glob(os.path.join(FIX, "*.lines")) + glob.glob(os.path.join(ROOT, "tests", "agent-eval", "testbed", "grade", "*.lines")) + [os.path.join(ROOT, "tests", "agent-eval", "testbed", "project", "ok-cuts.md")]):
+    r = subprocess.run([sys.executable, CHECKER, "--kind", "image", lp], capture_output=True, text=True)
+    check(f"[실행3] 손 규칙에 걸리지 않음: {os.path.relpath(lp, ROOT)}", "화면 쪽이 없다" not in r.stdout and "카메라 쪽으로만" not in r.stdout, r.stdout.strip()[:200])
 
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)

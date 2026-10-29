@@ -99,3 +99,5 @@ PRESERVE EXACTLY:
 ONLY CHANGE: the visible age of the same person. no babyface, no exaggerated old-age makeup, no other
 people, no text, no watermark, no frame borders
 ```
+
+**젊게 할 때** `[age markers]`를 반대로 쓴다: 주름 얕게, 머리색(흰머리를 줄이거나 없앰), 곧은 어깨, 탄탄한 손. 끝 줄에 `no beauty filter`를 더한다.
