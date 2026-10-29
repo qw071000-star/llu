@@ -20,7 +20,7 @@ Done with `assemble.py` (ffmpeg/ffprobe) in Claude Code's Bash. Do not use MCP. 
 
 ## 3. Recipes
 
-Run commands from the repo root exactly as written, one line at a time (no cd or `&&`; same characters as the allow list). The script prints the ffmpeg command before running it.
+Run commands from the repo root exactly as written, one line at a time (one script per call: no `cd`, `&&`, `;` or pipes; same characters as the allow list). The script prints the ffmpeg command before running it.
 
 | Task | Command |
 |---|---|

@@ -417,7 +417,7 @@ check("[맹검5] 할 일 목록: SKILL.md 먼저", "Open the SKILL.md first" in 
 check("[맹검5] video-prompt: 사건은 묶어 세지 않고 샷별 사건 목록 먼저", "Do not count them in groups" in vskill and "per-shot event list" in vskill and "do not merge" in vskill)
 check("[맹검5] video-prompt: 나가기 = 마지막 프레임에 몸 절반이 프레임 밖", "half the body is outside the frame" in vskill)
 check("[맹검5] video-prompt: 렌즈 표에 없는 mm는 두 값 사이", "interpolate between the two nearest" in vskill)
-check("[맹검5] 소리 칸이 비면 대사 유무, 문 경첩 쪽(둘 다 video-prompt §0 점검표로 옮김)", "if cut card [3] sound is empty, ask whether there is dialogue" in intake and "hinge side" in intake)
+check("[맹검5] 대사 유무는 컷 목록 줄에서(불분명할 때만 묻는다), 문 경첩 쪽(둘 다 video-prompt §0 점검표)", "dialogue comes from the `shot-list.md` line" in intake and "hinge side" in intake)
 bg = sk("video-prompt/background.md")
 check("[맹검5] background: 정본 기본값은 묻지 않음, Keep은 제안값, 매체가 다르면 시작 이미지부터", "Do not ask for camera/length/sound canon values" in bg and "Show `Keep` as a proposal (제안값) even if the user did not mention it" in bg and "Propose making the start image anew" in bg)
 check("[맹검5] ok-reuse: 가져온 줄은 쪼개지 않고 새 문장, 전체를 --must-include", "do not split that line or insert into the middle" in reuse and "do not join with `;` or `,`" in reuse and "Put the whole brought line in the `--must-include` file" in reuse)

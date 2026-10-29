@@ -19,7 +19,7 @@ This is the stage before the cut card (`production-session`). Design one scene i
 2. **180-degree line:** which two characters (or character and object) it is drawn between, and which side of that line the camera is on (by an on-screen object).
 3. **Coverage table:** whichever of master, two-shot, reverse, insert, reaction the scene needs. For each shot: camera position and height, field of view (°) and shot size, and the location view used. If no suitable view exists, write `새 뷰 필요` (making it is `image-prompt` → `location-view.md`).
 4. **Cut length allocation:** events per cut as in `video-prompt` §2 "Event count", at most 15 seconds per cut, 2–4 seconds per dialogue line. Split the cut if exceeded.
-5. **Lines to move into `shot-list.md`:** in that table's column order, status `대기`.
+5. **Lines to move into `shot-list.md`:** always show them, in that table's column order, status `대기`. A cut that already has a confirmed start image keeps that image's field of view (from its OK card).
 
 ## 3. Rules
 
