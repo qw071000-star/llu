@@ -47,7 +47,8 @@ def check_common(text, args, out):
 
     if find(r"(?<!screen-)(?<!screen )\b(?:left|right) hand\b|\b(?:his|her|their) (?:own )?(?:left|right)\b|(?<!화면 )(?<!화면 왼쪽 )(?:오른손|왼손)", text):
         out.append(("WARN", "인물 기준 좌우(오른손, his left)는 뒤집혀 읽힌다. 화면 기준 + 화면 속 물건으로 쓴다: 'the screen-left hand, nearer the …'"))
-    people = find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text)
+    # "no people", "no other people", "no persons"는 인물이 없다는 말이다. 지운 뒤 인물 여부를 본다
+    people = find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", re.sub(r"\bno (?:other )?(?:people|persons?)\b", "", text, flags=re.I))
     camera_only = set()
     for m in re.finditer(r"\bhands?\b[^.;\n]{0,20}?\b(?:nearer|closer|nearest|closest)(?: to)? the camera\b", text, re.IGNORECASE):
         clause = re.split(r"[.;\n]", text[max(0, m.start() - 40):m.start()])[-1] + m.group(0) + re.split(r"[.;\n]", text[m.end():m.end() + 40])[0]
@@ -65,9 +66,9 @@ def check_common(text, args, out):
         break
     if find(r"\b(?:north|south|east|west)(?:ern|ward)?\b(?! Korea)|동쪽|서쪽|남쪽|북쪽", text, 0):
         out.append(("WARN", "동서남북을 썼다. 방향은 화면 기준 + 그쪽 물건으로 쓴다: 'from screen left, the [object] side'"))
-    if find(r"\b(?:LEFT|RIGHT|left|right)\b(?![- ](?:PANEL|panel|-to-))", re.sub(r"left-to-right|\b(?:left|right|cent(?:er|re))(?:(?:,\s*|\s+(?:and|or)\s+)(?:the\s+)?(?:left|right|cent(?:er|re)))+\s+panels?\b", "", text, flags=re.I), 0) and "SCREEN direction" not in text and find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text):
+    if find(r"\b(?:LEFT|RIGHT|left|right)\b(?![- ](?:PANEL|panel|-to-))", re.sub(r"left-to-right|\b(?:left|right|cent(?:er|re))(?:(?:,\s*|\s+(?:and|or)\s+)(?:the\s+)?(?:left|right|cent(?:er|re)))+\s+panels?\b", "", text, flags=re.I), 0) and "SCREEN direction" not in text and people:
         out.append(("WARN", "인물이 있는 프롬프트에서 좌우를 썼는데 좌표 문장이 없다: 'LEFT and RIGHT are SCREEN directions, never the character's own left or right.'"))
-    if "SCREEN direction" in text and "never the character's own left or right" not in text and find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text):
+    if "SCREEN direction" in text and "never the character's own left or right" not in text and people:
         out.append(("WARN", "좌표 문장이 짧다. 인물이 있으면 글자 그대로: 'LEFT and RIGHT are SCREEN directions, never the character's own left or right.'"))
 
     tags = set(re.findall(r"<<<\s*([^>]+?)\s*>>>", text))

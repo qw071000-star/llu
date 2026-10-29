@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)"
+      "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)",
+      "Bash(rm tmp/*)"
     ]
   }
 }

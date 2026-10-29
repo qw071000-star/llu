@@ -25,3 +25,5 @@ ACTIVE REFERENCES: [same elements, same order, same voice files as the source].
 STYLE / QUALITY: [same]. No digital sharpening.
 Required: same number, order and length of shots as the source; any difference = failed take.
 ```
+
+검사 `--refs`는 프롬프트의 `<<<>>>` 태그 수다. 붙이는 원본 영상은 세지 않는다.

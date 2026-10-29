@@ -11,7 +11,7 @@ description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정
 2. 저장할 `folder_id`가 정해졌는가(§2).
 3. 해상도가 확인용인가. Seedance 2.5 영상은 `draft: true`로 보낸다(승인 뒤 같은 테이크를 1080p로 확정, `video-prompt` → `rerender.md`).
 4. 처음 쓰는 모델·설정이면 `get_cost: true`로 견적을 봤는가. OK 대장 목록이나 `decisions.md` §2 비용 메모에 같은 모델·해상도·길이가 있으면 처음이 아니다.
-5. 이 스킬 폴더의 `check_prompt.py`를 통과했는가. 프롬프트를 **보이기 전에** 돌린다(실행법은 `image-prompt` §6 / `video-prompt` §4. 명령은 `.claude/settings.json`의 허용 패턴과 글자가 같아야 승인 없이 돈다. Claude 앱이면 경로만 그 스킬 폴더로).
+5. 이 스킬 폴더의 `check_prompt.py`를 통과했는가. 프롬프트를 **보이기 전에** 돌린다(절차는 `image-prompt` §6, 영상 명령은 `video-prompt` §4. 명령은 `.claude/settings.json`의 허용 패턴과 글자가 같아야 승인 없이 돈다. Claude 앱이면 경로만 그 스킬 폴더로).
 
 ## 2. 저장 위치
 
@@ -101,7 +101,8 @@ description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정
    2. `get_project_asset_prompt`(그 job)
    3. 사용자에게 붙여 달라고 한다(Higgsfield 웹의 결과물 상세에 있다)
    - 기억으로 다시 쓰지 않는다. 다른 계정이 만든 결과물은 2번이 비어 오므로, 카드가 팀원이 볼 수 있는 유일한 사본이다.
-3. 컷 목록의 확정 job 칸을 고친다. 에셋이면 에셋 대장의 확정 job과 고정 설명문도(고치는 세션은 `production-session` §1).
+3. `draft: true`로 보낸 job이면 목록 "모델 · 설정"과 카드 draft 줄에 `draft 예 · 만료일`을 적는다(아니면 `draft 아니오`). 1080p 확정은 이 표기로 `rerender.md` 길을 고른다.
+4. 컷 목록의 확정 job 칸을 고친다. 에셋이면 에셋 대장의 확정 job과 고정 설명문도(고치는 세션은 `production-session` §1).
 
 ## 5. 후반 작업
 

@@ -105,4 +105,4 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 - [ ] 고정 설명문이 에셋 대장과 글자까지 같은가
 - [ ] 크롭 띠와 가림 구역을 확인했는가
 - [ ] 자리표시 태그(`<<<LOC>>>` 등)가 남지 않았는가
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장해 작품 리포 루트에서 `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image 파일 --refs 태그수 [--must-include 고정문장파일]`로 돌린다(그 스킬을 열 필요는 없다). 이 한 줄 그대로, 단독 Bash 호출로(cd·`&&`·파이프·절대경로 없이). 고정 문장(에셋 대장의 의상·소품·LIGHT LOCK·좌표 문장)을 넣었으면 그 문장들을 한 줄에 하나씩 파일로 저장해 `--must-include`로 넘긴다. FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가(절차는 지침 "검사"). 이미지 줄: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 [--must-include tmp/고정문장파일]`. 고정 문장은 에셋 대장의 의상·소품·LIGHT LOCK·좌표 문장

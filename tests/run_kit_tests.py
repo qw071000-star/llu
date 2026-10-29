@@ -278,10 +278,12 @@ owners = [
     ("범위 밖 문제는 총괄에 올린다", r"총괄에 올릴", {"production-session/SKILL.md", "production-session/handoff.md"}),
     ("Forbidden에 넣는 것", r"만 Forbidden에|Forbidden[^\n]{0,20}실제", {"video-prompt/SKILL.md"}),
     ("렌즈 환산표", r"24mm=84°", {"video-prompt/SKILL.md"}),
-    ("모호한 말 → 값·문장(속도·별·사람 동작·걸음)", r"taking the full three seconds|2회 실패면 후반|\[centre of weight\]|이동량\(화면 %\)", {"video-prompt/SKILL.md"}),
+    ("모호한 말 → 값·문장(속도·별·사람 동작·걸음)", r"taking the full \[N\] seconds|2회 실패면 후반|\[centre of weight\]|이동량\(화면 %\)", {"video-prompt/SKILL.md"}),
     ("OK 프롬프트 찾는 순서", r"get_project_asset_prompt`?\(그 job\)|결과물 상세", {"higgsfield-generation/SKILL.md"}),
     ("판정 말과 상태(좋아·별로·나중에)", r"\"별로\"|\"나중에\"", {"higgsfield-generation/SKILL.md"}),
     ("가져온 OK의 위험을 옮긴다", r"위험도 가져온다", {"production-session/ok-reuse.md"}),
+    ("검사 절차: 임시 파일은 tmp/, 끝나면 지운다", r"끝나면 `tmp/`|검사 뒤 지운다|남기지 않는다\)", {"instructions.md"}),
+    ("검사 절차: 단독 Bash 호출, WARN은 숫자와 함께", r"단독 Bash 호출|검사 출력의 숫자", {"instructions.md"}),
 ]
 for name, pat, allowed in owners:
     where = sorted(f for f, t in docs.items() if re.search(pat, t))
@@ -302,7 +304,7 @@ check("[맹검4] 지침 6번: 인물 기준이면 향한 쪽으로 화면 쪽, �
 check("[맹검4] 지침 4번: 기본값 목록에 소리", "비율·소리·저장 폴더" in inst)
 check("[맹검4] 지침 5번: 대장과 OK 줄이 다르면 대장", "둘이 다르면 대장" in inst)
 check("[맹검4] 읽기 지도: fixes.md는 결과가 틀렸을 때", "영상 결과 고치기" in inst)
-check("[맹검4] 사람 동작 속도 줄(video-prompt 모호한 말 표)", "taking the full three seconds" in vskill and "제안값으로 묻는다" in vskill.split("taking the full three seconds")[1].split("\n")[0])
+check("[맹검4] 사람 동작 속도 줄(video-prompt 모호한 말 표)", "taking the full [N] seconds" in vskill and "제안값으로 묻는다" in vskill.split("taking the full [N] seconds")[1].split("\n")[0])
 check("[맹검4] fixes.md: 승인 컷이면 새 테이크 대체를 먼저 묻는다", "새 테이크로 대체할지" in fixes)
 check("[맹검4] 별 줄: 생성 전에 한계, 2회 실패면 오버레이", "생성 전에 알린다" in vskill and "2회 실패면 후반 오버레이" in vskill)
 check("[맹검4] video-prompt: fixes.md는 결과가 틀렸을 때, acting 먼저", "`fixes.md`는 결과가 틀렸을 때만" in vskill and "먼저 `acting`" in vskill)
@@ -363,7 +365,7 @@ try:
     sj = json.load(open(sj_path, encoding="utf-8"))
 except Exception:
     sj = {}
-check("[실행] project-files/settings.json: 검사기 하나만 허용", sj == {"permissions": {"allow": [f"Bash({ALLOW_CMD}:*)"]}}, str(sj))
+check("[실행] project-files/settings.json: 검사기와 tmp/ 지우기만 허용", sj == {"permissions": {"allow": [f"Bash({ALLOW_CMD}:*)", "Bash(rm tmp/*)"]}}, str(sj))
 check("[실행] README 설치에 settings.json 복사", "cp kit/project-files/settings.json .claude/settings.json" in read(os.path.join(ROOT, "README.md")))
 check("[실행] make_run.sh가 settings.json을 복사", '"$RUN/.claude/settings.json"' in read(os.path.join(ROOT, "tests", "agent-eval", "make_run.sh")))
 check("[실행] real_run.py --allowedTools 검사기", f'"--allowedTools", "Bash({ALLOW_CMD}:*)"' in read(os.path.join(ROOT, "tests", "agent-eval", "real_run.py")))
@@ -422,8 +424,7 @@ check("[실행2] routing: 속도·별·걸음은 §2, fixes.md는 그 밖", "속
 check("[실행2] routing: 시트 고치기에 character.md는 안 엶", "`character-edit.md` (`character.md`는 열지 않는다)" in ctx_route)
 check("[실행2] location.md 틀 아래: 블록 밖 줄은 지침 출력대로(모드 신규)", "블록 밖 줄은 지침 \"출력\"대로" in sk("image-prompt/location.md") and "`모드: 신규`" in sk("image-prompt/location.md"))
 check("[실행2] 생성 운영 §2: 폴더 묻는 문장은 must-ask 한 곳", "제가 만들까요" not in gen and "제가 만들까요" in ctx_ask)
-for name, txt in [("video-prompt", vskill), ("image-prompt", img_skill)]:
-    check(f"[실행2] {name} 검사 명령: 단독 Bash 호출(cd·&&·파이프·절대경로 없이)", "단독 Bash 호출로(cd·`&&`·파이프·절대경로 없이)" in txt)
+check("[실행2] image-prompt 검사 명령: 단독 Bash 호출(cd·&&·파이프·절대경로 없이)", "단독 Bash 호출로 돌린다(cd·`&&`·파이프·절대경로 없이)" in inst)
 check("[실행2] must-ask 장소 수정: 나누면 앞세운 변경 먼저", "사용자가 앞세운 변경을 먼저" in ctx_ask)
 check("[실행2] image-prompt 태그: 꺾쇠는 두고 이름만, 여는 줄 예", "꺾쇠는 두고 안의 이름만" in img_skill and "`Edit <<<loc_…_v1>>> WITHOUT reframing`" in img_skill)
 check("[실행2] location-view: 부모 카메라가 대상 밖 + 안에서 보면 먼 끝으로 이동", "부모 카메라가 대상 밖이고 사용자가 \"안에서\" 보면 먼 끝으로 이동" in loc_view)
@@ -468,12 +469,14 @@ check("[실행4] video §0 모호한 말 표 머리: 전 → 후만 보여도 �
 star = [l for l in vskill.splitlines() if l.startswith("| 별·새 떼")][0]
 check("[실행4] video 별 줄: 시작 이미지에 없으면 시도하지 않고 오버레이·새 시작 이미지", "시작 이미지에 없으면 시도하지 않고 후반 오버레이나 새 시작 이미지" in star)
 speed = [l for l in vskill.splitlines() if l.startswith("| 사람 동작 속도")][0]
-check("[실행4] video 속도 줄: 원래보다 늘린다, 구간이 이미 전체면 앞당기기·길이 늘리기 제안", "원래보다 늘린다" in speed and "시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로" in speed)
+check("[실행4] video 속도 줄: 후 구간이 더 길다, 구간이 이미 전체면 앞당기기·길이 늘리기 제안", "반드시 더 길다" in speed and "시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로" in speed)
 check("[실행4] must-ask 모든 작업: 정본과 다르면 범위(이 컷만/작품 전체)", "정본과 다르면 이 컷만인지 작품 전체인지도" in ctx_ask.split("## 모든 작업")[1].split("##")[0])
 check("[실행4] first-frame: 다른 OK 색감이면 질감 문장(Real material truth)을 새로 쓰지 않음", "질감 문장(`Real material truth` 등)을 새로 쓰지 않는다" in ff)
 check("[실행4] 지침 10번: 견적·크레딧 숫자는 근거가 있을 때만, 생성 운영은 추정 숫자 없음", "견적·크레딧 숫자는 근거(비용 메모, `get_cost`)가 있을 때만" in inst_core and "`추정`이라 쓰고 무엇으로 셈했는지" not in gen)
 t2 = ce.split("## 틀 2")[1].split("```")[1]
-check("[실행4] character-edit 틀 2 끝 줄 안에 [젊게면 … no beauty filter]", "[젊게면 이 구절\n대신 no beauty filter]" in t2 and "no exaggerated old-age makeup" in t2)
+_t2_old = [l for l in t2.splitlines() if l.startswith("ONLY CHANGE") and "old-age makeup" in l]
+_t2_young = [l for l in t2.splitlines() if l.startswith("ONLY CHANGE") and "no beauty filter" in l]
+check("[실행4·실제7] character-edit 틀 2 끝 줄: 늙게·젊게 두 줄로 따로(한 줄에 둘이 섞이지 않음)", "[늙게]\nONLY CHANGE" in t2 and "[젊게]\nONLY CHANGE" in t2 and len(_t2_old) == 1 and len(_t2_young) == 1 and "beauty filter" not in _t2_old[0] and "old-age" not in _t2_young[0] and "젊게면 이 구절" not in t2)
 check("[실행4] 지침 4번: 짚은 충돌에 방향만 답하면 더 작은 변경안으로 프롬프트까지, 전 → 후", "방향만 답하면 다시 묻지 않고 더 작은 변경안으로 프롬프트까지" in inst_core)
 check("[실행4] 검사기: '… left and center panels'는 좌우가 아니다(pass 예시 있음)", os.path.exists(os.path.join(FIX, "image__pass__S18_sheet_left_and_center_panels.txt")))
 for tp in ["image-prompt/character.md", "image-prompt/character-edit.md"]:
@@ -498,6 +501,27 @@ _sc = read(os.path.join(ROOT, "tests", "agent-eval", "scenarios.md"))
 check("[실제5] scenarios C02: 렌즈 관찰 결과를 묻는다고 기대하지 않음", "렌즈 관찰 결과" not in _sc.split("## C02")[1].split("## C03")[0])
 check("[실제5] scenarios C25: 표지판 확대는 틀 C", "틀 C" in _sc.split("## C25")[1].split("## C26")[0])
 check("[실제5] grader-rules: 영상 must-include에 identity_grandpa.lines를 넣지 않음", "영상 프롬프트에는 `identity_grandpa.lines`를 넣지 않는다" in read(os.path.join(ROOT, "tests", "agent-eval", "grader-rules.md")))
+
+# 16c. 실제 Claude Code 시험 7회차(real7)에서 찾은 결함
+_speed = [l for l in vskill.splitlines() if l.startswith("| 사람 동작 속도")][0]
+check("[실제7] video 속도 줄: 먼저 기존 구간 초를 세고 후 구간은 더 길다(예시보다 앞)", "먼저 기존 구간 초를 센다" in _speed and "후 구간은 반드시 더 길다" in _speed and _speed.index("먼저 기존 구간") < _speed.index("taking the full"))
+check("[실제7] video 속도 줄: 예시에 고정 숫자 구간 없음([기존보다 긴 구간])", "[기존보다 긴 구간]" in _speed and not re.search(r"\d:\d\d[–-]\d:\d\d", _speed) and "three seconds" not in _speed)
+check("[실제7] video 속도 줄: 이미 4초 이상이면 앞당기기·길이 늘리기 제안", "4초 이상" in _speed and "시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로" in _speed)
+_v0 = [l for l in vskill.split("## 0.")[1].splitlines()[1:] if l.strip()][0]
+check("[실제7] video §0 맨 위 줄: 15블록 전문 턴에 CHARACTER_ACTING을 새로 쓰면 acting", "15블록 전문" in _v0 and "`CHARACTER_ACTING`" in _v0 and "`acting`을 연다" in _v0)
+_img_run = [l for l in img_skill.splitlines() if "check_prompt.py --kind image" in l][0]
+_vid_run = [l for l in vskill.splitlines() if "check_prompt.py --kind video" in l][0]
+check("[실제7] 검사 임시 파일: image-prompt §6 실행 줄에 tmp/ 저장·검사 뒤 지우기", "`tmp/`에 파일로 저장" in inst and "--kind image tmp/파일" in _img_run and "끝나면 `tmp/` 파일을 지운다" in inst)
+check("[실제7] 검사 절차 주인은 지침, 이미지·영상 SKILL은 가리키고 명령만", "지침 \"검사\"" in _vid_run and "--kind video tmp/파일" in _vid_run and "지운다" not in _vid_run and "단독 Bash" not in _vid_run)
+check("[실제7] 생성 운영 §1: 검사 절차는 image-prompt §6", "절차는 `image-prompt` §6" in gen.split("## 2.")[0])
+check("[실제7] README 설치: tmp/를 .gitignore에", 'echo "tmp/" >> .gitignore' in read(os.path.join(ROOT, "README.md")).split("## 설치")[1].split("## ")[0])
+check("[실제7] must-ask: 이웃 OK 연기는 OK 대장 목록표의 'OK 이유' 칸", "이웃 컷 OK의 연기(OK 대장 목록표의 \"OK 이유\" 칸)" in ctx_ask)
+_okt = read(os.path.join(KIT, "project-files", "ok-cuts.md"))
+check("[실제7] OK 대장 목록 '모델 · 설정'에 draft 표기", "draft 예(만료일)/아니오" in [l for l in _okt.splitlines() if l.startswith("| (예시")][0])
+check("[실제7] 생성 운영 §4 OK 기록: draft 표기 한 줄", "`draft 예 · 만료일`" in gen.split("**OK 기록")[1].split("## 5.")[0])
+check("[실제7] rerender: --refs는 <<<>>> 태그 수, 원본 영상 제외", "`<<<>>>` 태그 수" in sk("video-prompt/rerender.md") and "원본 영상은 세지 않는다" in sk("video-prompt/rerender.md"))
+check("[실제7] routing §3: 묻기만 하는 턴에는 cut-card.md를 열지 않음", "묻기만 하는 턴에는 열지 않는다" in ctx_route.split("## 3.")[1])
+check("[실제7] 검사기: 'no people'·'no other people'은 인물로 세지 않음(pass 예시 있음)", "no (?:other )?(?:people|persons?)" in chk and os.path.exists(os.path.join(FIX, "image__pass__S19_location_no_people_left_right.txt")))
 
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)

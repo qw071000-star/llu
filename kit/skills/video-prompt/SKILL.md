@@ -7,7 +7,9 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 
 ## 0. 쓰기 전 정보 점검
 
-**단계 파일:** 새 프롬프트는 `live-action.md` / `background.md`. `fixes.md`는 결과가 틀렸을 때만 연다. `CHARACTER_ACTING`을 새로 쓰면 먼저 `acting`을 연다.
+**15블록 전문을 쓰는 턴에 `CHARACTER_ACTING`을 새로 쓰면 먼저 `acting`을 연다**(앞 턴이 질문 턴이었어도).
+
+**단계 파일:** 새 프롬프트는 `live-action.md` / `background.md`. `fixes.md`는 결과가 틀렸을 때만 연다.
 
 실사 컷(15블록)이면 아래 표를 채운다. 표의 각 줄은 15블록의 한 블록에 들어간다.
 
@@ -48,7 +50,7 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 | 속도("구름 더 느리게/빠르게") | 그 대상의 `Motion` 줄만. 이동량(화면 %)을 절반/두 배로, 다른 움직임은 그대로. 그 줄을 "전 → 후"로 보인다 |
 | 움직임 추가("풀도 흔들리게") | 이미지에 있는 것만 `Motion`에 한 줄(방향·세기). 그 답에서 "사건이 하나 늘었다"고 알린다 |
 | 별·새 떼 같은 작고 반복되는 요소("별이 더 반짝이게") | 모델이 잘 지키지 못한다고 생성 전에 알린다. 한 번 시도하고 2회 실패면 후반 오버레이로 얹는다. 시작 이미지에 없으면 시도하지 않고 후반 오버레이나 새 시작 이미지로 |
-| 사람 동작 속도("천천히") | 사건 수는 두고 그 구간 초를 원래보다 늘린다: `0:04–0:07 — [action], taking the full three seconds. [Action] finished in under two seconds = failed take.` 구간이 이미 동작 전체면 시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로 묻는다 |
+| 사람 동작 속도("천천히") | 먼저 기존 구간 초를 센다. 후 구간은 반드시 더 길다. 사건 수는 두고 `[기존보다 긴 구간] — [action], taking the full [N] seconds. [Action] finished in under [N − 1] seconds = failed take.` "전 → 후"에 두 구간의 초를 적는다. 기존 구간이 이미 4초 이상이거나 동작 전체면 시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로 묻는다 |
 | 걸음 나이("걸음이 젊어") | 보폭·팔·발·무게중심으로 쓰고 반대 걸음을 닫는다: `"[name] walk" — [step size], [arm swing], [feet lifted or dragged], [centre of weight]. A [opposite] walk = failed take.` |
 | 동작 여럿("…하고 …하고 나가") | §2 사건 수대로 센다 |
 
@@ -89,4 +91,4 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 
 ## 4. 보내기 전 점검 (검사 스크립트가 잡지 못하는 것)
 
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가. 프롬프트를 파일로 저장해 작품 리포 루트에서 `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video 파일 --refs 붙일요소수 --seconds 길이 [--must-include 고정문장파일]`로 돌린다. 이 한 줄 그대로, 단독 Bash 호출로(cd·`&&`·파이프·절대경로 없이). 고정 문장·가져온 OK 줄은 한 줄에 하나씩 파일로 저장해 `--must-include`로 넘긴다. FAIL은 고친다. WARN은 고치거나 남길 이유를 검사 출력의 숫자와 함께 한 줄 적는다. 코드 실행이 안 되면 그렇다고 적는다
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가. (절차는 지침 "검사"). 영상 줄: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 붙일요소수 --seconds 길이 [--must-include tmp/고정문장파일]`. 가져온 OK 줄도 `--must-include` 파일에 넣는다
