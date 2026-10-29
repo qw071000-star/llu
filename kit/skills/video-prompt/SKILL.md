@@ -23,7 +23,7 @@ For a live-action cut (15 blocks), fill the table below. Each row goes into one 
 | Props | Element ID, start state -> end state, who holds it in which hand (screen side + object), size | `ACTIVE_REFERENCES`, `PHYSICS` |
 | Start image | First-frame job (if none, make a first frame dedicated to this cut first (`image-prompt` -> `first-frame.md`); never use another cut's), whether to use an end frame | `ACTIVE_REFERENCES` |
 | Camera | Position (by objects on screen), height, direction, locked or one move (type, speed, amount) | `CAMERA` |
-| Lens | Diagonal field of view (degrees), 3 observable results, depth of field / focus shift | `OPTICS` |
+| Lens | Diagonal field of view (degrees), 3 observable results, depth of field / focus shift — not asked: fill from the start image's mm | `OPTICS` |
 | Character position | Per character: start position (0:00, screen side + object), pose, action in progress; end position (last frame) | `FIRST_FRAME_AND_SPATIAL_BLOCKING`, `ACTION_TIMING` |
 | Movement path | Route, zones not passed through, walking speed | `LOCATION_MAP`, `ACTION_TIMING` |
 | Gaze | Per character: what they look at, when the gaze changes, who must not react | `ACTION_TIMING`, `CHARACTER_ACTING` |

@@ -6,7 +6,7 @@
 
 ### Never ask
 
-Model, check resolution, aspect ratio, default sound, save folder, look and era, lens (start image mm is the default), length. When canon (`decisions.md`, registry folder table) has them, show one line "기본값으로 씀: …". Background video: no camera move question unless the user mentioned movement (canon fixed → default line).
+Model, check resolution, aspect ratio, default sound, save folder, look and era, lens (start image mm is the default), length. When canon (`decisions.md`, registry folder table) has them, show one line "기본값으로 씀: …". Background video: no camera move question unless the user mentioned movement.
 
 ### Flag first (ask which way before the prompt)
 
@@ -16,7 +16,7 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 - The cut number is not in `shot-list.md` → ask only what the cut is; defer camera, people, props and folder.
 - Several tasks in one message → propose an order (task numbers) and ask only about the first.
 - Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (`3-6 [대기]` with `승인`/`거절` under it) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
-- Generation: the user has not said "만들어"/"보내" on a prompt they saw → ask whether to send. High resolution only after the user confirms. Same core failure twice in a row → stop (instructions rule 8).
+- Generation: no "만들어"/"보내" on a prompt the user saw → ask whether to send.
 
 ## Per task (beyond the skill's table)
 

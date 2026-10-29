@@ -535,7 +535,7 @@ check("[실행4] scenarios C24: acting은 프롬프트 턴(2턴)에 연다", "`a
 check("[실제5] 지침 4번: 에셋 질문의 답은 에셋 대장 초안 줄, 컷 질문의 답만 컷 카드", "Write cut answers on the cut card, asset answers on that asset's `초안(제안값)` line in the registry" in inst_core)
 check("[실제5] 지침 출력: 파일로 저장해도 답에 전문", "(also when saved to a file)" in out_sec)
 check("[실제5] tasks §3: 시작 이미지가 없으면 live-action·cut-card를 열지 않음", "Video request without a start image" in _r3 and "no `live-action.md`, no `cut-card.md`" in _r3)
-check("[실제5] must-ask 배경: 카메라는 사용자가 움직임을 말했을 때만 묻는다", "Background video: no camera move question unless the user mentioned movement (canon fixed → default line)" in ctx_ask)
+check("[실제5] must-ask 배경: 카메라는 사용자가 움직임을 말했을 때만 묻는다", "Background video: no camera move question unless the user mentioned movement" in ctx_ask)
 _ce_blocks = "\n".join(b for i, b in enumerate(sk("image-prompt/character-edit.md").split("```")) if i % 2 == 1)
 check("[실제5] character-edit: 사람용 안내 괄호 (by name …)가 코드블록 안에 없음", "(by name" not in _ce_blocks and "(by name, down to shoes" in sk("image-prompt/character-edit.md"))
 check("[실제5] ok-reuse: 권한 문장의 태그는 OK 카드의 요소 이름", "use the OK card's element name as is" in sk("production-session/ok-reuse.md"))

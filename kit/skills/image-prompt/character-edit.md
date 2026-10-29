@@ -15,6 +15,8 @@ The basis is that character's sheet card (job) in the OK ledger. Do not make a n
 
 ## Rules
 
+- Resolution 2k from the start and the work's default model, as for a new sheet (`character.md`). Outside the block, show each changed value as "전 → 후" (e.g. `나이: about seventy → about fifty-five`).
+
 **When editing**
 - Change only one thing at a time, outfit or hair. The exception is two changes that do not hold if separated, such as an era move (hair signals the era more strongly than clothes). If you bundle them as an exception, write the reason in one line.
 - Do not re-describe the face; only instruct to preserve it. If a face sentence competes with the reference image, the face is regenerated.
