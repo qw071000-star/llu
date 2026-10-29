@@ -1,6 +1,6 @@
 # Background / landscape / painterly video - 4 paragraphs
 
-Use when there is no character acting and the start image already holds the whole scene.
+Use when there is no character acting and the start image already holds the whole scene. Check with `--refs 0` (the start image is not a tagged element).
 
 ## Rules
 

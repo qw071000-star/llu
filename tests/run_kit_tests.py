@@ -117,7 +117,7 @@ _guide_rows = sorted(int(n) for n in re.findall(r"^\| (\d+) \|", _guide, re.M))
 check("[할 일] 사람용 할일-목록.md와 번호가 같다", _guide_rows == sorted(_task_rows), str(_guide_rows))
 _r1 = ctx_route.split("## 1.")[1].split("## 2.")[0]
 check("[할 일] tasks §1: 한 작업만 맞으면 바로 진행하고 첫 줄에 번호를 밝힌다", "**Go straight on** when only one task fits" in _r1 and "\"[N]번 [작업명]으로 진행합니다.\"" in _r1)
-check("[할 일] tasks §1: 둘 이상 맞을 때만 한 줄로 묻고 아무것도 열지 않는다", "**Ask first only when two or more tasks fit**" in _r1 and "open nothing yet" in _r1 and "이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." in _r1)
+check("[할 일] tasks §1: 둘 이상 맞을 때만 한 줄로 묻고 아무것도 열지 않는다", "two or more tasks fit**" in _r1 and "open nothing yet" in _r1 and "이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." in _r1)
 for n, row in _task_rows.items():
     check(f"[할 일] {n}번 줄이 여는 스킬이 있다", any(f"`{s}`" in row for s in skill_dirs) or "OK card" in row, row[:80])
 
@@ -381,7 +381,7 @@ check("[맹검5] 모호한 말 표: 움직임 추가면 사건이 늘었다고 �
 check("[맹검5] 모호한 말 표: 걸음 나이(보폭·팔·발·무게중심, 반대 걸음 = failed take)", all(w in vague for w in ["[step size]", "[arm swing]", "[feet lifted or dragged]", "[centre of weight]", "walk = failed take"]))
 check("[맹검5] fixes.md: 모호한 말 줄은 옮기고 SKILL 표를 가리킴", "§0 \"vague phrases\" table" in fixes and not re.search(r"구름|풀도 흔들|별이 더 반짝|taking the full|Halve/double", fixes))
 check("[맹검5] tasks §1: 모호한 말은 스킬 자기 표로 값을 제안(영상 고치기 줄은 §0 표)", "Propose concrete values from the skill's own tables and ask" in inst and "§0 only for speed·stars·gait" in inst)  # 옛 routing §2 표는 일부러 뺌
-check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "only for prompt, generation or canon work" in inst and "skip it for information questions" in inst)
+check("[맹검5] 지침: 시작 보고 세 줄은 프롬프트·생성·정본 작업일 때만, 정보·정리 질문은 생략 가능", "only for prompt, generation or canon work" in inst and "[N]번 [작업명]으로 진행합니다." in inst_core)
 check("[맹검5] 지침: 컷 번호도 job도 없을 때만 묻고 컷 파일을 열지 않음", "Ask only when there is neither cut number nor job, and then open no cut files" in inst)
 check("[맹검5] 할 일 목록: OK 재표시·번역은 그 카드 하나, 검사 안 함, 번역은 코드블록 밖", "다시 보기·번역" in inst and "(no check)" in inst and "never in a code block" in inst)
 check("[맹검5] 할 일 목록: 시트 자체 고치기만 character-edit, 퍼스트 프레임 속 인물은 first-frame", "on the sheet itself" in _task_rows.get(5, "") and re.search(r"person|character|인물", _task_rows.get(11, "")) is not None, _task_rows.get(11, ""))

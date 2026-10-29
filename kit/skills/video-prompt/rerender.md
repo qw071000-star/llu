@@ -2,7 +2,7 @@
 
 Do not generate anew. Regenerating yields a different take.
 
-**Before sending:** get the 1080p quote with `[TOOL] get_cost` (`higgsfield-generation` §1), tell the user the number with its basis, and confirm once.
+**Before sending:** get the 1080p quote with `[TOOL] get_cost` (`higgsfield-generation` §1), tell the user the number with its basis (no number → `알 수 없음` once), and ask once whether to send.
 
 - **For Seedance 2.5, send review versions as `draft: true` (480p).** On approval, within 7 days make the 1080p final from `draft_job_id`. The same take is upscaled as is. A review version costs the same as a non-draft 480p.
 - If it was not a draft or the deadline has passed, attach the adopted take as the source video using the template below, and re-render with the same elements and the same voices.
