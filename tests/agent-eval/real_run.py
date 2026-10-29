@@ -32,13 +32,15 @@ while turns:
             break
         print(f"{cid} turn{n}: 사용량 한도 — 10분 뒤 다시 시도", flush=True)
         time.sleep(600)
-    skills, reads, tools, bash, final = [], [], [], [], ""
+    skills, reads, tools, bash, final, texts = [], [], [], [], "", []
     for line in r.stdout.splitlines():
         try: e = json.loads(line)
         except Exception: continue
         if e.get("type") == "system" and e.get("session_id"): session = e["session_id"]
         if e.get("type") == "assistant":
             for c in e["message"].get("content", []):
+                if c.get("type") == "text" and c.get("text", "").strip():
+                    texts.append(c["text"].strip())  # 도구 사이에 쓴 글도 사용자 화면에 보인다
                 if c.get("type") == "tool_use":
                     i = c.get("input", {})
                     if c["name"] == "Skill": skills.append(i.get("skill"))
@@ -53,9 +55,11 @@ while turns:
         if e.get("type") == "result":
             final = e.get("result", ""); session = e.get("session_id", session)
     os.makedirs(os.path.join(run, "out"), exist_ok=True)
-    open(os.path.join(run, "out", f"turn{n}.md"), "w").write(f"<!-- 사용자: {msg} -->\n\n{final}\n")
+    shown = "\n\n".join(texts) if texts else final  # 사용자가 본 글 전부(중간 글 + 마지막 답)
+    if final and final.strip() not in shown: shown += "\n\n" + final
+    open(os.path.join(run, "out", f"turn{n}.md"), "w").write(f"<!-- 사용자: {msg} -->\n\n{shown}\n")
     json.dump({"user": msg, "skills": skills, "reads": reads, "tools": tools, "bash": bash, "rc": r.returncode, "stderr": r.stderr[-500:]},
               open(os.path.join(run, "out", f"turn{n}.meta.json"), "w"), ensure_ascii=False, indent=1)
     print(f"{cid} turn{n}: skills={skills} reads={len(reads)} rc={r.returncode}", flush=True)
-    if "이 작업을 할까요" in final and not msg.startswith("응, 그 작업"):
+    if "이 작업을 할까요" in shown and not msg.startswith("응, 그 작업"):
         turns.insert(0, "응, 그 작업 맞아.")  # 확인 질문에는 수락으로 답하고 원래 대본을 이어 간다
