@@ -1,34 +1,34 @@
-# 인물 + 의상 시트 — 확정된 시트 고치기
+# Character + wardrobe sheet — editing a confirmed sheet
 
-기준은 OK 대장의 그 인물 시트 카드(job)다. 새로 만들지 않는다. 고치기에는 이 파일만 연다(`character.md`는 새 시트용이다). 틀에 필요한 문장은 이미 들어 있다.
+The basis is that character's sheet card (job) in the OK ledger. Do not make a new one. Open only this file for editing (`character.md` is for new sheets). The sentences the template needs are already in it.
 
-## 필요한 정보
+## Required information
 
-| 필요한 정보 | 틀의 자리 |
+| Required information | Template slot |
 |---|---|
-| 기준 시트 job, 바꿀 것(의상 = `Outfit` 줄 / 헤어), 새 상태(머리→발, 신발까지) | 틀 1 `CHANGE` |
-| 없앨 옛 항목(신발·작은 소품까지 이름으로), 새 목둘레 | 틀 1 `REMOVE COMPLETELY` |
-| 시대를 옮기는 수정인가 | 틀 1 `Era move` 줄 |
-| 사용자가 의상·헤어 참조 이미지를 가리켰는가("이걸로"인데 이미지가 없으면 묻는다) | 틀 1 권한 줄 |
-| 나이를 바꾸는가("50대처럼"): 목표 나이, 나이 표지(주름·피부·헤어 색·자세·손) | 틀 2 `CHANGE — AGE`, `IDENTITY BONES` |
-| 머리 없는 패널 변형 A / B(기준 시트와 같게) | 틀 1 LEFT PANEL 줄(A / B) |
+| Base sheet job, what to change (outfit = `Outfit` line / hair), new state (head to foot, down to the shoes) | Template 1 `CHANGE` |
+| Old items to remove (by name, down to shoes and small props), new neckline | Template 1 `REMOVE COMPLETELY` |
+| Is the edit an era move? | Template 1 `Era move` line |
+| Did the user point to an outfit/hair reference image? (if they say "이걸로" (this one) but there is no image, ask) | Template 1 authority lines |
+| Changing age ("50대처럼" (like in their 50s))? target age, age markers (wrinkles, skin, hair colour, posture, hands) | Template 2 `CHANGE — AGE`, `IDENTITY BONES` |
+| Headless-panel variant A / B (same as the base sheet) | Template 1 LEFT PANEL line (A / B) |
 
-## 규칙
+## Rules
 
-**수정할 때**
-- 한 번에 의상이나 헤어 하나만 바꾼다. 예외는 시대 이동처럼 떼면 성립하지 않는 두 변경이다(헤어가 의상보다 시대를 강하게 드러낸다). 예외로 묶었으면 이유를 한 줄 적는다.
-- 얼굴은 다시 묘사하지 않고 보존만 지시한다. 얼굴 문장이 참조 이미지와 경쟁하면 얼굴이 새로 생성된다.
-- 의상 범위는 `In all three panels`, 헤어 범위는 `Only in the center and right panels`. 헤어에 세 패널을 쓰면 왼쪽에 머리가 생긴다.
-- **목둘레를 세 곳에 쓴다:** REMOVE의 `At the neckline …`, PRESERVE LEFT 줄, ONLY CHANGE의 `including the neckline of the headless panel`. 수정에서 가장 자주 실패하는 곳이다.
-- **목록을 맞춘다:** CHANGE의 새 의상 목록 = PRESERVE LEFT 줄의 `Its clothes change fully:` 뒤 목록, REMOVE의 GONE 목록(옛 항목마다 이름으로, 신발·작은 장신구까지) = 그 줄 끝의 `no [old 1], no [old 2], no [old 3]`(같은 항목, 같은 수). 어긋나면 옛 옷이 반쯤 그려진다.
-- 시대를 옮기면 CHANGE에 `nothing that dates the decade`를 붙이고 그 시대를 만드는 요소(머리 기름, 넓은 넥타이, 로고, 스니커즈 등)를 이름으로 지운다.
-- 새 의상은 재단 네 가지(길이·여밈·칼라·주머니)를 쓰고, 직업을 드러내는 소품이 붙지 않게 `No profession-signaling props.`를 넣는다.
-- 의상·헤어 참조 이미지를 붙이면 틀 1의 권한 줄 세 개를 넣는다. `Do not transfer the face …` 줄은 예외 없이 넣는다.
-- 나이를 바꾸면 틀 2를 쓴다. `IDENTITY BONES` 줄은 틀 그대로 쓰고 얼굴 특징(코·눈 모양 등)을 새로 지어 넣지 않는다.
-- 결과에서 오른쪽 얼굴이 딴 사람이 되면: 얼굴 묘사를 지우고 `Change the hair around the existing face; do not regenerate, reinterpret, beautify, age or reshape the face.`
-- 확정되면 에셋 대장의 그 인물에 새 상태 줄(WARDROBE 고정 문장, job)을 더한다. 옛 상태는 지우지 않는다.
+**When editing**
+- Change only one thing at a time, outfit or hair. The exception is two changes that do not hold if separated, such as an era move (hair signals the era more strongly than clothes). If you bundle them as an exception, write the reason in one line.
+- Do not re-describe the face; only instruct to preserve it. If a face sentence competes with the reference image, the face is regenerated.
+- Outfit scope is `In all three panels`; hair scope is `Only in the center and right panels`. Using three panels for hair produces a head on the left.
+- **Write the neckline in three places:** `At the neckline …` in REMOVE, the PRESERVE LEFT line, and `including the neckline of the headless panel` in ONLY CHANGE. This is where edits fail most often.
+- **Match the lists:** the new outfit list in CHANGE = the list after `Its clothes change fully:` in the PRESERVE LEFT line; the GONE list in REMOVE (each old item by name, down to shoes and small accessories) = `no [old 1], no [old 2], no [old 3]` at the end of that line (same items, same count). If they disagree, the old clothes get half-drawn.
+- When moving the era, add `nothing that dates the decade` to CHANGE and erase by name the elements that make that era (hair grease, wide tie, logo, sneakers, etc.).
+- Write the four cut details for the new outfit (length, closure, collar, pockets), and add `No profession-signaling props.` so no occupation-revealing props attach.
+- When an outfit/hair reference image is attached, include the three authority lines of Template 1. Always include the `Do not transfer the face …` line, no exceptions.
+- When changing age, use Template 2. Use the `IDENTITY BONES` line as in the template and do not invent new facial features (nose, eye shape, etc.).
+- If the right-panel face becomes a different person in the result: delete the face description and write `Change the hair around the existing face; do not regenerate, reinterpret, beautify, age or reshape the face.`
+- When confirmed, add a new state line (WARDROBE fixed sentence, job) to that character in the asset registry. Do not delete the old state.
 
-## 틀 1 — 의상 또는 헤어 하나
+## Template 1 (틀 1) — one outfit or hair change
 
 ```text
 Edit reference image 1: change only the character's [outfit / hair], while keeping the character's
@@ -71,9 +71,9 @@ no head on the left panel, no mannequin, no other people, no duplicate figures, 
 no watermark, no logos, no frame borders
 ```
 
-## 틀 2 — 나이만 바꾸기 (같은 사람, 다른 나이)
+## Template 2 (틀 2) — change only the age (same person, different age)
 
-"20대인데 50대처럼 보이게" 같은 요청이다. 얼굴을 새로 묘사하지 않는다. 뼈대는 남기고 나이 표지만 바꾼다. 나이 표지(주름·피부·헤어 색·자세)는 떼면 성립하지 않으니 한 변경으로 친다. 의상은 그대로 둔다. 결과는 새 상태 요소(`char_<인물>_<나이>_v1`)로 따로 둔다.
+A request like "20대인데 50대처럼 보이게" (a person in their 20s, but looking like in their 50s). Do not re-describe the face. Keep the bone structure and change only the age markers. The age markers (wrinkles, skin, hair colour, posture) do not hold if separated, so count them as one change. Leave the outfit as it is. Keep the result separately as a new-state element (`char_<character>_<age>_v1`).
 
 ```text
 Edit reference image 1: age the same person to [target age], while keeping the character's identity
@@ -102,4 +102,4 @@ ONLY CHANGE: the visible age of the same person. no babyface, no exaggerated old
 ONLY CHANGE: the visible age of the same person. no babyface, no beauty filter, no other people, no text, no watermark, no frame borders
 ```
 
-**젊게 할 때** `[age markers]`를 반대로 쓴다: 주름 얕게, 머리색(흰머리를 줄이거나 없앰), 곧은 어깨, 탄탄한 손. 끝 줄은 `[젊게]` 줄 하나만 쓴다(늙게면 `[늙게]` 줄). **어린이 나이**(10세 → 12세)는 키·어깨·팔다리 비율·얼굴 길이·자세로 쓰고 피부는 그대로 둔다.
+**When making younger,** write `[age markers]` in reverse: shallower wrinkles, hair colour (fewer or no grey hairs), straighter shoulders, firmer hands. Use only the `[젊게]` line for the last line (for older, the `[늙게]` line). **For a child's age** (10 → 12), write it by height, shoulders, limb proportions, face length and posture, and leave the skin as is.

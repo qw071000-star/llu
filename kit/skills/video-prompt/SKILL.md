@@ -1,94 +1,94 @@
 ---
 name: video-prompt
-description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seedance, Kling, image-to-video, 시작·끝 프레임 영상에 해당한다. 실사·인물 컷은 15블록, 배경·풍경·그림체는 4문단이다. 결과가 틀리면 증상별 수정 파일을 읽는다.
+description: Use when writing or fixing an AI video-generation prompt - Seedance, Kling, image-to-video, start/end-frame video. Live-action and character cuts use the 15 blocks; backgrounds, landscapes and painterly styles use 4 paragraphs. When the result comes out wrong, read the symptom-fix file.
 ---
 
-# 영상 프롬프트 — 공통
+# Video prompt - common
 
-## 0. 쓰기 전 정보 점검
+## 0. Information check before writing
 
-**15블록 전문을 쓰는 턴에 `CHARACTER_ACTING`을 새로 쓰면 먼저 `acting`을 연다**(앞 턴이 질문 턴이었어도).
+**If the turn writes a full 15-block prompt and newly writes `CHARACTER_ACTING`, open `acting` first** (even if the previous turn was a question turn).
 
-**단계 파일:** 새 프롬프트는 `live-action.md` / `background.md`. `fixes.md`는 결과가 틀렸을 때만 연다.
+**Stage files:** a new prompt uses `live-action.md` / `background.md`. Open `fixes.md` only when the result came out wrong.
 
-실사 컷(15블록)이면 아래 표를 채운다. 표의 각 줄은 15블록의 한 블록에 들어간다.
+For a live-action cut (15 blocks), fill the table below. Each row goes into one block of the 15.
 
-| 구분 | 필요한 정보 | 들어가는 블록 |
+| Category | Information needed | Block it goes into |
 |---|---|---|
-| 장면 | 이 클립에서 일어나는 일(2~4문장), 시대·장소·시간대 | `SCENE_CONTEXT` |
-| 형식 | 길이, 화면비, 모델, 소리(대사·효과음·음악 여부), 저장 폴더 | `FORMAT_MODE`, `AUDIO` |
-| 룩 | 매체·질감·색조(`decisions.md`의 룩 기준) | `STYLE` |
-| 인물 에셋 | 인물마다 요소 ID, 의상·헤어 상태 버전, 고정 설명문, 대사가 있으면 목소리 문장 | `ACTIVE_REFERENCES`, `AUDIO` |
-| 장소 | 장소 뷰 요소 ID, 화면 좌·중·우·전경의 랜드마크, 시간대, 문·여닫이 가구의 경첩 쪽(화면 쪽 + 물건)과 열리는 방향 | `ACTIVE_REFERENCES`, `LOCATION_MAP` |
-| 소품 | 요소 ID, 시작 상태 → 끝 상태, 누가 어느 손(화면 쪽 + 물건)에 드는가, 크기 | `ACTIVE_REFERENCES`, `PHYSICS` |
-| 시작 이미지 | 퍼스트 프레임 job (없으면 그 컷 전용 퍼스트 프레임부터(`image-prompt` → `first-frame.md`). 다른 컷 것을 쓰지 않는다), 끝 프레임을 쓸지 | `ACTIVE_REFERENCES` |
-| 카메라 | 위치(화면 속 물건으로), 높이, 방향, 고정 또는 움직임 한 가지(종류·속도·양) | `CAMERA` |
-| 렌즈 | 대각 화각(도), 관찰 결과 3개, 심도·초점 이동 | `OPTICS` |
-| 인물 위치 | 인물마다 시작 위치(0:00, 화면 쪽 + 물건)·자세·하던 동작, 끝 위치(마지막 프레임) | `FIRST_FRAME_AND_SPATIAL_BLOCKING`, `ACTION_TIMING` |
-| 동선 | 이동 경로, 지나가지 않는 구역, 걸음 속도 | `LOCATION_MAP`, `ACTION_TIMING` |
-| 시선 | 인물마다 무엇을 보는지, 언제 시선이 바뀌는지, 반응하지 않을 사람 | `ACTION_TIMING`, `CHARACTER_ACTING` |
-| 타이밍 | 주요 액션의 구간(`0:00–0:03`), 대사 원문·횟수·위치, 소품 상태가 바뀌는 시점 | `ACTION_TIMING`, `AUDIO` |
-| 연기 | 인물마다 목표, 감정 범위의 양 끝 | `CHARACTER_ACTING` |
-| 빛 | 지배 광원과 방향 | `LIGHTING` |
-| 이음새 | 앞 컷에서 이어받는 상태, 다음 컷 첫 프레임과 맞출 것 | `PRE_SHOT_CONTINUITY` |
-| 금지 | 이 컷의 거절 이유·[10], 가져온 OK의 위험(`production-session` → `ok-reuse.md` §3), 에셋 대장의 인물 "알려진 실패" | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` |
+| Scene | What happens in this clip (2-4 sentences), era, place, time of day | `SCENE_CONTEXT` |
+| Format | Length, aspect ratio, model, sound (dialogue / effects / music or not), save folder | `FORMAT_MODE`, `AUDIO` |
+| Look | Medium, texture, colour tone (the look standard in `decisions.md`) | `STYLE` |
+| Character assets | Per character: element ID, wardrobe/hair state version, fixed description sentence, voice sentence if there is dialogue | `ACTIVE_REFERENCES`, `AUDIO` |
+| Location | Location-view element ID, landmarks at screen left / centre / right / foreground, time of day, hinge side of doors and hinged furniture (screen side + object) and opening direction | `ACTIVE_REFERENCES`, `LOCATION_MAP` |
+| Props | Element ID, start state -> end state, who holds it in which hand (screen side + object), size | `ACTIVE_REFERENCES`, `PHYSICS` |
+| Start image | First-frame job (if none, make a first frame dedicated to this cut first (`image-prompt` -> `first-frame.md`); never use another cut's), whether to use an end frame | `ACTIVE_REFERENCES` |
+| Camera | Position (by objects on screen), height, direction, locked or one move (type, speed, amount) | `CAMERA` |
+| Lens | Diagonal field of view (degrees), 3 observable results, depth of field / focus shift | `OPTICS` |
+| Character position | Per character: start position (0:00, screen side + object), pose, action in progress; end position (last frame) | `FIRST_FRAME_AND_SPATIAL_BLOCKING`, `ACTION_TIMING` |
+| Movement path | Route, zones not passed through, walking speed | `LOCATION_MAP`, `ACTION_TIMING` |
+| Gaze | Per character: what they look at, when the gaze changes, who must not react | `ACTION_TIMING`, `CHARACTER_ACTING` |
+| Timing | Intervals of the main actions (`0:00–0:03`), dialogue text / count / position, moments when prop state changes | `ACTION_TIMING`, `AUDIO` |
+| Acting | Per character: objective, both ends of the emotional range | `CHARACTER_ACTING` |
+| Light | Dominant light source and direction | `LIGHTING` |
+| Seam | State inherited from the previous cut, what must match the next cut's first frame | `PRE_SHOT_CONTINUITY` |
+| Forbidden | This cut's rejection reasons and [10], risks of an imported OK (`production-session` -> `ok-reuse.md` §3), the character's "알려진 실패" in the asset registry | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` |
 
-배경·풍경 영상(4문단)이면 다음 표만 채운다.
+For a background/landscape video (4 paragraphs), fill only the next table.
 
-| 필요한 정보 | 들어가는 문단 |
+| Information needed | Paragraph it goes into |
 |---|---|
-| 시작 이미지 job, 모델, 길이, 화면비, 저장 폴더 | 설정 |
-| 카메라 움직임: 종류·방향·양(화면 %)·속도 | `Camera` |
-| 움직일 것: 이미지에 이미 있는 것마다 방향·속도 | `Motion` |
-| 매체, 유지할 형태, 빛 방향 | `Keep` |
-| 소리(끌 수 있는지) | `Silent` |
+| Start-image job, model, length, aspect ratio, save folder | Settings |
+| Camera move: type, direction, amount (% of frame), speed | `Camera` |
+| What moves: for each thing already in the image, direction and speed | `Motion` |
+| Medium, shapes to keep, light direction | `Keep` |
+| Sound (whether it can be turned off) | `Silent` |
 
-**모호한 말 → 값·문장** (결과 지적이 아니어도 쓴다. "전 → 후"만 보여도 고친 전문을 저장해 검사한다)
+**Vague phrases -> values/sentences** (applies even when the user is not criticising a result. If only "before -> after" is shown, save the fixed full prompt and run the check on it)
 
-| 사용자 말 | 값·문장 |
+| User phrase | Value / sentence |
 |---|---|
-| 속도("구름 더 느리게/빠르게") | 그 대상의 `Motion` 줄만. 이동량(화면 %)을 절반/두 배로, 다른 움직임은 그대로. 그 줄을 "전 → 후"로 보인다 |
-| 움직임 추가("풀도 흔들리게") | 이미지에 있는 것만 `Motion`에 한 줄(방향·세기). 그 답에서 "사건이 하나 늘었다"고 알린다 |
-| 별·새 떼 같은 작고 반복되는 요소("별이 더 반짝이게") | 모델이 잘 지키지 못한다고 생성 전에 알린다. 한 번 시도하고 2회 실패면 후반 오버레이로 얹는다. 시작 이미지에 없으면 시도하지 않고 후반 오버레이나 새 시작 이미지로 |
-| 사람 동작 속도("천천히") | 먼저 기존 구간 초를 센다. 후 구간은 반드시 더 길다. 사건 수는 두고 `[기존보다 긴 구간] — [action], taking the full [N] seconds. [Action] finished in under [N − 1] seconds = failed take.` "전 → 후"에 두 구간의 초를 적는다. 기존 구간이 이미 4초 이상이거나 동작 전체면 시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로 묻는다 |
-| 걸음 나이("걸음이 젊어") | 보폭·팔·발·무게중심으로 쓰고 반대 걸음을 닫는다: `"[name] walk" — [step size], [arm swing], [feet lifted or dragged], [centre of weight]. A [opposite] walk = failed take.` |
-| 동작 여럿("…하고 …하고 나가") | §2 사건 수대로 센다. 나가기는 끝 프레임 상태(몸 절반이 프레임 밖, 이미 걷는 중)로 쓰자고 제안한다 |
+| Speed ("구름 더 느리게/빠르게", clouds slower/faster) | Only that subject's `Motion` line. Halve/double the travel (% of frame), leave other motion unchanged. Show that line as "전 → 후" |
+| Add motion ("풀도 흔들리게", make the grass sway too) | Only things already in the image; add one `Motion` line (direction, strength). In that reply, say "one more event was added" |
+| Small repeating elements such as stars or flocks of birds ("별이 더 반짝이게", make the stars twinkle more) | Before generating, say the model does not hold these well. Try once; after 2 failures add it as a post-production overlay. If it is not in the start image, do not try; use a post overlay or a new start image |
+| Speed of a person's action ("천천히", slowly) | First count the seconds of the existing interval. The new interval must be longer. Keep the event count and write `[기존보다 긴 구간] — [action], taking the full [N] seconds. [Action] finished in under [N − 1] seconds = failed take.` In "전 → 후" give the seconds of both intervals. If the existing interval is already 4+ seconds or the whole action, ask, as a proposal (제안값), whether to start earlier or lengthen the video |
+| Age of the walk ("걸음이 젊어", the walk is young) | Write it as stride, arms, feet, centre of weight, and close the opposite walk: `"[name] walk" — [step size], [arm swing], [feet lifted or dragged], [centre of weight]. A [opposite] walk = failed take.` |
+| Several actions ("…하고 …하고 나가", does X, does Y, leaves) | Count events per §2. Propose writing the exit as an end-frame state (half the body outside the frame, already walking) |
 
-묻는 법은 지침 4번이다. 질문이 10개를 넘으면 한 메시지 안에서 소제목(카메라 / 인물 / 타이밍)으로 묶는다. 여러 턴으로 나누지 않는다.
+How to ask is instruction 4. If there are more than 10 questions, group them under subheadings (camera / characters / timing) within one message. Do not split them across several turns.
 
-**답은 컷 카드 [4]~[6]에 둔다.** 퍼스트 프레임과 재시도도 같은 값을 쓰고, 값이 바뀌면 카드를 먼저 고친다.
+**Keep the answers in cut card [4]-[6].** The first frame and retries use the same values; if a value changes, fix the card first.
 
-**일관성 점검 (쓰고 나서)**
-- 이 컷의 시작 상태가 앞 컷의 끝 상태와 같은가(위치, 소품 상태, 빛). 앞 컷 끝 상태는 연속성 표에서 가져온다
-- 그 뷰의 LIGHT LOCK(에셋 대장)과 화면 좌우, 광원 쪽이 맞는가
+**Consistency check (after writing)**
+- Is this cut's start state the same as the previous cut's end state (position, prop state, light)? Take the previous cut's end state from the continuity table
+- Do that view's LIGHT LOCK (asset registry), screen left/right and light side match?
 
-## 1. 여섯 원칙
+## 1. Six principles
 
-1. **사건 수가 성패를 가른다.** 글자 수보다 중요하다. 안 풀리면 컷·동작·요소·대사를 줄인다.
-2. **전환이 아니라 상태를 쓴다.** 시작 상태와 끝 상태를 고정한다. 사이가 길면 생성을 나눈다.
-3. **첫 프레임은 영상의 0:00이다.** 첫 프레임 문단은 시작 이미지와 같아야 한다.
-4. **카메라 동작은 한 생성에 하나.**
-5. **참조마다 통제 범위를 적는다.** 장소 참조는 구도를 통제하지 않고, 인물 참조는 얼굴·의상만 통제한다.
-6. **위험마다 막는 문장 한 줄.** 실제로 났던 실패(§0 표의 금지 줄)만 Forbidden에 범위 태그와 함께 둔다. 예상 위험은 Required나 해당 블록 문장으로 막는다. 같은 증상을 막는 문장이 이미 있으면 더하지 않고 그 문장을 바꾼다.
+1. **Event count decides success.** It matters more than character count. If it does not work, cut shots, actions, elements, or lines.
+2. **Write states, not transitions.** Fix the start state and end state. If the gap is long, split the generation.
+3. **The first frame is 0:00 of the video.** The first-frame paragraph must equal the start image.
+4. **One camera move per generation.**
+5. **For every reference, state its scope of control.** A location reference does not control composition; a character reference controls only face and wardrobe.
+6. **One blocking line per risk.** Put in Forbidden, with a scope tag, only failures that actually occurred (the Forbidden row of the §0 table). Block anticipated risks with Required or a sentence in the relevant block. If a sentence blocking the same symptom already exists, change that sentence instead of adding another.
 
-## 2. 샷 설계
+## 2. Shot design
 
-| 정할 것 | 기준 |
+| To decide | Standard |
 |---|---|
-| 길이 | 정본의 컷 길이를 따른다. 정본에 없으면 대사·동작 실사 5~10초, 배경 10~15초. 15초를 넘으면 나눈다 |
-| 렌즈 환산 | 대각 화각(풀프레임 기준): 24mm=84° · 28mm=75° · 35mm=63° · 50mm=47° · 65mm=37° · 75mm=32° · 85mm=29° · 100mm=24° · 135mm=18°. 표에 없는 mm는 가까운 두 값 사이로 잡는다(105mm ≈ 23°). 컷 카드와 시작 이미지가 다르면 시작 이미지가 이긴다(알리고 진행) |
-| 이어 붙이기 | 뒤 생성은 앞 생성의 지정 프레임을 `start_image`로 받는다. 뒤 생성의 0:00은 콘티 시간 그대로이고 앞에 여백을 두지 않는다(편집 여유는 끝에만). `PRE_SHOT_CONTINUITY`에는 이어받는 상태만 쓰고 앞 영상의 프레이밍·렌즈는 가져오지 않는다 |
-| 장소 | 한 생성에 한 장소. 새 장소는 먼저 이미지로 확정한다 |
-| 사건 수 | 한 생성에 1~3개. 동사마다 센다. 나가기도 센다(일어나·들고·돌아서·나간다 = 4, 돌아서 걸어와 손을 잡는다 = 3). 묶어 세지 않는다. 넘으면 합치지 말고 샷별 사건 목록(샷 A: 일어나 가방을 든다 / 샷 B: 돌아서 나간다)을 제안값으로 먼저 보인다. 나가기·들어오기는 끝·첫 프레임 상태 문장으로 쓴다(나가기 = 마지막 프레임에 몸 절반이 프레임 밖, 이미 걷는 중, 문은 뒤에서 닫히는 중). 인물마다 할 일 하나. 대사 한 줄에 2~4초 |
-| 끝 프레임 | 꼭 도착해야 할 구도가 있을 때만 쓴다 |
+| Length | Follow the canon's cut length. If the canon has none: dialogue/action live action 5-10 s, background 10-15 s. Split anything over 15 s |
+| Lens conversion | Diagonal field of view (full-frame): 24mm=84° · 28mm=75° · 35mm=63° · 50mm=47° · 65mm=37° · 75mm=32° · 85mm=29° · 100mm=24° · 135mm=18°. For a mm not in the table, interpolate between the two nearest (105mm ≈ 23°). If the cut card and the start image disagree, the start image wins (tell the user and proceed) |
+| Chaining | The later generation takes the designated frame of the earlier generation as `start_image`. The later generation's 0:00 is the storyboard time as is, with no lead-in margin (editing handles go only at the end). `PRE_SHOT_CONTINUITY` carries only the inherited state; do not carry over the previous video's framing or lens |
+| Location | One location per generation. Confirm a new location as an image first |
+| Event count | 1-3 per generation. Count every verb. Exiting counts (stands up, picks up, turns, leaves = 4; turns, walks over, takes her hand = 3). Do not count them in groups. If over, do not merge; first show, as a proposal (제안값), a per-shot event list (shot A: stands up and picks up the bag / shot B: turns and leaves). Write exits and entrances as end-/first-frame state sentences (exit = at the last frame half the body is outside the frame, already walking, the door closing behind). One task per character. One line of dialogue takes 2-4 s |
+| End frame | Use only when there is a composition that must be reached |
 
-## 3. 모델 메모
+## 3. Model notes
 
-| 모델 | 메모 |
+| Model | Note |
 |---|---|
-| Seedance 2.5 | 참조는 `<<<요소ID>>>`로 부르고, 붙인 요소와 정확히 맞춘다. 소리가 기본으로 켜져 있어 AUDIO 블록이 필요하다. 음성 참조는 붙인 순서대로 audio_1, audio_2로 불렀다(관찰. 공식 문서로 확인하지 않음). Extend는 화면비가 바뀔 수 있다 |
-| Kling 4.0 | 이미지에 있는 것을 다시 쓰지 않고 움직임과 유지할 것만 쓴다. 카메라는 별도 문단으로 쓰고, 끝 상태는 쓰지 않는다 |
+| Seedance 2.5 | Call references with `<<<요소ID>>>` (element ID), matching the attached elements exactly. Sound is on by default, so an AUDIO block is needed. Voice references were called audio_1, audio_2 in the order attached (observed; not confirmed by official docs). Extend may change the aspect ratio |
+| Kling 4.0 | Do not re-describe what is in the image; write only the motion and what to keep. Write the camera as a separate paragraph and do not write an end state |
 
-## 4. 보내기 전 점검 (검사 스크립트가 잡지 못하는 것)
+## 4. Pre-send check (what the check script cannot catch)
 
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가(명령·절차는 지침 "검사"). `--must-include tmp/고정문장파일`에 넣을 것: 에셋 대장의 고정 문장, 가져온 OK 줄
+- [ ] Did you run the check script before showing it (command/procedure in the instruction "검사")? Put into `--must-include tmp/고정문장파일` (a file of the fixed sentences): the asset registry's fixed sentences and imported OK lines

@@ -1,31 +1,31 @@
-# 장소 — 새 시점 (DERIVED VIEW)
+# Location — new viewpoint (DERIVED VIEW)
 
-카메라를 바꾸는 작업이다.
+This is work that changes the camera.
 
-## 필요한 정보
+## Required information
 
-| 필요한 정보 | 틀의 자리 |
+| Required information | Template slot |
 |---|---|
-| 승인된 부모 job, 계보 유형(VIEW / PROP) | `<<<image_1>>>`, 기록 |
-| 어떤 작업인가: 반대 방향 / 같은 쪽 새 시점 / 소품 확대 | 틀 A / B / C |
-| 새 카메라: 원본 카메라와의 관계, 높이, 방향 | `CAMERA` |
-| 주체 하나, 화면 점유율, 남길 랜드마크 1~3개, 프레임 밖으로 뺄 것 | `FRAMING` |
-| 반대 방향이면: 카메라 방식(먼 끝으로 이동 / 제자리 180°. 부모 카메라가 대상 밖이고 사용자가 "안에서" 보면 먼 끝으로 이동), 새 방향의 종점, 반복 요소, 번호·표지 | 틀 A |
-| 부모의 MASTER GEOMETRY · 팔레트 · 시대 잠금 · 마감 (에셋 대장, 글자 그대로) | 상속 줄 |
-| 이 뷰의 LIGHT LOCK(화면 쪽 + 물건) | 마지막 줄 |
+| Approved parent job, lineage type (VIEW / PROP) | `<<<image_1>>>`, record |
+| Which task: opposite direction / new viewpoint from the same side / prop enlargement | Template A / B / C |
+| New camera: relation to the original camera, height, direction | `CAMERA` |
+| One subject, screen share, 1-3 landmarks to keep, what to push out of frame | `FRAMING` |
+| For the opposite direction: camera method (move to the far end / rotate 180° in place; if the parent camera is outside the subject and the user says to look "안에서" (from inside), move to the far end), endpoint of the new direction, repeated elements, numbers/signs | Template A |
+| Parent's MASTER GEOMETRY · palette · era lock · finish (asset registry, letter for letter) | inheritance line |
+| This view's LIGHT LOCK (screen side + object) | last line |
 
-## 공통
+## Common
 
-- **새 카메라는 원본 카메라와의 관계로 쓴다.** `reverse`나 `close-up` 한 단어로 카메라 관계를 대신하지 않는다.
-- **높이는 값으로 쓴다.** 선 눈높이 약 1.6m, 앉은 눈높이 약 1.1m, 의자·벤치 좌면 약 0.45m, 바닥 가까이 0.3m 이하. "벤치 높이"처럼 둘로 읽히면 값으로 제안한다.
-- **주체는 하나.** 그 디자인·상태, 주변과의 상대 위치, 랜드마크 1~3개를 잠근다. 프레이밍과 화면상 크기는 잠그지 않는다.
-- **상속 문장에서 CAMERA·FRAMING만 바꾼다.** 에셋 대장에 없는 줄(팔레트·시대 잠금·마감)은 부모 OK 카드의 프롬프트에서 글자 그대로 가져온다. 둘 다 없으면 지어내지 않고 묻는다. MASTER GEOMETRY의 좌우는 부모 시점 기준이라, 이 뷰의 화면 좌우는 `In this view …` 줄이 정한다. 첫 줄 뒤에 `Use <<<image_1>>> as the sole geometry and design authority; do not inherit from discarded variants.`
-- **카메라가 구조물 안에 들어가면** MASTER GEOMETRY 줄은 그대로 두고 바로 뒤에 `Except: [이 뷰에서 보이는 것만].` 한 줄로 덮는다.
-- **LIGHT LOCK 줄은 글자 그대로 끝낸다.** 뒤에 설명·괄호를 덧붙이지 않는다.
+- **Write the new camera as a relation to the original camera.** Do not let one word like `reverse` or `close-up` stand in for the camera relation.
+- **Write height as a value.** Standing eye level about 1.6m, seated eye level about 1.1m, chair/bench seat about 0.45m, near the floor 0.3m or less. If something like "벤치 높이" (bench height) can be read two ways, propose a value.
+- **One subject.** Lock its design/state, its position relative to its surroundings, and 1-3 landmarks. Do not lock framing and on-screen size.
+- **Change only CAMERA·FRAMING in the inheritance sentence.** Lines the asset registry lacks (palette, era lock, finish) are taken letter for letter from the prompt on the parent OK card. If neither has them, do not invent; ask. Left/right in MASTER GEOMETRY is from the parent viewpoint, so this view's screen left/right is set by the `In this view …` line. After the first line add `Use <<<image_1>>> as the sole geometry and design authority; do not inherit from discarded variants.`
+- **If the camera enters a structure,** leave the MASTER GEOMETRY line as is and override it right after with one line `Except: [only what is visible in this view].`
+- **End the LIGHT LOCK line exactly as written.** Do not append explanation or parentheses after it.
 
-## 틀 A — 반대 방향
+## Template A (틀 A) — opposite direction
 
-축이 긴 공간은 재료보다 폭·소실점·반복 간격이 먼저다.
+For a long-axis space, width, vanishing point and repeat spacing come before materials.
 
 ```text
 Using <<<image_1>>> as the exact same [SPACE] — same [materials, repeated elements and light logic] —
@@ -48,13 +48,13 @@ the reference.
 In this view [landmark] is at screen [side] and [landmark] is at screen [side]. [This view's LIGHT LOCK: the light comes from screen [side], the [object] side.]
 ```
 
-CAMERA는 두 줄 중 하나만 남긴다. 둘을 섞거나 중간 표현으로 타협하지 않는다.
+Keep only one of the two CAMERA lines. Do not mix them or compromise on a middle expression.
 
-**교정** 폭·간격이 달라짐 → `Preserve the exact [space] width, ceiling height and regular [element] spacing; repeated elements diminish evenly toward one vanishing point.`
+**Correction** Width/spacing changes → `Preserve the exact [space] width, ceiling height and regular [element] spacing; repeated elements diminish evenly toward one vanishing point.`
 
-## 틀 B — 같은 장소의 새 시점 (클로즈업·미디엄·탑뷰·사선·낮은 시점)
+## Template B (틀 B) — new viewpoint of the same location (close-up, medium, top view, oblique, low viewpoint)
 
-탑뷰·사선·낮은 시점은 부정 범위를 함께 쓴다(`not from straight above, not from the side`). 상속 문장에 프레임 밖 대상이 나와도 지우지 않는다. FRAMING의 `fall outside` 줄이 이긴다.
+For top view, oblique and low viewpoint, also write the negative range (`not from straight above, not from the side`). Even if an object outside the frame appears in the inheritance sentence, do not delete it. The `fall outside` line of FRAMING wins.
 
 ```text
 Using <<<image_1>>> as the exact same [LOCATION] — same [materials, landmarks and light logic] —
@@ -72,14 +72,14 @@ Move in from the same side and along the same line of sight; no reverse angle an
 In this view [landmark] is at screen [side] and [landmark] is at screen [side]. [This view's LIGHT LOCK: the light comes from screen [side], the [object] side.]
 ```
 
-**교정**
-- 새 장소처럼 변함 → `This is the exact same [location / object], preserving its design, materials, state and spatial relationships; only the camera view changes.`
-- 클로즈업에 주변 가구가 남음 → `Only [subject] and [narrow context margin] remain in frame. [Furniture list] is outside the tighter composition.`
-- 탑뷰가 사선으로 나옴 → `The optical axis is perpendicular to the surface; its rectangle is square to the frame with no oblique side view.`
+**Corrections**
+- Turns into a new location → `This is the exact same [location / object], preserving its design, materials, state and spatial relationships; only the camera view changes.`
+- Surrounding furniture remains in the close-up → `Only [subject] and [narrow context margin] remain in frame. [Furniture list] is outside the tighter composition.`
+- Top view comes out oblique → `The optical axis is perpendicular to the surface; its rectangle is square to the frame with no oblique side view.`
 
-## 틀 C — 장소 속 소품을 별도 에셋으로 (계보 PROP)
+## Template C (틀 C) — a prop in the location as a separate asset (lineage PROP)
 
-촬영 유형은 하나만 고른다: 맥락형 클로즈업(랜드마크 1~3개) / 소품 중심형(접촉면 좁은 테두리만) / 정면판 / 비스듬한 근접판. 맥락형과 무배경 제품 컷(`prop.md`)을 섞지 않는다. 디자인을 새로 설명하지 않고 원본의 속성을 잠근다.
+Choose only one shot type: context close-up (1-3 landmarks) / prop-centred (only a narrow border of the contact surface) / straight-on view / oblique close view. Do not mix the context type with a no-background product shot (`prop.md`). Do not describe the design anew; lock the original's attributes.
 
 ```text
 Using <<<image_1>>> as the exact same [LOCATION] and the exact same [PROP], generate a
@@ -100,8 +100,8 @@ NOT glow: no halo, no bloom.]
 [Parent's finish and era lock — verbatim]
 ```
 
-**교정**
-- 디자인이 달라짐 → `This is the exact same prop, not a redesign: preserve every major contour, component, proportion, material and wear mark.`
-- 주변 방이 너무 남음 → `The prop and its immediate contact surface occupy nearly the whole frame; no chairs, couches, walls or unrelated furniture are visible.`
-- 장소 정체성이 사라짐 → `Retain [one or two landmarks] at the frame edge, softly out of focus, to confirm the same location.`
-- 두께가 사라짐 → `Keep the [physical edge] visible all around, with enough perspective to read the [prop] as a real object.`
+**Corrections**
+- Design changes → `This is the exact same prop, not a redesign: preserve every major contour, component, proportion, material and wear mark.`
+- Too much of the surrounding room remains → `The prop and its immediate contact surface occupy nearly the whole frame; no chairs, couches, walls or unrelated furniture are visible.`
+- Location identity disappears → `Retain [one or two landmarks] at the frame edge, softly out of focus, to confirm the same location.`
+- Thickness disappears → `Keep the [physical edge] visible all around, with enough perspective to read the [prop] as a real object.`

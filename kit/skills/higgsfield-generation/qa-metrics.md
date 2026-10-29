@@ -1,20 +1,20 @@
-# 숫자 검수 — 사용자가 분석을 원할 때만
+# Numeric QA — only when the user wants analysis
 
-숫자는 원인을 찾는 데 쓴다. 숫자가 통과여도 사용자가 "비어 보인다"고 하면 그 말이 판정이다.
+Use numbers to find causes. Even if the numbers pass, if the user says "비어 보인다" (looks empty), that statement is the verdict.
 
-| 지표 | 재는 법 | 기준값 |
+| Metric | How to measure | Reference value |
 |---|---|---|
-| 전체·구역 밝기 | 0~1 평균 | 작품에서 컷마다 목표 범위를 정한다. 확정 컷끼리 색·밝기 비교와 맞춤은 `color-continuity` |
-| 요소 위치 | 화면 % (위에서, 폭) | 크롭 띠·가림 구역 안인지 |
-| 가장자리 비율 | 에지 픽셀 비율 | 수채 2~8%. 13% 이상이면 질감 과밀 |
-| 구조 일치도 | 기준 이미지와 SSIM | "그대로 유지" 편집이면 0.9 이상 |
-| 하이라이트 | 거의 흰 픽셀 비율 | 수채 0.1% 이하 |
-| 카메라 움직임 | 광학 흐름으로 누적 확대·이동 | 요청한 양과 비교 |
-| 속도 균일성 | 1초당 변화량 | 일정해야 한다 |
-| 질감 떨림 | 연속 프레임 차이 | 요소가 갑자기 생기거나 사라지지 않음 |
+| Overall/zone brightness | 0-1 mean | Set a target range per cut for the work. Color/brightness comparison and matching between approved cuts: `color-continuity` |
+| Element position | Screen % (from top, width) | Whether it is inside the crop band / occlusion zone |
+| Edge ratio | Ratio of edge pixels | Watercolor 2-8%. 13% or more means over-dense texture |
+| Structure match | SSIM against the reference image | 0.9 or more for a "keep as is" edit |
+| Highlights | Ratio of near-white pixels | Watercolor 0.1% or less |
+| Camera motion | Cumulative zoom/shift via optical flow | Compare with the requested amount |
+| Speed uniformity | Change per second | Must be constant |
+| Texture jitter | Difference between consecutive frames | Elements must not suddenly appear or vanish |
 
-**다른 컷과 비교할 때 볼 것**
-- 시점과 구도가 겹치는가
-- 빛의 방향과 밝기가 튀는가
-- 소품 상태가 이어지는가
-- 마지막 프레임과 다음 컷의 첫 프레임이 이어지는가
+**What to check when comparing with other cuts**
+- Do viewpoint and composition overlap?
+- Does light direction or brightness jump?
+- Does prop state carry over?
+- Does the last frame connect to the next cut's first frame?

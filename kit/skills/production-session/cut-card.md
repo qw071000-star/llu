@@ -1,6 +1,6 @@
 # 컷 카드 — 총괄 → 컷 세션
 
-이 틀만 보고 쓴다. 다른 컷 카드를 형식 예시로 열지 않는다. 3천 자 이하로 쓴다. 넘으면 [11]의 옛 시도를 로그로 옮긴다. 다른 컷, 전체 시나리오, 시행착오는 넣지 않는다. 칸마다 쓰는 사람은 `SKILL.md` §1에 있다. 사건 수·동작이 바뀌면 [1] 완료 조건도 같은 턴에 고친다.
+Write using only this template. Do not open other cut cards as format examples. Write 3,000 characters or fewer; if over, move the old attempts in [11] to the log. Do not include other cuts, the full scenario, or trial-and-error. Who writes each field is in `SKILL.md` §1. When the number of events or actions changes, fix the [1] completion condition in the same turn.
 
 ```text
 받는 세션: [컷 번호 3-1]
@@ -28,7 +28,7 @@
 [12] 확정 프롬프트: [OK 대장 카드 이름(3-1 영상)과 job. 전문은 그 카드에만 둔다]
 ```
 
-칸을 채운 예(가상의 값, 형식만 본다):
+Example of filled fields (made-up values; look at the format only):
 
 ```text
 [3] 형식: 길이 6초 · 비율 16:9 · 크롭 없음 · 가림 구역 없음 · 모델 (기본값) · 소리 효과음만 (제안값)

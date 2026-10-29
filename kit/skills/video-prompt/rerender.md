@@ -1,21 +1,21 @@
-# 고해상도 재렌더
+# High-resolution re-render
 
-새로 생성하지 않는다. 다시 뽑으면 다른 테이크가 된다.
+Do not generate anew. Regenerating yields a different take.
 
-- **Seedance 2.5는 확인용을 `draft: true`(480p)로 보내 둔다.** 승인하면 7일 안에 `draft_job_id`로 1080p 확정본을 만든다. 같은 테이크가 그대로 올라간다. 확인용 비용은 draft가 아닌 480p와 같다.
-- draft가 아니거나 기한이 지났으면 아래 틀로 채택본을 원본 영상으로 붙이고, 같은 요소·같은 음성으로 다시 렌더한다.
+- **For Seedance 2.5, send review versions as `draft: true` (480p).** On approval, within 7 days make the 1080p final from `draft_job_id`. The same take is upscaled as is. A review version costs the same as a non-draft 480p.
+- If it was not a draft or the deadline has passed, attach the adopted take as the source video using the template below, and re-render with the same elements and the same voices.
 
-## 필요한 정보
+## Information needed
 
-| 필요한 정보 | 틀의 자리 |
+| Information needed | Place in the template |
 |---|---|
-| 채택 테이크 job(OK 대장 카드), 원본 해상도, 목표 해상도 | `SOURCE VIDEO`, `RESOLUTION` |
-| 원본의 샷 구성: 컷·길이·대사 | 샷 요약 |
-| 원본에 붙인 요소와 순서, 음성 파일 | `ACTIVE REFERENCES` |
-| 원본의 STYLE·QUALITY 문장 | `STYLE / QUALITY` |
-| 확정 해상도 생성을 사용자가 지시했는가 | 생성 전 점검 |
+| Adopted take job (OK ledger card), source resolution, target resolution | `SOURCE VIDEO`, `RESOLUTION` |
+| Shot composition of the source: cuts, lengths, lines | Shot summary |
+| Elements attached to the source and their order, voice files | `ACTIVE REFERENCES` |
+| The source's STYLE and QUALITY sentences | `STYLE / QUALITY` |
+| Whether the user instructed a final-resolution generation | Pre-generation check |
 
-## 틀
+## Template
 
 ```text
 SOURCE VIDEO: the attached video is the take to reproduce. [Shot-by-shot summary]. Every cut,
@@ -26,4 +26,4 @@ STYLE / QUALITY: [same]. No digital sharpening.
 Required: same number, order and length of shots as the source; any difference = failed take.
 ```
 
-검사 `--refs`는 프롬프트의 `<<<>>>` 태그 수다. 붙이는 원본 영상은 세지 않는다.
+The check's `--refs` is the number of `<<<>>>` tags in the prompt. The attached source video is not counted.

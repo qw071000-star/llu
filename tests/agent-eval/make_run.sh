@@ -23,13 +23,13 @@ else
   python3 - "$KIT/instructions.md" "$RUN/.claude/instructions.md" <<'PY'
 import sys
 s = open(sys.argv[1]).read()
-a = s.index("## 이 프로젝트"); b = s.index("## 역할")
-filled = """## 이 프로젝트
+a = s.index("## This project"); b = s.index("## Role")
+filled = """## This project
 
-- 작품: 「빈 정류장」 · Higgsfield 프로젝트: 빈 정류장 (`prj-sim-0001`)
-- 정본: 확정 사항 `decisions.md` · 에셋·폴더 대장 `asset-registry.md` · 컷 목록 `shot-list.md` · OK 대장 `ok-cuts.md` · 핸드오프 로그
-- 컷 번호: 장면-컷(`3-1`). 에셋은 에셋 ID(`CH-001`)
-- 정본 위치: 리포 `project/`
+- Title: 「빈 정류장」 · Higgsfield project: 빈 정류장 (`prj-sim-0001`)
+- Canon: decisions `decisions.md` · asset and folder registry `asset-registry.md` · shot list `shot-list.md` · OK ledger `ok-cuts.md` · handoff log
+- Cut numbers: scene-cut (`3-1`). Assets: asset ID (`CH-001`)
+- Canon location: repo `project/`
 
 """
 open(sys.argv[2], "w").write(s[:a] + filled + s[b:])

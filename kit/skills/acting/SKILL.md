@@ -1,52 +1,52 @@
 ---
 name: acting
-description: 인물이 연기하는 AI 실사 영상 컷의 CHARACTER_ACTING을 새로 쓸 때, 반복 등장 인물의 마스터 프로필·목소리 문장을 만들 때 쓴다. 만든 영상의 연기 수정은 video-prompt의 fixes.md다.
+description: Use when newly writing CHARACTER_ACTING for an AI live-action video cut in which a character acts, or when building a recurring character's master profile and voice sentence. Fixing the acting of a video already made is video-prompt's fixes.md.
 ---
 
-# 인물 연기
+# Character acting
 
-## 1. 원칙
+## 1. Principles
 
-**연기는 감정의 전시가 아니라 압력 아래의 행동이다.** 감정은 쓰지 않는다. 목표와 행동을 쓴다.
+**Acting is behaviour under pressure, not a display of emotion.** Do not write emotion. Write objective and action.
 
-| 쓰지 않는다 | 쓴다 |
+| Do not write | Write |
 |---|---|
-| 감정 형용사 | 상대를 향한 동사 |
-| 대사 차례를 기다리는 빈 얼굴 | 상대 말이 끝나기 전에 시작되는 반응 |
-| 대사를 따라 하는 몸짓 | 진짜 일을 하는 손 |
-| 연기하는 얼굴(눈썹, 찡그림) | 생각하는 얼굴. 눈에 먼저 읽힌다 |
+| Emotion adjectives | A verb aimed at the other person |
+| An empty face waiting for its line | A reaction that starts before the other person finishes speaking |
+| Gestures that mimic the dialogue | Hands doing real work |
+| An acting face (eyebrows, frowning) | A thinking face. It reads in the eyes first |
 
-**서브텍스트는 연기하지 않는다.** 거짓 텍스트를 말하며 진짜 목표를 쫓으면 저절로 샌다. 표지: 너무 짧은 대답, 같은 것을 다시 묻기, 갑작스러운 화제 전환, 엉뚱한 순간의 농담.
+**Do not act the subtext.** When a character speaks false text while pursuing the real objective, it leaks on its own. Markers: answers that are too short, asking the same thing again, sudden topic changes, a joke at the wrong moment.
 
-## 2. 장면마다 정할 것
+## 2. Decide per scene
 
-1. **목표:** 이 상대에게서 지금 원하는 것(동사). `[상대]에게/에게서 + 동사`로 쓴다. 예: 말하는 쪽 `[상대]에게서 사과를 받아 낸다`, 듣는 쪽 `[상대]에게 괜찮다고 믿게 한다`. "내색하지 않기"처럼 자기를 향한 것은 목표가 아니다.
-2. **장애와 대가:** 무엇이 막는가, 실패하면 무엇을 잃는가.
-3. **전술:** 실패하면 바꾼다.
-4. **비트:** 한 장면에 2~4번 바뀐다. 바뀔 때 행동(사이, 자세, 속도, 시선)으로 보인다.
-   - 사건은 몸이나 물건의 상태가 바뀌는 동작이다(쥐기·놓기·일어서기·돌아서기·걷기·대사). 시선이 옮겨 감, 사이, 숨은 비트다.
-   - 비트는 사건이 아니다. 한 생성의 사건 수(1~3개, `video-prompt` §2)는 그대로 두고, 비트는 같은 행동 안에서 전술이 바뀌는 것(시선이 옮겨 감, 사이, 자세)으로 쓴다. 6초 컷이면 비트 2개면 충분하다.
+1. **Objective:** what they want from this person right now (a verb). Write as `[상대]에게/에게서 + 동사` ([other person] + to/from + verb). Examples: speaker `[상대]에게서 사과를 받아 낸다` (extracts an apology from [other]), listener `[상대]에게 괜찮다고 믿게 한다` (makes [other] believe it's fine). Something aimed at oneself, like "내색하지 않기" (not showing it), is not an objective.
+2. **Obstacle and cost:** what blocks it, what is lost on failure.
+3. **Tactic:** change it when it fails.
+4. **Beats:** change 2-4 times per scene. A change shows as behaviour (pause, posture, tempo, gaze).
+   - An event is an action that changes the state of a body or object (grip, release, stand, turn, walk, line of dialogue). A gaze shift, a pause, a breath are beats.
+   - A beat is not an event. Leave the per-generation event count (1-3, `video-prompt` §2) as it is, and write beats as tactic changes within the same action (gaze shift, pause, posture). A 6-second cut needs only 2 beats.
 
-## 3. 몸
+## 3. Body
 
-- **신체 상태 네 가지를 정한다.** 무게중심(높음 = 자신·지위 / 낮음 = 피로·순종), 템포(빠르고 들쭉날쭉 = 초조 / 느리고 경제적 = 통제), 개방도(펴진 어깨·열린 손 / 팔짱·숙인 고개), 호흡(높고 빠름 = 공황 / 낮고 느림 = 통제). **호흡이 가장 정직한 지표다.**
-- **손에 할 일을 준다(비즈니스).** 말하는 동안 손이 진짜 일을 한다. 어떻게 돈을 세는지가 말보다 많이 말한다.
-- **하던 일을 멈추는 순간이 가장 강한 강세다.** 멈출 때 `does not startle; simply stops`를 붙인다.
-- **거리 변화 = 비트 변화.** 0.5m 안 친밀, 0.5–1.2m 신뢰, 1.2–3.5m 업무·경계, 3.5m 밖 소외. 누가 좁히고 누가 깨는지 쓴다.
-- **지위는 몸에 있다.** 높으면 움직이지 않는 머리, 느린 동작, 답하기 전의 사이. 낮으면 부산함, 자기 접촉, 끊기는 말. **지위의 파열**(1초 동안 두려움을 보이는 상급자)이 가장 흥미롭다.
-- **걸음에 이름을 붙인다.** `"[name] walk" — [step size, arm swing]`. 이름이 움직임을 고정한다.
-- **마모는 누적된다.** 이야기 내내 닳는 인물은 장면 사이에 리셋되지 않는다.
-- 행동의 물리적 순서는 `ACTION_TIMING`, 연기의 질감은 `CHARACTER_ACTING`에 쓴다.
+- **Fix four body states.** Centre of weight (high = confidence/status / low = fatigue/submission), tempo (fast and jagged = anxious / slow and economical = controlled), openness (open shoulders, open hands / crossed arms, lowered head), breathing (high and fast = panic / low and slow = controlled). **Breathing is the most honest indicator.**
+- **Give the hands a job (business).** While speaking, the hands do real work. How someone counts money says more than words.
+- **The moment of stopping what they were doing is the strongest accent.** When stopping, add `does not startle; simply stops`.
+- **Change in distance = change in beat.** Within 0.5 m intimate, 0.5-1.2 m trust, 1.2-3.5 m business/guarded, beyond 3.5 m alienation. Write who closes it and who breaks it.
+- **Status lives in the body.** High: a still head, slow movement, a pause before answering. Low: fussing, self-touch, broken speech. **A status rupture** (a superior showing fear for one second) is the most interesting.
+- **Name the walk.** `"[name] walk" — [step size, arm swing]`. The name fixes the movement.
+- **Wear accumulates.** A character who is worn down across the story is not reset between scenes.
+- The physical order of actions goes in `ACTION_TIMING`; the texture of the acting goes in `CHARACTER_ACTING`.
 
-## 4. 듣기와 말
+## 4. Listening and speaking
 
-- **말보다 생각이 먼저.** 어려운 질문에 답하기 전 미세한 사이. 일정한 속도의 즉답은 외운 대사다.
-- **평가의 순간.** 중요한 일(소식, 위협, 모욕) 뒤에는 소화할 시간이 있다. 초점을 잃은 시선 1~2초.
-- **상대로부터의 전염.** 템포·음량이 상대에 반응해 변한다.
-- **가장 무서운 말은 가장 조용하게.** 사이는 구멍이 아니라 사건이다. 안에서 무언가 일어날 때만 둔다.
-- **진짜 말에는 쓰레기가 있다.** 끼어듦, 반복, 끝나지 않은 문장. 겹침은 정상이지만 핵심 단어는 깨끗하게.
+- **Thought before speech.** A slight pause before answering a hard question. An instant answer at constant speed is a memorised line.
+- **The moment of assessment.** After something important (news, a threat, an insult) there is time to digest it. A gaze that loses focus for 1-2 seconds.
+- **Contagion from the other person.** Tempo and volume change in response to them.
+- **The scariest words, the quietest.** A pause is an event, not a hole. Use one only when something is happening inside.
+- **Real speech has debris.** Interruptions, repetition, unfinished sentences. Overlap is normal, but keep the key words clean.
 
-## 5. 눈
+## 5. Eyes
 
 ```text
 continuous naturalistic eye life: micro-saccades and gaze targeting, the gaze drifting and settling
@@ -54,11 +54,11 @@ rather than locking, realistic blink rate tied to state, live wet catchlights, t
 the target a beat before the head turns
 ```
 
-- 인물 시트에는 눈의 물리(습기, 캐치라이트)만 넣는다. 눈의 성격(먼저 주는지 피하는지)은 컷 프롬프트에 넣는다.
+- Put only the physics of the eyes (moisture, catchlights) in the character sheet. Put the eyes' character (whether they give first or avoid) in the cut prompt.
 
-## 6. 마스터 프로필 (반복 등장 인물)
+## 6. Master profile (recurring characters)
 
-150~220단어 영어 한 문단으로, 관찰 가능한 것만 쓴다. 에셋 대장에 둔다.
+One English paragraph of 150-220 words, only observable things. Keep it in the asset registry.
 
 ```text
 Character acting as [NAME]. [age, build, posture]. [psychological engine, one clause].
@@ -67,62 +67,62 @@ stress tic + trigger; what is hidden; the mask and what breaks it]. Eye life: [�
 ["name" + description]. However, when [trigger], [change]. [The one thing that softens them].
 ```
 
-- 모든 틱에는 방아쇠를 붙인다. 방아쇠 없는 틱은 장식이다.
-- `However, when …` 균열은 최소 하나 필수. 부드러워지는 대상은 하나만.
-- 의상, 카메라, 색은 넣지 않는다.
+- Attach a trigger to every tic. A tic without a trigger is decoration.
+- At least one `However, when …` crack is required. Only one thing that softens them.
+- Do not include wardrobe, camera, or colour.
 
-**장면에 맞춰 다시 쓴다(붙여 넣지 않는다).**
-- 프레임에 있는 인물만 쓴다.
-- 불변 핵심은 모든 장면에서 같다: 정체성, 목소리, 시그니처 틱, 눈의 삶, 감정의 관통선.
-- 장면의 자세·행동·비트에 맞게 고른다. 불가능한 행동은 지우지 말고 다른 배출구로 바꾼다. 에너지는 상수, 배출구가 바뀐다.
-- 불릿 없이 흐르는 한 문단. 참조 태그를 쓰면 문단을 인물 태그로 시작한다.
+**Rewrite it for the scene (do not paste).**
+- Write only the characters in the frame.
+- The invariant core is the same in every scene: identity, voice, signature tics, eye life, the emotional through-line.
+- Choose according to the scene's posture, actions and beats. Do not delete an impossible action; convert it to another outlet. Energy is constant, the outlet changes.
+- One flowing paragraph without bullets. If using reference tags, start the paragraph with the character tag.
 
-## 7. 목소리는 고정
+## 7. The voice is fixed
 
-인물마다 문장 하나를 만들어 대사가 있을 때 그대로 붙인다.
+Make one sentence per character and paste it verbatim whenever there is dialogue.
 
 ```text
 "A [age]-year-old [origin/accent]. [timbre, range]; [pace, delivery]; [change under pressure]."
 ```
 
-## 8. 레지스터와 앙상블
+## 8. Register and ensemble
 
-- 작품마다 "쓰는 연기 / 쓰지 않는 연기"를 `decisions.md`에 정한다. 숏이 타이트할수록 움직임을 줄인다. 클로즈업은 눈과 생각만.
-- **집단 반응은 파도로 온다.** 한 명이 먼저, 두 번째는 반 박자 뒤, 세 번째는 못 알아듣는다. 위협 앞에서는 모두 멈춘다. 움직임에는 동기가 있다.
+- Set per work, in `decisions.md`, "acting used / acting not used". The tighter the shot, the less the movement. A close-up is eyes and thought only.
+- **Group reactions come as a wave.** One person first, the second half a beat later, the third does not catch on. Before a threat everyone stops. Movement has a motive.
 
-## 9. 쓰던 문장
+## 9. Sentences in use
 
-| 문제 | 문장 |
+| Problem | Sentence |
 |---|---|
-| 감정이 넘치거나 꺼짐 | `between [A] and [B]; [extreme 1] = failed take, [extreme 2] = failed take` |
-| 몸 전체(발까지)가 휙 돈다 | `head → shoulders → feet over three seconds; turning within one second = failed take` |
-| 말하지 않을 인물의 입 | `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` 망설임은 숨·삼킴·손으로 쓴다 |
-| 멈춤이 놀람으로 읽힘 | `does not startle; simply stops` / `the action carries through and only the eyes stay on it` |
-| 반응이 너무 크거나 없음 | `If [the reaction] is strong, it is a failed take; if there is no reaction at all, it is also a failed take.` |
+| Emotion overflows or is switched off | `between [A] and [B]; [extreme 1] = failed take, [extreme 2] = failed take` |
+| The whole body (down to the feet) whips around | `head → shoulders → feet over three seconds; turning within one second = failed take` |
+| Mouth of a character who should not speak | `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` Write hesitation with breath, swallowing, hands |
+| A pause reads as being startled | `does not startle; simply stops` / `the action carries through and only the eyes stay on it` |
+| Reaction too big or absent | `If [the reaction] is strong, it is a failed take; if there is no reaction at all, it is also a failed take.` |
 
-## 10. 나쁜 연기 → 수정
+## 10. Bad acting -> fix
 
-| 증상 | 수정 |
+| Symptom | Fix |
 |---|---|
-| 첫 초부터 결말을 연기 | 인물이 지금 아는 것만 쓴다 |
-| 한 톤으로 끝까지 | 비트마다 새 전술 동사를 준다 |
-| 계기 없는 눈물·분노 | 절제 → 균열의 사다리. 감정에는 비용이 든다 |
-| 인물 이력과 어긋난 몸 | 무게중심·템포·마모를 정한다 |
-| 문어체로 말하는 인물 | 말에 끼어듦·반복을 넣는다 |
-| 폭력 전 "위협적" 사이 | 위협은 평범하게, 예고 없이 온다 |
-| 아무 일도 없는 침묵 | 평가나 손의 일로 채우거나 자른다 |
-| 군중이 똑같이 반응 | 파도로 어긋내고 세기를 다르게 한다 |
-| 강한 사건 뒤 즉시 회복 | 흔적이 다음 비트로 남게 한다 |
-| 관객에게 윙크하는 연기 | 상황을 완전히 믿는다 |
+| Plays the ending from the first second | Write only what the character knows right now |
+| One tone all the way through | Give a new tactic verb at each beat |
+| Tears/anger without a trigger | Ladder of restraint -> crack. Emotion has a cost |
+| Body at odds with the character's history | Fix centre of weight, tempo, wear |
+| A character who talks in written language | Put interruptions and repetition into the speech |
+| A "menacing" pause before violence | Menace comes ordinarily, without warning |
+| Silence in which nothing happens | Fill it with assessment or a hand task, or cut it |
+| A crowd reacts identically | Stagger it as a wave and vary the intensity |
+| Instant recovery after a strong event | Leave a trace into the next beat |
+| Acting that winks at the audience | Fully believe the situation |
 
-## 11. 보내기 전 점검
+## 11. Pre-send check
 
-- [ ] 프레임 안 인물마다 상대를 향한 동사로 된 목표, 장애가 있는가
-- [ ] 비트 변화가 행동(사이·자세·템포·시선)으로 보이는가. `ACTION_TIMING`의 동작은 인물마다 하나인가
-- [ ] 사건 수(동사마다)와 비트 수(시선·사이·자세)를 따로 세어 적었는가
-- [ ] 반응이 상대 말 중간에 시작하는가. 평가의 순간이 있는가
-- [ ] 인물마다 손의 일이 있는가. 몸 상태(호흡 포함)를 적었는가
-- [ ] 눈의 삶을 적었는가. 감정 범위의 양 끝을 failed take로 닫았는가
-- [ ] 대사가 있으면 목소리 문장을 그대로 붙였는가. 말하지 않는 인물의 입을 잠갔는가
-- [ ] 연기 안에 의상·카메라·색이 없는가. 작품 레지스터를 넘지 않았는가
-- [ ] 스스로 매겨 "목표는 보이지만 한 톤"(성실) 수준이면 다시 쓴다
+- [ ] Does every character in frame have an objective as a verb aimed at the other person, and an obstacle?
+- [ ] Do beat changes show as behaviour (pause, posture, tempo, gaze)? Is there one action per character in `ACTION_TIMING`?
+- [ ] Did you count and write down the event count (per verb) and the beat count (gaze, pause, posture) separately?
+- [ ] Does the reaction start mid-way through the other person's line? Is there a moment of assessment?
+- [ ] Does every character have a hand task? Did you write the body state (including breathing)?
+- [ ] Did you write the eye life? Did you close both ends of the emotional range as failed take?
+- [ ] If there is dialogue, did you paste the voice sentence verbatim? Did you lock the mouth of characters who do not speak?
+- [ ] Is there no wardrobe, camera, or colour inside the acting? Did it stay within the work's register?
+- [ ] If your own rating is "objective visible but one tone" (diligent), rewrite it

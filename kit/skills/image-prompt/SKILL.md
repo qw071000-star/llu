@@ -1,49 +1,49 @@
 ---
 name: image-prompt
-description: AI 이미지 생성·편집 프롬프트를 쓰거나 고칠 때 쓴다. GPT Image, Nano Banana, Seedream에 해당한다. 대상은 에셋(장소, 소품, 인물+의상 시트, 그림체)과 영상 시작용 퍼스트 프레임이다.
+description: Use when writing or fixing AI image generation/editing prompts (GPT Image, Nano Banana, Seedream). Targets are assets (location, prop, character + wardrobe sheet, art style) and first frames that start a video.
 ---
 
-# 이미지 프롬프트 — 공통
+# Image prompts — common
 
-## 0. 쓰기 전 정보 점검
+## 0. Pre-writing information check
 
-그 종류 파일의 "필요한 정보" 표와 아래 공통 표를 채운다.
+Fill in the "required information" table of that asset type's file and the common table below.
 
-| 공통 | 필요한 정보 |
+| Common | Required information |
 |---|---|
-| 형식 | 모델, 해상도(확인용), 화면비, 장 수(1) |
-| 저장 | 저장 폴더(`folder_id`) |
-| 참조 | 붙일 이미지 job과 붙이는 순서, 각각의 역할 |
-| 모드 | 신규 / 편집, 카메라 유지 여부(§1) |
+| Format | model, resolution (for confirmation), aspect ratio, number of images (1) |
+| Save | save folder (`folder_id`) |
+| References | image jobs to attach, their attach order, the role of each |
+| Mode | new / edit, whether the camera is kept (§1) |
 
-무엇을 묻는지는 `context/must-ask.md`, 묻는 법은 지침 4번이다.
+What to ask is in `context/must-ask.md`; how to ask is in guideline no. 4.
 
-**참조 태그:** 틀의 `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>`는 자리표시다. 꺾쇠는 두고 안의 이름만 실제 요소 이름이나 첨부 순서 이름으로 바꾼다(`<<<loc_…_v1>>>`, `<<<image_1>>>`). 여는 줄도 같다: `Edit <<<loc_…_v1>>> WITHOUT reframing`. 참조 수 = 태그 수 = 붙이는 이미지 수.
+**Reference tags:** `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>` in the templates are placeholders. Keep the angle brackets and replace only the name inside with the real element name or the attach-order name (`<<<loc_…_v1>>>`, `<<<image_1>>>`). The opening line works the same way: `Edit <<<loc_…_v1>>> WITHOUT reframing`. Number of references = number of tags = number of attached images.
 
-**고정 설명문이 이 컷과 부딪치면**(빈 장소용 "no cars"인데 버스가 나오는 컷) 문장은 고치지 않는다. 그 문장 바로 뒤(틀의 `[Except: …]` 자리)에 `Except: [이 컷에만 있는 것].` 한 줄을 붙인다.
+**When a fixed description sentence conflicts with this cut** (an empty-location "no cars" line, but a bus appears in the cut), do not edit the sentence. Right after it (the `[Except: …]` slot of the template) add one line: `Except: [what exists only in this cut].`
 
-## 1. 쓰기 전 판별
+## 1. Decide before writing
 
-**① 신규인가, 편집인가.** 마음에 드는 결과가 한 번 나오면 다시 신규로 만들지 않는다. 신규로 다시 만들면 다른 사람, 다른 방이 된다. 그 결과를 참조로 물려 편집한다.
+**① New or edit?** Once a result you like exists, do not regenerate it as new. Regenerating as new gives a different person, a different room. Attach that result as the reference and edit it.
 
-**② 카메라를 유지하는가.** 두 모드를 한 프롬프트에 섞지 않는다. 섞으면 중간값으로 타협한다. `WITHOUT reframing`과 반대 방향·회전(`reverse`, `rotate 180`, `turned round`)을 한 프롬프트에 쓰면 모순이다.
+**② Is the camera kept?** Never mix the two modes in one prompt; mixing compromises on a middle value. Using `WITHOUT reframing` together with an opposite direction or rotation (`reverse`, `rotate 180`, `turned round`) in one prompt is a contradiction.
 
-| 모드 | 언제 | 여는 문장 |
+| Mode | When | Opening sentence |
 |---|---|---|
-| `LOCKED EDIT` | 같은 사진의 수정본 | `Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.` |
-| `DERIVED VIEW` | 같은 장소의 새 시점 | `Using <<<image_1>>> as the exact same location, generate a new view from [position by on-screen objects], looking toward [object]. Do not inherit its camera angle, framing or composition.` |
+| `LOCKED EDIT` | a revised version of the same photograph | `Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.` |
+| `DERIVED VIEW` | a new viewpoint of the same location | `Using <<<image_1>>> as the exact same location, generate a new view from [position by on-screen objects], looking toward [object]. Do not inherit its camera angle, framing or composition.` |
 
-**③ 참조가 무엇을 통제하는가.**
+**③ What does the reference control?**
 
-| 권한 | 영어 | 통제 범위 |
+| Authority | English | Scope of control |
 |---|---|---|
-| 같은 사진 | `the exact same photograph` | 카메라·프레이밍·기하까지 |
-| 같은 장소 | `the exact same room / location` | 장소 정체성(새 시점 허용) |
-| 재료 체계 | `the same building's material register` | 재료·창호·조명 태도 |
-| 배치만 | `only for the LAYOUT` | 문·창·가구의 상대 위치 |
-| 요소만 | `only for [element]` | 명명한 요소 하나 |
+| Same photograph | `the exact same photograph` | down to camera, framing, geometry |
+| Same location | `the exact same room / location` | location identity (new viewpoint allowed) |
+| Material register | `the same building's material register` | materials, windows/doors, lighting attitude |
+| Layout only | `only for the LAYOUT` | relative positions of doors, windows, furniture |
+| Element only | `only for [element]` | one named element |
 
-## 2. 참조가 둘 이상일 때 — 권한 블록
+## 2. Two or more references — authority block
 
 ```text
 REFERENCE AUTHORITY:
@@ -57,16 +57,16 @@ PRIORITY: If the references conflict, <<<A>>> controls the space and the light; 
 reference controls identity and wardrobe only. Camera and shot size are defined below and override every reference.
 ```
 
-- 마지막 줄은 LOCKED EDIT이면 `Preserve <<<A>>>'s camera, geometry and placement.`로 바꾼다. 카메라를 갖는 참조는 그 사진 하나뿐이다.
-- **"구도만 참조"로는 구도가 따라오지 않는다.** 둘 중 하나로 쓴다.
-  - 참조를 덩어리별 좌표로 읽어 적는다.
-  - "그대로 재현 + 바꿀 것 목록"으로 쓴다.
-- **"그대로 재현"이면 다른 속성까지 따라온다.** 속성마다 참조를 나눈다: `Reference 1 gives the composition; take the [sky] only from reference 2.`
-- **요소 이미지를 바꾸면 프롬프트 속 설명문도 새 이미지에 맞게 고친다.**
-- **콘티 썸네일이나 모니터 촬영 사진은 참조로 붙이지 않는다.** 얼굴·옷·색이 섞인다. 그 구도가 필요하면 같은 구도의 빈 장소 이미지를 먼저 만들어 장소 참조로 쓴다.
-- **사용자가 가리키지 않은 이미지는 붙이지도, 제안하지도 않는다.** 프로젝트에 참고 사진이 있어도 마찬가지다. 사용자가 말로 사양을 줬으면 말로만 쓴다.
+- For a LOCKED EDIT, change the last line to `Preserve <<<A>>>'s camera, geometry and placement.` Only that one photograph holds the camera.
+- **"구도만 참조" (reference the composition only) does not carry the composition over.** Use one of these:
+  - Read the reference as coordinates per mass and write them out.
+  - Write it as "reproduce as is + list of what to change".
+- **"Reproduce as is" also carries over other attributes.** Split by attribute per reference: `Reference 1 gives the composition; take the [sky] only from reference 2.`
+- **When an element image is replaced, fix the description in the prompt to match the new image.**
+- **Never attach a storyboard thumbnail or a photo of a monitor as a reference.** Face, clothes and colour get mixed. If that composition is needed, first make an empty-location image with the same composition and use it as the location reference.
+- **Do not attach or suggest any image the user did not point to,** even if the project has reference photos. If the user gave a spec in words, write it in words only.
 
-## 3. 편집 문법 — CHANGE / PRESERVE EXACTLY / ONLY CHANGE
+## 3. Edit grammar — CHANGE / PRESERVE EXACTLY / ONLY CHANGE
 
 ```text
 [LOCKED EDIT 여는 문장]
@@ -81,28 +81,28 @@ PRESERVE EXACTLY:
 ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 ```
 
-- **보존 목록을 변경보다 구체적으로 쓴다.** 그러지 않으면 나머지도 조금씩 새로 그린다.
-- **CHANGE와 ONLY CHANGE의 항목을 같게 한다.**
-- **인물이 보이면 `WARDROBE:` 줄을 둔다.** 그 문장은 검사의 `--must-include` 파일에도 넣는다.
-- **사소하고 명확한 변경은 짧은 영어 지시로도 된다**(관찰: Seedream·Nano Banana).
+- **Write the preserve list more specifically than the change.** Otherwise the rest gets redrawn a little too.
+- **Make the CHANGE and ONLY CHANGE items identical.**
+- **If a person is visible, include a `WARDROBE:` line.** Also put that sentence in the check's `--must-include` file.
+- **A trivial, clear change can also be a short English instruction** (observed: Seedream, Nano Banana).
 
-## 4. 크롭과 가림 구역
+## 4. Crop and occlusion zones
 
-- **최종 상영 비율에서 보이는 띠를 먼저 계산한다.** 핵심 요소는 그 띠 안에 둔다.
-- **가림 구역(자막, 출연자)에는 주요 피사체를 두지 않는다.** 가려져도 되는 부수 요소만 둔다.
-- **부감 각도를 높이면 하늘과 먼 대상이 띠 밖으로 밀려난다.** 그것들이 보여야 하면 각도를 낮춘다.
-- **% 좌표와 숫자는 대략만 지켜진다.** 화면 구역 단위(왼쪽 1/3, 위 가운데)로 쓴다. 정확해야 하면 배치 스케치(색 블록)를 참조로 쓰고 "배치만 따르라"고 쓴다.
+- **First compute the visible band at the final screening ratio.** Keep the key elements inside that band.
+- **Do not put the main subject in an occlusion zone (subtitles, presenters).** Put only incidental elements that may be covered.
+- **Raising the high-angle pushes the sky and distant objects out of the band.** If they must be visible, lower the angle.
+- **% coordinates and numbers are followed only roughly.** Write in screen-zone units (left third, top centre). If precision is needed, use a layout sketch (colour blocks) as a reference and write "follow the layout only".
 
-## 5. 모델 메모
+## 5. Model notes
 
-| 모델 | 메모 |
+| Model | Note |
 |---|---|
-| GPT Image 2.5 | 요소를 많이 지정하면 질감이 3D 렌더 쪽으로 돈다. 요소를 줄이거나 질감 문단을 앞에 둔다 |
-| Nano Banana Pro | 요청과 다른 모델로 처리될 수 있다. 확정 전에 실제 처리 모델을 기록한다 |
+| GPT Image 2.5 | Specifying many elements pushes the texture toward a 3D render. Reduce the elements or put the texture paragraph first |
+| Nano Banana Pro | May be processed by a different model than requested. Record the model actually used before confirming |
 
-## 6. 보내기 전 점검 (검사 스크립트가 잡지 못하는 것)
+## 6. Pre-send checklist (what the check script cannot catch)
 
-- [ ] 고정 설명문이 에셋 대장과 글자까지 같은가
-- [ ] 크롭 띠와 가림 구역을 확인했는가
-- [ ] 자리표시 태그(`<<<LOC>>>` 등)가 남지 않았는가
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가(명령·절차는 지침 "검사"). `--must-include tmp/고정문장파일`에 넣을 것: 에셋 대장의 의상·소품·LIGHT LOCK·좌표 문장
+- [ ] Is the fixed description sentence identical to the asset registry, down to the letter?
+- [ ] Did you check the crop band and occlusion zones?
+- [ ] Is no placeholder tag (`<<<LOC>>>` etc.) left?
+- [ ] Did you run the check script before showing it? (command and procedure: guideline "검사"). Put into `--must-include tmp/fixed-sentence-file`: the wardrobe, prop, LIGHT LOCK and coordinate sentences from the asset registry

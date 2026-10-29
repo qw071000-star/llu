@@ -1,56 +1,56 @@
-# 인물 + 의상 시트 — 신규
+# Character + wardrobe sheet — new
 
-## 필요한 정보
+## Required information
 
-| 필요한 정보 | 틀의 자리 |
+| Required information | Template slot |
 |---|---|
-| 나이, 출신, 피부, 얼굴 구조(얼굴형·턱·광대·코·입, 성인은 성숙한 골격), 눈(형태·색) | `CHARACTER IDENTITY` |
-| 체형(삶이 몸에 남긴 것), 어깨, 자세 | `BODY AND PROPORTIONS` |
-| 의상: 겉옷 → 여밈 → 깃·주머니 → 안옷·목선 → 하의 → 신발, 허용 액세서리, 없는 것(`no bag`) | `OUTFIT` |
-| 헤어: 길이, 질감, 가르마, 얼굴 주변 형태, 뒷모습, 색, 마감 | `HAIR` |
-| 머리 없는 패널 변형: A 머리 없는 인체 / B 고스트 마네킹 (작품 공통, 첫 시트에서 정함) | `PANEL LAYOUT`의 왼쪽 줄 |
-| 배경 색·질감, 조명 방향과 질 (작품 공통. 첫 확정 시트의 줄을 그대로 쓴다) | `BACKGROUND AND LIGHTING` |
-| 시대물인가 | 금지 줄 |
-| 대사가 있는 인물이면: 연기 프로필, 목소리 문장 | 에셋 대장 (`acting` §6·§7. 그 스킬도 연다) |
+| Age, origin, skin, face structure (face shape, jaw, cheekbones, nose, mouth; adults get mature adult bone structure), eyes (shape, colour) | `CHARACTER IDENTITY` |
+| Build (what life has left on the body), shoulders, posture | `BODY AND PROPORTIONS` |
+| Outfit: outerwear → closure → collar/pockets → inner layer/neckline → bottoms → shoes, allowed accessories, what is absent (`no bag`) | `OUTFIT` |
+| Hair: length, texture, parting, shape around the face, rear view, colour, finish | `HAIR` |
+| Headless-panel variant: A headless human body / B ghost mannequin (shared across the work, decided at the first sheet) | left line of `PANEL LAYOUT` |
+| Background colour/texture, light direction and quality (shared across the work; use the line of the first confirmed sheet as is) | `BACKGROUND AND LIGHTING` |
+| Is it a period piece? | prohibition line |
+| If the character has dialogue: acting profile, voice sentence | asset registry (`acting` §6·§7; open that skill too) |
 
-## 규칙
+## Rules
 
-**규격 (작품 안에서 바꾸지 않는다):** 16:9 한 장을 세로로 3분할한다. 세 패널은 같은 배경, 같은 조명이다. 시트는 컷마다 참조로 물리는 원본이라 처음부터 확정 해상도(2k)로 만든다. 1k로 확인하고 2k로 다시 뽑으면 다른 사람이 된다. 모델은 작품 기본값을 쓰고 실제 처리 모델을 기록한다.
-- 왼쪽: 목 아래 정면 전신. 손과 신발을 남긴다(소매·기장을 보려고)
-- 가운데: 후면 전신
-- 오른쪽: 가슴 위 정면 클로즈업. 컷 생성 때 얼굴 참조로 쓰는 패널
+**Spec (do not change within a work):** One 16:9 image divided vertically into 3. The three panels share the same background and the same lighting. The sheet is the original attached as a reference for every cut, so make it at the final resolution (2k) from the start. Checking at 1k and regenerating at 2k gives a different person. Use the work's default model and record the model actually used.
+- Left: front full body from the neck down. Keep hands and shoes (to see sleeves and length)
+- Centre: rear full body
+- Right: front close-up from the chest up. The panel used as the face reference when generating cuts
 
-**신규는 틀 1 전문으로 쓴다.** OK 대장에 있는 다른 시트의 프롬프트를 예로 베끼지 않는다(더 짧거나 옛 판일 수 있다).
+**For a new sheet, write the whole of Template 1.** Do not copy the prompt of another sheet in the OK ledger as an example (it may be shorter or an old version).
 
-**신규 작성 순서:** 결과물 → 정체성 → 패널 → 체형 → 의상 → 헤어 → 리얼리즘 → 배경·조명 → 일관성 잠금 → 금지.
+**New-sheet writing order:** deliverable → identity → panels → build → outfit → hair → realism → background/lighting → consistency lock → prohibitions.
 
-**정체성:** 실존 배우·유명인을 닮게 만들지 않는다. 참조 이미지는 얼굴의 출처가 아니다. `beautiful`, `elegant` 같은 주관어보다 얼굴 구조의 객관적 특징을 먼저 쓴다.
+**Identity:** Do not make the character resemble a real actor or celebrity. A reference image is not the source of the face. Write objective facial-structure traits first, before subjective words like `beautiful`, `elegant`.
 
-**머리 없는 패널 변형 — 작품 안에서 하나로 통일한다**
-- A 머리 없는 인체: 착용감·실루엣 검토용. 위험은 상해 이미지. `not an injury` 문장이 반드시 들어간다(틀 1).
-- B 고스트 마네킹: 의상 재단 확정용. 위험은 플라스틱 마네킹. `mannequin`만 쓰지 않는다. 틀 1의 왼쪽 줄을 다음으로 바꾼다:
+**Headless-panel variant — unify to one within a work**
+- A headless human body: for checking fit and silhouette. The risk is an injury image. The `not an injury` sentence must be included (Template 1).
+- B ghost mannequin: for confirming garment cut. The risk is a plastic mannequin. Do not use `mannequin` alone. Replace the left line of Template 1 with:
   `LEFT PANEL: a front-facing full-body wardrobe view: the outfit holds its own shape as if worn by an invisible person, hollow ghost-mannequin product photography, no mannequin material visible anywhere, the collar opening is empty and shows the dark hollow inside the garment, cut off cleanly just above the shoulder line with NO head, NO neck and no shoulder stump protruding, no plastic torso, no stand, no pole, no base, real human hands emerge from the ends of both sleeves hanging relaxed slightly away from the sides, the shoes stay on the floor at the bottom of the trousers.`
 
-**자주 나는 사고와 덧붙일 문장**
+**Frequent accidents and sentences to add**
 
-| 증상 | 문장 |
+| Symptom | Sentence |
 |---|---|
-| 왼쪽 목 위에 머리가 생김 | 여는 문장에 `including the intentionally HEADLESS left panel` + `Do not add, infer, reconstruct or complete a head or face in that panel` |
-| 플라스틱 마네킹 | `hollow ghost-mannequin, invisible person, empty collar, no dress form, no stand` |
-| 직업 소품이 저절로 생김 | `No profession-signaling props unless explicitly requested: no stethoscope, instruments, clipboard, pen, bag or visible logo.` |
-| 옷이 바닥에서 뜸 | `the garment stands on the floor with a natural contact shadow, not floating, not tilted` |
-| 나이가 어려 보임 | `mature adult bone structure, defined nasolabial folds, no babyface` |
-| 헤어가 시대를 못 벗음 | `matte and modern, no pomade shine, no sculpted vintage wave` (현재로 옮길 때) |
-| 배지·명찰 글자 깨짐 | `a plain blank badge, no writing, no photo, no logo` |
-| 톤·그레인이 달라짐 | "같은 룩" 대신 `palette, contrast, grain, falloff` 네 단어 |
+| A head appears above the left neck | In the opening sentence: `including the intentionally HEADLESS left panel` + `Do not add, infer, reconstruct or complete a head or face in that panel` |
+| Plastic mannequin | `hollow ghost-mannequin, invisible person, empty collar, no dress form, no stand` |
+| Occupational props appear on their own | `No profession-signaling props unless explicitly requested: no stethoscope, instruments, clipboard, pen, bag or visible logo.` |
+| Garment floats off the floor | `the garment stands on the floor with a natural contact shadow, not floating, not tilted` |
+| Looks too young | `mature adult bone structure, defined nasolabial folds, no babyface` |
+| Hair keeps the old era | `matte and modern, no pomade shine, no sculpted vintage wave` (when moving to the present) |
+| Badge/name-tag text garbled | `a plain blank badge, no writing, no photo, no logo` |
+| Tone/grain drifts | instead of "같은 룩" (the same look), the four words `palette, contrast, grain, falloff` |
 
-**파생과 요소**
-- 파생은 확정본에서만 갈라낸다. 파생의 파생은 만들지 않는다. 확정본은 지우지 않는다.
-- 영상 요소는 의상·헤어 상태마다 따로 만든다(`char_<인물>_<상태>_v1`). 한 영상 안에서 상태가 바뀌면 두 요소를 함께 붙이고 시간 구간으로 나눈다.
+**Derivatives and elements**
+- Derive only from the confirmed version. Never make a derivative of a derivative. Never delete the confirmed version.
+- Make video elements separately for each outfit/hair state (`char_<character>_<state>_v1`). If the state changes within one video, attach both elements and split by time range.
 
-**기록:** 확정되면 에셋 대장에 IDENTITY·WARDROBE 고정 문장, job ID, 실제 처리 모델, 변형(A/B), 한계를 적는다. 컷 프롬프트에는 WARDROBE 문장만 글자 그대로 넣는다. 얼굴은 참조가 맡는다. 프롬프트와 설정은 OK 대장의 에셋 ID 카드에 둔다.
+**Record:** When confirmed, write into the asset registry: the IDENTITY and WARDROBE fixed sentences, job ID, the model actually used, variant (A/B), limitations. Put only the WARDROBE sentence into cut prompts, letter for letter. The face is handled by the reference. The prompt and settings live on the asset ID card in the OK ledger.
 
-## 틀 1 — 신규
+## Template 1 (틀 1) — new
 
 ```text
 Create a photorealistic single wide horizontal three-panel character reference sheet of the same
@@ -102,4 +102,3 @@ skin, no glossy skin, no distorted anatomy, no extra fingers, centre panel stand
 not cropped not sitting, right panel a tight close-up not a full body[, period: no modern clothing, no
 modern eyewear, no smartphones, no modern signage]
 ```
-

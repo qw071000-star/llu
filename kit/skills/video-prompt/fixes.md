@@ -1,23 +1,23 @@
-# 증상별 수정 — 해당 줄만 찾아 쓴다
+# Fixes by symptom - find and use only the matching row
 
-**필요한 정보:** 틀린 결과의 job, 그 job의 프롬프트(OK 대장 카드 또는 `get_project_asset_prompt`), 사용자가 말한 증상(말 그대로).
-- 증상이 모호하면("이상해") 어느 구간·어느 인물인지 묻는다. 표에서 후보 두세 개를 보이고 고르게 한다.
-- 속도·움직임 추가·별·사람 동작 속도("너무 빠르다")·걸음 나이·동작 여럿은 `SKILL.md` §0 "모호한 말" 표의 그 줄을 쓴다. 아래 표는 그 밖의 증상이다.
-- 바꿀 줄을 "전 → 후"로 보이고 확인받는다(지침 3번). 승인 컷이면 새 테이크로 대체할지 먼저 묻는다(같은 테이크는 다시 나오지 않는다).
+**Information needed:** the job of the wrong result, that job's prompt (OK ledger card or `get_project_asset_prompt`), the symptom as the user stated it (verbatim).
+- If the symptom is vague ("이상해", it looks off), ask which interval and which character. Show two or three candidates from the table and let them choose.
+- Speed, added motion, stars, speed of a person's action ("너무 빠르다", too fast), walk age, and several actions use the matching row of the `SKILL.md` §0 "vague phrases" table. The table below covers all other symptoms.
+- Show the line to change as "전 → 후" and get confirmation (instruction 3). For an approved cut, first ask whether to replace it with a new take (the same take cannot be reproduced).
 
-| 증상 | 수정 |
+| Symptom | Fix |
 |---|---|
-| 빈 화면으로 시작해 인물이 들어온다 | 첫 프레임부터 정위치, 동작 도중. 등장은 "이미 걷는 중"으로 |
-| 문 열림 같은 환경 사건이 어색하다 | 그 사건을 빼고 숏 내내 한 상태로 둔다 |
-| 고개·상체가 휙 돈다 | 부위 순서와 초: `head → shoulders → feet over three seconds; turning within one second = failed take`. 고개만 돌면 `eyes → head` 순서만 쓴다 |
-| 말하지 않을 인물의 입이 움직인다 | 말하려는 시도 자체를 없앤다: `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` 프롬프트에 `no lip movement` 같은 약한 문장이 이미 있으면 더하지 말고 이 문장으로 바꾼다. 망설임은 숨·삼킴·손으로 준다 |
-| 고개를 돌렸다가 되돌린다 | `From then until the end [his] eyes and head stay on [her]. Turning back = forbidden` |
-| 다른 인물이 반응해 버린다 | 그 인물의 시선·머리·손을 고정: `does not react in any way, never looks at [him]` |
-| 소품이 다른 손으로 가거나, 커지거나, 다른 곳으로 간다 | 소품 요소를 붙이고 손(화면 쪽 + 물건), 내려놓지 않음, 크기 = 시작 이미지를 적는다. 같은 종류 물건이 둘이면 이름으로 구분 |
-| 참조 사진의 얼굴·색·조명이 섞인다 | 그 사진을 빼고, 그 구도로 만든 빈 장소 이미지를 장소 참조로 쓴다 |
-| 거울·유리에 엉뚱한 것이 비친다 | 비치는 것과 비치지 않는 것을 함께 적는다 |
-| 해가 납작한 원반으로 뜬다 | 윤곽 없이 번지는 빛으로 쓴다. 원반·테두리 금지, 아랫부분은 지평선 안개에 |
-| 작은 반복 객체(새 떼)가 뭉개진다 | "카메라와 같은 속도로 같은 크기·위치 유지". 그래도 안 되면 오버레이 소재로 따로 만든다 |
-| 카메라가 지정 지점이 아니라 가운데로 직진한다 | "피사체를 따라가는 추적 촬영"으로 바꾼다. 확대량은 원하는 양의 절반으로 쓴다 |
-| 연기가 크거나 무표정하다 | 감정 범위의 양 끝을 `failed take`로 닫는다 |
-| 배경 인물이 얼거나 한꺼번에 움직인다 | 인원 수 + 각자 다른 일 하나. 이름 없는 인원은 얼굴 없는 실루엣 |
+| Starts with an empty frame and the character walks in | Character in place from the first frame, mid-action. Write the entrance as "already walking" |
+| An environment event such as a door opening looks awkward | Remove that event and keep one state for the whole shot |
+| Head/upper body whips around | Body-part order and seconds: `head → shoulders → feet over three seconds; turning within one second = failed take`. If only the head turns, write only the order `eyes → head` |
+| A character who should not speak moves their mouth | Remove the attempt to speak itself: `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.` If the prompt already has a weak sentence such as `no lip movement`, replace it with this sentence instead of adding. Express hesitation with breath, swallowing, hands |
+| Head turns and then turns back | `From then until the end [his] eyes and head stay on [her]. Turning back = forbidden` |
+| Another character reacts | Lock that character's gaze, head, hands: `does not react in any way, never looks at [him]` |
+| A prop switches hands, grows, or goes elsewhere | Attach the prop element and state the hand (screen side + object), not put down, size = start image. If two objects of the same kind exist, distinguish them by name |
+| The reference photo's face, colour, or lighting bleeds in | Remove that photo, and use an empty location image made in that composition as the location reference |
+| Something wrong is reflected in a mirror/glass | State what is reflected and what is not reflected together |
+| The sun appears as a flat disc | Write it as light that bleeds without an outline. No disc or rim; the lower part dissolves in horizon haze |
+| Small repeating objects (flock of birds) smear | "Keep the same size and position, moving at the same speed as the camera". If that still fails, make it separately as overlay material |
+| The camera goes straight to the centre instead of the designated point | Change to "tracking shot following the subject". Write the zoom amount as half of what is wanted |
+| Acting is too big or expressionless | Close both ends of the emotional range with `failed take` |
+| Background characters freeze or all move at once | Headcount + one different task each. Unnamed people are faceless silhouettes |

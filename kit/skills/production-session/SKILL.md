@@ -1,57 +1,57 @@
 ---
 name: production-session
-description: AI 영상 제작에서 총괄 세션과 컷 세션을 운영한다. 새 대화 시작, 컷 카드 만들기·받기, 핸드오프 쓰기·반영, 정본 고치기, 새 대화로 넘기기, 다른 OK 컷을 기준으로 할 때("3-1처럼 3-2", "3-1의 색감으로", "2-1 표정 유지").
+description: Runs the lead (총괄) session and cut sessions in AI video production. Use when starting a new conversation, creating or receiving cut cards, writing or applying handoffs, editing the canon, handing over to a new conversation, or basing a cut on another OK cut ("3-1처럼 3-2", "3-1의 색감으로", "2-1 표정 유지").
 ---
 
-# 총괄 세션 + 컷 세션 운영
+# Lead session + cut session operation
 
-원칙: **기억은 문서에 두고, 세션은 쓰고 버린다.** 새 대화는 지침, 정본, 컷 카드만으로 이어서 일할 수 있어야 한다.
+Principle: **keep memory in documents; sessions are written to and thrown away.** A new conversation must be able to continue from the instructions, the canon, and the cut card alone.
 
-## 1. 정본과 쓰는 사람
+## 1. Canon and who writes it
 
-| 정본 | 총괄 세션 | 컷 세션 |
+| Canon | Lead session (총괄) | Cut session |
 |---|---|---|
-| `decisions.md` 확정 사항 | 고친다 | 고치지 않는다. 새 규칙은 핸드오프 [3]에 |
-| `asset-registry.md` 에셋·폴더 대장 | 고친다. 확정 전 답은 그 에셋의 `초안(제안값)` 줄에, 고정 문장 칸은 확정한 뒤에 채운다 | 새 컷 폴더 ID만 |
-| `shot-list.md` 컷 목록·연속성 표 | 고친다 | 자기 줄의 두 칸만(`context/routing.md` §3). 생성/크레딧 칸은 총괄이 핸드오프로 고친다(§4) |
-| `ok-cuts.md` OK 대장 | 승인한 세션이 그 자리에서 카드를 더한다 | (왼쪽과 같음) |
-| 컷 카드 `cuts/<컷 번호>.md` | 발행. [1] [2] [8] [9]를 쓴다 | [3]~[7] [10]~[12]를 쓴다. [1]이 비었거나 사용자가 [1]과 다른 방향을 주면 그 턴에 `(제안값)`으로 고치고 핸드오프 [5]로 확인받는다. 카드가 없으면 정본에서 초안(v0)을 `cut-card.md` 틀로 만든다 |
-| 로그(핸드오프, 시행착오, 옛 프롬프트) | 추가만 | 추가만 |
+| `decisions.md` confirmed decisions | Edits | Does not edit. New rules go in handoff [3] |
+| `asset-registry.md` asset/folder ledger | Edits. Answers before confirmation go on that asset's `초안(제안값)` line; the fixed-sentence field is filled after confirmation | New cut folder IDs only |
+| `shot-list.md` cut list / continuity table | Edits | Only the two fields on its own line (`context/routing.md` §3). The lead edits the `생성/크레딧` field from the handoff (§4) |
+| `ok-cuts.md` OK ledger | The session that approves adds the card in place | (same as left) |
+| Cut card `cuts/<cut number>.md` | Issues it. Writes [1] [2] [8] [9] | Writes [3]~[7] [10]~[12]. If [1] is empty, or the user gives a direction different from [1], edit it that turn as `(제안값)` and get confirmation through handoff [5]. If there is no card, build a draft (v0) from the canon using the `cut-card.md` template |
+| Logs (handoffs, trial-and-error, old prompts) | Append only | Append only |
 
-- 파일은 해당 줄만 고친다. 정본 문서를 통째로 다시 쓰지 않는다.
-- 정본에는 지금 유효한 것만 둔다. 경위나 폐기된 것은 로그로 옮긴다. 같은 내용을 두 문서에 쓰지 않는다.
-- 다른 세션이 고치는 중인 정본은 건드리지 않는다.
-- 컷 세션 범위 밖의 문제는 고치지 않고 핸드오프 [5] "총괄에 올릴 것"에 적는다. 고정 설명문이 이 컷과 부딪치는 것도 여기에 적는다.
+- Edit only the relevant lines of a file. Never rewrite a canon document wholesale.
+- Canon holds only what is currently valid. Move history and discarded items to the log. Do not write the same content in two documents.
+- Do not touch canon that another session is editing.
+- A problem outside the cut session's scope is not fixed; write it under handoff [5] "총괄에 올릴 것". A fixed description sentence that conflicts with this cut goes there too.
 
-## 2. 총괄 세션
+## 2. Lead session
 
-**시작할 때:** `decisions.md`, `shot-list.md`, `asset-registry.md` 순서로 읽는다. OK 대장은 목록만 필요할 때 읽는다. 받은 핸드오프를 처리한다(§4). 생성/크레딧 칸이 채워진 컷의 핸드오프는 열지 않는다.
+**On start:** read `decisions.md`, `shot-list.md`, `asset-registry.md` in that order. Read the OK ledger only when the list is needed. Process received handoffs (§4). Do not open the handoff of a cut whose `생성/크레딧` field is already filled.
 
-**하는 일:** 구간·컷 순서·길이, 화면비·크롭·가림 구역, 시대, 그림체 기준을 정한다. 공통 에셋을 확정한다. Higgsfield 폴더 구성을 정한다. 컷 카드를 발행한다(`cut-card.md`).
+**Does:** decides sections, cut order and length, aspect ratio, crop, masked zones, era, and art-style reference. Confirms shared assets. Decides the Higgsfield folder structure. Issues cut cards (`cut-card.md`).
 
-**하지 않는 일:** 한 컷을 반복 생성하지 않는다. 컷 세션이 확정한 결과를 묻지 않고 바꾸지 않는다.
+**Does not:** repeatedly generate a single cut. Does not change results a cut session confirmed without asking.
 
-## 3. 컷 세션
+## 3. Cut session
 
-**시작할 때 Claude가 모은다**(지침 "대화를 시작할 때").
-1. 컷 카드를 읽는다. 없으면 `shot-list.md`의 그 줄·연속성 표, `asset-registry.md`의 해당 에셋·폴더, `decisions.md`의 해당 줄로 초안을 만든다(`cut-card.md`). 새 컷이어도 이웃 컷 카드·핸드오프는 열지 않는다(routing §3).
-2. Higgsfield 컷 폴더에서 현재 상태를 본다(`list_folders`, `list_project_assets`): 폴더 이름의 상태, `승인`·`거절` 폴더의 결과물 수, 검토 대기 중인 결과물.
-3. 그 컷 번호의 마지막 핸드오프가 있으면 읽고, [6] 다음 할 일부터 이어 간다. 그 일이 사용자 확인이면 그 확인과 카드 빈 칸의 제안값을 한 번에 묻는다.
-4. 그 컷이 OK를 받은 적이 있으면 OK 대장에서 그 컷의 카드를 읽는다.
+**On start Claude gathers** (instructions, "when starting a conversation").
+1. Read the cut card. If none, build a draft from that cut's line and the continuity table in `shot-list.md`, the relevant asset/folder in `asset-registry.md`, and the relevant lines in `decisions.md` (`cut-card.md`). Even for a new cut, do not open neighboring cut cards or handoffs (routing §3).
+2. Check current state in the Higgsfield cut folder (`list_folders`, `list_project_assets`): the state in the folder name, the number of results in the `승인` and `거절` folders, results awaiting review.
+3. If that cut number has a last handoff, read it and continue from [6] next steps. If that step is a user confirmation, ask that confirmation together with the proposed values for the card's empty fields, in one go.
+4. If that cut has ever received OK, read its card in the OK ledger.
 
-**새 대화로 넘기는 때:** 컷이 승인됐을 때, 같은 컷에서 생성·검수 왕복이 8번을 넘었을 때. 넘길 때 핸드오프(`handoff.md`)를 정본 위치의 로그에 남긴다(§5). 다음 대화는 위 1~4로 스스로 이어받는다.
+**Hand over to a new conversation when:** the cut is approved, or generation/review round trips on the same cut exceed 8. When handing over, leave a handoff (`handoff.md`) in the log at the canon location (§5). The next conversation picks up by itself via 1~4 above.
 
-## 4. 총괄이 핸드오프를 받으면
+## 4. When the lead receives a handoff
 
-1. job ID를 Higgsfield에서 직접 열어 확인한다. 승인 job이 OK 대장에 카드로 있는지 본다. 없으면 만든다(`higgsfield-generation` §4).
-2. 확정 사항이나 에셋 대장과 충돌하는지 본다. 사용자가 확정한 요구를 약하게 만드는 변경은 받지 않고 묻는다.
-3. 반영한다: `shot-list.md`(상태, 확정 job, 생성/크레딧 칸에 핸드오프 [2]를 `이미지 N / 영상 N · 약 N 크레딧`으로 더한다), `asset-registry.md`(확정본, 한계), `decisions.md`(새 규칙).
-4. 이웃 컷에 영향이 있으면 그 컷들의 카드도 고친다(소품 상태, 빛, 마지막 프레임 구도).
+1. Open the job IDs directly in Higgsfield to verify. Check that the approved job exists as a card in the OK ledger. If not, create it (`higgsfield-generation` §4).
+2. Check for conflicts with confirmed decisions or the asset ledger. Do not accept a change that weakens a requirement the user confirmed; ask instead.
+3. Apply: `shot-list.md` (status, confirmed job, and add handoff [2] to the `생성/크레딧` field as `이미지 N / 영상 N · 약 N 크레딧`), `asset-registry.md` (confirmed version, limits), `decisions.md` (new rules).
+4. If neighboring cuts are affected, fix their cards too (prop state, light, last-frame composition).
 
-## 5. 정본 위치별로 읽고 고치는 법
+## 5. Reading and editing by canon location
 
-| 정본 위치 | 읽기 | 고치기 · 핸드오프 남기기 |
+| Canon location | Read | Edit · leave handoff |
 |---|---|---|
-| Claude Doc (권장) | Docs 도구로 필요한 탭만 읽는다. OK 컷 탭과 컷 카드 탭은 제목(`3-1 영상`, `3-1`)으로 찾아 그 절만 읽는다 | OK 카드는 OK 컷 탭에, 컷 카드는 컷 카드 탭에 절로 둔다. 핸드오프는 로그 탭에 추가한다 |
-| Claude 앱 프로젝트 지식 | 이미 컨텍스트에 있다. 컷 카드는 사용자가 그 컷 대화에 붙여 준 것을 쓴다 | Claude가 고칠 수 없다. "정본 갱신" 블록(파일별로 바뀐 줄만)을 출력하고, 사용자가 파일을 교체한다. OK 카드도 같은 블록으로 준다. 핸드오프는 마지막 답에 출력한다 |
-| 리포 `project/` | 필요한 파일만 연다. `ok-cuts.md`는 제목으로 찾아 그 절만 연다 | 핸드오프는 `project/log/`에 쓴다 |
+| Claude Doc (recommended) | Read only the needed tabs with the Docs tool. Find the OK cut tab and cut card tab by title (`3-1 영상`, `3-1`) and read only that section | Put OK cards as sections in the OK cut tab, cut cards as sections in the cut card tab. Append handoffs to the log tab |
+| Claude app project knowledge | Already in context. For cut cards, use what the user pasted into that cut's conversation | Claude cannot edit. Output a "정본 갱신" block (only the changed lines per file); the user replaces the files. OK cards are delivered in the same block. Output the handoff in the final reply |
+| Repo `project/` | Open only needed files. Find `ok-cuts.md` by heading and open only that section | Write handoffs to `project/log/` |

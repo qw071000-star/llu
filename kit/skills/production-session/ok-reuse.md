@@ -1,52 +1,52 @@
-# 다른 OK를 기준으로 쓰기 — "3-1처럼 3-2"
+# Using another OK as the basis — "3-1처럼 3-2"
 
-## 1. 찾는다
+## 1. Find it
 
-1. OK 대장 목록에서 그 번호를 찾는다.
-   - 종류가 여럿(시작 이미지와 영상)이면 아래 표의 "어느 OK"로 고른다. 그래도 모호하면 제안과 함께 묻는다.
-2. 그 카드의 프롬프트만 연다. OK 카드는 `ok-cuts.md` 안의 절이다.
-   - OK를 가져오자고 **제안하기 전에도** 그 카드를 먼저 연다(목록의 OK 이유만 보고 제안하지 않는다).
-3. 카드가 없으면 컷 목록의 확정 job으로 카드를 먼저 만든다. 프롬프트 찾는 순서는 `higgsfield-generation` §4의 OK 기록과 같다. 결과물을 보고 프롬프트를 짐작해 다시 쓰지 않는다.
-4. 대체된 옛 OK는 쓰지 않는다. 사용자가 옛 것을 가리키면 어느 쪽인지 확인한다.
+1. Find that number in the OK ledger list.
+   - If there are several kinds (start image and video), choose with "Which OK" in the table below. If still ambiguous, ask with a proposal.
+2. Open only that card's prompt. An OK card is a section inside `ok-cuts.md`.
+   - Open the card first even **before proposing** to bring in an OK (do not propose from the list's `OK 이유` alone).
+3. If there is no card, first create it from the confirmed job in the cut list. The order for finding the prompt is the same as the OK record in `higgsfield-generation` §4. Do not guess and rewrite the prompt by looking at the result.
+4. Do not use superseded old OKs. If the user points to an old one, confirm which one they mean.
 
-## 2. 무엇을 가져오나
+## 2. What to bring
 
-| 사용자 말 | 어느 OK | 영상 프롬프트에서 가져올 곳 | 이미지 프롬프트에서 가져올 곳 |
+| User says | Which OK | Where to take from the video prompt | Where to take from the image prompt |
 |---|---|---|---|
-| 모션, 동작, 움직임, 동선, 속도 | 영상 | `ACTION_TIMING`, `PHYSICS`, 속도 문장 | — (이미지에는 동작 도중의 자세만) |
-| 카메라, 앵글, 구도, 렌즈 | 영상 또는 시작 이미지 | `CAMERA`, `OPTICS`, `LOCATION_MAP`의 카메라 줄 | CAMERA, FRAMING 줄 |
-| 색감, 질감, 톤, 룩, 그레인 | 시작 이미지 또는 영상 | `STYLE`, `QUALITY`, `LIGHTING`의 색 문장 | 팔레트, 재질·마감, 그레이드 줄 |
-| 빛 | 같은 장소의 OK | `LIGHTING` | LIGHT LOCK 줄 |
-| 표정, 연기, 감정 | 영상(연기) 또는 이미지(표정) | `CHARACTER_ACTING`의 그 인물 줄, 연기 범위 문장 | 그 인물의 표정·시선 구절 |
-| 목소리, 말투 | 영상 | `AUDIO`의 그 인물 목소리 문장 | — |
-| 소품 상태 | 앞 컷 OK | `PHYSICS`의 소품 줄 | PROP 줄 |
-| 번호만("3-1처럼") | — | 무엇을 가져올지 묻는다. 제안: 모션. 두 컷이 같은 장소 뷰·같은 방향일 때만 카메라도 | 묻는다. 제안: 색감. 같은 뷰일 때만 구도도 |
+| motion, action, movement, path, speed (모션, 동작, 움직임, 동선, 속도) | video | `ACTION_TIMING`, `PHYSICS`, speed sentences | — (for images, only the mid-action pose) |
+| camera, angle, composition, lens (카메라, 앵글, 구도, 렌즈) | video or start image | `CAMERA`, `OPTICS`, the camera line of `LOCATION_MAP` | CAMERA, FRAMING lines |
+| colour, texture, tone, look, grain (색감, 질감, 톤, 룩, 그레인) | start image or video | `STYLE`, `QUALITY`, the colour sentences of `LIGHTING` | palette, material/finish, grade lines |
+| light (빛) | OK of the same location | `LIGHTING` | LIGHT LOCK line |
+| expression, acting, emotion (표정, 연기, 감정) | video (acting) or image (expression) | that person's line in `CHARACTER_ACTING`, the acting-range sentence | that person's expression/gaze phrase |
+| voice, speech style (목소리, 말투) | video | that person's voice sentence in `AUDIO` | — |
+| prop state (소품 상태) | OK of the previous cut | the prop line in `PHYSICS` | PROP line |
+| number only ("3-1처럼") | — | Ask what to bring. Propose: motion. Camera too only if the two cuts share the same location view and direction | Ask. Propose: colour. Composition too only for the same view |
 
-- **"3-1 카드처럼 써"는 형식이다.** `cut-card.md` 틀로 쓰고 OK를 가져오지 않는다.
+- **"3-1 카드처럼 써" is about format.** Write with the `cut-card.md` template; do not bring in the OK.
 
-**OK 이미지를 참조로 붙일 때** — 권한을 그 요소로 좁히고, 나머지는 `DO NOT TRANSFER`에 적는다. 태그 `<<<OK>>>`에는 OK 카드의 요소 이름을 그대로 쓴다.
+**When attaching an OK image as a reference** — narrow its authority to that element and list the rest under `DO NOT TRANSFER`. For the tag `<<<OK>>>`, use the OK card's element name as is.
 
-| 가져오는 것 | 권한 문장 |
+| What is brought | Authority sentence |
 |---|---|
-| 색감·질감 | `<<<OK>>> controls only colour, grade, contrast and texture. Never take its subjects, composition, people or light direction.` |
-| 표정 | `<<<OK>>> controls only [PERSON]'s facial expression and gaze. Identity, hair and wardrobe come from <<<CHAR>>>.` |
+| colour/texture | `<<<OK>>> controls only colour, grade, contrast and texture. Never take its subjects, composition, people or light direction.` |
+| expression | `<<<OK>>> controls only [PERSON]'s facial expression and gaze. Identity, hair and wardrobe come from <<<CHAR>>>.` |
 
-- **퍼스트 프레임 틀 1(LOCKED)이면** 색은 그 장소 뷰에서 온다. `image-prompt` → `first-frame.md`의 "다른 OK의 색감을 가져올 때"를 따른다.
-- **OK 프롬프트에 색·질감 문장이 없으면** 그 색은 참조 이미지에서 온 것이다. 문장을 지어내지 말고, 그 OK 이미지를 색 참조로 붙인다.
-- **구도는 참조로 따라오지 않는다.** 카메라·구도는 문장(좌표)을 가져오거나, 같은 장소 뷰를 LOCKED로 쓴다.
-- **모션은 이미지 참조로 옮겨지지 않는다.** 문장을 가져온다. 영상 참조를 받는 기능이 있을 때만 그 OK 영상을 붙이고 `motion only`로 좁힌다.
+- **If first-frame template 1 (LOCKED) applies,** colour comes from that location view. Follow "다른 OK의 색감을 가져올 때" in `image-prompt` → `first-frame.md`.
+- **If the OK prompt has no colour/texture sentence,** that colour came from a reference image. Do not invent a sentence; attach that OK image as a colour reference.
+- **Composition does not follow through a reference.** Bring the camera/composition sentences (coordinates), or use the same location view as LOCKED.
+- **Motion is not carried by image references.** Bring the sentences. Attach that OK video and narrow it to `motion only` only when the tool accepts video references.
 
-## 3. 옮기는 법
+## 3. How to carry it over
 
-1. **가져온 줄에서 바꾸는 것은** 이 컷에서 달라지는 이름, 물건, 시간 구간뿐이다. 더할 것이 있으면 그 줄을 쪼개거나 사이에 끼우지 않고 마침표 뒤 새 문장으로 쓴다(`;`·`,`로 잇지 않는다). 예외: 가져온 줄의 입 잠금이 `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.`보다 약하면 이 문장으로 올린다. 남는 문장은 그대로 둔다. 가져온 줄은 전체를 `--must-include` 파일에 넣는다.
-2. **바꾼 단어는 "전 → 후"로 보인다.**
-3. **나머지 칸은 평소처럼 정보 점검표로 채운다.** 가져온 요소가 다른 칸을 대신하지 않는다.
-4. **가져온 요소에 걸린 위험도 가져온다.** OK 카드의 "위험 → 막는 문장"과, OK 프롬프트의 Required·Forbidden 중 가져온 동작·인물에 걸린 줄을 함께 옮긴다. 같은 동작이면 같은 실패가 난다. 카드에 "위험" 줄이 없으면 프롬프트의 Required·Forbidden만 옮긴다.
-5. **이 컷과 부딪치면**(must-ask) 제안을 붙여 묻는다: 길이 → 늘리거나 줄인 구간, 인물 수·장소·소품 → 바꿀 이름·물건. 카메라 방향이 반대면 가져온 줄의 좌우(손·돌아서는 쪽·빛)를 이 뷰에 맞게 바꾼다.
-6. **프롬프트 본문에는 컷 번호를 쓰지 않는다**("as in shot 3-1"은 모델이 모른다). 내용을 직접 쓴다.
-7. **OK 이미지를 붙였으면 참조 수와 태그 수를 맞춘다.**
+1. **In a brought line, change only** the names, objects, and time ranges that differ in this cut. If something must be added, do not split that line or insert into the middle; write it as a new sentence after the period (do not join with `;` or `,`). Exception: if the brought line's mouth lock is weaker than `[Person] does not say a single word: no attempt to speak, no parted lips, no mouthing.`, raise it to this sentence. Leave remaining sentences as they are. Put the whole brought line in the `--must-include` file.
+2. **Show changed words as "before → after".**
+3. **Fill the other fields as usual with the information checklist.** A brought element does not substitute for other fields.
+4. **Bring the risks tied to the brought element too.** Carry over the OK card's "위험 → 막는 문장" together with the Required/Forbidden lines of the OK prompt that concern the brought action or person. The same action produces the same failure. If the card has no "위험" line, carry over only the prompt's Required/Forbidden.
+5. **If it conflicts with this cut** (must-ask), ask with a proposal: length → the stretched or shortened range; number of people, location, props → the name/object to change. If the camera direction is opposite, flip left/right in the brought line (hand, turning side, light) to fit this view.
+6. **Do not write cut numbers in the prompt body** ("as in shot 3-1" means nothing to the model). Write the content directly.
+7. **If an OK image is attached, match the reference count to the tag count.**
 
-## 4. 기록
+## 4. Recording
 
-- **컷 카드 [7]:** `가져온 OK: 3-1 영상 — 모션(ACTION_TIMING, PHYSICS)`
-- **여러 컷에 걸치는 기준:** "색감은 앞으로 전부 3-1처럼"은 `decisions.md` §3에 기준으로 적는다.
+- **Cut card [7]:** `가져온 OK: 3-1 영상 — 모션(ACTION_TIMING, PHYSICS)`
+- **Standards spanning several cuts:** "색감은 앞으로 전부 3-1처럼" (from now on, all colour like 3-1) is written in `decisions.md` §3 as a standard.

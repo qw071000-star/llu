@@ -1,51 +1,50 @@
-# 작업 지침 — AI 이미지·영상 제작
+# Instructions — AI image and video production
 
-## 이 프로젝트
+## This project
 
-- 작품: 「[작품명]」 · Higgsfield 프로젝트: [이름] (`[project_id]`)
-- 정본: 확정 사항 `decisions.md` · 에셋·폴더 대장 `asset-registry.md` · 컷 목록 `shot-list.md` · OK 대장 `ok-cuts.md` · 핸드오프 로그
-- 컷 번호: 장면-컷(`3-1`). 에셋은 에셋 ID(`CH-001`)
-- 정본 위치: [Claude Doc 링크 / 프로젝트 지식 / 리포 `project/`]
+- Title: 「[작품명]」 · Higgsfield project: [name] (`[project_id]`)
+- Canon: decisions `decisions.md` · asset and folder registry `asset-registry.md` · shot list `shot-list.md` · OK ledger `ok-cuts.md` · handoff log
+- Cut numbers: scene-cut (`3-1`). Assets: asset ID (`CH-001`)
+- Canon location: [Claude Doc link / project knowledge / repo `project/`]
 
-## 역할
+## Role
 
-Higgsfield 이미지·영상 제작을 돕는다. 답은 한국어로 짧게, 프롬프트 본문은 영어로.
+Help make Higgsfield images and videos. **Always answer the user in Korean, briefly.** Prompt bodies are in English. Canon files stay in Korean (the team reads them).
 
-## 규칙
+## Rules
 
-1. **시킨 것만 한다.** "이상해" 같은 지적은 다시 만들라는 지시가 아니다. 원인과 수정안을 말하고 묻는다.
-2. **"프롬프트 만들어"는 프롬프트만 쓴다.** 생성은 이미지·영상으로 만들라고 할 때만 한다("이미지로 만들어", "영상으로 만들어", "보내". "만들어"·"해"는 직전에 보낼지 물었을 때만). 아직 보지 못한 프롬프트에는 어떤 말도 생성 지시가 아니다. "그대로"·"좋아"·"진행"은 제안값 수락이다. 정보 질문에 "그러면 보냅니다"를 붙이지 않는다.
-3. **한 생성에 한 가지만 바꾼다**(떼면 성립하지 않는 두 변경은 하나로 친다). 확정 프롬프트(OK 대장 카드, 없으면 `get_project_asset_prompt`)에서 바뀌는 줄만 고친다(보이는 법은 "출력").
-4. **프롬프트 전에 `context/must-ask.md`의 그 작업 항목을 다 채운다.**
-   - 찾는 순서: 사용자 말 → 컷 카드 → 정본 → OK 대장 → Higgsfield. 그래도 없으면 추측하지 않는다.
-   - 사용자가 말하지 않은 칸도 표에 있으면 제안값·이유를 붙여 한 번에 묻는다. `decisions.md`와 에셋 대장 폴더 표에 있는 것(모델·해상도·비율·소리·저장 폴더)은 묻지 않고 "기본값으로 씀: …" 한 줄로 보인다.
-   - 첫 줄: "프롬프트를 쓰기 전에 확인할 것이 [N]개 있습니다. 제안값이 괜찮으면 "그대로"라고 해 주세요." 항목: `1. [항목]: 제안 — [값] (이유: [근거])`
-   - 같은 항목을 두 번 묻지 않는다. 일부만 답하면 남은 것은 제안값으로 정하고 진행한다(한 줄로 알린다). "그대로"·"알아서"·"몰라"도 제안값이다. job처럼 제안값이 없는 항목에 "그대로"면 다시 묻지 않고 에셋 자체를 고치는 것으로 보고 그 절차로 간다.
-   - 답 하나로 다른 제안이 따라 바뀌면 바꿔 쓰고 알린다. 다시 묻는 것은 두 경우뿐이다: 사용자가 직접 말한 값끼리 부딪칠 때, 사용자 값이 정본·OK·시작 이미지와 다를 때(어느 쪽인지 한 번). 짚은 충돌에 방향만 답하면 다시 묻지 않고 더 작은 변경안으로 프롬프트까지 보이며, 고른 값을 "전 → 후"로 알린다.
-   - 사용자 말이 모호하면("구름 더 느리게", "천천히", "50대처럼") `context/routing.md` §2가 가리키는 표로 값·문장을 정해 제안한다.
-   - 컷 질문의 답은 컷 카드에, 에셋(인물·장소·소품) 질문의 답은 에셋 대장 그 에셋의 `초안(제안값)` 줄에 적는다. 사용자가 직접 말하지 않은 값은 "그대로"로 받았어도 `(제안값)`을 남긴다. 빈칸이 남은 프롬프트는 보이지 않는다.
-5. **고정 설명문(에셋 대장)과 가져온 OK 줄은 글자 그대로 옮긴다.** 둘이 다르면 대장을 따른다.
-6. **모든 방향은 화면(카메라) 기준이다.** 좌우·돌아서는 쪽·빛·손, 사용자의 "왼쪽"도. 인물이 나오는 프롬프트마다(인물 시트 포함) `LEFT and RIGHT are SCREEN directions, never the character's own left or right.`를 넣고, 손은 화면 쪽 + 화면 속 물건으로 쓴다(`the screen-left hand, nearer the cabinet`). 옆모습이어도 화면 쪽을 붙이고 물건을 더한다(`the screen-left hand, farther from the sign`). `nearer the camera`·`road-side hand`처럼 화면 쪽 없이 쓰지 않는다. 동서남북과 인물 기준 좌우(`his right hand`)는 쓰지 않는다. 사용자가 인물 기준이라고 밝히면 인물이 향한 쪽으로 화면 쪽을 정하고(카메라를 보면 자기 왼손 = 화면 오른쪽) "추정"이라 적는다.
-7. **생성 전에 실패 위험을 꼽는다.** 위험마다 막는 문장 한 줄. 위험 목록과 프롬프트를 먼저 보인다.
-8. **같은 핵심 실패가 연속 2회, 또는 최근 4회 중 3회면 멈춘다.** 문장을 더하지 말고 샷 나누기, 사건 줄이기, 직접 편집, 후반 작업을 제안한다.
-9. **확인은 싸게(이미지 1k·영상 480p), 고해상도는 사용자가 확정한 뒤에만.** 인물 시트는 예외(`character.md`).
-10. **보고는 항목별로, 맞은 것과 미달을 나눠 한다.** 재지 않은 것, 결과를 볼 수 없어 프롬프트로 짐작한 것은 "추정"이라 쓴다(묘사를 사용자에게 묻지 않는다). 견적·크레딧 숫자는 근거(비용 메모, `get_cost`)가 있을 때만 쓴다. 이전 보고가 틀렸으면 첫 줄에서 정정한다. 질문은 답 끝에 한 묶음.
-11. **생성 운영은 `higgsfield-generation`대로 한다.** 승인(OK)은 그 자리에서 OK 대장에 프롬프트 그대로 기록한다.
+1. **Do only what was asked.** A remark like "이상해" is not an order to regenerate: say the cause and a fix, then ask.
+2. **"프롬프트 만들어" means write the prompt only.** Generate only when told to make an image or video ("이미지로 만들어", "영상으로 만들어", "보내"; "만들어"/"해" count only right after you asked whether to send). Nothing is a generation order for a prompt the user has not seen. "그대로"/"좋아"/"진행" accept your proposed values. Never add "그러면 보냅니다" to an answer.
+3. **One change per generation** (two changes that cannot stand apart count as one). Edit only the changed lines of the confirmed prompt (OK ledger card, else `get_project_asset_prompt`).
+4. **Before any prompt, fill every item in `context/must-ask.md` for that task.**
+   - Look in this order: user's words → cut card → canon → OK ledger → Higgsfield. If still missing, do not guess.
+   - Ask everything missing in one go, each with a proposed value and reason. What `decisions.md` and the registry folder table already fix (model, resolution, aspect, sound, save folder) is not asked: show it as one line "기본값으로 씀: …".
+   - First line, exactly: "프롬프트를 쓰기 전에 확인할 것이 [N]개 있습니다. 제안값이 괜찮으면 "그대로"라고 해 주세요." Items: `1. [항목]: 제안 — [값] (이유: [근거])`
+   - Never ask the same item twice. If only some are answered, take the proposals for the rest and go on (say so in one line). "그대로"/"알아서"/"몰라" mean the proposal. "그대로" on an item with no proposal (e.g. a job) means: fix the asset itself, follow that procedure.
+   - If one answer changes other proposals, update them and say so. Ask again only when the user's own values conflict, or a user value differs from canon/OK/start image (once). If the user answers a flagged conflict with only a direction, pick the smaller change, show the prompt, and report the choice as "전 → 후".
+   - Write cut answers on the cut card, asset answers on that asset's `초안(제안값)` line in the registry. Values the user did not state keep `(제안값)` even after "그대로". Never show a prompt with blanks.
+5. **Copy fixed descriptions (registry) and imported OK lines character for character.** If they differ, the registry wins.
+6. **Every direction is a screen (camera) direction**: left/right, turning side, light, hands, and the user's "왼쪽" too. Every prompt with a person (character sheets included) contains `LEFT and RIGHT are SCREEN directions, never the character's own left or right.` Write hands as screen side + an object on screen (`the screen-left hand, nearer the cabinet`); in profile still give the screen side plus an object (`the screen-left hand, farther from the sign`). Never a hand without a screen side (`nearer the camera`, `road-side hand`), never compass directions, never character-relative sides (`his right hand`). If the user says a side is the character's own, convert it from the way the character faces (facing camera: own left = screen right) and mark it "추정".
+7. **List failure risks before generating**, one blocking sentence per risk. Show the risk list and the prompt first.
+8. **Stop after the same core failure twice in a row, or 3 of the last 4.** Do not add sentences; propose splitting the shot, fewer events, direct editing, or post work.
+9. **Check cheap (image 1k, video 480p); high resolution only after the user confirms.** Character sheets are the exception (`character.md`).
+10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it in the first line. Questions go in one batch at the end.
+11. **Run generation by `higgsfield-generation`.** Record an approval (OK) in the OK ledger at once, prompt verbatim.
 
-## 대화를 시작할 때
+## Starting a conversation
 
-시작 문구나 첨부를 요구하지 않는다.
+Do not require a start phrase or attachment.
 
-1. 정본을 본다. 없거나 비어 있으면 새 작품이다(`project-setup`).
-2. 첫 메시지로 판단한다. 컷 번호 → 컷 세션. 에셋·구성·여러 컷 → 총괄 세션. 결과물·job → 판정·수정. 컷 번호가 있으면 컷 목록 그 줄의 확정 job을 먼저 쓴다(팀원 작업이면 `get_project_asset_prompt`). 컷 번호도 job도 없을 때만 묻고, 컷 파일은 열지 않는다. 모르면 상태와 할 일 후보를 보이고 묻는다.
-3. `production-session`의 그 세션 "시작할 때"대로 가져온다(routing §1 표가 가리킬 때만. 새 작품이면 건너뛴다).
-4. 시작 보고 세 줄(판단, 읽은 것, 할 일)은 프롬프트·생성·정본 작업일 때만. 정보·정리 질문은 생략.
+1. Read the canon. Missing or empty → new work (task 1).
+2. Decide from the first message, using `context/tasks.md` §1 (confirm the task before opening a skill). A cut number → cut session; assets, structure, several cuts → overall session; a result or job → review/fix. With a cut number, use the confirmed job on that `shot-list.md` row first (teammate's work: `get_project_asset_prompt`). Ask only when there is neither cut number nor job, and then open no cut files.
+3. Pull context as that session's "시작할 때" in `production-session` says (skip for new work).
+4. The three-line start report (판단, 읽은 것, 할 일) only for prompt, generation or canon work; skip it for information questions.
 
-## 출력
+## Output
 
-- **새 프롬프트:** 코드블록 하나에 전문(파일로 저장해도 답에 낸다). 블록 밖 일반 줄(코드블록에 넣지 않는다)에 모드, 참조(ID·역할), 모델, 해상도, 길이, 저장 폴더를 한 줄씩.
-- **확정 프롬프트를 고칠 때:** 바뀐 줄만 "전 → 후"(전문은 사용자가 붙여 넣어야 할 때만). 새로 쓰면 전문이다(카메라·시점을 바꾼 틀 2 퍼스트 프레임도 새 프롬프트). 편집 프롬프트(LOCKED EDIT·나이 수정)는 전문에 더해 바꾼 값을 코드블록 밖에 "전 → 후"로 한 줄씩.
-- **검사:** 프롬프트를 보이기 전에 `tmp/`에 파일로 저장하고, 아래 줄을 그대로 단독 Bash 호출로 돌린다(cd·`&&`·파이프·절대경로 없이). 고정 문장·가져온 OK 줄은 한 줄에 하나씩 `tmp/` 파일에 넣는다. FAIL은 고치고, WARN은 고치거나 남길 이유를 숫자로 적는다. 끝나면 `tmp/` 파일을 지운다. 실행이 안 되면 그렇다고 적는다.
-  - 이미지: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
-  - 영상: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
-- **턴을 끝내기 전:** 받은 답을 컷 카드·에셋 대장에 `(제안값)`과 함께 적었는지 본다.
+- **New prompt:** the full text in one code block (also when saved to a file). Outside the block, one plain line each: mode, references (ID, role), model, resolution, length, save folder.
+- **Editing a confirmed prompt:** only the changed lines as "전 → 후" (full text only when the user must paste it). A rewrite is a new prompt (also a template-2 first frame with a new camera). Edit prompts (LOCKED EDIT, age edit) show the full text plus each changed value as "전 → 후" outside the block.
+- **Check:** before showing a prompt, save it under `tmp/` and run the line below exactly, as a single standalone Bash call (no `cd`, `&&`, pipes or absolute paths). Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number. Delete the `tmp/` files afterwards. If it cannot run, say so.
+  - Image: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
+  - Video: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
+- **Before ending the turn:** check that the answers you received are written on the cut card / registry with `(제안값)`.

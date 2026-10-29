@@ -1,27 +1,27 @@
 ---
 name: higgsfield-generation
-description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정리할 때 쓴다. 생성 전 점검, 저장 프로젝트·폴더, 보낸 뒤 턴 끝내기, 결과 확인, 승인(OK)·거절·보류 표시와 OK 대장 기록, 해상도 단계, 크레딧 기록·질문.
+description: Use when generating images or video with Higgsfield or organizing the results. Covers pre-generation checks, the save project/folder, ending the turn after sending, checking results, approve (OK)/reject/hold marking and the OK ledger entry, resolution stages, and credit logging and questions. Users say "좋아", "이걸로", "거절", "다시 만들어", "됐어", "크레딧 얼마나 썼어".
 ---
 
-# Higgsfield 생성 운영
+# Higgsfield generation operations
 
-## 1. 생성 전 점검 (모두 예여야 보낸다)
+## 1. Pre-generation checks (send only if all are yes)
 
-1. 사용자가 이 생성을 지시했는가.
-2. 저장할 `folder_id`가 정해졌는가(§2).
-3. 해상도가 확인용인가. Seedance 2.5 영상은 `draft: true`로 보낸다(승인 뒤 같은 테이크를 1080p로 확정, `video-prompt` → `rerender.md`).
-4. 처음 쓰는 모델·설정이면 `get_cost: true`로 견적을 봤는가. OK 대장 목록이나 `decisions.md` §2 비용 메모에 같은 모델·해상도·길이가 있으면 처음이 아니다.
-5. 이 스킬 폴더의 `check_prompt.py`를 통과했는가. 프롬프트를 **보이기 전에** 돌린다(명령·절차는 지침 "검사". 명령은 `.claude/settings.json`의 허용 패턴과 글자가 같아야 승인 없이 돈다. Claude 앱이면 경로만 그 스킬 폴더로).
+1. Did the user instruct this generation?
+2. Is the `folder_id` to save to decided (§2)?
+3. Is the resolution a check-quality one? Send Seedance 2.5 video with `draft: true` (after approval, finalize the same take at 1080p; `video-prompt` → `rerender.md`).
+4. For a first-time model/setting, did you get a quote with `get_cost: true`? If the OK ledger list or the `decisions.md` §2 cost memo has the same model, resolution and length, it is not the first time.
+5. Did it pass `check_prompt.py` in this skill's folder? Run it **before showing** the prompt (command and procedure: see the guidelines, "검사". The command must match the allow pattern in `.claude/settings.json` character for character to run without approval. In the Claude app, only the path changes to that skill folder).
 
-## 2. 저장 위치
+## 2. Save location
 
-**찾는 순서:** `asset-registry.md` 폴더 표(컷 카드 `[2]`가 가리키는 행) → 사용자에게 묻기.
+**Lookup order:** `asset-registry.md` folder table (the row the cut card `[2]` points to) → ask the user.
 
-**모든 생성에 `folder_id`를 넘긴다.**
-- 넘기지 않으면 프로젝트 밖에 저장되어 추적할 수 없다.
-- 프로젝트 자동 생성 설정(`get_preferences`)에 기대지 않는다.
+**Pass `folder_id` on every generation.**
+- Without it, the result is saved outside the project and cannot be tracked.
+- Do not rely on the project auto-create setting (`get_preferences`).
 
-**폴더가 없을 때:** 아래 구성을 작품에 맞춰 보이고 누가 만들지 묻는다(묻는 문장은 must-ask "모든 작업").
+**When there is no folder:** show the structure below adapted to the work and ask who will create it (the question sentence is in must-ask "모든 작업").
 
 ```
 「작품명」 (Higgsfield 프로젝트)
@@ -33,21 +33,21 @@ description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정
 └─ 99 시험·보관                              ← 시험 생성, 교체된 옛 승인본
 ```
 
-- 컷 폴더 이름은 컷 번호(장면-컷)로 시작하고, 끝의 상태는 컷 목록과 같다. 만들 때는 컷 목록 상태 그대로(`3-6 [대기]`), 첫 생성을 보낼 때 `[진행]`으로 바꾼다. 장면이 많으면 `장면 3 / 3-1 [진행] / 승인·거절`처럼 한 층을 더 둔다.
-- **Claude가 만들 때:** `create_folder`로 컷 폴더와 그 안의 `승인`·`거절`을 만든다.
-  - 시간 초과가 나면 다시 만들기 전에 `list_folders`로 생겼는지 확인한다.
-- **사용자가 만들 때:** 정확한 이름을 알려 주고, 끝나면 `search_folders`로 ID를 찾는다.
-- **기록:** 새 폴더 ID는 폴더 표(Claude Code)나 "정본 갱신" 블록(Claude 앱)에 적는다.
+- A cut folder name starts with the cut number (scene-cut), and the trailing status matches the cut list. Create it with the cut list status as is (`3-6 [대기]`), and change it to `[진행]` when sending the first generation. If there are many scenes, add one more level, like `장면 3 / 3-1 [진행] / 승인·거절`.
+- **When Claude creates them:** use `create_folder` to create the cut folder and the `승인` and `거절` inside it.
+  - On a timeout, check with `list_folders` whether it was created before creating again.
+- **When the user creates them:** give the exact names, and when done, find the ID with `search_folders`.
+- **Recording:** write the new folder ID in the folder table (Claude Code) or the "정본 갱신" block (Claude app).
 
-## 3. 요청을 보내고 턴을 끝낸다
+## 3. Send the request and end the turn
 
-상태를 반복 조회하면 조회할 때마다 대화 전체가 다시 처리된다. 기다림은 사용자에게 맡긴다.
+Polling status repeatedly reprocesses the whole conversation each time. Leave the waiting to the user.
 
-**보내기**
-- 하나를 만들 때는 `generate_image` 또는 `generate_video`를 `count: 1`로 쓴다. 진행 상황은 위젯이 보여 준다.
-- 여러 개는 사용자가 한 번에 지시했을 때만 `generate_*_batch`로 보내고, job ID 목록을 남긴다.
+**Sending**
+- To make one, use `generate_image` or `generate_video` with `count: 1`. The widget shows progress.
+- Send several with `generate_*_batch` only when the user instructed them at once, and keep the list of job IDs.
 
-**보낸 뒤 이 형식으로 쓰고 끝낸다.** 앞 답에 틀린 것이 있었으면 형식 위에 `정정: …` 한 줄을 먼저 쓴다.
+**After sending, write in this format and stop.** If an earlier answer had an error, first write one line `정정: …` above the format.
 
 ```
 보냈습니다.
@@ -58,68 +58,68 @@ description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정
 완성되면 알려 주세요. 분석이나 개선점, 다른 컷과의 비교가 필요하면 말씀해 주세요.
 ```
 
-**크레딧 기록:** 보낼 때마다 컷 카드 [11]에 `job — 보냄 — 약 N 크레딧`을 적고, 컷 목록 생성/크레딧 칸(`이미지 n / 영상 n · 약 N 크레딧`)의 수를 올린다. `decisions.md` §2 비용 메모에 그 설정이 있으면 그 값, 없으면 `get_cost` 견적을 쓴다. 둘 다 없으면 숫자 대신 `알 수 없음`(지침 10번). 보낸 뒤 형식의 크레딧에도 근거(비용 메모 / get_cost)를 붙인다.
+**Credit logging:** every time you send, write `job — 보냄 — 약 N 크레딧` in cut card [11] and raise the counts in the cut list 생성/크레딧 cell (`이미지 n / 영상 n · 약 N 크레딧`). If the `decisions.md` §2 cost memo has that setting, use its value; otherwise use the `get_cost` quote. If neither exists, write `알 수 없음` instead of a number (guideline 10). Also attach the basis (cost memo / get_cost) to the credits in the after-sending format.
 
-**하지 않는다**
-- `jobs_wait`나 상태 조회를 반복하지 않는다.
-- 같은 요청을 다시 보내지 않는다. 전송 시간 초과도 마찬가지다(중복 과금).
-- 기다리는 동안 다른 생성을 덧붙이지 않는다.
+**Do not**
+- Do not repeat `jobs_wait` or status polling.
+- Do not resend the same request, even after a send timeout (double billing).
+- Do not add other generations while waiting.
 
-**사용자가 "됐어"라고 하면**
-1. 그 job만 한 번 조회한다.
-   - 하나면 `job_display` 또는 `jobs_wait`(`timeout_seconds: 0`)를 쓴다.
-   - 배치면 `jobs_wait`(0) 한 번 뒤 `show_generation_by_ids`를 한 번 쓴다.
-2. 아직이면 "아직 진행 중입니다. 완성되면 알려 주세요."라고 쓰고 끝낸다.
-3. 완성됐으면 컷 폴더와 컷 목록 상태를 `검토`로 바꾸고, 지시 항목별로 ✔/✘를 적고(3~5줄), "승인할까요, 거절할까요?"라고 묻는다. 화면으로만 알 수 있는 항목은 "봐 주세요"로 적는다.
-4. 숫자 측정, 원인 분석, 다른 컷과의 비교는 사용자가 원할 때만 한다(`qa-metrics.md`).
+**When the user says "됐어" (it's done)**
+1. Query only that job, once.
+   - For a single job, use `job_display` or `jobs_wait` (`timeout_seconds: 0`).
+   - For a batch, call `jobs_wait` (0) once, then `show_generation_by_ids` once.
+2. If it is not done yet, write "아직 진행 중입니다. 완성되면 알려 주세요." and stop.
+3. If it is done, change the cut folder and cut list status to `검토`, mark ✔/✘ per instructed item (3-5 lines), and ask "승인할까요, 거절할까요?". For items only visible on screen, write "봐 주세요".
+4. Numeric measurement, cause analysis and comparison with other cuts only when the user wants them (`qa-metrics.md`).
 
-**사용자가 "기다렸다가 봐 줘"라고 하면:** 이미지는 `jobs_wait`(15초)를 최대 4번까지 쓴다. 영상은 기다리지 않는다.
+**When the user says "기다렸다가 봐 줘" (wait and look):** for images, use `jobs_wait` (15 seconds) up to 4 times. Do not wait for video.
 
-## 4. 상태 표시
+## 4. Status marking
 
-| 사용자 말 | 상태 | 할 일 |
+| User says | Status | Do |
 |---|---|---|
-| "좋아", "이걸로", "픽스", "확정", "OK" | 승인 | `승인` 폴더로 옮기고, 바로 OK 기록을 한다(아래) |
-| "별로", "아니야", "버려", "거절" | 거절 | `거절` 폴더로 옮기고, 이유 한 줄 + 원인 + 수정안을 말한다. 다시 만들지는 않는다 |
-| "이상해", "왜 이래" 같은 지적 | 바꾸지 않음 | 원인과 수정안을 말하고, 거절할지 묻는다. 영상이면 수정안은 `video-prompt` → `fixes.md`의 그 증상 줄에서 가져온다 |
-| "다시 만들어" | 이전 것은 거절 | 영상이면 `video-prompt` → `fixes.md`의 그 증상 줄로 바꿀 한 가지를 "전 → 후"로 보이고 확인받은 뒤 생성한다. 바로 앞 답에서 이미 전 → 후를 보이고 "이걸로 다시 만들까요?"라고 물었다면 "다시 만들어"가 그 확인이다. "그대로 다시"면 바꾸지 않고 보낸다 |
-| "나중에", "일단 둬" | 보류 | 컷 폴더에 두고 컷 카드 [11]에 적는다. 컷 폴더 이름과 컷 목록 상태도 `보류`로 |
-| 새 승인본이 생김 | 대체됨 | 옛 승인본을 `99 시험·보관`으로 옮기고, 옛 OK 카드를 로그로 옮긴다 |
+| "좋아", "이걸로", "픽스", "확정", "OK" | 승인 | Move to the `승인` folder and write the OK record right away (below) |
+| "별로", "아니야", "버려", "거절" | 거절 | Move to the `거절` folder; state a one-line reason + cause + fix. Do not regenerate |
+| A remark like "이상해", "왜 이래" | No change | State cause and fix, and ask whether to reject. For video, take the fix from that symptom's line in `video-prompt` → `fixes.md` |
+| "다시 만들어" | Previous one rejected | For video, show the one thing to change as "전 → 후" from that symptom's line in `video-prompt` → `fixes.md`, and generate after confirmation. If the immediately preceding answer already showed 전 → 후 and asked "이걸로 다시 만들까요?", then "다시 만들어" is that confirmation. For "그대로 다시" (again as is), send without changing anything |
+| "나중에", "일단 둬" | 보류 | Leave in the cut folder and note it in cut card [11]. Also set the cut folder name and cut list status to `보류` |
+| A new approved version appears | Superseded | Move the old approved version to `99 시험·보관`, and move the old OK card to the log |
 
-- **옮기는 법:** `list_project_assets`(컷 폴더)로 그 job의 `placement_id`를 찾고, `move_project_asset`으로 옮긴다.
-- **컷 상태:**
-  - 단계는 `대기` → `진행` → `검토` → `승인`이고, 중간에 `보류`가 될 수 있다.
-  - `진행`: 생성을 보냈거나 작업 중. `검토`: 완성된 결과가 판정을 기다림. 거절하면 그 자리에서 `진행`으로 되돌린다.
-  - `rename_folder`로 컷 폴더 이름 끝(`3-1 [승인]`)을 바꾸고, `shot-list.md`에도 같게 적는다.
-  - 정본은 `shot-list.md`다.
-- **거절 기록:** 거절 이유는 컷 카드 [11]에 `job — 거절 — 이유`로 남긴다. 다음 시도의 위험 목록이 여기서 나온다.
+- **How to move:** find that job's `placement_id` with `list_project_assets` (cut folder), and move with `move_project_asset`.
+- **Cut status:**
+  - Stages are `대기` → `진행` → `검토` → `승인`, and can become `보류` midway.
+  - `진행`: generation sent or work underway. `검토`: a finished result awaiting a verdict. If rejected, revert to `진행` on the spot.
+  - Change the end of the cut folder name (`3-1 [승인]`) with `rename_folder`, and write the same in `shot-list.md`.
+  - The canon is `shot-list.md`.
+- **Reject log:** leave the reject reason in cut card [11] as `job — 거절 — 이유`. The next attempt's risk list comes from here.
 
-**OK 기록 (승인한 그 자리에서, 다음 대화로 미루지 않는다)**
-1. OK 대장(`ok-cuts.md`)에 목록 한 줄과 카드를 쓴다. 형식은 그 파일에 있다.
-2. 프롬프트는 보낸 글자 그대로 옮긴다. 찾는 순서는 다음과 같다.
-   1. 이 대화에서 보낸 것
-   2. `get_project_asset_prompt`(그 job)
-   3. 사용자에게 붙여 달라고 한다(Higgsfield 웹의 결과물 상세에 있다)
-   - 기억으로 다시 쓰지 않는다. 다른 계정이 만든 결과물은 2번이 비어 오므로, 카드가 팀원이 볼 수 있는 유일한 사본이다.
-3. `draft: true`로 보낸 job이면 목록 "모델 · 설정"과 카드 draft 줄에 `draft 예 · 만료일`을 적는다(아니면 `draft 아니오`). 1080p 확정은 이 표기로 `rerender.md` 길을 고른다.
-4. 컷 목록의 확정 job 칸을 고친다. 에셋이면 에셋 대장의 확정 job과 고정 설명문도(고치는 세션은 `production-session` §1).
+**OK record (at the moment of approval, never deferred to the next conversation)**
+1. Write a list line and a card in the OK ledger (`ok-cuts.md`). The format is in that file.
+2. Copy the prompt exactly as sent, character for character. Lookup order:
+   1. What was sent in this conversation
+   2. `get_project_asset_prompt` (that job)
+   3. Ask the user to paste it (it is in the result detail on the Higgsfield web)
+   - Never rewrite it from memory. For results made by another account, option 2 returns empty, so the card is the only copy teammates can see.
+3. For a job sent with `draft: true`, write `draft 예 · 만료일` in the list's "모델 · 설정" and the card's draft line (otherwise `draft 아니오`). The 1080p finalization picks its `rerender.md` route from this marking.
+4. Fix the cut list's `확정 job` cell. For an asset, also fix the asset registry's `확정 job` and fixed description text (the session that edits: `production-session` §1).
 
-## 5. 후반 작업
+## 5. Post-production
 
-**모델에게 맡기지 않고 후반으로 넘길 것:**
-- 정확한 이동 거리
-- 정확한 등장·퇴장 타이밍
-- 작고 어두운 요소의 미세한 흔들림
-- 별 반짝임
-- 작은 반복 객체(새 떼 등)의 경로
-- 디졸브, 색 맞춤
+**Do not leave to the model; hand off to post:**
+- Exact travel distance
+- Exact entrance/exit timing
+- Fine jitter of small, dark elements
+- Star twinkle
+- Paths of small repeated objects (bird flocks, etc.)
+- Dissolves, color matching
 
-## 6. 해상도와 크레딧
+## 6. Resolution and credits
 
-**해상도**
-- 고해상도 방법은 `video-prompt` → `rerender.md` 하나를 따른다.
-- 업스케일은 수채·필름 질감을 지운다. 쓰기 전에 묻는다.
+**Resolution**
+- Follow the single high-resolution method in `video-prompt` → `rerender.md`.
+- Upscaling erases watercolor/film texture. Ask before using it.
 
-**크레딧**
-- **"크레딧 얼마나 썼어"면** 컷 목록 생성/크레딧 칸으로 답한다. 핸드오프 [2]는 그 칸이 빈 컷만 연다. 기록된 칸과 "알 수 없음"(기록이 없는 컷)만 답한다. 단가 추정은 사용자가 원할 때만, `get_cost`를 실제로 부른 뒤 `추정`이라 쓴다. 비용 메모가 비어 있으면 단가가 없다고 말하고, `get_cost` 견적 없이 채우지 않는다.
-- 같은 날 같은 컷 영상이 10회를 넘으면 멈추고 사용자와 방식을 다시 정한다.
+**Credits**
+- **If asked "크레딧 얼마나 썼어"**, answer from the cut list 생성/크레딧 cell. Handoff [2] opens only cuts whose cell is empty. Answer only recorded cells and `알 수 없음` (cuts with no record). Unit-price estimates only when the user wants them, after actually calling `get_cost`, labeled `추정`. If the cost memo is empty, say there is no unit price, and do not fill it in without a `get_cost` quote.
+- If video for the same cut exceeds 10 generations in one day, stop and re-decide the approach with the user.

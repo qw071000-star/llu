@@ -1,37 +1,37 @@
 ---
 name: shot-design
-description: 대본 한 장면을 컷으로 설계한다(컷 카드 이전 단계). "이 장면 컷 나눠줘", "콘티 짜줘", "커버리지", "어디서 찍어야 해", "샷 리스트", 180도 선, 마스터·리버스·인서트, 컷 길이 배분.
+description: Designs one script scene into cuts (the stage before the cut card). Use for "이 장면 컷 나눠줘", "콘티 짜줘", "커버리지", "어디서 찍어야 해", "샷 리스트", the 180-degree line, master/reverse/insert shots, and cut-length allocation.
 ---
 
-# 장면 커버리지 · 컷 설계
+# Scene coverage · cut design
 
-컷 카드(`production-session`) 앞 단계다. 장면 하나를 블로킹 → 180도 선 → 커버리지 → 컷 길이 → 컷 목록 줄 순서로 설계해 **제안으로만** 보인다.
+This is the stage before the cut card (`production-session`). Design one scene in the order blocking → 180-degree line → coverage → cut length → shot-list lines, and show it **as a proposal only**.
 
-## 1. 받는 것
+## 1. Inputs
 
-- 그 장면 대본(대사·지문). 없으면 컷 목록 내용 줄을 비트로 쓴다고 알리고, 질문과 같은 답에 제안 설계(블로킹·180도 선·커버리지 표)까지 보인다.
-- 장소 에셋: 확정 뷰(`LC-001-V1`…)와 뷰마다 LIGHT LOCK(에셋 대장).
-- 인물: 나오는 인물의 에셋 ID, 장면 시작 때 자리.
+- The scene's script (dialogue and action lines). If none, say that the cut list's content lines will be used as beats, and show the proposed design (blocking, 180-degree line, coverage table) in the same reply as the questions.
+- Location assets: confirmed views (`LC-001-V1`…) and each view's LIGHT LOCK (asset ledger).
+- Characters: asset IDs of the characters who appear, and their positions at scene start.
 
-## 2. 만드는 것
+## 2. What to produce
 
-1. **블로킹 메모:** 장면 시작·주요 비트마다 인물·물건 위치를 마스터 뷰의 화면 쪽 + 화면 속 물건으로 쓴다(지침 6번). 이동은 "어디에서 → 어디로".
-2. **180도 선:** 어느 두 인물(또는 인물과 물건) 사이에 긋는지, 카메라는 그 선의 어느 쪽인지(화면 속 물건으로).
-3. **커버리지 표:** 마스터·투샷·리버스·인서트·리액션 중 장면에 필요한 것. 샷마다 카메라 위치·높이, 화각(°)·샷 크기, 쓰는 장소 뷰. 맞는 뷰가 없으면 `새 뷰 필요`로 적는다(만들기는 `image-prompt` → `location-view.md`).
-4. **컷 길이 배분:** 컷당 사건 1~3개, 한 컷 15초 이하, 대사 한 줄 2~4초. 넘으면 컷을 나눈다.
-5. **`shot-list.md`로 옮길 줄:** 그 표의 칸 순서대로, 상태는 `대기`.
+1. **Blocking memo:** at scene start and at each major beat, write character and object positions as screen side + an on-screen object in the master view (instructions item 6). Write movement as "from where → to where".
+2. **180-degree line:** which two characters (or character and object) it is drawn between, and which side of that line the camera is on (by an on-screen object).
+3. **Coverage table:** whichever of master, two-shot, reverse, insert, reaction the scene needs. For each shot: camera position and height, field of view (°) and shot size, and the location view used. If no suitable view exists, write `새 뷰 필요` (making it is `image-prompt` → `location-view.md`).
+4. **Cut length allocation:** 1–3 events per cut, at most 15 seconds per cut, 2–4 seconds per dialogue line. Split the cut if exceeded.
+5. **Lines to move into `shot-list.md`:** in that table's column order, status `대기`.
 
-## 3. 규칙
+## 3. Rules
 
-- **180도 선을 넘는 컷은 의도일 때만** 쓰고 표에 `선 넘음(의도: …)`으로 표시한다.
-- **리버스 샷은 화면 좌우가 뒤집힌다.** 그 뷰의 LIGHT LOCK을 새로 써야 하므로 `image-prompt` → `location-view.md`(틀 A)를 가리킨다. 여기서 LIGHT LOCK 문장을 쓰지 않는다.
-- **이웃 컷이 이어지게 한다.** 앞 컷의 끝 상태(인물 자리·시선·소품 상태)가 다음 컷의 시작 상태다. 표의 `끝 → 다음 시작` 칸에 적는다.
-- **AI 제약:** 한 생성에 한 장소, 카메라 움직임은 하나(아니면 고정), 아직 없는 장소·뷰는 이미지로 먼저 만든다.
-- **사용자가 확정하기 전에는 정본을 고치지 않는다.** "확정"·"그대로"라고 하기 전에는 `shot-list.md`를 건드리지 않고 제안만 보인다. 확정한 뒤 누가 고치는지는 `production-session` §1을 따른다.
-- **이미 시작 이미지·영상이 있는 컷**(컷 목록 확정 칸)은 커버리지 표에 그 job을 적고 유지·교체를 묻는다. 있는 뷰를 새로 만들자고 하지 않는다.
-- 컷 카드는 쓰지 않는다. 확정된 줄로 컷 카드를 발행하는 일은 `production-session`이 한다.
+- **Use a cut that crosses the 180-degree line only when intended,** and mark it in the table as `선 넘음(의도: …)`.
+- **A reverse shot flips screen left/right.** That view's LIGHT LOCK must be written anew, so point to `image-prompt` → `location-view.md` (template A). Do not write the LIGHT LOCK sentence here.
+- **Make neighboring cuts connect.** The previous cut's end state (character positions, gaze, prop state) is the next cut's start state. Write it in the table's `끝 → 다음 시작` column.
+- **AI constraints:** one location per generation, one camera movement (or static), and a location/view that does not exist yet is made as an image first.
+- **Do not edit the canon before the user confirms.** Until the user says "확정" or "그대로", do not touch `shot-list.md`; only show proposals. Who edits after confirmation follows `production-session` §1.
+- **For a cut that already has a start image/video** (confirmed field in the cut list), write that job in the coverage table and ask whether to keep or replace it. Do not suggest remaking an existing view.
+- Do not write cut cards. Issuing cut cards from confirmed lines is `production-session`'s job.
 
-## 4. 틀
+## 4. Template
 
 ```text
 장면 [N] — [장소 ID] · [시간대]

@@ -1,6 +1,6 @@
 # 핸드오프 — 컷 세션 → 총괄
 
-40줄 이하, 한 컷만 쓴다. 읽는 사람은 다음 세션의 Claude다. 경위는 빼고, 결과와 다음 할 일만 쓴다.
+Write at most 40 lines, one cut only. The reader is the next session's Claude. Leave out history; write only results and next steps.
 
 ```text
 받는 세션: 총괄

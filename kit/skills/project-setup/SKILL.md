@@ -1,16 +1,18 @@
 ---
 name: project-setup
-description: 새 AI 이미지·영상 작품을 시작할 때 쓴다. "새 작품 시작", "프로젝트 세팅", "처음부터 준비" 같은 요청이나, 정본이 비어 있을 때 해당한다.
+description: Use when starting a new AI image/video work. Applies to requests like "새 작품 시작", "프로젝트 세팅", "처음부터 준비", or when the canon is empty.
 ---
 
-# 새 작품 시작
+# Starting a new work
 
-목표: 사용자가 질문 한 번에 답하면 작업을 시작할 수 있는 상태가 된다. 질문을 여러 번에 나눠 하지 않는다.
+Goal: reach a state where the user can start working after answering one question round. Do not split the questions across several rounds.
 
-## 1. 한 번에 묻는다
+## 1. Ask all at once
 
-아래 표를 그대로 보이고 "바꿀 것만 답해 주세요. 나머지는 기본값으로 합니다."라고 쓴다.
-사용자가 준 시나리오나 콘티가 있으면 먼저 읽고, 거기서 알 수 있는 칸은 채워서 보인다.
+Show the table below as is, and write the exact Korean sentence "바꿀 것만 답해 주세요. 나머지는 기본값으로 합니다."
+If the user gave a scenario or storyboard, read it first and fill in the fields that can be known from it before showing the table.
+
+The table is shown to the user in Korean; keep it entirely in Korean.
 
 | # | 질문 | 기본값 |
 |---|---|---|
@@ -29,54 +31,54 @@ description: 새 AI 이미지·영상 작품을 시작할 때 쓴다. "새 작�
 | 13 | 작품명(가제) | — (필수) |
 | 14 | 연기: 쓰는 연기 / 쓰지 않는 연기 | 절제, 감정은 손과 시선으로 / 울음·과장된 표정 없음 |
 
-## 2. 답을 받으면 정본 초안을 만든다
+## 2. After the answers, build the canon drafts
 
-- `decisions.md`: 각 절에 답을 한 줄씩 적는다. 날짜와 "사용자 답" 또는 "기본값"을 붙인다. 모르는 것은 미결 표에 둔다.
-- `shot-list.md`: 시나리오나 콘티가 있으면 컷을 나눠 한 줄씩 적는다(상태 `대기`). 없으면 빈 표로 둔다.
-- `asset-registry.md`: 등장할 인물·장소·소품에 ID만 매긴다(CH-001, LC-001, PR-001). 내용은 에셋을 확정할 때 채운다.
-- `ok-cuts.md`: 빈 목록으로 둔다. 첫 승인부터 채운다.
-- `(필수)` 칸은 기본값으로 채우지 않는다. "나머지는 기본값"이라고 해도 그 칸만 다시 묻는다.
-- 시나리오가 없으면 컷 목록은 장면 번호만 두고 빈 표로 둔다. 줄거리를 지어 쓰지 않는다.
-- 정본을 쓴 뒤 틀 흔적을 지운다:
-  - [ ] `ok-cuts.md`의 예시 행·예시 카드
-  - [ ] `decisions.md`의 `[예: …]`와 정본 우선순위 대괄호 줄(채우거나 기본값으로)
-  - [ ] 제목의 작품명(Claude Code면 `CLAUDE.md` 제목도)
-- 시나리오가 없다는 답을 받았으면 다시 묻지 않는다.
+- `decisions.md`: write one line per answer in each section. Add the date and "사용자 답" or "기본값". Put unknowns in the open-items table.
+- `shot-list.md`: if there is a scenario or storyboard, split it into cuts and write one line each (status `대기`). If not, leave an empty table.
+- `asset-registry.md`: assign IDs only to the characters, locations, and props that will appear (CH-001, LC-001, PR-001). Fill the content when the asset is confirmed.
+- `ok-cuts.md`: leave as an empty list. Fill it from the first approval.
+- Do not fill `(필수)` fields with defaults. Even if the user says "나머지는 기본값", ask again for only those fields.
+- If there is no scenario, the cut list holds only scene numbers in an empty table. Do not invent a plot.
+- After writing the canon, remove template traces:
+  - [ ] the example rows and example cards in `ok-cuts.md`
+  - [ ] the `[예: …]` items in `decisions.md` and the bracketed canon-priority line (fill them in, or with defaults)
+  - [ ] the work title in headings (and the `CLAUDE.md` heading too in Claude Code)
+- If the user answered that there is no scenario, do not ask again.
 
-## 3. Higgsfield 프로젝트와 폴더
+## 3. Higgsfield project and folders
 
-1. 기존 프로젝트를 쓴다면 `list_projects`로 찾아 ID를 확인한다.
-2. 새로 만든다면 §1 11번 기본값 동의가 곧 승인이다. 다시 묻지 않는다.
-3. 폴더 구성안을 보이고 바로 만든다.
-   - 지금 만드는 것: `00 에셋`(인물·장소·소품 하위 폴더, 그림체 작품이면 그림체도)과 `99 시험·보관`.
-   - 컷 폴더는 컷 카드를 발행할 때, 컷 목록 상태 이름으로 만든다(`1-1 [대기]`, 안에 `승인`·`거절`).
-4. `create_folder`로 만든다.
-   - 사용자가 직접 만들겠다고 하면 정확한 이름을 알려 준다.
-5. 받은 ID를 `asset-registry.md` 폴더 표에 적는다.
+1. If using an existing project, find it with `list_projects` and verify the ID.
+2. If creating a new one, agreeing to the §1 item 11 default is itself the approval. Do not ask again.
+3. Show the folder structure plan and create immediately.
+   - Create now: `00 에셋` (subfolders for characters, locations, props, plus art style for art-style works) and `99 시험·보관`.
+   - Cut folders are created when issuing the cut card, named with the cut list's status name (`1-1 [대기]`, with `승인` and `거절` inside).
+4. Create them with `create_folder`.
+   - If the user says they will create them themselves, give them the exact names.
+5. Write the received IDs in the `asset-registry.md` folder table.
 
-## 4. 정본을 둔다
+## 4. Place the canon
 
-**Docs 도구가 있으면 (권장):** 정본을 Claude Doc 하나로 만든다.
-- 탭 구성: 확정 사항 / 에셋·폴더 / 컷 목록 / 컷 카드(컷마다 절 하나, 제목 `3-1`) / OK 컷 / 핸드오프 로그
-- 이후 모든 대화가 이 Doc을 직접 읽고 고친다. 사용자가 파일을 옮길 일이 없다.
+**If a Docs tool is available (recommended):** build the canon as a single Claude Doc.
+- Tab layout: 확정 사항 / 에셋·폴더 / 컷 목록 / 컷 카드 (one section per cut, title `3-1`) / OK 컷 / 핸드오프 로그
+- Every later conversation reads and edits this Doc directly. The user never has to move files.
 
-**Docs 도구가 없으면:**
-- Claude 앱: 정본 네 개를 파일별 코드블록으로 준다. 사용자가 프로젝트 지식에 올린다.
-  - OK 대장은 쌓일수록 모든 대화에 읽혀 길어진다. OK 카드가 10장, 또는 `ok-cuts.md`가 3만 자를 넘으면 Claude가 먼저 Docs로 옮기거나 장면별 파일로 나누자고 제안한다.
-  - 컷 카드는 지식에 올리지 않는다. 컷 대화의 첫 메시지에 그 컷의 카드만 붙여 달라고 한다.
-- Claude Code: `project/` 아래에 저장한다.
+**If no Docs tool:**
+- Claude app: give the four canon files as one code block per file. The user uploads them to project knowledge.
+  - The OK ledger grows longer as it accumulates, since every conversation reads it. When OK cards reach 10, or `ok-cuts.md` exceeds 30,000 characters, Claude proposes first to move it to Docs or split it into per-scene files.
+  - Do not upload cut cards to knowledge. Ask the user to paste only that cut's card in the first message of the cut conversation.
+- Claude Code: save under `project/`.
 
-**마지막으로 "이 프로젝트" 칸을 채운다.** Claude 앱에서는 지침 칸 맨 위에 적어 달라고 한 번만 부탁한다. Claude Code에서는 `.claude/instructions.md`의 그 칸을 Claude가 채운다. 수정이 거절되면(`.claude/`는 보호 경로) 바꿀 줄을 그대로 보이고 사용자가 붙이게 한다.
-- 작품명
-- Higgsfield 프로젝트 ID
-- 정본 위치(Doc 링크 등)
+**Last, fill the "이 프로젝트" field.** In the Claude app, ask once for it to be written at the very top of the instructions field. In Claude Code, Claude fills that field in `.claude/instructions.md`. If the edit is rejected (`.claude/` is a protected path), show the lines to change exactly as they are and have the user paste them.
+- Work title
+- Higgsfield project ID
+- Canon location (Doc link, etc.)
 
-이것만 있으면 다음 대화부터는 바로 일을 시작해도 된다.
+With only this, the next conversation can start working right away.
 
-## 5. 다음 순서를 안내한다 (한 줄씩)
+## 5. Announce the next order (one line each)
 
-1. 그림체나 룩 기준 이미지를 확정한다(그림체 작품만).
-2. 인물 + 의상 시트를 만든다.
-3. 장소 마스터를 만든다.
-4. 소품 에셋을 만든다.
-5. 컷 카드를 발행하고, 컷 세션을 연다.
+1. Confirm the art-style or look reference image (art-style works only).
+2. Make the character + wardrobe sheets.
+3. Make the location masters.
+4. Make the prop assets.
+5. Issue cut cards and open cut sessions.

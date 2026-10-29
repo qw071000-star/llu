@@ -1,42 +1,42 @@
-# 실사·인물 컷 — 15블록
+# Live-action / character cuts - 15 blocks
 
-질문 턴에는 `acting`을 열지 않는다.
+Do not open `acting` in a question turn.
 
-## 블록
+## Blocks
 
-- 순서와 제목은 고정이다. 쓸 게 없는 블록도 제목은 남긴다.
-- `PRE_SHOT_CONTINUITY`는 앞 숏에서 이어받는 상태가 있을 때만 맨 앞에 둔다.
+- Order and titles are fixed. Keep the title even for a block with nothing to write.
+- Put `PRE_SHOT_CONTINUITY` first only when there is state inherited from the previous shot.
 
-| # | 블록 | 쓰는 것 | 자주 틀리는 것 |
+| # | Block | What to write | Common mistakes |
 |---|---|---|---|
-| — | `PRE_SHOT_CONTINUITY` | 이어받는 위치·자세·소품 소유·빛. 이어받지 않는 것은 지금 상태로 적는다(`the bag is closed`). "previous shot" 같은 말은 쓰지 않는다 | 확인 없이 계승 |
-| 1 | `SCENE_CONTEXT` | 시대·장소·이 클립의 일, 2~4문장 | 카메라·연기를 여기 몰기 |
-| 2 | `ACTIVE_REFERENCES` | 붙인 참조마다(시작 이미지 포함) ID·역할·권한 한 줄. 인물 줄은 고정 설명문(WARDROBE만) + `100% matches the reference`, 음성 파일을 붙였으면 `[NAME]'s voice 100% matches audio_[N]`. 한 생성에서 상태가 바뀌면 요소 둘을 붙이고 시간으로 나눈다(`[A] until 0:04, [B] from 0:04`). 일부에만 나오는 참조는 범위를 적는다(`only inside the mirror, only 0:06–0:14`) | 안 붙인 태그, 붙이고 안 씀 |
-| 3 | `LOCATION_MAP` | 좌표 문장, 카메라 위치, 전·중·후경, 광원. 컷마다 고정 물건이 화면 어느 쪽인지 다시 쓴다. 문은 열리는 쪽을 물건으로(`hinged on the edge nearer the wardrobe`) | "근처에", "그 문" |
-| 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | 0:00에 누가 어디서 무슨 동작 **도중인지**, 소품, 보이는 인원 수 | 숏 전체로 확대 |
-| 5 | `FORMAT_MODE` | 실사, 단일 연속 테이크, 길이. 컷이 필요하면 `hard cuts only at 0:0a; the camera never cuts by itself`와 컷마다 길이·카메라·첫 프레임 인물·동작. 인물이 컷 사이에서 사라지면 컷을 걷는 도중에 걸고, 그래도 안 되면 컷을 없앤다 | 단일 테이크인데 컷 요구 |
-| 6 | `OPTICS` | 대각 화각(도, 시작 이미지의 mm를 SKILL.md §2 표로 환산) + 관찰 결과 3개, 심도. 렌즈는 샷당 하나, 화각은 컷에서만 바뀐다. 얼굴·장소 전체·손 디테일을 한 비트에 섞지 않는다(컷을 나눈다) | mm·조리개·렌즈 브랜드 |
-| 7 | `CAMERA` | 위치·높이·방향·고정 여부·움직임과 속도 | 복합 움직임 |
-| 8 | `ACTION_TIMING` | `0:00–0:03 —` 구간별 행동·대사, 마지막 프레임 | 빈 구간, 횟수가 바뀜 |
-| 9 | `CHARACTER_ACTING` | 목표와 행동, 눈, 감정 범위의 양 끝 = 실패. 새로 쓰면 `acting`을 연다 | 감정 형용사 |
-| 10 | `PHYSICS` | `motion_owner`별 무게·접촉 | 누가 움직이는지 불분명 |
-| 11 | `LIGHTING` | 실제 광원 하나를 지배광으로, 방향(화면 쪽 + 그쪽 물건) | 참조 사진 룩으로 단정 |
-| 12 | `AUDIO` | 대사 원문, 횟수, 목소리, 효과음, 음악 여부, 말하지 않는 인물 | — |
-| 13 | `STYLE` | 매체 질감·색조 한두 줄 | 스타일이 얼굴을 통제한다고 가정 |
-| 14 | `QUALITY` | 해상감, 피부·직물 질감, 손가락 왜곡 억제 | — |
-| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 지킬 상태·횟수 3~5개. Forbidden: `SKILL.md` §1의 6번. 원하는 상태 먼저, 실패는 결과로 | 과거 실패 누적 |
+| — | `PRE_SHOT_CONTINUITY` | Inherited position, pose, prop ownership, light. State what is not inherited as its current state (`the bag is closed`). Do not use words like "previous shot" | Inheriting without checking |
+| 1 | `SCENE_CONTEXT` | Era, place, what this clip does, 2-4 sentences | Cramming camera/acting in here |
+| 2 | `ACTIVE_REFERENCES` | One line per attached reference (start image included): ID, role, authority. Character line = fixed description sentence (WARDROBE only) + `100% matches the reference`; if a voice file is attached, `[NAME]'s voice 100% matches audio_[N]`. If state changes within one generation, attach two elements and split by time (`[A] until 0:04, [B] from 0:04`). For a reference that appears in only part of the shot, state the scope (`only inside the mirror, only 0:06–0:14`) | Tag not attached, or attached and unused |
+| 3 | `LOCATION_MAP` | Coordinate sentence, camera position, fore/mid/background, light source. Re-state for each cut which side of the screen each fixed object is on. For doors, give the opening side by an object (`hinged on the edge nearer the wardrobe`) | "near", "that door" |
+| 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | Who is where at 0:00 **in the middle of** what action, props, number of visible people | Widening to the whole shot |
+| 5 | `FORMAT_MODE` | Live action, single continuous take, length. If a cut is needed: `hard cuts only at 0:0a; the camera never cuts by itself` plus, per cut, length, camera, first-frame character, action. If a character would vanish between cuts, put the cut mid-walk; if that still fails, remove the cut | Cuts required in a single take |
+| 6 | `OPTICS` | Diagonal field of view (degrees; convert the start image's mm with the SKILL.md §2 table) + 3 observable results, depth of field. One lens per shot; the field of view changes only at cuts. Do not mix face, whole location and hand detail in one beat (split the cut) | mm, aperture, lens brand |
+| 7 | `CAMERA` | Position, height, direction, locked or not, movement and speed | Compound moves |
+| 8 | `ACTION_TIMING` | `0:00–0:03 —` per-interval action and dialogue, last frame | Empty intervals, changed counts |
+| 9 | `CHARACTER_ACTING` | Objective and action, eyes, both ends of the emotional range = failure. If newly written, open `acting` | Emotion adjectives |
+| 10 | `PHYSICS` | Weight and contact per `motion_owner` | Unclear who is moving |
+| 11 | `LIGHTING` | One real light source as the dominant light, direction (screen side + the object on that side) | Asserting the reference photo's look |
+| 12 | `AUDIO` | Dialogue text, count, voice, sound effects, music or not, characters who do not speak | — |
+| 13 | `STYLE` | Medium texture and colour tone, one or two lines | Assuming style controls the face |
+| 14 | `QUALITY` | Resolution feel, skin/fabric texture, suppressing finger distortion | — |
+| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 3-5 states/counts to keep. Forbidden: item 6 of `SKILL.md` §1. Wanted state first, failure as outcome | Accumulating past failures |
 
-## 덜어내는 법
+## How to trim
 
-- **길이보다 사건 수를 먼저 줄인다.** 그래도 5,500자 근처면 장소 → 스타일 → 환경(QUALITY·배경 묘사) → 연기 문장 순서로 줄이고, `ACTIVE_REFERENCES`에서 `REFERENCE AUTHORITY`와 겹치는 권한 설명부터 뺀다. 고정 문장·가져온 OK 줄·연기의 양 끝을 빼야만 줄어들면 줄이지 않고 WARN을 남긴다(이유에 줄여 본 항목과 줄인 글자 수를 적는다. 예: `5,788자 유지: 인물 2·참조 4, 겹친 권한 설명 −300자`). 인물 2·참조 4면 넘기 쉽다. 인물이 셋 이상이면 줄이기보다 샷 나누기가 먼저다.
-- **장소 정보는 좌표 줄 + 네 줄까지만 쓴다.** 카메라, 전·중·후경, 빛, 필요하면 경로다. 길수록 인물 참조가 밀린다.
-- **이 샷에 나오지 않는 인물, 태그, 씬 번호는 넣지 않는다.**
-- **금지어는 범위를 좁힌다:** `no [X] on [Y]`. 금지어가 오히려 그것을 부를 수 있다.
-- **사용자가 "금지할 것을 다 넣으라"고 하면** 범주별로 묶는다(`[Faces and clothing]` `[Camera and editing]` …). 그만큼 사건 수는 더 줄인다.
+- **Cut the event count before the length.** If it is still near 5,500 characters, trim in this order: location -> style -> environment (QUALITY, background description) -> acting sentences, starting with removing authority explanations in `ACTIVE_REFERENCES` that overlap `REFERENCE AUTHORITY`. If it shrinks only by removing fixed sentences, imported OK lines, or the ends of the emotional range, do not trim; leave a WARN (in the reason, write what you tried to trim and the characters cut. Example: `5,788자 유지: 인물 2·참조 4, 겹친 권한 설명 −300자`). With 2 characters and 4 references it is easy to go over. With three or more characters, splitting the shot comes before trimming.
+- **Location information: the coordinate line + at most four lines.** Camera, fore/mid/background, light, and the path if needed. The longer it is, the more the character references get pushed out.
+- **Do not include characters, tags, or scene numbers that do not appear in this shot.**
+- **Narrow the scope of forbidden terms:** `no [X] on [Y]`. A forbidden term can summon the thing itself.
+- **If the user says "put in everything to forbid"**, group by category (`[Faces and clothing]` `[Camera and editing]` …). Cut the event count further to compensate.
 
-## 빈 틀
+## Empty template
 
-블록 밖 줄(지침 "출력")에 더해 한국어로: 화면비, 소리, 시작·끝 이미지 job, 붙인 요소(시작 이미지 포함, 순서대로. 이 수가 검사 스크립트의 `--refs`), 위험 목록.
+In addition to the lines outside the blocks (instruction "출력"), write in Korean: aspect ratio, sound, start/end image jobs, attached elements (start image included, in order; this count is the check script's `--refs`), risk list.
 
 ```text
 [SCENE_CONTEXT]
@@ -114,7 +114,7 @@ Forbidden:
 - Subtitles, text, watermarks, logos. (ENTIRE_SHOT)
 ```
 
-## 그대로 쓰는 문장
+## Sentences used as is
 
 ```text
 [첫 프레임] [Person] is already in place at 0:00, mid-[action]. No empty establishing frame.
