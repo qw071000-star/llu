@@ -17,7 +17,10 @@ for f in ("PLAYER-RULES.md", "SKILLS-INDEX.md"):
 SIM = ("이 환경에는 Higgsfield MCP가 연결되어 있지 않다(시험 환경). Higgsfield 도구를 부를 때는 실제로 부르지 말고 "
        "답 안에 `[TOOL] 도구이름(인자)` 줄을 쓰고, 그 결과는 sim/higgsfield.md에서 찾는다. 거기 없는 결과는 알 수 없음이다.")
 session = None
-for n, msg in enumerate(spec["turns"], 1):
+turns = list(spec["turns"])
+n = 0
+while turns:
+    msg = turns.pop(0); n += 1
     cmd = ["claude", "-p", msg, "--model", spec.get("model", "sonnet"), "--output-format", "stream-json", "--verbose",
            "--permission-mode", "acceptEdits", "--disallowedTools", "mcp__*",
            "--allowedTools", "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)", "Bash(python3 .claude/skills/assembly/assemble.py:*)", "Bash(python3 .claude/skills/color-continuity/color.py:*)", "--append-system-prompt", SIM]
@@ -48,3 +51,5 @@ for n, msg in enumerate(spec["turns"], 1):
     json.dump({"user": msg, "skills": skills, "reads": reads, "tools": tools, "bash": bash, "rc": r.returncode, "stderr": r.stderr[-500:]},
               open(os.path.join(run, "out", f"turn{n}.meta.json"), "w"), ensure_ascii=False, indent=1)
     print(f"{cid} turn{n}: skills={skills} reads={len(reads)} rc={r.returncode}", flush=True)
+    if "이 작업을 할까요" in final and not msg.startswith("응, 그 작업"):
+        turns.insert(0, "응, 그 작업 맞아.")  # 확인 질문에는 수락으로 답하고 원래 대본을 이어 간다

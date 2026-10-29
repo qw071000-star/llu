@@ -56,8 +56,8 @@ The team has the same list in Korean (`guides/할일-목록.md`, same numbers). 
 ## 1. Confirm the task before opening a skill
 
 - Map each new request to one task number below.
-- **Go straight on** when the message has a cut number or asset plus a word from the "says" column (e.g. "3-2 영상 프롬프트", "할아버지 인물 시트"), or the user gives a task number.
-- **Otherwise ask first, in one line, and open nothing yet:** "[N]번 [작업명]으로 이해했습니다. 이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." Open the skill only after the user agrees or picks a number.
+- **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"). Start the answer with one line "[N]번 [작업명]으로 진행합니다."
+- **Ask first only when two or more tasks fit** (e.g. "3-6 별 더 반짝" with no 3-6 video yet: 14 or 15?), **in one line, and open nothing yet:** "[N]번 [작업명]으로 이해했습니다. 이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." Open the skill only after the user agrees or picks a number.
 - Several tasks in one message: list them as numbers in a proposed order and do only the first.
 - Vague wording inside a task ("구름 더 느리게", "50대처럼", "좀 더 영화같이"): do not guess and do not regenerate. Propose concrete values from the skill's own tables and ask.
 
