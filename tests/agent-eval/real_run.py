@@ -34,7 +34,12 @@ for n, msg in enumerate(spec["turns"], 1):
                     i = c.get("input", {})
                     if c["name"] == "Skill": skills.append(i.get("skill"))
                     elif c["name"] == "Read": reads.append(os.path.relpath(i.get("file_path", ""), run))
-                    else: tools.append(c["name"])
+                    else:
+                        tools.append(c["name"])
+                        if c["name"] == "Bash":
+                            import re as _re
+                            for f in _re.findall(r"(\.claude/[\w./-]+\.md|project/[\w./-]+\.md)", i.get("command", "")):
+                                reads.append(f + " (bash)")
         if e.get("type") == "result":
             final = e.get("result", ""); session = e.get("session_id", session)
     os.makedirs(os.path.join(run, "out"), exist_ok=True)
