@@ -29,7 +29,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 12 | 이미지 결과 일부 고치기 | "여기만 고쳐" on an image result | `image-prompt` §3 + that kind's file |
 | 13 | 실사·인물 영상 | "3-2 영상", "걸어 나가는 영상" | `video-prompt` → `live-action.md`; open `acting` only on the turn that writes the prompt |
 | 14 | 배경 영상 | "배경 영상", landscape | `video-prompt` → `background.md` (open before asking) |
-| 15 | 영상 결과 고치기 | "이상해", "입이 움직여", "너무 빨라" on a video result (no video job yet → 13/14) | `video-prompt` §0 only for speed·stars·gait; `fixes.md` only for other symptoms |
+| 15 | 영상 결과 고치기 | "이상해", "입이 움직여", "너무 빨라", "별" on an existing video only (no video job yet → 13/14) | `video-prompt` §0 only for speed·stars·gait; `fixes.md` only for other symptoms |
 | 16 | 다른 OK처럼 | "3-1처럼", "2-1 표정 그대로" | `production-session` → `ok-reuse.md` + that one OK card, with task 11/13/14 |
 | 17 | 고해상도 | "1080p", "2k" | `video-prompt` → `rerender.md` |
 | 18 | 생성 보내기 | "이미지로 만들어", "영상으로 만들어", "보내" (prompt already shown) | `higgsfield-generation` |

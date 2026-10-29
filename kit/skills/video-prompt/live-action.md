@@ -13,7 +13,7 @@ Fill each block from the `SKILL.md` §0 table and the empty template below; this
 |---|---|---|
 | — | `PRE_SHOT_CONTINUITY` | Inheriting without checking. Writing "previous shot": state each inherited item (position, pose, prop ownership, light) as its current state (`the bag is closed`) |
 | 1 | `SCENE_CONTEXT` | Cramming camera/acting in here |
-| 2 | `ACTIVE_REFERENCES` | Tag not attached, or attached and unused. With a voice file, add `[NAME]'s voice 100% matches audio_[N]`. State change within one generation: attach two elements and split by time (`[A] until 0:04, [B] from 0:04`). A reference seen in only part of the shot: state the scope (`only inside the mirror, only 0:06–0:14`) |
+| 2 | `ACTIVE_REFERENCES` | A character line carries the registry WARDROBE sentence only, never the IDENTITY sentence. Tag not attached, or attached and unused. With a voice file, add `[NAME]'s voice 100% matches audio_[N]`. State change within one generation: attach two elements and split by time (`[A] until 0:04, [B] from 0:04`). A reference seen in only part of the shot: state the scope (`only inside the mirror, only 0:06–0:14`) |
 | 3 | `LOCATION_MAP` | "near", "that door". Not re-stating, for this cut, which screen side each fixed object is on |
 | 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | Widening to the whole shot |
 | 5 | `FORMAT_MODE` | Cuts required in a single take. If a cut is needed: `hard cuts only at 0:0a; the camera never cuts by itself` plus, per cut, length, camera, first-frame character, action. If a character would vanish between cuts, put the cut mid-walk; if that still fails, remove the cut |

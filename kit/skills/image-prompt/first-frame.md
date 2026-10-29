@@ -16,11 +16,14 @@
 
 ## Rules
 
+- **One `WARDROBE:` line per visible person** (registry sentence verbatim), each also in `--must-include`.
+- Do not ask again what an accepted proposal already answered (also after switching from task 13 to 11).
+
 - **Make the 0:00 state of that cut's video.** Not the thumbnail moment.
 - **Choose the mode first.**
   - If the cut's camera is the same as the confirmed location view: write that view as a `LOCKED EDIT` and only add the people and props (Template 1).
   - If the camera differs: make a new viewpoint as a `DERIVED VIEW` (Template 2). If only this cut uses that viewpoint, write Template 2 directly; if several cuts use it, propose confirming the location view first (`location.md`).
-  - Camera facing the opposite side of the location view: screen sides flip (`location.md` "Writing directions"). Rewrite the `In this view …` line at the end of Template 2 and the LIGHT LOCK as "전 → 후" (before → after).
+  - Camera facing the opposite side of the location view: screen sides flip (`location.md` "Writing directions"); already in the question turn, name which landmark is screen-left and which screen-right. Rewrite the `In this view …` line at the end of Template 2 and the LIGHT LOCK as "전 → 후" (before → after).
   - In Template 1, adding people and props counts as one change (placing that cut's people in the empty location).
   - Changing only art style/texture from the same camera is a `LOCKED EDIT` (`SKILL.md` §3), not a `DERIVED VIEW`.
   - If you make a new viewpoint when the camera is the same, the location view and the first frame's composition will drift apart.
