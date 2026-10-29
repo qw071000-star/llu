@@ -16,7 +16,7 @@ For a live-action cut (15 blocks), fill the table below. Each row goes into one 
 | Category | Information needed | Block it goes into |
 |---|---|---|
 | Scene | What happens in this clip (2-4 sentences), era, place, time of day | `SCENE_CONTEXT` |
-| Format | Length, aspect ratio, model, sound (dialogue / effects / music or not), save folder | `FORMAT_MODE`, `AUDIO` |
+| Format | Length, aspect ratio, model, sound (dialogue / effects / music or not; if cut card [3] sound is empty, ask whether there is dialogue), save folder | `FORMAT_MODE`, `AUDIO` |
 | Look | Medium, texture, colour tone (the look standard in `decisions.md`) | `STYLE` |
 | Character assets | Per character: element ID, wardrobe/hair state version, fixed description sentence, voice sentence if there is dialogue | `ACTIVE_REFERENCES`, `AUDIO` |
 | Location | Location-view element ID, landmarks at screen left / centre / right / foreground, time of day, hinge side of doors and hinged furniture (screen side + object) and opening direction | `ACTIVE_REFERENCES`, `LOCATION_MAP` |

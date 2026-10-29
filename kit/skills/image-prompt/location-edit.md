@@ -14,7 +14,7 @@ This is work that locks the camera. The opening sentence and the `CHANGE / PRESE
 
 ## Rules
 
-- **One change.** Only two changes that do not hold if separated (a lit screen and that screen's light) are written as `two changes` and two CHANGE blocks. Time of day (removing the sun, the sky) and turning on a light source can be separated, so split them into two generations. When split, tell the user in one line that the step-1 result is not yet the requested state (e.g. night).
+- **One change.** Only two changes that do not hold if separated (a lit screen and that screen's light) are written as `two changes` and two CHANGE blocks. Time of day (removing the sun, the sky) and turning on a light source can be separated, so split them into two generations, doing first the change the user named first (and flag that the light change affects that view's LIGHT LOCK). When split, tell the user in one line that the step-1 result is not yet the requested state (e.g. night).
 - **When changing direction, lock the position; when changing state, lock the shape and direction.**
 - **Identify the target as one thing, tied to its position:** `the nearest [object]`, `the [object] on the RIGHT` (screen terms).
 - **Do not re-describe the location.** Do not widen an ambiguous target.
