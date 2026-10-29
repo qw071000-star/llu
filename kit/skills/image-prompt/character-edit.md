@@ -96,8 +96,8 @@ PRESERVE EXACTLY:
 - STRUCTURE and ENVIRONMENT: panel widths, panel order, crop boundaries, empty hands, backdrop,
   lighting direction, exposure, palette, contrast, grain and falloff.
 
-ONLY CHANGE: the visible age of the same person. no babyface, no exaggerated old-age makeup, no other
-people, no text, no watermark, no frame borders
+ONLY CHANGE: the visible age of the same person. no babyface, no exaggerated old-age makeup [젊게면 이 구절
+대신 no beauty filter], no other people, no text, no watermark, no frame borders
 ```
 
-**젊게 할 때** `[age markers]`를 반대로 쓴다: 주름 얕게, 머리색(흰머리를 줄이거나 없앰), 곧은 어깨, 탄탄한 손. 끝 줄에 `no beauty filter`를 더한다.
+**젊게 할 때** `[age markers]`를 반대로 쓴다: 주름 얕게, 머리색(흰머리를 줄이거나 없앰), 곧은 어깨, 탄탄한 손. 끝 줄은 틀의 `[젊게면 …]`대로 바꾼다.

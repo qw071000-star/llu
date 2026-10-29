@@ -65,7 +65,7 @@ def check_common(text, args, out):
         break
     if find(r"\b(?:north|south|east|west)(?:ern|ward)?\b(?! Korea)|동쪽|서쪽|남쪽|북쪽", text, 0):
         out.append(("WARN", "동서남북을 썼다. 방향은 화면 기준 + 그쪽 물건으로 쓴다: 'from screen left, the [object] side'"))
-    if find(r"\b(?:LEFT|RIGHT|left|right)\b(?![- ](?:PANEL|panel|-to-))", re.sub(r"left-to-right", "", text, flags=re.I), 0) and "SCREEN direction" not in text and find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text):
+    if find(r"\b(?:LEFT|RIGHT|left|right)\b(?![- ](?:PANEL|panel|-to-))", re.sub(r"left-to-right|\b(?:left|right|cent(?:er|re))(?:(?:,\s*|\s+(?:and|or)\s+)(?:the\s+)?(?:left|right|cent(?:er|re)))+\s+panels?\b", "", text, flags=re.I), 0) and "SCREEN direction" not in text and find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text):
         out.append(("WARN", "인물이 있는 프롬프트에서 좌우를 썼는데 좌표 문장이 없다: 'LEFT and RIGHT are SCREEN directions, never the character's own left or right.'"))
     if "SCREEN direction" in text and "never the character's own left or right" not in text and find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text):
         out.append(("WARN", "좌표 문장이 짧다. 인물이 있으면 글자 그대로: 'LEFT and RIGHT are SCREEN directions, never the character's own left or right.'"))

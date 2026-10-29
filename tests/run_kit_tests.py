@@ -246,7 +246,7 @@ check("[맹검] 검토 상태 정의", "`검토`: 완성된 결과" in gen)
 chk = read(CHECKER)
 check("[맹검2] 길이 경계 5,500자(검사기·실사 틀)", "> 5500" in chk and "5,500자" in live)
 check("[맹검2] OK 카드와 컷 카드 구분", "`ok-cuts.md` 안의 절" in inst and "`ok-cuts.md` 안의 절" in reuse)
-check("[맹검2] 다른 컷 카드·핸드오프를 예시로도 열지 않음(읽기 지도)", "다른 컷 카드·핸드오프(형식 예시로도" in inst)
+check("[맹검2] 다른 컷 카드·핸드오프를 예시로도 열지 않음(읽기 지도)", "**다른 컷 카드·핸드오프는 열지 않는다.** 형식을 보려고도" in inst)
 check("[맹검2] 결과 이미지를 볼 수 없을 때 규칙", "볼 수 없어" in inst and "묘사를 사용자에게 묻지 않는다" in inst)
 check("[맹검2] 거절하면 진행으로", "거절하면 그 자리에서 `진행`" in gen)
 check("[맹검2] OK 제안 전에 카드 열기", "제안하기 전에도" in reuse)
@@ -311,7 +311,7 @@ check("[맹검4] live-action: 덜어내는 순서와 WARN을 남기는 조건", 
 check("[맹검4] acting: 목표 양식 예, 사건 수·비트 수 따로", "[상대]에게/에게서 + 동사" in sk("acting/SKILL.md") and "비트 수" in sk("acting/SKILL.md"))
 check("[맹검4] ok-reuse: 강한 입 잠금 문장 인라인", nospeak in reuse)
 check("[맹검4] ok-reuse: '카드처럼'은 형식", "카드처럼 써\"는 형식" in reuse)
-check("[맹검4] 생성 운영: 크레딧 근거, 재생성이면 '바꾼 것'", "근거(비용 메모 / get_cost / 추정)" in gen and "- 바꾼 것:" in gen)
+check("[맹검4] 생성 운영: 크레딧 근거, 재생성이면 '바꾼 것'", "근거(비용 메모 / get_cost)" in gen and "- 바꾼 것:" in gen)
 check("[맹검4] OK 대장 카드에 draft·만료일", "draft_job_id" in okt and "만료일" in okt)
 check("[맹검4] 컷 카드 [10]은 난 실패", card_fields.get("10", "").startswith("난 실패"))
 check("[맹검4] 컷 목록 생성/크레딧 칸의 주인", "생성/크레딧 칸은 총괄" in sess)
@@ -352,7 +352,7 @@ check("[맹검5] 컷 카드 [7]: [1]에 다른 컷과 같게가 있으면 그 OK
 check("[맹검5] first-frame 틀 2: 반대편이면 필수 표시, 하늘·색은 PALETTE·LIGHT LOCK", "반대편 카메라면 필수" in ff.split("## 틀 2")[1] and "PALETTE·LIGHT LOCK과 부딪치는지" in ff)
 prop = sk("image-prompt/prop.md")
 check("[맹검5] prop.md: 시트가 필요한가, 차량·건물급은 장면 프레임에서", "시트가 필요한가" in prop and "차량·건물급" in prop)
-check("[맹검5] 생성 운영: 크레딧 질문은 기록만 합치고 추정은 근거를 밝힘", "크레딧 얼마나 썼어" in gen and "무엇으로 셈했는지 밝힌다" in gen)
+check("[맹검5] 생성 운영: 크레딧 질문은 기록만 합치고 추정은 근거를 밝힘", "크레딧 얼마나 썼어" in gen and "숫자 대신 `알 수 없음`" in gen)
 check("[맹검5] decisions 틀에 비용 메모 줄", "비용 메모" in read(os.path.join(KIT, "project-files", "decisions.md")))
 
 # 20. 실제 Claude Code 실행(real-C01~C52) 채점에서 찾은 결함
@@ -379,7 +379,7 @@ check("[실행] routing: 카드 [1]이 다른 컷과 같은 동작이면 ok-reus
 check("[실행] routing: '쓰고 바로 만들어'·폴더 없음이면 생성 운영 §2", "\"쓰고 바로 만들어\"이거나 컷 폴더가 없으면 §2 폴더 절" in ctx_route)
 check("[실행] routing: 소품 지적·고치기 → prop.md", "\"가방이 너무 새 거 같아\" | 소품 만들기·지적·고치기" in ctx_route)
 check("[실행] routing: 컷의 '뒤에서 본' 첫 프레임 → first-frame", "컷의 \"뒤에서 본\" 첫 프레임" in ctx_route)
-check("[실행] routing: 영상이면 acting은 프롬프트 쓰는 턴에", "프롬프트를 쓰는 턴에 연다" in ctx_route)
+check("[실행] routing: 영상이면 acting은 프롬프트 쓰는 턴에", "프롬프트를 쓰는 턴에 `acting`을 연다" in ctx_route)
 check("[실행] routing: 영상 요청이면 video-prompt §0·§2", "`video-prompt` SKILL.md(§0" in ctx_route and "§2 사건 수" in ctx_route)
 check("[실행] routing: 그 컷 번호의 핸드오프만, 이웃 OK 카드는 기준이 아니면 안 엶", "그 컷 번호의 마지막 핸드오프" in ctx_route and "기준 OK가 아니면 열지 않는다" in ctx_route)
 check("[실행] routing: 총괄 시작은 반영 안 된 핸드오프만", "아직 반영되지 않은 핸드오프만" in ctx_route)
@@ -456,6 +456,32 @@ check("[실행3] 검사기: 단수 hand 앞에 화면 쪽이 없으면 WARN(합�
 for lp in sorted(glob.glob(os.path.join(FIX, "*.lines")) + glob.glob(os.path.join(ROOT, "tests", "agent-eval", "testbed", "grade", "*.lines")) + [os.path.join(ROOT, "tests", "agent-eval", "testbed", "project", "ok-cuts.md")]):
     r = subprocess.run([sys.executable, CHECKER, "--kind", "image", lp], capture_output=True, text=True)
     check(f"[실행3] 손 규칙에 걸리지 않음: {os.path.relpath(lp, ROOT)}", "화면 쪽이 없다" not in r.stdout and "카메라 쪽으로만" not in r.stdout, r.stdout.strip()[:200])
+
+# 22b. 실제 4회차 결함
+route3 = ctx_route.split("## 3.")[1]
+first_b = [l for l in route3.splitlines() if l.startswith("- ")][0]
+check("[실행4] routing §3 첫 줄: 다른 컷 카드·핸드오프 금지(굵게, head·grep으로도, 칸 형식은 cut-card.md로만)", first_b.startswith("- **다른 컷 카드·핸드오프는 열지 않는다.**") and "`head`·`grep`으로도" in first_b and "`cut-card.md`로만" in first_b)
+check("[실행4] routing: 컷 세션은 자기 컷 번호의 핸드오프만(굵게)", "**컷 세션은 자기 컷 번호의 핸드오프만**" in first_b and "다른 카드는 열지 않는다" not in route3)
+act_row = [l for l in ctx_route.splitlines() if l.startswith("| 인물이 연기하는")][0]
+check("[실행4] routing acting 줄: 질문 턴에는 열지 않는다가 앞에", act_row.split("| 연기 |")[1].strip().startswith("**영상이면 질문 턴에는 열지 않는다**"))
+check("[실행4] video §0 모호한 말 표 머리: 전 → 후만 보여도 전문 저장·검사", "\"전 → 후\"만 보여도 고친 전문을 저장해 검사한다" in vskill)
+star = [l for l in vskill.splitlines() if l.startswith("| 별·새 떼")][0]
+check("[실행4] video 별 줄: 시작 이미지에 없으면 시도하지 않고 오버레이·새 시작 이미지", "시작 이미지에 없으면 시도하지 않고 후반 오버레이나 새 시작 이미지" in star)
+speed = [l for l in vskill.splitlines() if l.startswith("| 사람 동작 속도")][0]
+check("[실행4] video 속도 줄: 원래보다 늘린다, 구간이 이미 전체면 앞당기기·길이 늘리기 제안", "원래보다 늘린다" in speed and "시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로" in speed)
+check("[실행4] must-ask 모든 작업: 정본과 다르면 범위(이 컷만/작품 전체)", "정본과 다르면 이 컷만인지 작품 전체인지도" in ctx_ask.split("## 모든 작업")[1].split("##")[0])
+check("[실행4] first-frame: 다른 OK 색감이면 질감 문장(Real material truth)을 새로 쓰지 않음", "질감 문장(`Real material truth` 등)을 새로 쓰지 않는다" in ff)
+check("[실행4] 지침 10번: 견적·크레딧 숫자는 근거가 있을 때만, 생성 운영은 추정 숫자 없음", "견적·크레딧 숫자는 근거(비용 메모, `get_cost`)가 있을 때만" in inst_core and "`추정`이라 쓰고 무엇으로 셈했는지" not in gen)
+t2 = ce.split("## 틀 2")[1].split("```")[1]
+check("[실행4] character-edit 틀 2 끝 줄 안에 [젊게면 … no beauty filter]", "[젊게면 이 구절\n대신 no beauty filter]" in t2 and "no exaggerated old-age makeup" in t2)
+check("[실행4] 지침 4번: 짚은 충돌에 방향만 답하면 더 작은 변경안으로 프롬프트까지, 전 → 후", "방향만 답하면 다시 묻지 않고 더 작은 변경안으로 프롬프트까지" in inst_core)
+check("[실행4] 검사기: '… left and center panels'는 좌우가 아니다(pass 예시 있음)", os.path.exists(os.path.join(FIX, "image__pass__S18_sheet_left_and_center_panels.txt")))
+for tp in ["image-prompt/character.md", "image-prompt/character-edit.md"]:
+    tmpl = "\n".join(b for i, b in enumerate(sk(tp).split("```")) if i % 2 == 1)
+    r = subprocess.run([sys.executable, CHECKER, "--kind", "image", "/dev/stdin"], input=tmpl, capture_output=True, text=True)
+    check(f"[실행4] 좌표 WARN이 틀의 패널 문구에 걸리지 않음: {tp}", "좌표 문장이 없다" not in r.stdout, r.stdout.strip()[:200])
+sc = read(os.path.join(ROOT, "tests", "agent-eval", "scenarios.md")).split("## C24")[1].split("## C25")[0]
+check("[실행4] scenarios C24: acting은 프롬프트 턴(2턴)에 연다", "`acting`은 프롬프트를 쓰는 2턴에 연다" in sc)
 
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)
