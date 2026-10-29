@@ -7,28 +7,30 @@ Do not open `acting` in a question turn. On the turn that writes the prompt, ope
 - Order and titles are fixed. Keep the title even for a block with nothing to write.
 - Put `PRE_SHOT_CONTINUITY` first only when there is state inherited from the previous shot.
 
-| # | Block | What to write | Common mistakes |
-|---|---|---|---|
-| — | `PRE_SHOT_CONTINUITY` | Inherited position, pose, prop ownership, light. State what is not inherited as its current state (`the bag is closed`). Do not use words like "previous shot" | Inheriting without checking |
-| 1 | `SCENE_CONTEXT` | Era, place, what this clip does, 2-4 sentences | Cramming camera/acting in here |
-| 2 | `ACTIVE_REFERENCES` | One line per attached reference (start image included): ID, role, authority. Character line = fixed description sentence (WARDROBE only) + `100% matches the reference`; if a voice file is attached, `[NAME]'s voice 100% matches audio_[N]`. If state changes within one generation, attach two elements and split by time (`[A] until 0:04, [B] from 0:04`). For a reference that appears in only part of the shot, state the scope (`only inside the mirror, only 0:06–0:14`) | Tag not attached, or attached and unused |
-| 3 | `LOCATION_MAP` | Coordinate sentence, camera position, fore/mid/background, light source. Re-state for each cut which side of the screen each fixed object is on. For doors, give the opening side by an object (`hinged on the edge nearer the wardrobe`) | "near", "that door" |
-| 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | Who is where at 0:00 **in the middle of** what action, props, number of visible people | Widening to the whole shot |
-| 5 | `FORMAT_MODE` | Live action, single continuous take, length. If a cut is needed: `hard cuts only at 0:0a; the camera never cuts by itself` plus, per cut, length, camera, first-frame character, action. If a character would vanish between cuts, put the cut mid-walk; if that still fails, remove the cut | Cuts required in a single take |
-| 6 | `OPTICS` | Diagonal field of view (degrees; convert the start image's mm with the SKILL.md §2 table) + 3 observable results, depth of field. One lens per shot; the field of view changes only at cuts. Do not mix face, whole location and hand detail in one beat (split the cut) | mm, aperture, lens brand |
-| 7 | `CAMERA` | Position, height, direction, locked or not, movement and speed | Compound moves |
-| 8 | `ACTION_TIMING` | `0:00–0:03 —` per-interval action and dialogue, last frame | Empty intervals, changed counts |
-| 9 | `CHARACTER_ACTING` | Objective and action, eyes, both ends of the emotional range = failure. If newly written, open `acting` | Emotion adjectives |
-| 10 | `PHYSICS` | Weight and contact per `motion_owner` | Unclear who is moving |
-| 11 | `LIGHTING` | One real light source as the dominant light, direction (screen side + the object on that side) | Asserting the reference photo's look |
-| 12 | `AUDIO` | Dialogue text, count, voice, sound effects, music or not, characters who do not speak | — |
-| 13 | `STYLE` | Medium texture and colour tone, one or two lines | Assuming style controls the face |
-| 14 | `QUALITY` | Resolution feel, skin/fabric texture, suppressing finger distortion | — |
-| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Required: 3-5 states/counts to keep. Forbidden: item 6 of `SKILL.md` §1. Wanted state first, failure as outcome | Accumulating past failures |
+Fill each block from the `SKILL.md` §0 table and the empty template below; this table lists only common mistakes and the rules the template does not show.
+
+| # | Block | Common mistakes |
+|---|---|---|
+| — | `PRE_SHOT_CONTINUITY` | Inheriting without checking. Writing "previous shot": state each inherited item (position, pose, prop ownership, light) as its current state (`the bag is closed`) |
+| 1 | `SCENE_CONTEXT` | Cramming camera/acting in here |
+| 2 | `ACTIVE_REFERENCES` | Tag not attached, or attached and unused. With a voice file, add `[NAME]'s voice 100% matches audio_[N]`. State change within one generation: attach two elements and split by time (`[A] until 0:04, [B] from 0:04`). A reference seen in only part of the shot: state the scope (`only inside the mirror, only 0:06–0:14`) |
+| 3 | `LOCATION_MAP` | "near", "that door". Not re-stating, for this cut, which screen side each fixed object is on |
+| 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | Widening to the whole shot |
+| 5 | `FORMAT_MODE` | Cuts required in a single take. If a cut is needed: `hard cuts only at 0:0a; the camera never cuts by itself` plus, per cut, length, camera, first-frame character, action. If a character would vanish between cuts, put the cut mid-walk; if that still fails, remove the cut |
+| 6 | `OPTICS` | mm, aperture, lens brand (convert mm with the `SKILL.md` §2 table). One lens per shot; the field of view changes only at cuts. Face, whole location and hand detail mixed in one beat (split the cut) |
+| 7 | `CAMERA` | Compound moves |
+| 8 | `ACTION_TIMING` | Empty intervals, changed counts |
+| 9 | `CHARACTER_ACTING` | Emotion adjectives |
+| 10 | `PHYSICS` | Unclear who is moving |
+| 11 | `LIGHTING` | Asserting the reference photo's look |
+| 12 | `AUDIO` | — |
+| 13 | `STYLE` | Assuming style controls the face; more than one or two lines |
+| 14 | `QUALITY` | — |
+| 15 | `REQUIRED_AND_FORBIDDEN_CONSTRAINTS` | Accumulating past failures (Forbidden: item 6 of `SKILL.md` §1). Required: 3-5 states/counts to keep. Wanted state first, failure as outcome |
 
 ## How to trim
 
-- **Cut the event count before the length.** If it is still near 5,500 characters, trim in this order: location -> style -> environment (QUALITY, background description) -> acting sentences, starting with removing authority explanations in `ACTIVE_REFERENCES` that overlap `REFERENCE AUTHORITY`. If it shrinks only by removing fixed sentences, imported OK lines, or the ends of the emotional range, do not trim; leave a WARN (in the reason, write what you tried to trim and the characters cut. Example: `5,788자 유지: 인물 2·참조 4, 겹친 권한 설명 −300자`). With 2 characters and 4 references it is easy to go over. With three or more characters, splitting the shot comes before trimming.
+- **Cut events (`SKILL.md` §2 "Event count") before the length.** If it is still near 5,500 characters, trim in this order: location -> style -> environment (QUALITY, background description) -> acting sentences, starting with removing authority explanations in `ACTIVE_REFERENCES` that overlap `REFERENCE AUTHORITY`. If it shrinks only by removing fixed sentences, imported OK lines, or the ends of the emotional range, do not trim; leave a WARN (in the reason, write what you tried to trim and the characters cut. Example: `5,788자 유지: 인물 2·참조 4, 겹친 권한 설명 −300자`). With 2 characters and 4 references it is easy to go over. With three or more characters, splitting the shot comes before trimming.
 - **Location information: the coordinate line + at most four lines.** Camera, fore/mid/background, light, and the path if needed. The longer it is, the more the character references get pushed out.
 - **Do not include characters, tags, or scene numbers that do not appear in this shot.**
 - **Narrow the scope of forbidden terms:** `no [X] on [Y]`. A forbidden term can summon the thing itself.

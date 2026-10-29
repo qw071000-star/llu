@@ -52,7 +52,7 @@ For a background/landscape video (4 paragraphs), fill only the next table.
 | Small repeating elements such as stars or flocks of birds ("별이 더 반짝이게", make the stars twinkle more) | Before generating, say the model does not hold these well. Try once; after 2 failures add it as a post-production overlay. If it is not in the start image, do not try; use a post overlay or a new start image |
 | Speed of a person's action ("천천히", slowly) | First count the seconds of the existing interval. The new interval must be longer. Keep the event count and write `[기존보다 긴 구간] — [action], taking the full [N] seconds. [Action] finished in under [N − 1] seconds = failed take.` In "전 → 후" give the seconds of both intervals. If the existing interval is already 4+ seconds or the whole action, ask, as a proposal (제안값), whether to start earlier or lengthen the video |
 | Age of the walk ("걸음이 젊어", the walk is young) | Write it as stride, arms, feet, centre of weight, and close the opposite walk: `"[name] walk" — [step size], [arm swing], [feet lifted or dragged], [centre of weight]. A [opposite] walk = failed take.` |
-| Several actions ("…하고 …하고 나가", does X, does Y, leaves) | Count events per §2. Propose writing the exit as an end-frame state (half the body outside the frame, already walking) |
+| Several actions ("…하고 …하고 나가", does X, does Y, leaves) | Apply §2 "Event count" (count, per-shot list, exit as end-frame state) |
 
 How to ask is instructions rule 4. If there are more than 10 questions, group them under subheadings (camera / characters / timing) within one message. Do not split them across several turns.
 
@@ -64,7 +64,7 @@ How to ask is instructions rule 4. If there are more than 10 questions, group th
 
 ## 1. Six principles
 
-1. **Event count decides success.** It matters more than character count. If it does not work, cut shots, actions, elements, or lines.
+1. **Event count decides success,** more than character count (how to count and split: §2 "Event count").
 2. **Write states, not transitions.** Fix the start state and end state. If the gap is long, split the generation.
 3. **The first frame is 0:00 of the video.** The first-frame paragraph must equal the start image.
 4. **One camera move per generation.**
@@ -79,7 +79,7 @@ How to ask is instructions rule 4. If there are more than 10 questions, group th
 | Lens conversion | Diagonal field of view (full-frame): 24mm=84° · 28mm=75° · 35mm=63° · 50mm=47° · 65mm=37° · 75mm=32° · 85mm=29° · 100mm=24° · 135mm=18°. For a mm not in the table, interpolate between the two nearest (105mm ≈ 23°). If the cut card and the start image disagree, the start image wins (tell the user and proceed) |
 | Chaining | The later generation takes the designated frame of the earlier generation as `start_image`. The later generation's 0:00 is the storyboard time as is, with no lead-in margin (editing handles go only at the end). `PRE_SHOT_CONTINUITY` carries only the inherited state; do not carry over the previous video's framing or lens |
 | Location | One location per generation. Confirm a new location as an image first |
-| Event count | 1-3 per generation. Count every verb. Exiting counts (stands up, picks up, turns, leaves = 4; turns, walks over, takes her hand = 3; turns, says the line, steps over, takes his hand = 4 → split). Do not count them in groups. If over, do not merge; first show, as a proposal (제안값), a per-shot event list (shot A: stands up and picks up the bag / shot B: turns and leaves). Write exits and entrances as end-/first-frame state sentences (exit = at the last frame half the body is outside the frame, already walking, the door closing behind). One task per character. One line of dialogue takes 2-4 s |
+| Event count | 1-3 per generation. Count every verb. Exiting counts (stands up, picks up, turns, leaves = 4; turns, walks over, takes her hand = 3; turns, says the line, steps over, takes his hand = 4 → split). Do not count them in groups. If over, do not merge; first show, as a proposal (제안값), a per-shot event list (shot A: stands up and picks up the bag / shot B: turns and leaves). Propose writing the exit as an end-frame state and an entrance as a first-frame state (exit = at the last frame half the body is outside the frame, already walking, the door closing behind). One task per character. One line of dialogue takes 2-4 s |
 | End frame | Use only when there is a composition that must be reached |
 
 ## 3. Model notes
@@ -91,4 +91,4 @@ How to ask is instructions rule 4. If there are more than 10 questions, group th
 
 ## 4. Pre-send check (what the check script cannot catch)
 
-- [ ] Did you run the check script before showing it (command/procedure in instructions "Check")? Put into `--must-include tmp/고정문장파일` (a file of the fixed sentences): the asset registry's fixed sentences and imported OK lines
+- [ ] Did you run the check script (instructions "Check")? `--must-include` gets the asset registry's fixed sentences and imported OK lines

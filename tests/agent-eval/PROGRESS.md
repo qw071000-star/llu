@@ -9,7 +9,7 @@
 - 실제 테스트: `python3 real_run.py <체인> runs-realN` (6개씩 병렬), 채점은 `grader-rules.md`, 결과는 `results/`.
 
 ## 지금 할 일
-- [ ] 1. 스킬 중복 정리 (공통 규칙 주인 한 곳: 좌우 뒤집기=location.md, 사건 세기=video SKILL §2, 검사=instructions Check, 15블록 설명표 축소, 이미지 SKILL.md 축소, 인물 시트 반복 설명, 연기 진단표). `tests/run_kit_tests.py` 통과 확인 후 커밋.
+- [x] 1. 스킬 중복 정리 (공통 규칙 주인 한 곳: 좌우 뒤집기=location.md, 사건 세기=video SKILL §2, 검사=instructions Check, 15블록 설명표 축소, 이미지 SKILL.md 축소, 인물 시트 반복 설명, 연기 진단표). `tests/run_kit_tests.py` 통과 확인 후 커밋.
 - [ ] 2. 줄인 키트로 63개 체인 전체 실행 (`runs-real13`).
 - [ ] 3. 채점(Sonnet 채점자 3명, 11·12라운드와 비교) → 결함 수정 → 나빠진 체인만 재실행.
 - [ ] 4. 사용자에게 줄어든 양(토큰 어림)과 결과 비교를 한국어로 보고.

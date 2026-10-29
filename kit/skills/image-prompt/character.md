@@ -22,12 +22,10 @@
 
 **For a new sheet, write the whole of Template 1.** Do not copy the prompt of another sheet in the OK ledger as an example (it may be shorter or an old version).
 
-**New-sheet writing order:** deliverable → identity → panels → build → outfit → hair → realism → background/lighting → consistency lock → prohibitions.
-
 **Identity:** Do not make the character resemble a real actor or celebrity. A reference image is not the source of the face. Write objective facial-structure traits first, before subjective words like `beautiful`, `elegant`.
 
 **Headless-panel variant — unify to one within a work**
-- A headless human body: for checking fit and silhouette. The risk is an injury image. The `not an injury` sentence must be included (Template 1).
+- A headless human body: for checking fit and silhouette (Template 1 as is).
 - B ghost mannequin: for confirming garment cut. The risk is a plastic mannequin. Do not use `mannequin` alone. Replace the left line of Template 1 with:
   `LEFT PANEL: a front-facing full-body wardrobe view: the outfit holds its own shape as if worn by an invisible person, hollow ghost-mannequin product photography, no mannequin material visible anywhere, the collar opening is empty and shows the dark hollow inside the garment, cut off cleanly just above the shoulder line with NO head, NO neck and no shoulder stump protruding, no plastic torso, no stand, no pole, no base, real human hands emerge from the ends of both sleeves hanging relaxed slightly away from the sides, the shoes stay on the floor at the bottom of the trousers.`
 
@@ -36,10 +34,7 @@
 | Symptom | Sentence |
 |---|---|
 | A head appears above the left neck | In the opening sentence: `including the intentionally HEADLESS left panel` + `Do not add, infer, reconstruct or complete a head or face in that panel` |
-| Plastic mannequin | `hollow ghost-mannequin, invisible person, empty collar, no dress form, no stand` |
-| Occupational props appear on their own | `No profession-signaling props unless explicitly requested: no stethoscope, instruments, clipboard, pen, bag or visible logo.` |
 | Garment floats off the floor | `the garment stands on the floor with a natural contact shadow, not floating, not tilted` |
-| Looks too young | `mature adult bone structure, defined nasolabial folds, no babyface` |
 | Hair keeps the old era | `matte and modern, no pomade shine, no sculpted vintage wave` (when moving to the present) |
 | Badge/name-tag text garbled | `a plain blank badge, no writing, no photo, no logo` |
 | Tone/grain drifts | instead of "같은 룩" (the same look), the four words `palette, contrast, grain, falloff` |

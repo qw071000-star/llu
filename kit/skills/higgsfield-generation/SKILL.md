@@ -9,9 +9,9 @@ description: Use when generating images or video with Higgsfield or organizing t
 
 1. Did the user instruct this generation?
 2. Is the `folder_id` to save to decided (§2)?
-3. Is the resolution a check-quality one? Send Seedance 2.5 video with `draft: true` (after approval, finalize the same take at 1080p; `video-prompt` → `rerender.md`).
+3. Is the resolution a check-quality one? Send Seedance 2.5 video with `draft: true` (480p; costs the same as a non-draft 480p). The 1080p final of the same take is `video-prompt` → `rerender.md`.
 4. For a first-time model/setting, did you get a quote with `get_cost: true`? If the OK ledger list or the `decisions.md` §2 cost memo has the same model, resolution and length, it is not the first time.
-5. Did it pass `check_prompt.py` in this skill's folder? Run it **before showing** the prompt (command and procedure: see instructions "Check". The command must match the allow pattern in `.claude/settings.json` character for character to run without approval. In the Claude app, only the path changes to that skill folder).
+5. Did it pass `check_prompt.py` in this skill's folder (command and procedure: see instructions "Check")? The command must match the allow pattern in `.claude/settings.json` character for character to run without approval; in the Claude app only the path changes to that skill folder.
 
 ## 2. Save location
 

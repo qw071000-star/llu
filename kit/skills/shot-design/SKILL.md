@@ -18,13 +18,13 @@ This is the stage before the cut card (`production-session`). Design one scene i
 1. **Blocking memo:** at scene start and at each major beat, write character and object positions as screen side + an on-screen object in the master view (instructions rule 6). Write movement as "from where → to where".
 2. **180-degree line:** which two characters (or character and object) it is drawn between, and which side of that line the camera is on (by an on-screen object).
 3. **Coverage table:** whichever of master, two-shot, reverse, insert, reaction the scene needs. For each shot: camera position and height, field of view (°) and shot size, and the location view used. If no suitable view exists, write `새 뷰 필요` (making it is `image-prompt` → `location-view.md`).
-4. **Cut length allocation:** 1–3 events per cut, at most 15 seconds per cut, 2–4 seconds per dialogue line. Split the cut if exceeded.
+4. **Cut length allocation:** events per cut as in `video-prompt` §2 "Event count", at most 15 seconds per cut, 2–4 seconds per dialogue line. Split the cut if exceeded.
 5. **Lines to move into `shot-list.md`:** in that table's column order, status `대기`.
 
 ## 3. Rules
 
 - **Use a cut that crosses the 180-degree line only when intended,** and mark it in the table as `선 넘음(의도: …)`.
-- **When the user says "리버스", the proposal is the true opposite view of the master**; an over-the-shoulder or 90° side shot is only an alternative. **A reverse shot flips screen left/right.** That view's LIGHT LOCK must be written anew, so point to `image-prompt` → `location-view.md` (template A). Do not write the LIGHT LOCK sentence here.
+- **When the user says "리버스", the proposal is the true opposite view of the master**; an over-the-shoulder or 90° side shot is only an alternative. A reverse needs its own view and LIGHT LOCK (sides flip: `image-prompt` → `location.md` "Writing directions"); point to `location-view.md` template A and do not write the LIGHT LOCK sentence here.
 - **Make neighboring cuts connect.** The previous cut's end state (character positions, gaze, prop state) is the next cut's start state. Write it in the table's `끝 → 다음 시작` column.
 - **AI constraints:** one location per generation, one camera movement (or static), and a location/view that does not exist yet is made as an image first.
 - **Do not edit the canon before the user confirms.** Until the user says "확정" or "그대로", do not touch `shot-list.md`; only show proposals. Who edits after confirmation follows `production-session` §1.

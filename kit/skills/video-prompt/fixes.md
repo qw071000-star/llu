@@ -14,7 +14,7 @@
 | Head turns and then turns back | `From then until the end [his] eyes and head stay on [her]. Turning back = forbidden` |
 | Another character reacts | Lock that character's gaze, head, hands: `does not react in any way, never looks at [him]` |
 | A prop switches hands, grows, or goes elsewhere | Attach the prop element and state the hand (screen side + object), not put down, size = start image. If two objects of the same kind exist, distinguish them by name |
-| The reference photo's face, colour, or lighting bleeds in | Remove that photo, and use an empty location image made in that composition as the location reference |
+| The reference photo's face, colour, or lighting bleeds in | Remove that photo; replace it as in `image-prompt` §2 (storyboard/monitor photos) |
 | Something wrong is reflected in a mirror/glass | State what is reflected and what is not reflected together |
 | The sun appears as a flat disc | Write it as light that bleeds without an outline. No disc or rim; the lower part dissolves in horizon haze |
 | Small repeating objects (flock of birds) smear | "Keep the same size and position, moving at the same speed as the camera". If that still fails, make it separately as overlay material |

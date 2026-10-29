@@ -20,8 +20,6 @@ What to ask is in `context/must-ask.md`; how to ask is in instructions rule 4.
 
 **Reference tags:** `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>` in the templates are placeholders. Keep the angle brackets and replace only the name inside with the real element name or the attach-order name (`<<<loc_…_v1>>>`, `<<<image_1>>>`). The opening line works the same way: `Edit <<<loc_…_v1>>> WITHOUT reframing`. Number of references = number of tags = number of attached images.
 
-**When a fixed description sentence conflicts with this cut** (an empty-location "no cars" line, but a bus appears in the cut), do not edit the sentence. Right after it (the `[Except: …]` slot of the template) add one line: `Except: [what exists only in this cut].`
-
 ## 1. Decide before writing
 
 **① New or edit?** Once a result you like exists, do not regenerate it as new. Regenerating as new gives a different person, a different room. Attach that result as the reference and edit it.
@@ -85,7 +83,6 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 
 - **Write the preserve list more specifically than the change.** Otherwise the rest gets redrawn a little too.
 - **Make the CHANGE and ONLY CHANGE items identical.**
-- **If a person is visible, include a `WARDROBE:` line.** Also put that sentence in the check's `--must-include` file.
 - **A trivial, clear change can also be a short English instruction** (observed: Seedream, Nano Banana).
 
 ## 4. Crop and occlusion zones
@@ -107,4 +104,4 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 - [ ] Is the fixed description sentence identical to the asset registry, down to the letter?
 - [ ] Did you check the crop band and occlusion zones?
 - [ ] Is no placeholder tag (`<<<LOC>>>` etc.) left?
-- [ ] Did you run the check script before showing it? (command and procedure: instructions "Check"). Put into `--must-include tmp/fixed-sentence-file`: the wardrobe, prop, LIGHT LOCK and coordinate sentences from the asset registry
+- [ ] Did you run the check script (instructions "Check")? `--must-include` gets the registry's wardrobe, prop, LIGHT LOCK and coordinate sentences

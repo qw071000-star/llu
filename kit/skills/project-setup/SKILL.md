@@ -49,12 +49,7 @@ The table is shown to the user in Korean; keep it entirely in Korean.
 
 1. If using an existing project, find it with `list_projects` and verify the ID.
 2. If creating a new one, agreeing to the §1 item 11 default is itself the approval. Do not ask again.
-3. Show the folder structure plan and create immediately.
-   - Create now: `00 에셋` (subfolders for characters, locations, props, plus art style for art-style works) and `99 시험·보관`.
-   - Cut folders are created when issuing the cut card, named with the cut list's status name (`1-1 [대기]`, with `승인` and `거절` inside).
-4. Create them with `create_folder`.
-   - If the user says they will create them themselves, give them the exact names.
-5. Write the received IDs in the `asset-registry.md` folder table.
+3. Show the folder structure plan and create immediately: now only `00 에셋` (subfolders for characters, locations, props, plus art style for art-style works) and `99 시험·보관`; cut folders come when the cut card is issued. How to create, name and record them: `higgsfield-generation` §2.
 
 ## 4. Place the canon
 

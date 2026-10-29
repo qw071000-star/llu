@@ -42,7 +42,7 @@
 2. **Show changed words as "before → after".**
 3. **Fill the other fields as usual with the information checklist.** A brought element does not substitute for other fields.
 4. **Bring the risks tied to the brought element too.** Carry over the OK card's "위험 → 막는 문장" together with the Required/Forbidden lines of the OK prompt that concern the brought action or person. The same action produces the same failure. If the card has no "위험" line, carry over only the prompt's Required/Forbidden.
-5. **If it conflicts with this cut** (must-ask), ask with a proposal: length → the stretched or shortened range; number of people, location, props → the name/object to change. If the camera direction is opposite, flip left/right in the brought line (hand, turning side, light) to fit this view.
+5. **If it conflicts with this cut** (must-ask), ask with a proposal: length → the stretched or shortened range; number of people, location, props → the name/object to change. If the camera direction is opposite, swap the screen sides in the brought line (hand, turning side, light) to fit this view (`image-prompt` → `location.md` "Writing directions").
 6. **Do not write cut numbers in the prompt body** ("as in shot 3-1" means nothing to the model). Write the content directly.
 7. **If an OK image is attached, match the reference count to the tag count.**
 

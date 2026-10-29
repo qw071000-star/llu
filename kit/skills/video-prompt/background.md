@@ -4,8 +4,7 @@ Use when there is no character acting and the start image already holds the whol
 
 ## Rules
 
-- **Do the information check with the background table in `SKILL.md` §0.** Fill every slot: settings · `Camera` · `Motion` · `Keep` (shapes to keep, light direction) · `Silent`. Show `Keep` as a proposal (제안값) even if the user did not mention it.
-- **Write four paragraphs (`Camera` / `Motion` / `Keep` / `Silent`).**
+- **Do the information check with the background table in `SKILL.md` §0.** Show `Keep` as a proposal (제안값) even if the user did not mention it.
 - **Do not re-describe what is already in the image.** Write only the motion that happens.
 - **Do not write an end state, fade-in, or seam with the next cut.**
 - **Write amounts of motion as a percentage of the frame (%).** Positions in metres or seconds are not honoured.

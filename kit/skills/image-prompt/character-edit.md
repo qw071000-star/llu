@@ -21,9 +21,8 @@ The basis is that character's sheet card (job) in the OK ledger. Do not make a n
 - Change only one thing at a time, outfit or hair. The exception is two changes that do not hold if separated, such as an era move (hair signals the era more strongly than clothes). If you bundle them as an exception, write the reason in one line.
 - Do not re-describe the face; only instruct to preserve it. If a face sentence competes with the reference image, the face is regenerated.
 - Outfit scope is `In all three panels`; hair scope is `Only in the center and right panels`. Using three panels for hair produces a head on the left.
-- **Write the neckline in three places:** `At the neckline …` in REMOVE, the PRESERVE LEFT line, and `including the neckline of the headless panel` in ONLY CHANGE. This is where edits fail most often.
-- **Match the lists:** the new outfit list in CHANGE = the list after `Its clothes change fully:` in the PRESERVE LEFT line; the GONE list in REMOVE (each old item by name, down to shoes and small accessories) = `no [old 1], no [old 2], no [old 3]` at the end of that line (same items, same count). If they disagree, the old clothes get half-drawn.
-- When moving the era, add `nothing that dates the decade` to CHANGE and erase by name the elements that make that era (hair grease, wide tie, logo, sneakers, etc.).
+- **Fill every neckline and [old 1]~[old 3] slot of the template** with the same items (the neckline is where edits fail most often).
+- When moving the era, also erase by name the elements that make that era (hair grease, wide tie, logo, sneakers, etc.).
 - Write the four cut details for the new outfit (length, closure, collar, pockets), and add `No profession-signaling props.` so no occupation-revealing props attach.
 - When an outfit/hair reference image is attached, include the three authority lines of Template 1. Always include the `Do not transfer the face …` line, no exceptions.
 - When changing age, use Template 2. Use the `IDENTITY BONES` line as in the template and do not invent new facial features (nose, eye shape, etc.).

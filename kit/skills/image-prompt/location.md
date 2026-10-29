@@ -37,7 +37,7 @@ Only an approved child becomes the next parent. Do not derive from a discarded v
 **Writing directions (instructions rule 6: all in screen terms)**
 - In MASTER GEOMETRY, write the reference viewpoint first in parentheses: `(directions as seen from [camera position], looking at [what])`.
 - Write LIGHT LOCK as the screen side of that view + the object on that side: `Low dusk sun from screen left, the [object] side, is the only key.` Because the object has a name, the light stays the same even if the view changes.
-- There is one LIGHT LOCK per view. For the opposite-direction view, flip left and right and write that view's LIGHT LOCK anew (`from screen right, the [object] side`), and record it on that view's line in the asset registry.
+- There is one LIGHT LOCK per view. **An opposite (reverse) camera flips screen left/right:** landmarks and the light side swap (the parent view's screen-left object is now on screen right). Write that view's LIGHT LOCK anew (`from screen right, the [object] side`) and record it on that view's line in the asset registry.
 
 **How to write**
 - **Write the era by objects, materials, lettering and finish. Not by colour.** Separate past and present by the presence of film grain.

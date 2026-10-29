@@ -275,8 +275,9 @@ check("[맹검] 컷 카드 수정 권한은 세션 스킬 §1 한 곳", "[3]~[7]
 check("[맹검] 컷 목록: 컷 세션이 상태·확정 job 칸을 고친다(tasks §3이 주인, production-session §1은 가리킴)", re.search(CUT_LIST_FIELDS, _r3) is not None and "`context/tasks.md` §3" in sess and "production-session` §1" in shot)
 check("[맹검] 지침: '몰라'도 제안값으로", "몰라" in inst)
 nospeak = "does not say a single word: no attempt to speak, no parted lips, no mouthing"
-for f in ["video-prompt/fixes.md", "video-prompt/live-action.md", "acting/SKILL.md"]:
+for f in ["video-prompt/fixes.md", "video-prompt/live-action.md"]:  # acting의 같은 줄은 fixes.md와 겹쳐 뺐다(쓰는 턴은 live-action 틀이 덮음)
     check(f"[맹검] 말하지 않음 문장 통일: {f}", nospeak in read(os.path.join(SKILLS, f)).replace("\n", " "))
+check("[맹검] acting: 입 잠금 문장을 따로 두지 않음(fixes·live-action과 다른 판이 생기지 않게)", "no attempt to speak" not in read(os.path.join(SKILLS, "acting", "SKILL.md")))
 check("[맹검] 렌즈 mm → 화각 환산표", "50mm=47°" in vskill and "the start image wins" in vskill)
 check("[맹검] 가져온 OK의 위험도 옮긴다", "Bring the risks tied to the brought element too" in reuse and "위험 → 막는 문장" in okt)
 check("[맹검] OK 대장 예시는 지우라고 표시", "예시" in okt and "지운다" in okt)
@@ -328,11 +329,37 @@ owners = [
     ("가져온 OK의 위험을 옮긴다", r"Bring the risks tied to the brought element", {"production-session/ok-reuse.md"}),
     ("검사 절차: 임시 파일은 tmp/, 끝나면 지운다", r"Delete the `tmp/` files|delete (it|them) after the check", {"instructions.md"}),
     ("검사 절차: 단독 Bash 호출, WARN은 숫자와 함께", r"single standalone Bash call|give the reason with a number", {"instructions.md"}),
+    ("검사 절차: 보이기 전에 돌린다", r"before showing (it|the prompt|a prompt)|\*\*before showing\*\*", {"instructions.md"}),
+    ("반대쪽 카메라는 화면 좌우가 뒤집히고 그 뷰의 LIGHT LOCK을 새로", r"[Ff]lips? (screen )?left(/| and )right|left/right flip\b", {"image-prompt/location.md"}),
+    ("사건 수 세는 법(동사마다·나가기도 셈·묶어 세지 않음)", r"[Cc]ount every verb|[Ee]xiting counts|[Dd]o not count them in groups", {"video-prompt/SKILL.md"}),
+    ("스토리보드 썸네일·모니터 사진은 참조로 붙이지 않음", r"storyboard thumbnail|empty location image made in that composition", {"image-prompt/SKILL.md"}),
+    ("검토용 영상은 draft: true로 보낸다", r"[Ss]end[^\n]{0,40}`draft: true`", {"higgsfield-generation/SKILL.md"}),
+    ("폴더 만들기(create_folder·정확한 이름)", r"create_folder|exact names", {"higgsfield-generation/SKILL.md"}),
+    ("고정 문장과 이 컷이 충돌하면 Except 한 줄", r"what exists only in this cut", {"image-prompt/first-frame.md"}),
 ]
 for name, pat, allowed in owners:
     where = sorted(f for f, t in docs.items() if re.search(pat, t))
     extra = [f for f in where if f not in allowed]
     check(f"[한 곳] {name}: {', '.join(sorted(allowed))}에만", not extra and where, "다른 곳: " + ", ".join(extra) if extra else "주인 파일에 없음")
+# 주인이 아닌 파일은 한 줄로 주인을 가리킨다
+_flip_ptr = 'location.md` "Writing directions"'
+for f in ["image-prompt/first-frame.md", "image-prompt/location-view.md", "shot-design/SKILL.md", "production-session/ok-reuse.md"]:
+    check(f"[한 곳] 반대쪽 카메라 좌우: {f}는 location.md를 가리킴", _flip_ptr in docs[f])
+_vs = docs["video-prompt/SKILL.md"]
+_vague_sev = [l for l in _vs.splitlines() if l.startswith("| Several actions")]
+check("[한 곳] 사건 수: video §1 원칙과 §0 '동작 여럿' 줄은 §2 \"Event count\"를 가리킴", "§2 \"Event count\"" in _vs.split("## 1.")[1].split("## 2.")[0] and bool(_vague_sev) and "§2 \"Event count\"" in _vague_sev[0])
+for f in ["acting/SKILL.md", "video-prompt/live-action.md", "shot-design/SKILL.md"]:
+    check(f"[한 곳] 사건 수: {f}는 video-prompt §2 \"Event count\"를 가리킴", "§2 \"Event count\"" in docs[f])
+check("[한 곳] 15블록 블록별 내용: live-action 표는 '흔한 실수' 칸만(내용은 video §0 표·빈 틀)", "| # | Block | Common mistakes |" in docs["video-prompt/live-action.md"] and "What to write" not in docs["video-prompt/live-action.md"])
+check("[한 곳] background.md: SKILL §0 배경 표의 칸 목록을 되풀이하지 않음", "Fill every slot" not in docs["video-prompt/background.md"] and "Write four paragraphs" not in docs["video-prompt/background.md"])
+check("[한 곳] 썸네일 규칙: fixes.md는 image-prompt §2를 가리킴", "`image-prompt` §2" in docs["video-prompt/fixes.md"])
+check("[한 곳] draft 규칙: rerender.md는 higgsfield-generation §1을 가리킴", "`higgsfield-generation` §1" in docs["video-prompt/rerender.md"] and "draft_job_id" in docs["video-prompt/rerender.md"])
+check("[한 곳] 폴더 만들기: project-setup은 higgsfield-generation §2를 가리킴", "`higgsfield-generation` §2" in docs["project-setup/SKILL.md"])
+check("[한 곳] 검사 줄: 생성 운영 §1은 '보이기 전에'를 되풀이하지 않고 지침을 가리킴", "instructions \"Check\"" in gen.split("## 2.")[0])
+_act = docs["acting/SKILL.md"]
+check("[한 곳] acting: 나쁜 연기 표·끝 점검표 없음, 비트 수는 §2", "Bad acting" not in _act and "Pre-send check" not in _act and "beat count" in _act.split("## 2.")[1].split("## 3.")[0])
+_chm = docs["image-prompt/character.md"]
+check("[한 곳] character.md: 틀이 이미 강제하는 설명(쓰는 순서·마네킹·직업 소품·어려 보임) 없음", "writing order" not in _chm and "| Plastic mannequin" not in _chm and "| Occupational props" not in _chm and "| Looks too young" not in _chm)
 # 같은 상황에 다른 문장을 주지 않는다
 turn_fix = re.search(r".*whips around \|.*", read(os.path.join(SKILLS, "video-prompt", "fixes.md"))).group(0)
 turn_act = re.search(r".*whips around \|.*", read(os.path.join(SKILLS, "acting", "SKILL.md"))).group(0)
@@ -365,7 +392,7 @@ check("[맹검4] 컷 카드 [10]은 난 실패", card_fields.get("10", "").start
 check("[맹검4] 컷 목록 생성/크레딧 칸의 주인", "The lead edits the `생성/크레딧` field" in sess)
 check("[맹검4] 새 컷이어도 이웃 컷 파일은 열지 않음", "Even for a new cut, do not open neighboring cut cards" in sess and "one OK card of the most recent approved start image" in ff)
 check("[맹검4] first-frame: 장소 뷰 칸이 비면 모드를 첫 질문으로", "is blank, ask it as the first question" in ff)
-check("[맹검4] first-frame: 반대쪽 카메라면 좌우 뒤집기, 틀 2에 In this view 줄", "screen left/right flip" in ff and "In this view [landmark]" in ff_t2)
+check("[맹검4] first-frame: 반대쪽 카메라면 location.md 규칙을 가리키고 In this view 줄·LIGHT LOCK을 전 → 후로 고침, 틀 2에 In this view 줄", "screen sides flip (`location.md` \"Writing directions\")" in ff and "Rewrite the `In this view …` line" in ff and "In this view [landmark]" in ff_t2)
 check("[맹검4] first-frame·location: 틀 2를 바로 쓰는 조건", "If only this cut uses that viewpoint, write Template 2 directly" in ff and "if that axis is used in only one cut, first-frame Template 2" in sk("image-prompt/location.md"))
 check("[맹검4] first-frame: 나이만 바꾸는 컷은 character-edit 틀 2", "`character-edit.md` Template 2" in ff)
 check("[맹검4] image-prompt §3 LOCKED EDIT 틀에 WARDROBE 줄", "WARDROBE: [asset registry sentence, verbatim]" in img_skill.split("## 3.")[1].split("## 4.")[0])
@@ -457,7 +484,9 @@ loc_view = sk("image-prompt/location-view.md")
 check("[실행] location-view: 카메라가 구조물 안이면 Except 한 줄", "`Except: [only what is visible in this view].`" in loc_view)
 check("[실행] location-view: LIGHT LOCK 뒤에 덧붙이지 않음", "End the LIGHT LOCK line exactly as written" in loc_view)
 ce = sk("image-prompt/character-edit.md")
-check("[실행] character-edit 틀 1: GONE·No trace·no 목록이 [old 1]~[old 3] 세 자리", ce.count("[old 1], [old 2], [old 3]") >= 2 and ce.count("no [old 1], no [old 2], no [old 3]") >= 3)
+_ce_tmpl = "\n".join(b for i, b in enumerate(ce.split("```")) if i % 2 == 1)
+check("[실행] character-edit 틀 1: GONE·No trace·no 목록(A·B 왼쪽 줄)이 [old 1]~[old 3] 세 자리", _ce_tmpl.count("[old 1], [old 2], [old 3]") >= 2 and _ce_tmpl.count("no [old 1], no [old 2], no [old 3]") >= 2)
+check("[실행] character-edit 규칙: 목둘레·[old 1~3] 칸을 모두 채우라는 한 줄(되풀이 설명 없음)", "Fill every neckline and [old 1]~[old 3] slot of the template" in ce and "Write the neckline in three places" not in ce and "Match the lists" not in ce)
 
 # 21. 실제 실행 2회차 채점 결함
 out_sec = inst_core.split("## Output")[1]

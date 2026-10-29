@@ -20,7 +20,7 @@
 - **Choose the mode first.**
   - If the cut's camera is the same as the confirmed location view: write that view as a `LOCKED EDIT` and only add the people and props (Template 1).
   - If the camera differs: make a new viewpoint as a `DERIVED VIEW` (Template 2). If only this cut uses that viewpoint, write Template 2 directly; if several cuts use it, propose confirming the location view first (`location.md`).
-  - If the camera faces the opposite side of the location view, screen left/right flip (the view's left landmark/light source is on screen right). Rewrite the `In this view …` line at the end of Template 2 and the LIGHT LOCK in screen terms, and it reads as "전 → 후" (before → after).
+  - Camera facing the opposite side of the location view: screen sides flip (`location.md` "Writing directions"). Rewrite the `In this view …` line at the end of Template 2 and the LIGHT LOCK as "전 → 후" (before → after).
   - In Template 1, adding people and props counts as one change (placing that cut's people in the empty location).
   - Changing only art style/texture from the same camera is a `LOCKED EDIT` (`SKILL.md` §3), not a `DERIVED VIEW`.
   - If you make a new viewpoint when the camera is the same, the location view and the first frame's composition will drift apart.
@@ -31,6 +31,7 @@
   - Write mid-action states.
 - **Compare with neighbouring cuts.** Check the preceding and following lines of the shot list and the `연속성 표` (character position/posture, prop state).
   - If the `연속성 표` has no character position, take the BLOCKING line from one OK card of the most recent approved start image in which the same character appeared, and propose it. Do not invent a new position. Check that viewpoint and composition do not overlap, and that light direction and character position are the same.
+- **When a fixed description sentence conflicts with this cut** (an empty-location "no cars" line, but a bus appears in the cut), do not edit the sentence. Right after it (the `[Except: …]` slot) add one line: `Except: [what exists only in this cut].`
 - **If you change the sky or colour,** point out whether it conflicts with the asset registry's PALETTE·LIGHT LOCK and ask.
 - **A cut edit that changes only age:** edit the approved start image with LOCKED EDIT (`SKILL.md` §3) and pick the age markers from the `CHANGE — AGE` list of `character-edit.md` Template 2. Do not invent markers.
 - **When borrowing the colour feel of another OK**
