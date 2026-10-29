@@ -15,6 +15,8 @@
 
 ## Rules
 
+- Write the template's `No profession-signaling props unless explicitly requested.` as is; never list prop names.
+
 **Spec (do not change within a work):** One 16:9 image divided vertically into 3. The three panels share the same background and the same lighting. The sheet is the original attached as a reference for every cut, so make it at the final resolution (2k) from the start. Checking at 1k and regenerating at 2k gives a different person. Use the work's default model and record the model actually used.
 - Left: front full body from the neck down. Keep hands and shoes (to see sleeves and length)
 - Centre: rear full body

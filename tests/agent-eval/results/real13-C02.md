@@ -1,4 +1,4 @@
-# real13-C02 "3-2"만 (1턴) — PASS 0 / 부분 1 / FAIL 0 (real11: PASS 0 / 부분 1 / FAIL 0)
+# real13-C02 "3-2"만 (1턴) — PASS 0 / 부분 1 / FAIL 0 (real12: PASS 1 / 부분 0 / FAIL 0)
 
 | 턴 | 판정 | 근거 |
 |---|---|---|

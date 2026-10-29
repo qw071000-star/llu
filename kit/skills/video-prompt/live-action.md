@@ -1,6 +1,6 @@
 # Live-action / character cuts - 15 blocks
 
-Do not open `acting` in a question turn. On the turn that writes the prompt, open `acting` before writing `CHARACTER_ACTING` (skip it only when the acting lines come verbatim from an OK).
+Do not open `acting` in a question turn. On the turn that writes the prompt, open `acting` before writing `CHARACTER_ACTING` (skip it only when every acting line comes verbatim from an OK; adding even one new acting sentence means open it).
 
 ## Blocks
 

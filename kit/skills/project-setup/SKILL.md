@@ -10,7 +10,7 @@ Goal: reach a state where the user can start working after answering one questio
 ## 1. Ask all at once
 
 Show the table below as is, and write the exact Korean sentence "바꿀 것만 답해 주세요. 나머지는 기본값으로 합니다."
-If the user gave a scenario or storyboard, read it first and fill in the fields that can be known from it before showing the table.
+Ask once whether a script or storyboard exists; no answer means none, do not ask again. If the user gave a scenario or storyboard, read it first and fill in the fields that can be known from it before showing the table.
 
 The table is shown to the user in Korean; keep it entirely in Korean.
 

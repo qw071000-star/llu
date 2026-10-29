@@ -1,4 +1,4 @@
-# real13-C04 인물 시트 의상 수정 (2턴) — PASS 2 / 부분 0 / FAIL 0 (real11: PASS 1 / 부분 1 / FAIL 0)
+# real13-C04 인물 시트 의상 수정 (2턴) — PASS 2 / 부분 0 / FAIL 0 (real12: PASS 1 / 부분 1 / FAIL 0)
 
 | 턴 | 판정 | 근거 |
 |---|---|---|

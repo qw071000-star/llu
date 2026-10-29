@@ -24,7 +24,7 @@ This is work that locks the camera. The opening sentence and the `CHANGE / PRESE
 
 ## Template 1 (틀 1) — object edit and state plate
 
-Put one of the formulas below into CHANGE of the `SKILL.md` §3 template, and add the attributes of unchanged targets to `PRESERVE EXACTLY`.
+Put one of the formulas below into CHANGE of the `SKILL.md` §3 template (**for a location edit, the formula replaces the generic CHANGE sentence**), and add the attributes of unchanged targets to `PRESERVE EXACTLY`.
 
 ```text
 ROTATE  Keep [object] in the exact same position, at the same height and on the same mount. Rotate only

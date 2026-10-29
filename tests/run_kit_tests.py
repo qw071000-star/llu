@@ -595,7 +595,7 @@ check("[실제7] OK 대장 목록 '모델 · 설정'에 draft 표기", "draft �
 check("[실제7] 생성 운영 §4 OK 기록: draft 표기 한 줄", "`draft 예 · 만료일`" in gen.split("**OK record")[1].split("## 5.")[0])
 check("[실제7] rerender: --refs는 <<<>>> 태그 수, 원본 영상 제외", "the number of `<<<>>>` tags" in sk("video-prompt/rerender.md") and "The attached source video is not counted" in sk("video-prompt/rerender.md"))
 check("[실제7] tasks §3: 묻기만 하는 턴에는 cut-card.md를 열지 않음", "On question-only turns do not open `cut-card.md`" in _r3)
-check("[실제7] 검사기: 'no people'·'no other people'은 인물로 세지 않음(pass 예시 있음)", "no (?:other )?(?:people|persons?)" in chk and os.path.exists(os.path.join(FIX, "image__pass__S19_location_no_people_left_right.txt")))
+check("[실제7] 검사기: 'no people'·'no other people'은 인물로 세지 않음(pass 예시 있음)", "(?:no|without)\\s+" in chk and os.path.exists(os.path.join(FIX, "image__pass__S19_location_no_people_left_right.txt")))
 
 # 16e. 실제 Claude Code 시험 8회차(real8)에서 찾은 결함
 # removed: "에셋 작업도 같다(등장 컷은 컷 목록 줄로만)" — tasks §3 첫 줄이 예외 없는 "Never open another cut's card"라 에셋 작업도 덮는다
