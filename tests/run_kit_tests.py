@@ -365,7 +365,8 @@ try:
     sj = json.load(open(sj_path, encoding="utf-8"))
 except Exception:
     sj = {}
-check("[실행] project-files/settings.json: 검사기와 tmp/ 지우기만 허용", sj == {"permissions": {"allow": [f"Bash({ALLOW_CMD}:*)", "Bash(rm tmp/*)"]}}, str(sj))
+ASM_CMD = "python3 .claude/skills/assembly/assemble.py"
+check("[실행] project-files/settings.json: 검사기·조립 스크립트와 tmp/ 지우기만 허용", sj == {"permissions": {"allow": [f"Bash({ALLOW_CMD}:*)", f"Bash({ASM_CMD}:*)", "Bash(rm tmp/*)"]}}, str(sj))
 check("[실행] README 설치에 settings.json 복사", "cp kit/project-files/settings.json .claude/settings.json" in read(os.path.join(ROOT, "README.md")))
 check("[실행] make_run.sh가 settings.json을 복사", '"$RUN/.claude/settings.json"' in read(os.path.join(ROOT, "tests", "agent-eval", "make_run.sh")))
 check("[실행] real_run.py --allowedTools 검사기", f'"--allowedTools", "Bash({ALLOW_CMD}:*)"' in read(os.path.join(ROOT, "tests", "agent-eval", "real_run.py")))
@@ -523,6 +524,46 @@ check("[실제7] rerender: --refs는 <<<>>> 태그 수, 원본 영상 제외", "
 check("[실제7] routing §3: 묻기만 하는 턴에는 cut-card.md를 열지 않음", "묻기만 하는 턴에는 열지 않는다" in ctx_route.split("## 3.")[1])
 check("[실제7] 검사기: 'no people'·'no other people'은 인물로 세지 않음(pass 예시 있음)", "no (?:other )?(?:people|persons?)" in chk and os.path.exists(os.path.join(FIX, "image__pass__S19_location_no_people_left_right.txt")))
 
+# 16d. 새 스킬: assembly(러프컷·프레임), shot-design(장면 컷 설계)
+import shutil
+import tempfile
+EXPECT_SKILLS = ["acting", "assembly", "higgsfield-generation", "image-prompt", "production-session", "project-setup", "shot-design", "video-prompt"]
+check("[스킬 수] 스킬 8개", skill_dirs == EXPECT_SKILLS, ", ".join(skill_dirs))
+check("[스킬 수] zip 8개", sorted(os.path.basename(p)[:-4] for p in glob.glob(os.path.join(KIT, "dist", "*.zip"))) == EXPECT_SKILLS)
+check("[스킬 수] README·TEAM-GUIDE가 8개로 적음", "스킬 8개" in read(os.path.join(ROOT, "README.md")) and "스킬 8개" in read(os.path.join(ROOT, "TEAM-GUIDE.md")) and "assembly.zip" in read(os.path.join(ROOT, "TEAM-GUIDE.md")) and "shot-design.zip" in read(os.path.join(ROOT, "TEAM-GUIDE.md")))
+_r1 = ctx_route.split("## 1.")[1].split("## 2.")[0]
+for s, word in [("assembly", "마지막 프레임"), ("shot-design", "컷 나눠")]:
+    check(f"[새 스킬] routing §1에 `{s}` 줄", any(f"`{s}`" in l and word in l for l in _r1.splitlines()))
+    check(f"[새 스킬] must-ask에 `{s}` 항목", f"(`{s}`)" in ctx_ask)
+asm = sk("assembly/SKILL.md")
+ASM = os.path.join(SKILLS, "assembly", "assemble.py")
+for sub in ["lastframe", "frame", "concat", "seam"]:
+    check(f"[assembly] SKILL 명령 '{sub}'가 허용 패턴과 같은 글자", f"`{ASM_CMD} {sub} " in asm)
+check("[assembly] 원본 덮어쓰지 않음·시작 이미지는 확인 뒤·생성 안 함·shot-list 순서", all(w in asm for w in ["원본은 덮어쓰지 않는다", "사용자 확인을 받은 뒤", "생성은 하지 않는다", "`shot-list.md` 순서"]))
+r = subprocess.run([sys.executable, ASM], capture_output=True, text=True)
+check("[assembly] assemble.py 인자 없이: 종료 1, 한국어 사용법", r.returncode == 1 and "하위 명령이 없다" in r.stderr, r.stderr[:200])
+if shutil.which("ffmpeg") and shutil.which("ffprobe"):
+    with tempfile.TemporaryDirectory() as td:
+        a, b = os.path.join(td, "a.mp4"), os.path.join(td, "b.mp4")
+        for src, size, rate, out in [("testsrc", "160x90", 24, a), ("testsrc2", "128x96", 30, b)]:
+            subprocess.run(["ffmpeg", "-loglevel", "error", "-f", "lavfi", "-i", f"{src}=size={size}:rate={rate}:duration=1",
+                            "-pix_fmt", "yuv420p", out], check=True)
+        runs = [["lastframe", a, os.path.join(td, "f", "a_last.png")], ["frame", a, "0.5", os.path.join(td, "f", "a_05.png")],
+                ["concat", os.path.join(td, "r", "rough.mp4"), a, b], ["seam", a, b, os.path.join(td, "f", "seam.png")]]
+        for args in runs:
+            r = subprocess.run([sys.executable, ASM] + args, capture_output=True, text=True)
+            out = args[1] if args[0] == "concat" else args[-1]
+            check(f"[assembly] {args[0]}: 실행되고 ffmpeg 명령을 출력, 결과 파일 생김", r.returncode == 0 and "$ ffmpeg" in r.stdout and os.path.getsize(out) > 0 if os.path.exists(out) else False, (r.stdout + r.stderr)[-300:])
+        r = subprocess.run([sys.executable, ASM, "lastframe", a, a], capture_output=True, text=True)
+        check("[assembly] 입력을 출력으로 주면 거절", r.returncode == 1 and "덮어쓰지 않는다" in r.stderr and os.path.getsize(a) > 0)
+        r = subprocess.run([sys.executable, ASM, "frame", a, "9", os.path.join(td, "x.png")], capture_output=True, text=True)
+        check("[assembly] 영상 밖 시각이면 거절", r.returncode == 1 and "영상 밖" in r.stderr)
+sd = sk("shot-design/SKILL.md")
+check("[shot-design] 블로킹은 지침 6번, 정본 수정은 production-session §1을 가리킴", "지침 6번" in sd and "`production-session` §1" in sd)
+check("[shot-design] 리버스는 location-view.md를 가리키고 LIGHT LOCK 문장을 쓰지 않음", "`image-prompt` → `location-view.md`" in sd and "light comes from" not in sd)
+check("[shot-design] 180도 선 넘음 표시·컷 길이 기준·새 뷰 필요", all(w in sd for w in ["선 넘음(의도", "15초 이하", "2~4초", "새 뷰 필요"]))
+check("[shot-design] 틀은 코드블록 하나(블로킹 메모·커버리지)", sd.count("```") == 2 and "블로킹 메모" in sd.split("```")[1] and "커버리지" in sd.split("```")[1])
+
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)
 routes = {
@@ -537,6 +578,8 @@ routes = {
     "\"3-1처럼\" 영상": ["video-prompt/SKILL.md", "video-prompt/live-action.md", "production-session/SKILL.md", "production-session/ok-reuse.md"],
     "생성·판정·OK 기록": ["higgsfield-generation/SKILL.md"],
     "컷 세션 시작": ["production-session/SKILL.md", "production-session/cut-card.md"],
+    "장면 컷 설계": ["shot-design/SKILL.md"],
+    "프레임·러프컷": ["assembly/SKILL.md"],
 }
 ALWAYS_BUDGET = 13000  # 지침 + context/ + 스킬 설명. 모든 대화가 읽는다
 check(f"[읽기량] 항상 읽히는 양: {always:,}자 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
