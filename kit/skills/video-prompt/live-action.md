@@ -11,7 +11,7 @@
 |---|---|---|---|
 | — | `PRE_SHOT_CONTINUITY` | 이어받는 위치·자세·소품 소유·빛. 이어받지 않는 것은 지금 상태로 적는다(`the bag is closed`). "previous shot" 같은 말은 쓰지 않는다 | 확인 없이 계승 |
 | 1 | `SCENE_CONTEXT` | 시대·장소·이 클립의 일, 2~4문장 | 카메라·연기를 여기 몰기 |
-| 2 | `ACTIVE_REFERENCES` | 붙인 참조마다(시작 이미지 포함) ID·역할·권한 한 줄. 인물 줄은 고정 설명문 + `100% matches the reference`, 음성 파일을 붙였으면 `[NAME]'s voice 100% matches audio_[N]`. 한 생성에서 상태가 바뀌면 요소 둘을 붙이고 시간으로 나눈다(`[A] until 0:04, [B] from 0:04`). 일부에만 나오는 참조는 범위를 적는다(`only inside the mirror, only 0:06–0:14`) | 안 붙인 태그, 붙이고 안 씀 |
+| 2 | `ACTIVE_REFERENCES` | 붙인 참조마다(시작 이미지 포함) ID·역할·권한 한 줄. 인물 줄은 고정 설명문(WARDROBE만) + `100% matches the reference`, 음성 파일을 붙였으면 `[NAME]'s voice 100% matches audio_[N]`. 한 생성에서 상태가 바뀌면 요소 둘을 붙이고 시간으로 나눈다(`[A] until 0:04, [B] from 0:04`). 일부에만 나오는 참조는 범위를 적는다(`only inside the mirror, only 0:06–0:14`) | 안 붙인 태그, 붙이고 안 씀 |
 | 3 | `LOCATION_MAP` | 좌표 문장, 카메라 위치, 전·중·후경, 광원. 컷마다 고정 물건이 화면 어느 쪽인지 다시 쓴다. 문은 열리는 쪽을 물건으로(`hinged on the edge nearer the wardrobe`) | "근처에", "그 문" |
 | 4 | `FIRST_FRAME_AND_SPATIAL_BLOCKING` | 0:00에 누가 어디서 무슨 동작 **도중인지**, 소품, 보이는 인원 수 | 숏 전체로 확대 |
 | 5 | `FORMAT_MODE` | 실사, 단일 연속 테이크, 길이. 컷이 필요하면 `hard cuts only at 0:0a; the camera never cuts by itself`와 컷마다 길이·카메라·첫 프레임 인물·동작. 인물이 컷 사이에서 사라지면 컷을 걷는 도중에 걸고, 그래도 안 되면 컷을 없앤다 | 단일 테이크인데 컷 요구 |

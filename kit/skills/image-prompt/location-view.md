@@ -89,6 +89,8 @@ PROP CONTINUITY: Preserve the exact silhouette, proportions, construction, compo
 material, wear, colour and operating state of [PROP].
 CAMERA: The camera [moves / stands] [relative position], at [height], looking [direction] from [angle].
 [Perspective constraint and negative range.]
+Move in from the same side and along the same line of sight; no reverse angle and no view from behind.
+(새 방향이면 위 줄 대신: This is a newly observed direction of the same physical room, not a horizontal mirror of the reference.)
 FRAMING: [PROP] fills [almost the entire image / most of the frame]. Keep [narrow contact surface or
 landmarks]. Exclude [room / furniture list].
 DETAIL: [surface detail that must be visible]. Do not redesign or add components. Any lettering on it:

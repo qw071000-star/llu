@@ -15,6 +15,7 @@
 2. 프롬프트(코드블록)가 있으면 파일로 뽑아 검사기를 돌린다.
    - 실행: `python3 kit/skills/higgsfield-generation/check_prompt.py --kind <video|image> <파일> [--refs N] [--seconds N] [--must-include <여러 .lines를 합친 파일>]`
    - 결과 줄을 그대로 붙인다.
+   - 영상 프롬프트에는 `identity_grandpa.lines`를 넣지 않는다(컷 프롬프트에는 WARDROBE 문장만, `image-prompt/character.md` 기록).
    - 기대에 없는 WARN이라도 근거가 있으면 FAIL로 친다. 오탐이면 "검사기 오탐"으로 적는다.
 3. 기대 밖이라도 키트 규칙 위반을 보면 "추가 발견"에 적는다. 위치를 `kit/...:줄`로 단다.
 4. **키트 결함**을 따로 적는다. 가장 중요하다.

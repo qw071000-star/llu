@@ -20,7 +20,7 @@
 - 얼굴은 다시 묘사하지 않고 보존만 지시한다. 얼굴 문장이 참조 이미지와 경쟁하면 얼굴이 새로 생성된다.
 - 의상 범위는 `In all three panels`, 헤어 범위는 `Only in the center and right panels`. 헤어에 세 패널을 쓰면 왼쪽에 머리가 생긴다.
 - **목둘레를 세 곳에 쓴다:** REMOVE의 `At the neckline …`, PRESERVE LEFT 줄, ONLY CHANGE의 `including the neckline of the headless panel`. 수정에서 가장 자주 실패하는 곳이다.
-- **목록을 맞춘다:** CHANGE의 새 의상 목록 = PRESERVE LEFT 줄의 `Its clothes change fully:` 뒤 목록, REMOVE의 GONE 목록 = 그 줄 끝의 `no [old 1], no [old 2], no [old 3]`(같은 항목, 같은 수). 어긋나면 옛 옷이 반쯤 그려진다.
+- **목록을 맞춘다:** CHANGE의 새 의상 목록 = PRESERVE LEFT 줄의 `Its clothes change fully:` 뒤 목록, REMOVE의 GONE 목록(옛 항목마다 이름으로, 신발·작은 장신구까지) = 그 줄 끝의 `no [old 1], no [old 2], no [old 3]`(같은 항목, 같은 수). 어긋나면 옛 옷이 반쯤 그려진다.
 - 시대를 옮기면 CHANGE에 `nothing that dates the decade`를 붙이고 그 시대를 만드는 요소(머리 기름, 넓은 넥타이, 로고, 스니커즈 등)를 이름으로 지운다.
 - 새 의상은 재단 네 가지(길이·여밈·칼라·주머니)를 쓰고, 직업을 드러내는 소품이 붙지 않게 `No profession-signaling props.`를 넣는다.
 - 의상·헤어 참조 이미지를 붙이면 틀 1의 권한 줄 세 개를 넣는다. `Do not transfer the face …` 줄은 예외 없이 넣는다.
@@ -42,7 +42,7 @@ outfit seen from different views, with matching fabric, color, length, fit and l
 worn], no logos, no prints.] [Era move: nothing that dates the decade.]
 
 REMOVE COMPLETELY:
-[old 1], [old 2], [old 3] (by name, shoes and small accessories included) are GONE in every panel. Do not layer, merge or
+[old 1], [old 2], [old 3] are GONE in every panel. Do not layer, merge or
 hybridize old and new clothing. [Outfit: At the neckline, only [the new collar] is visible at the base of
 the neck. No trace of [old 1], [old 2], [old 3] remains, including in the headless LEFT panel.]
 
@@ -100,4 +100,4 @@ ONLY CHANGE: the visible age of the same person. no babyface, no exaggerated old
 대신 no beauty filter], no other people, no text, no watermark, no frame borders
 ```
 
-**젊게 할 때** `[age markers]`를 반대로 쓴다: 주름 얕게, 머리색(흰머리를 줄이거나 없앰), 곧은 어깨, 탄탄한 손. 끝 줄은 틀의 `[젊게면 …]`대로 바꾼다.
+**젊게 할 때** `[age markers]`를 반대로 쓴다: 주름 얕게, 머리색(흰머리를 줄이거나 없앰), 곧은 어깨, 탄탄한 손. 끝 줄은 틀의 `[젊게면 …]`대로 바꾼다. **어린이 나이**(10세 → 12세)는 키·어깨·팔다리 비율·얼굴 길이·자세로 쓰고 피부는 그대로 둔다.
