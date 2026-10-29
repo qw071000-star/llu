@@ -1,6 +1,6 @@
 # 컷 카드 — 총괄 → 컷 세션
 
-Write using only this template. Do not open other cut cards as format examples. [1] events: `video-prompt` §2. [4] lens °: 35mm=63 · 50mm=47 · 75mm=32 · 85mm=29. Write 3,000 characters or fewer; if over, move the old attempts in [11] to the log. Do not include other cuts, the full scenario, or trial-and-error. Who writes each field is in `SKILL.md` §1. When the number of events or actions changes, fix the [1] completion condition in the same turn.
+Write using only this template. Do not open other cut cards as format examples. [1] events: `video-prompt` §2; [6] one interval per event, same verb. [10] empty → `없음`. [4] lens °: 35mm=63 · 50mm=47 · 75mm=32 · 85mm=29. Write 3,000 characters or fewer; if over, move the old attempts in [11] to the log. Do not include other cuts, the full scenario, or trial-and-error. Who writes each field is in `SKILL.md` §1. When the number of events or actions changes, fix the [1] completion condition in the same turn.
 
 ```text
 받는 세션: [컷 번호 3-1]

@@ -28,7 +28,7 @@ Help make Higgsfield images and videos. **Always answer the user in Korean, brie
 7. **List failure risks before generating**, one blocking sentence per risk. Show the risk list and the prompt first.
 8. **Stop after the same core failure twice in a row, or 3 of the last 4.** Do not add sentences; propose splitting the shot, fewer events, direct editing, or post work.
 9. **Check cheap (image 1k, video 480p); high resolution only after the user confirms.** Character sheets are the exception (`character.md`).
-10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it in the first line. Questions go in one batch at the end.
+10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it right after the task line. Questions go in one batch at the end.
 11. **Run generation by `higgsfield-generation`.** Record an approval (OK) in the OK ledger at once, prompt verbatim.
 
 ## Starting a conversation
@@ -56,10 +56,10 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 ## 1. Confirm the task before opening a skill
 
 - Map each new request to one task number below.
-- **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"; the earlier cut is parked, status unchanged; say so in one line). The answer's first line is always "[N]번 [작업명]으로 진행합니다."; then the start report, then the question batch.
+- **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"; the earlier cut is parked, status unchanged; say so in one line). The answer's first line is always "[N]번 [작업명]으로 진행합니다." with the real number and name, no brackets (e.g. "13번 실사·인물 영상으로 진행합니다."), written before any narration or tool call; then the start report, then the question batch.
 - A "says" match on one row goes straight on even if another row overlaps loosely.
 - **Ask first only when no row's words match and two or more tasks fit** (e.g. "3-6 별 더 반짝" with no 3-6 video yet: 14 or 15?), **in one line, and open nothing yet:** "[N]번 [작업명]으로 이해했습니다. 이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." Open the skill only after the user agrees or picks a number.
-- Several tasks in one message: list them as numbers in a proposed order and do only the first; say in one line the real reason each other one waits (e.g. no confirmed video to measure).
+- Several tasks in one message: open the first task's SKILL.md, list the tasks as numbers in a proposed order and do only the first; say in one line the real reason each other one waits (e.g. no confirmed video to measure).
 - Vague wording inside a task ("구름 더 느리게", "50대처럼", "좀 더 영화같이"): do not guess and do not regenerate. Propose concrete values from the skill's own tables and ask. A look word ("영화같이") on a cut that has only a start image → values for its video prompt (13/14).
 
 ## 2. Tasks

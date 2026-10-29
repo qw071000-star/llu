@@ -19,7 +19,7 @@ This is the stage before the cut card (`production-session`). Design one scene i
 2. **180-degree line:** which two characters (or character and object) it is drawn between, and which side of that line the camera is on (by an on-screen object).
 3. **Coverage table:** whichever of master, two-shot, reverse, insert, reaction the scene needs. For each shot: camera position and height, field of view (°) and shot size, and the location view used. If no suitable view exists, write `새 뷰 필요` (making it is `image-prompt` → `location-view.md`).
 4. **Cut length allocation:** events per cut as in `video-prompt` §2 "Event count", at most 15 seconds per cut, 2–4 seconds per dialogue line. Split the cut if exceeded.
-5. **Lines to move into `shot-list.md`:** always show them, in that table's column order, status `대기`. A cut that already has a confirmed start image keeps that image's field of view (from its OK card).
+5. **Lines to move into `shot-list.md`:** always show them, in that table's column order, status `대기`. A cut that already has a confirmed start image keeps that image's field of view (write it as `NN° (OK 카드)`) and its job in the `확정 job` column; the moved lines keep every column of `shot-list.md`.
 
 ## 3. Rules
 
@@ -42,11 +42,11 @@ This is the stage before the cut card (`production-session`). Design one scene i
 180도 선: [인물 A] ↔ [인물 B]. 카메라는 [물건] 쪽.
 
 커버리지
-| 샷 | 종류 | 카메라 위치·높이 | 화각°·크기 | 장소 뷰 | 선 | 사건(1~3) | 길이 | 끝 → 다음 시작 |
-|---|---|---|---|---|---|---|---|---|
-| [N]-1 | 마스터 | [물건] 맞은편, [m] | [°] · 풀 | [V…] | 안 | | [초] | |
-| [N]-2 | 리버스 | [물건] 뒤, [m] | [°] · 바스트 | 새 뷰 필요 | 안 | | [초] | |
-| [N]-3 | 인서트 | [물건] 위, [m] | [°] · 클로즈업 | [V…] | 안 | | [초] | |
+| 샷 | 종류 | 카메라 위치·높이 | 화각°·크기 | 장소 뷰 | 확정 job | 선 | 사건(1~3) | 길이 | 끝 → 다음 시작 |
+|---|---|---|---|---|---|---|---|---|---|
+| [N]-1 | 마스터 | [물건] 맞은편, [m] | [°] · 풀 | [V…] | | 안 | | [초] | |
+| [N]-2 | 리버스 | [물건] 뒤, [m] | [°] · 바스트 | 새 뷰 필요 | | 안 | | [초] | |
+| [N]-3 | 인서트 | [물건] 위, [m] | [°] · 클로즈업 | [V…] | | 안 | | [초] | |
 
 shot-list.md로 옮길 줄 (확정 후)
 | [N]-1 | [초] | [내용 한 줄] | 대기 | [V…] | [인물·소품] | | | |

@@ -28,7 +28,7 @@ Help make Higgsfield images and videos. **Always answer the user in Korean, brie
 7. **List failure risks before generating**, one blocking sentence per risk. Show the risk list and the prompt first.
 8. **Stop after the same core failure twice in a row, or 3 of the last 4.** Do not add sentences; propose splitting the shot, fewer events, direct editing, or post work.
 9. **Check cheap (image 1k, video 480p); high resolution only after the user confirms.** Character sheets are the exception (`character.md`).
-10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it in the first line. Questions go in one batch at the end.
+10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it right after the task line. Questions go in one batch at the end.
 11. **Run generation by `higgsfield-generation`.** Record an approval (OK) in the OK ledger at once, prompt verbatim.
 
 ## Starting a conversation
