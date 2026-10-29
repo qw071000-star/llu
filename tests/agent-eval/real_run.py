@@ -2,7 +2,7 @@
 """실제 Claude Code로 체인을 돌린다: 키트를 설치한 시험 폴더에서 사용자 말만 넣는다.
 ./real_run.py <체인ID> [run_root]   — 턴은 real-chains.json에서 읽는다.
 턴마다 out/turnN.md(답 전문)와 out/turnN.meta.json(부른 Skill, 연 파일, 도구, Bash 명령)을 남긴다."""
-import json, os, subprocess, sys
+import json, os, re, subprocess, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__))
 cid = sys.argv[1]
 root = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "runs-real")
@@ -25,7 +25,13 @@ while turns:
            "--permission-mode", "acceptEdits", "--disallowedTools", "mcp__*",
            "--allowedTools", "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)", "Bash(python3 .claude/skills/assembly/assemble.py:*)", "Bash(python3 .claude/skills/color-continuity/color.py:*)", "--append-system-prompt", SIM]
     if session: cmd += ["--resume", session]
-    r = subprocess.run(cmd, cwd=run, capture_output=True, text=True, timeout=900)
+    # 사용량 한도에 걸리면 실패로 넘기지 않고 10분마다 같은 턴을 다시 시도한다(최대 6시간)
+    for _ in range(37):
+        r = subprocess.run(cmd, cwd=run, capture_output=True, text=True, timeout=900)
+        if not re.search(r"hit your .{0,20}limit|usage limit|rate limit", r.stdout[-3000:] + r.stderr[-3000:], re.I):
+            break
+        print(f"{cid} turn{n}: 사용량 한도 — 10분 뒤 다시 시도", flush=True)
+        time.sleep(600)
     skills, reads, tools, bash, final = [], [], [], [], ""
     for line in r.stdout.splitlines():
         try: e = json.loads(line)
