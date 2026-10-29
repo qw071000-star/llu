@@ -3,7 +3,7 @@
 # 키트(kit/)의 지금 상태 + 시험 작품(testbed/)으로 사용자의 작업 리포를 흉내 낸다.
 set -euo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
-KIT="$HERE/../../kit"
+KIT="${KIT_DIR:-$HERE/../../kit}"
 ID="$1"; MODE="${2:-full}"; ROOT="${3:-$HERE/runs}"
 RUN="$ROOT/$ID"
 rm -rf "$RUN"; mkdir -p "$RUN/.claude" "$RUN/out" "$RUN/sim"
