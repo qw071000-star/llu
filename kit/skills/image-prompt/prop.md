@@ -1,30 +1,30 @@
-# 소품
+# Prop
 
-## 필요한 정보
+## Required information
 
-| 필요한 정보 | 틀의 자리 |
+| Required information | Template slot |
 |---|---|
-| 시트가 필요한가: 화면에 크게 나오는가, 멀리 불빛·윤곽뿐인가 | 만들지 여부 |
-| 물건, 재질, 사용 흔적 | `[prop]`, `[Use marks]` |
-| 크기(cm + 신체 기준) | 크기 단서, 에셋 대장 |
-| 무게로 본 물성 | 에셋 대장 (영상의 `PHYSICS`) |
-| 나오면 안 되는 재질·형태 | `Avoid` |
-| 이야기 속 상태 변화, 누가 어느 손(화면 쪽 + 물건)에 드는가 | 에셋 대장 상태 머신 |
-| 고치기면: 어느 결과를 말하는가(그 컷의 job / 에셋 자체) | 고칠 대상 |
+| Is a sheet needed? Does it appear large on screen, or only as a distant light/outline? | whether to make one |
+| Object, material, signs of use | `[prop]`, `[Use marks]` |
+| Size (cm + body reference) | size cue, asset registry |
+| Physical properties in terms of weight | asset registry (the video's `PHYSICS`) |
+| Materials/shapes that must not appear | `Avoid` |
+| State changes in the story, who holds it in which hand (screen side + object) | asset registry state machine |
+| For editing: which result is meant (that cut's job / the asset itself) | the target to edit |
 
-## 규칙
+## Rules
 
-- **상태·손·크기가 바뀌는 소품은 독립 에셋으로 만든다.** 사용감을 준다.
-- **시트가 필요 없으면**(멀리 불빛뿐) 만들지 않고 컷 프롬프트 문장으로 쓰자고 제안한다. 그래도 크기(수치로: cm, 차량급은 m + 사람 기준)·시대·상태 제안값은 한 줄로 함께 보인다(차량·간판류는 글자·행선지가 읽히지 않게). 이때는 에셋 대장 초안 줄(지침 4번)을 쓰지 않는다. 수락하면 그 문장을 컷 카드 [5] 소품 줄에만 적고, 답에는 그 카드 줄만 인용한다. 코드블록은 내지 않는다. **차량·건물급은** 아래 스튜디오 틀을 쓰지 않고 장면 프레임(장소 뷰)에서 잘라 요소로 만든다.
-- **크기는 장면에서 정한다.** 스튜디오 소품을 참조로 쓰면 크기가 틀어진다. 영상용 요소는 장면 프레임에서 잘라 만든다.
-- **고정 설명문은 재질·모양·크기·사용 흔적만 쓴다.** 상태(열림·닫힘), 자세(처짐·들림), 손은 넣지 않는다. 그것들은 상태 머신과 컷 프롬프트에 쓴다.
-- **물성은 무게로 쓴다.** 처짐, 부풀지 않음, 각이 서지 않음처럼 쓴다.
-- **상태는 상태 머신으로 관리한다.** 컷 사이의 상태는 `shot-list.md` 연속성 표에 둔다.
-- **등록할 때는 에셋 대장 초안 줄만 쓴다.** 컷 목록·연속성 표는 고치지 않고 바꿀 줄을 제안만 한다.
-- **확정 소품 고치기:** 에셋 이미지를 LOCKED EDIT(`SKILL.md` §3)로 고치고 크기·모양은 PRESERVE에 둔다. 원본 job이 대장에 없으면 묻지 않고 요소 ID(`<<<prop_…_v1>>>`)를 편집 원본으로 프롬프트까지 쓰고, job 미기재를 한 줄 알린다. 원본 이미지를 보지 못했으면 PRESERVE 배경은 `the existing background`로 쓰고, 본 적 없는 상태는 "추정"이라 적는다. 고정 설명문이 바뀌면 새 요소 ID(`prop_<물건>_v2`)로 확정하고 옛 것은 에셋 대장 폐기 목록으로 옮긴다.
-  - 옛 요소로 승인된 컷은 그대로 둔다. 다시 만들지는 컷마다 묻는다.
+- **A prop whose state, hand or size changes is made as an independent asset.** Give it a worn look.
+- **If no sheet is needed** (only a distant light), do not make one; propose writing it as a sentence in the cut prompt. Even so, show the proposed size (numerically: cm; for vehicle class, m + person reference), era and state in one line (for vehicles and signs, so that lettering and destinations are not legible). In this case do not use the asset registry `초안` line (guideline no. 4). If accepted, write that sentence only on the `[5] 소품` line of the cut card, and quote only that card line in the reply. Do not output a code block. **For vehicle/building class,** do not use the studio template below; crop it from a scene frame (location view) and make it an element.
+- **Size is set in the scene.** Using a studio prop as a reference throws the size off. Make video elements by cropping from a scene frame.
+- **A fixed description sentence has only material, shape, size and signs of use.** Do not include state (open/closed), posture (sagging/raised) or hands. Those go in the state machine and the cut prompt.
+- **Write physical properties as weight.** Write it as sagging, not puffed up, no sharp angles.
+- **Manage state with the state machine.** State between cuts is kept in the `shot-list.md` `연속성 표`.
+- **When registering, write only the asset registry `초안` line.** Do not edit the shot list or `연속성 표`; only propose the lines to change.
+- **Editing a confirmed prop:** edit the asset image with LOCKED EDIT (`SKILL.md` §3) and put size and shape in PRESERVE. If the original job is not in the registry, do not ask; write the element ID (`<<<prop_…_v1>>>`) as the edit source into the prompt, and tell the user in one line that the job is unrecorded. If the original image was not seen, write the PRESERVE background as `the existing background`, and mark any unseen state as "추정" (assumed). If the fixed description sentence changes, confirm it as a new element ID (`prop_<object>_v2`) and move the old one to the asset registry discard list.
+  - Cuts approved with the old element stay as they are. Whether to regenerate is asked per cut.
 
-## 틀
+## Template
 
 ```text
 Photorealistic product-reference photograph of [prop: material, wear, size cue], isolated on a plain

@@ -1,44 +1,44 @@
-# 퍼스트 프레임 (영상의 시작 이미지)
+# First frame (the starting image of a video)
 
-## 필요한 정보
+## Required information
 
-| 필요한 정보 | 틀의 자리 |
+| Required information | Template slot |
 |---|---|
-| 컷 카메라가 확정 장소 뷰와 같은가 (장소 뷰 job). 컷 목록의 장소 뷰가 확정 뷰 그대로이거나 비어 있으면 첫 질문으로 묻고 "같음(틀 1)"을 제안한다 | 모드: 틀 1 / 틀 2 |
-| 장소 뷰 job, 그 뷰의 LIGHT LOCK | `<<<LOC>>>`, `PRESERVE EXACTLY` |
-| 인물마다 요소 ID, 의상 상태, 고정 설명문 | `REFERENCE AUTHORITY`, `WARDROBE` |
-| 소품: 위치, 상태, 누가 드는가, 크기(cm + 신체) | `PROP` |
-| 카메라: 위치(화면 속 물건으로)·높이·무엇을 보는지(발·손 인서트처럼 아래를 보면 높이와 아래 방향을 함께)·거리·샷 크기 (틀 2는 장비명도) | `CAMERA` |
-| 인물마다 시작 위치(앵커·거리·접촉), 하던 동작, 시선, 손 | `CHANGE` / `BLOCKING` |
-| 보이는 인원 수 | `Exactly [N] people` |
-| 최종 화면비 | 설정 |
-| 고정 설명문과 부딪치는 이 컷만의 것(소품이 열림 상태, 들고 있다고 쓴 가방이 무릎 위 등) | `Except` 한 줄 |
+| Is the cut camera the same as the confirmed location view? (location view job). If the location view in the shot list is exactly the confirmed view or is blank, ask it as the first question and propose "같음(틀 1)" (same, Template 1) | mode: Template 1 / Template 2 |
+| Location view job, that view's LIGHT LOCK | `<<<LOC>>>`, `PRESERVE EXACTLY` |
+| For each character: element ID, wardrobe state, fixed description sentence | `REFERENCE AUTHORITY`, `WARDROBE` |
+| Prop: position, state, who holds it, size (cm + body) | `PROP` |
+| Camera: position (by objects on screen), height, what it looks at (when looking down, as in a foot/hand insert, give height and down direction together), distance, shot size (Template 2 also equipment names) | `CAMERA` |
+| For each character: starting position (anchor, distance, contact), ongoing action, gaze, hands | `CHANGE` / `BLOCKING` |
+| Number of visible people | `Exactly [N] people` |
+| Final aspect ratio | settings |
+| Anything specific to this cut that conflicts with a fixed description sentence (a prop in the open state; a bag written as held, but on the lap, etc.) | one `Except` line |
 
-## 규칙
+## Rules
 
-- **그 컷 영상의 0:00 상태를 만든다.** 썸네일 순간이 아니다.
-- **모드를 먼저 고른다.**
-  - 컷의 카메라가 확정된 장소 뷰와 같으면: 그 뷰를 `LOCKED EDIT`으로 쓰고 인물·소품만 더한다(틀 1).
-  - 카메라가 다르면: `DERIVED VIEW`로 새 시점을 만든다(틀 2). 그 시점을 이 컷만 쓰면 틀 2로 바로 쓰고, 여러 컷이 쓰면 장소 뷰를 먼저 확정하자고 제안한다(`location.md`).
-  - 카메라가 장소 뷰의 반대쪽을 보면 화면 좌우가 뒤집힌다(뷰의 왼쪽 랜드마크·광원이 화면 오른쪽). 틀 2 끝의 `In this view …` 줄과 LIGHT LOCK을 화면 기준으로 다시 쓰고 "전 → 후"로 보인다.
-  - 틀 1에서 인물·소품을 더하는 것은 한 변경으로 친다(빈 장소에 그 컷의 사람을 놓는 일).
-  - 같은 카메라에서 그림체·질감만 바꾸면 `LOCKED EDIT`이다(`SKILL.md` §3). `DERIVED VIEW`가 아니다.
-  - 같은 카메라인데 새 시점으로 만들면 장소 뷰와 첫 프레임의 구도가 어긋난다.
-  - 틀 2의 고유 문장(`Do not inherit its camera angle, framing or composition.`, 반대편이면 `not a horizontal mirror` 문장)은 OK 카드를 고쳐 쓸 때 거기 없어도 넣는다.
-  - "뒤에서"인데 인물이 벽·구조물에 등을 대고 있으면 그 뒤는 벽 밖이다. 카메라를 구조물 안쪽, 인물 옆 어깨 너머에 두자고 제안한다.
-- **인물은 기존 앵커에 둔다.**
-  - 위치는 거리와 접촉으로 쓴다. "근처에"는 지켜지지 않는다.
-  - 동작 도중의 상태로 쓴다.
-- **이웃 컷과 비교한다.** 컷 목록의 앞뒤 줄과 연속성 표(인물 자리·자세, 소품 상태)로 본다.
-  - 연속성 표에 인물 자리가 없으면 같은 인물이 나온 직전 승인 시작 이미지의 OK 카드 한 장에서 BLOCKING 줄을 가져와 제안한다. 자리를 새로 지어내지 않는다. 시점과 구도가 겹치지 않는지, 빛 방향과 인물 자리가 같은지 본다.
-- **하늘·색을 바꾸면** 에셋 대장의 PALETTE·LIGHT LOCK과 부딪치는지 짚고 묻는다.
-- **나이만 바꾸는 컷 편집**은 승인 시작 이미지를 LOCKED EDIT(`SKILL.md` §3)로 고치고, 나이 표지는 `character-edit.md` 틀 2의 `CHANGE — AGE` 목록에서 고른다. 표지를 지어내지 않는다.
-- **다른 OK의 색감을 가져올 때**
-  - 틀 1(LOCKED)이면 색은 그 장소 뷰에서 온다. 색 기준 OK가 같은 뷰에서 나왔으면 이미 같은 색이니 색 참조를 붙이지 않는다.
-  - 질감은 색 참조가 맡는다. 질감 문장(`Real material truth` 등)을 새로 쓰지 않는다.
-  - 다른 뷰면 틀 2로 쓰고 색 참조를 붙인다. 틀 1을 꼭 써야 하면 한 생성에 한 가지 원칙대로 두 단계(인물 추가 → 색 편집)로 나눈다.
+- **Make the 0:00 state of that cut's video.** Not the thumbnail moment.
+- **Choose the mode first.**
+  - If the cut's camera is the same as the confirmed location view: write that view as a `LOCKED EDIT` and only add the people and props (Template 1).
+  - If the camera differs: make a new viewpoint as a `DERIVED VIEW` (Template 2). If only this cut uses that viewpoint, write Template 2 directly; if several cuts use it, propose confirming the location view first (`location.md`).
+  - If the camera faces the opposite side of the location view, screen left/right flip (the view's left landmark/light source is on screen right). Rewrite the `In this view …` line at the end of Template 2 and the LIGHT LOCK in screen terms, and it reads as "전 → 후" (before → after).
+  - In Template 1, adding people and props counts as one change (placing that cut's people in the empty location).
+  - Changing only art style/texture from the same camera is a `LOCKED EDIT` (`SKILL.md` §3), not a `DERIVED VIEW`.
+  - If you make a new viewpoint when the camera is the same, the location view and the first frame's composition will drift apart.
+  - The unique sentences of Template 2 (`Do not inherit its camera angle, framing or composition.`, and for the opposite side the `not a horizontal mirror` sentence) go in even when rewriting an OK card that lacks them.
+  - If it is "뒤에서" (from behind) but the character has their back against a wall/structure, what is behind is outside the wall. Propose putting the camera inside the structure, over the character's shoulder beside them.
+- **Place characters at existing anchors.**
+  - Write position as distance and contact. "근처에" (nearby) is not followed.
+  - Write mid-action states.
+- **Compare with neighbouring cuts.** Check the preceding and following lines of the shot list and the `연속성 표` (character position/posture, prop state).
+  - If the `연속성 표` has no character position, take the BLOCKING line from one OK card of the most recent approved start image in which the same character appeared, and propose it. Do not invent a new position. Check that viewpoint and composition do not overlap, and that light direction and character position are the same.
+- **If you change the sky or colour,** point out whether it conflicts with the asset registry's PALETTE·LIGHT LOCK and ask.
+- **A cut edit that changes only age:** edit the approved start image with LOCKED EDIT (`SKILL.md` §3) and pick the age markers from the `CHANGE — AGE` list of `character-edit.md` Template 2. Do not invent markers.
+- **When borrowing the colour feel of another OK**
+  - In Template 1 (LOCKED) the colour comes from that location view. If the colour-base OK came from the same view, the colour is already the same, so do not attach a colour reference.
+  - The colour reference handles texture. Do not write new texture sentences (`Real material truth` etc.).
+  - For a different view, write Template 2 and attach a colour reference. If you must use Template 1, split into two steps (add people → colour edit) per the one-change-per-generation principle.
 
-## 틀 1 — 카메라가 확정된 장소 뷰와 같을 때 (LOCKED EDIT + ADD)
+## Template 1 (틀 1) — when the camera is the same as the confirmed location view (LOCKED EDIT + ADD)
 
 ```text
 Edit <<<LOC>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and
@@ -59,7 +59,7 @@ ONLY CHANGE: the people and props are added exactly as described. Everything els
 Exactly [one person is / N people are] visible.
 ```
 
-## 틀 2 — 카메라가 다를 때 (DERIVED VIEW)
+## Template 2 (틀 2) — when the camera differs (DERIVED VIEW)
 
 ```text
 FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.

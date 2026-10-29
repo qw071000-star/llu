@@ -1,27 +1,27 @@
-# 그림체 이미지 (수채·일러스트)
+# Art-style image (watercolour, illustration)
 
-## 필요한 정보
+## Required information
 
-| 필요한 정보 | 틀의 자리 |
+| Required information | Template slot |
 |---|---|
-| 매체·기법·종이, 화면비 | 첫 줄 |
-| 기법 기준 이미지와 보조 이미지(job, 순서) | `Reference images` |
-| 색 기준 이미지(job) | `Reference images`의 마지막 |
-| 시점·각도, 3분할 구역별 배치, 인물 수 | `Scene` |
-| 시간, 해가 오는 화면 쪽과 그쪽 물건, 그림자 방향, 색 범위 | `Light` |
-| 표면 처리 | `Style` |
-| 시대에 맞는 물건·재질, 다른 컷과 맞출 건물·옷 | `Look of the place` |
-| 크롭 띠, 가림 구역 | `Composition` |
-| 시대에 맞지 않아 나오면 안 되는 것 | 마지막 줄 |
+| Medium, technique, paper, aspect ratio | first line |
+| Technique base image and auxiliary images (job, order) | `Reference images` |
+| Colour base image (job) | last of `Reference images` |
+| Viewpoint/angle, placement per third-zone, number of people | `Scene` |
+| Time, the screen side the sun comes from and the object on that side, shadow direction, colour range | `Light` |
+| Surface treatment | `Style` |
+| Period-appropriate objects/materials, buildings/clothes to match other cuts | `Look of the place` |
+| Crop band, occlusion zones | `Composition` |
+| Things that must not appear because they do not fit the era | last line |
 
-## 규칙
+## Rules
 
-- **표면이 돌 무늬나 타일로 읽히면** 넓은 붓 범위를 지정한다: `large, smooth, softly mottled plaster washes laid with a wide wet brush`
-- **"디테일만 올려"는** 참조 하나만 넣고 "존재하는 표면의 붓터치만 곱게"라고 쓴다. 식생, 빛, 밝기, 구도는 그대로 둔다.
-- **일부만 옮기거나 지우는 국소 수정은 직접 편집(픽셀 합성)이 빠르고 싸다.** 편집본에는 "모델 생성 아님"을 기록한다.
-- **좁은 화면을 채울 때:** 이미지를 캔버스 가운데에 줄여 두고 주변만 그리게 한다(`The central painting stays exactly as it is … paint only the empty margins`).
+- **If the surface reads as stone pattern or tile,** specify a wide brush range: `large, smooth, softly mottled plaster washes laid with a wide wet brush`
+- **For "디테일만 올려" (only raise the detail),** insert only one reference and write "only refine the brushstrokes of the surfaces that exist". Leave vegetation, light, brightness and composition as they are.
+- **For a local edit that moves or erases only part, direct editing (pixel compositing) is faster and cheaper.** Record "모델 생성 아님" (not model-generated) on the edited version.
+- **When filling a narrow screen:** shrink the image into the centre of the canvas and have only the surroundings painted (`The central painting stays exactly as it is … paint only the empty margins`).
 
-## 틀 — 그림체 장면 (기법 참조 + 색 참조)
+## Template (틀) — art-style scene (technique reference + colour reference)
 
 ```text
 A [medium and technique] painting on [paper], [aspect ratio], of the following scene.
