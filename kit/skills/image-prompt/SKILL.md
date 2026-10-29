@@ -105,4 +105,4 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 - [ ] 고정 설명문이 에셋 대장과 글자까지 같은가
 - [ ] 크롭 띠와 가림 구역을 확인했는가
 - [ ] 자리표시 태그(`<<<LOC>>>` 등)가 남지 않았는가
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가(절차는 지침 "검사"). 이미지 줄: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 [--must-include tmp/고정문장파일]`. 고정 문장은 에셋 대장의 의상·소품·LIGHT LOCK·좌표 문장
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가(명령·절차는 지침 "검사"). `--must-include tmp/고정문장파일`에 넣을 것: 에셋 대장의 의상·소품·LIGHT LOCK·좌표 문장

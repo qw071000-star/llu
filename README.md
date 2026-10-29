@@ -57,7 +57,7 @@ cp -r kit/skills .claude/skills
 cp kit/project-files/CLAUDE.md CLAUDE.md
 cp kit/project-files/settings.json .claude/settings.json   # 검사기(check_prompt.py)·조립(assemble.py) 실행 허용
 cp kit/project-files/{decisions,asset-registry,shot-list,ok-cuts}.md project/
-echo "tmp/" >> .gitignore   # 검사용 임시 프롬프트 파일(image-prompt §6)
+echo "tmp/" >> .gitignore   # 검사용 임시 프롬프트 파일(지침 "검사")
 ```
 
 ## 키트를 고칠 때

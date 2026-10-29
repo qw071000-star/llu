@@ -21,7 +21,7 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 | 인물 에셋 | 인물마다 요소 ID, 의상·헤어 상태 버전, 고정 설명문, 대사가 있으면 목소리 문장 | `ACTIVE_REFERENCES`, `AUDIO` |
 | 장소 | 장소 뷰 요소 ID, 화면 좌·중·우·전경의 랜드마크, 시간대, 문·여닫이 가구의 경첩 쪽(화면 쪽 + 물건)과 열리는 방향 | `ACTIVE_REFERENCES`, `LOCATION_MAP` |
 | 소품 | 요소 ID, 시작 상태 → 끝 상태, 누가 어느 손(화면 쪽 + 물건)에 드는가, 크기 | `ACTIVE_REFERENCES`, `PHYSICS` |
-| 시작 이미지 | 퍼스트 프레임 job (없으면 그 컷 전용 퍼스트 프레임부터. 다른 컷 것을 쓰지 않는다), 끝 프레임을 쓸지 | `ACTIVE_REFERENCES` |
+| 시작 이미지 | 퍼스트 프레임 job (없으면 그 컷 전용 퍼스트 프레임부터(`image-prompt` → `first-frame.md`). 다른 컷 것을 쓰지 않는다), 끝 프레임을 쓸지 | `ACTIVE_REFERENCES` |
 | 카메라 | 위치(화면 속 물건으로), 높이, 방향, 고정 또는 움직임 한 가지(종류·속도·양) | `CAMERA` |
 | 렌즈 | 대각 화각(도), 관찰 결과 3개, 심도·초점 이동 | `OPTICS` |
 | 인물 위치 | 인물마다 시작 위치(0:00, 화면 쪽 + 물건)·자세·하던 동작, 끝 위치(마지막 프레임) | `FIRST_FRAME_AND_SPATIAL_BLOCKING`, `ACTION_TIMING` |
@@ -91,4 +91,4 @@ description: AI 영상 생성 프롬프트를 쓰거나 고칠 때 쓴다. Seeda
 
 ## 4. 보내기 전 점검 (검사 스크립트가 잡지 못하는 것)
 
-- [ ] 보이기 전에 검사 스크립트를 돌렸는가. (절차는 지침 "검사"). 영상 줄: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 붙일요소수 --seconds 길이 [--must-include tmp/고정문장파일]`. 가져온 OK 줄도 `--must-include` 파일에 넣는다
+- [ ] 보이기 전에 검사 스크립트를 돌렸는가(명령·절차는 지침 "검사"). `--must-include tmp/고정문장파일`에 넣을 것: 에셋 대장의 고정 문장, 가져온 OK 줄

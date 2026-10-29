@@ -19,6 +19,7 @@ if [ "$MODE" = "empty" ]; then
 else
   cp -r "$HERE/testbed/project" "$RUN/project"
   cp "$HERE/testbed/sim/higgsfield.md" "$RUN/sim/"
+  cp -r "$HERE/testbed/media" "$RUN/media"
   python3 - "$KIT/instructions.md" "$RUN/.claude/instructions.md" <<'PY'
 import sys
 s = open(sys.argv[1]).read()

@@ -13,10 +13,10 @@
 | CH-002 | 인물 | `job-ch002` | GPT Image 2.5 · 2k | 2026-10-21 | 전체 | 주근깨 약함 |
 | LC-001-V1 | 장소 | `job-lc001v1` | GPT Image 2.5 · 2k | 2026-10-22 | 정류장 분위기 | 감 열매 조금 많음 |
 | 1-1 | 시작 이미지 | `job-ff-1-1` | GPT Image 2.5 · 1k | 2026-10-23 | 하늘 색 | 없음 |
-| 2-1 | 영상 | `job-v-2-1` | Seedance 2.5 · 480p · 8초 | 2026-10-24 | 할아버지 표정(기대 안 하는 얼굴) | 낙엽 속도 |
+| 2-1 | 영상 | `job-v-2-1` | Seedance 2.5 · 480p · 8초 · draft 예(2026-10-31) | 2026-10-24 | 할아버지 표정(기대 안 하는 얼굴) | 낙엽 속도 |
 | 2-2 | 시작 이미지 | `job-ff-2-2` | GPT Image 2.5 · 1k | 2026-10-25 | 전체 | 없음 |
 | 3-1 | 시작 이미지 | `job-ff-3-1` | GPT Image 2.5 · 1k | 2026-10-25 | 색감, 질감 | 없음 |
-| 3-1 | 영상 | `job-v-3-1` | Seedance 2.5 · 480p · 8초 | 2026-10-26 | 손녀 돌아서는 속도 | 없음 |
+| 3-1 | 영상 | `job-v-3-1` | Seedance 2.5 · 480p · 8초 · draft 아니오 | 2026-10-26 | 손녀 돌아서는 속도 | 없음 |
 | 3-2 | 시작 이미지 | `job-ff-3-2` | GPT Image 2.5 · 1k | 2026-10-27 | 전체 | 없음 |
 | 3-3 | 시작 이미지 | `job-ff-3-3` | GPT Image 2.5 · 1k | 2026-10-27 | 전체 | 없음 |
 
@@ -140,6 +140,7 @@ Exactly 0 people are visible.
 
 - job: `job-v-2-1` · 승인: 2026-10-24 · 저장: 2-1 / 승인
 - 모델 · 설정: Seedance 2.5 · 480p · 8초 · 16:9 · 소리 켬(효과음만)
+- draft: 예 · draft_job_id `job-v-2-1` · 만료일 2026-10-31
 - 시작 이미지: job-ff-2-1
 - 참조(붙인 순서): 1 ff_2-1_v1 — 시작 이미지 · 2 char_grandpa_autumn_v1 — 인물 · 3 prop_doctor_bag_v1 — 소품
 - 가져온 OK: 없음
@@ -279,6 +280,7 @@ ONLY CHANGE: the old man, the girl and the bag are added exactly as described. E
 
 - job: `job-v-3-1` · 승인: 2026-10-26 · 저장: 3-1 / 승인
 - 모델 · 설정: Seedance 2.5 · 480p · 8초 · 16:9 · 소리 켬
+- draft: 아니오
 - 시작 이미지: job-ff-3-1
 - 참조(붙인 순서): 1 ff_3-1_v2 — 시작 이미지 · 2 char_grandpa_autumn_v1 · 3 char_girl_raincoat_v1 · 4 prop_doctor_bag_v1
 - 가져온 OK: 없음

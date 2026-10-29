@@ -11,7 +11,7 @@ description: Higgsfield로 이미지·영상을 생성하거나 결과물을 정
 2. 저장할 `folder_id`가 정해졌는가(§2).
 3. 해상도가 확인용인가. Seedance 2.5 영상은 `draft: true`로 보낸다(승인 뒤 같은 테이크를 1080p로 확정, `video-prompt` → `rerender.md`).
 4. 처음 쓰는 모델·설정이면 `get_cost: true`로 견적을 봤는가. OK 대장 목록이나 `decisions.md` §2 비용 메모에 같은 모델·해상도·길이가 있으면 처음이 아니다.
-5. 이 스킬 폴더의 `check_prompt.py`를 통과했는가. 프롬프트를 **보이기 전에** 돌린다(절차는 `image-prompt` §6, 영상 명령은 `video-prompt` §4. 명령은 `.claude/settings.json`의 허용 패턴과 글자가 같아야 승인 없이 돈다. Claude 앱이면 경로만 그 스킬 폴더로).
+5. 이 스킬 폴더의 `check_prompt.py`를 통과했는가. 프롬프트를 **보이기 전에** 돌린다(명령·절차는 지침 "검사". 명령은 `.claude/settings.json`의 허용 패턴과 글자가 같아야 승인 없이 돈다. Claude 앱이면 경로만 그 스킬 폴더로).
 
 ## 2. 저장 위치
 

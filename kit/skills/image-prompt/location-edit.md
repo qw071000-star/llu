@@ -47,7 +47,7 @@ REMOVE  Remove [object] from [location]. Continue [revealed surface] naturally t
 
 시대는 `1960s style` 한 줄이 아니라 층의 묶음이다. 원래 요소마다 목표 시대 대응물을 지정하고, 새 건축 볼륨을 만들지 않는다. 한 층을 바꿔 확정하고 그 확정본을 다음 층의 부모로 쓴다.
 
-층: `IDENTITY AND TEXT`(간판·표지판의 판과 글자 정책) · `STRUCTURAL SURFACES`(벽·바닥·지붕·도로 포장) · `DOORS, WINDOWS AND FRAMES` · `FURNITURE / VEHICLES / FIXTURES`(벤치·표지판 기둥·가로등·차) · `LIGHTING` · `IMAGE CHARACTER`(grain, sharpness, contrast, exposure). 한 요소는 한 층에만 넣는다(표지판 판은 `IDENTITY AND TEXT`, 그 기둥은 `FIXTURES`). `ONLY CHANGE`에는 그 층 이름을 쓴다.
+층: `IDENTITY AND TEXT`(간판·표지판의 판과 글자 정책) · `STRUCTURAL SURFACES`(벽·바닥·지붕·도로 포장) · `DOORS, WINDOWS AND FRAMES` · `FURNITURE / VEHICLES / FIXTURES`(벤치·표지판 기둥·가로등·차) · `LIGHTING` · `IMAGE CHARACTER`(grain, sharpness, contrast, exposure). 한 요소는 한 층에만 넣는다(표지판 판은 `IDENTITY AND TEXT`, 그 기둥은 `FIXTURES`). `ONLY CHANGE`에는 그 층 이름을 쓴다. 바꾸는 순서도 이 목록 순서다(`IDENTITY AND TEXT` 먼저 → `IMAGE CHARACTER` 끝). 계획의 한 단계에도 층은 하나만.
 
 ```text
 Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.

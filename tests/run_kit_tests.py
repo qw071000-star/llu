@@ -228,7 +228,7 @@ claude_md = read(os.path.join(KIT, "project-files", "CLAUDE.md"))
 reg = read(os.path.join(KIT, "project-files", "asset-registry.md"))
 sess = read(os.path.join(SKILLS, "production-session", "SKILL.md"))
 check("[맹검] 컷 카드 수정 권한은 세션 스킬 §1 한 곳", "[3]~[7] [10]~[12]" in sess and "SKILL.md` §1" in card)
-check("[맹검] 컷 목록: 컷 세션이 상태·확정 job 칸을 고친다", "상태 칸과 확정 job 칸" in sess and "production-session` §1" in shot)
+check("[맹검] 컷 목록: 컷 세션이 상태·확정 job 칸을 고친다(routing §3이 주인, production-session §1은 가리킴)", "상태·확정 job 칸만" in inst and "`context/routing.md` §3" in sess and "production-session` §1" in shot)
 check("[맹검] 지침: '몰라'도 제안값으로", "몰라" in inst)
 nospeak = "does not say a single word: no attempt to speak, no parted lips, no mouthing"
 for f in ["video-prompt/fixes.md", "video-prompt/live-action.md", "acting/SKILL.md"]:
@@ -273,7 +273,7 @@ owners = [
     ("반복 실패 한도", r"4회 중 3회", {"instructions.md"}),
     ("고정 설명문은 글자 그대로", r"(대장|설명문)[^\n]{0,15}글자 그대로 (쓴다|옮긴다|복사|붙인다)", {"instructions.md"}),
     ("컷 카드 칸별 수정 권한", r"\[3\]~\[7\]", {"production-session/SKILL.md"}),
-    ("컷 목록: 컷 세션이 고치는 칸", r"상태 칸과 확정 job 칸|상태·확정 job 칸", {"production-session/SKILL.md"}),
+    ("컷 목록: 컷 세션이 고치는 칸", r"상태 칸과 확정 job 칸|상태·확정 job 칸", {"instructions.md"}),  # 실제8 C48: 항상 읽히는 routing §3으로 옮김
     ("확정 전 에셋 답은 초안 줄에", r"확정 전[^\n]{0,10}(답|에셋)", {"production-session/SKILL.md"}),
     ("범위 밖 문제는 총괄에 올린다", r"총괄에 올릴", {"production-session/SKILL.md", "production-session/handoff.md"}),
     ("Forbidden에 넣는 것", r"만 Forbidden에|Forbidden[^\n]{0,20}실제", {"video-prompt/SKILL.md"}),
@@ -370,8 +370,8 @@ check("[실행] project-files/settings.json: 검사기·조립 스크립트와 t
 check("[실행] README 설치에 settings.json 복사", "cp kit/project-files/settings.json .claude/settings.json" in read(os.path.join(ROOT, "README.md")))
 check("[실행] make_run.sh가 settings.json을 복사", '"$RUN/.claude/settings.json"' in read(os.path.join(ROOT, "tests", "agent-eval", "make_run.sh")))
 check("[실행] real_run.py --allowedTools 검사기", f'"--allowedTools", "Bash({ALLOW_CMD}:*)"' in read(os.path.join(ROOT, "tests", "agent-eval", "real_run.py")))
-check("[실행] image-prompt §6 명령이 허용 패턴과 같은 글자", f"`{ALLOW_CMD} --kind image" in img_skill)
-check("[실행] video-prompt §4 명령이 허용 패턴과 같은 글자", f"`{ALLOW_CMD} --kind video" in vskill)
+check("[실행] 지침 \"검사\" 이미지 명령이 허용 패턴과 같은 글자", f"`{ALLOW_CMD} --kind image tmp/파일" in inst_core)
+check("[실행] 지침 \"검사\" 영상 명령이 허용 패턴과 같은 글자", f"`{ALLOW_CMD} --kind video tmp/파일" in inst_core)
 check("[실행] 검사기: --refs ≥1인데 <<< 태그 0개면 WARN", "태그가 없다" in chk and os.path.exists(os.path.join(FIX, "image__fail__N12_refs_without_tags.txt")))
 check("[실행] 검사기: hand nearer/closer에 화면 쪽이 없으면 WARN", "화면 쪽이 없다" in chk and os.path.exists(os.path.join(FIX, "video__fail__N13_hand_without_screen_side.txt")))
 ctx_route = read(os.path.join(KIT, "context", "routing.md"))
@@ -510,11 +510,11 @@ check("[실제7] video 속도 줄: 예시에 고정 숫자 구간 없음([기존
 check("[실제7] video 속도 줄: 이미 4초 이상이면 앞당기기·길이 늘리기 제안", "4초 이상" in _speed and "시작을 앞당기거나 영상 길이를 늘리는 안을 제안값으로" in _speed)
 _v0 = [l for l in vskill.split("## 0.")[1].splitlines()[1:] if l.strip()][0]
 check("[실제7] video §0 맨 위 줄: 15블록 전문 턴에 CHARACTER_ACTING을 새로 쓰면 acting", "15블록 전문" in _v0 and "`CHARACTER_ACTING`" in _v0 and "`acting`을 연다" in _v0)
-_img_run = [l for l in img_skill.splitlines() if "check_prompt.py --kind image" in l][0]
-_vid_run = [l for l in vskill.splitlines() if "check_prompt.py --kind video" in l][0]
-check("[실제7] 검사 임시 파일: image-prompt §6 실행 줄에 tmp/ 저장·검사 뒤 지우기", "`tmp/`에 파일로 저장" in inst and "--kind image tmp/파일" in _img_run and "끝나면 `tmp/` 파일을 지운다" in inst)
-check("[실제7] 검사 절차 주인은 지침, 이미지·영상 SKILL은 가리키고 명령만", "지침 \"검사\"" in _vid_run and "--kind video tmp/파일" in _vid_run and "지운다" not in _vid_run and "단독 Bash" not in _vid_run)
-check("[실제7] 생성 운영 §1: 검사 절차는 image-prompt §6", "절차는 `image-prompt` §6" in gen.split("## 2.")[0])
+_img_run = [l for l in img_skill.splitlines() if "검사 스크립트를 돌렸는가" in l][0]
+_vid_run = [l for l in vskill.splitlines() if "검사 스크립트를 돌렸는가" in l][0]
+check("[실제7] 검사 임시 파일: image-prompt §6 실행 줄에 tmp/ 저장·검사 뒤 지우기", "`tmp/`에 파일로 저장" in inst and "--kind image tmp/파일" in inst_core and "끝나면 `tmp/` 파일을 지운다" in inst)
+check("[실제8] 검사 명령·절차는 지침에만, 이미지·영상 SKILL 검사 줄은 지침을 가리키고 --must-include 대상만", all("지침 \"검사\"" in r and "--must-include" in r and "check_prompt.py" not in r and "지운다" not in r and "단독 Bash" not in r for r in (_img_run, _vid_run)))
+check("[실제8] 생성 운영 §1: 검사 명령·절차는 지침 \"검사\"", "명령·절차는 지침 \"검사\"" in gen.split("## 2.")[0])
 check("[실제7] README 설치: tmp/를 .gitignore에", 'echo "tmp/" >> .gitignore' in read(os.path.join(ROOT, "README.md")).split("## 설치")[1].split("## ")[0])
 check("[실제7] must-ask: 이웃 OK 연기는 OK 대장 목록표의 'OK 이유' 칸", "이웃 컷 OK의 연기(OK 대장 목록표의 \"OK 이유\" 칸)" in ctx_ask)
 _okt = read(os.path.join(KIT, "project-files", "ok-cuts.md"))
@@ -523,6 +523,23 @@ check("[실제7] 생성 운영 §4 OK 기록: draft 표기 한 줄", "`draft 예
 check("[실제7] rerender: --refs는 <<<>>> 태그 수, 원본 영상 제외", "`<<<>>>` 태그 수" in sk("video-prompt/rerender.md") and "원본 영상은 세지 않는다" in sk("video-prompt/rerender.md"))
 check("[실제7] routing §3: 묻기만 하는 턴에는 cut-card.md를 열지 않음", "묻기만 하는 턴에는 열지 않는다" in ctx_route.split("## 3.")[1])
 check("[실제7] 검사기: 'no people'·'no other people'은 인물로 세지 않음(pass 예시 있음)", "no (?:other )?(?:people|persons?)" in chk and os.path.exists(os.path.join(FIX, "image__pass__S19_location_no_people_left_right.txt")))
+
+# 16e. 실제 Claude Code 시험 8회차(real8)에서 찾은 결함
+_r3 = ctx_route.split("## 3.")[1]
+check("[실제8] routing §3: 에셋 작업도 다른 컷 카드를 열지 않음(등장 컷은 컷 목록 줄로)", "에셋 작업도 같다" in _r3.splitlines()[2] and "컷 목록 줄로만" in _r3)
+check("[실제8] routing §3 컷 세션 정본: 컷 목록 내용 칸은 핸드오프 [5]로", "내용 칸은 핸드오프 [5]로" in _r3)
+check("[실제8] 지침 시작 3번: routing §1 표가 가리킬 때만 production-session", "3. `production-session`의 그 세션 \"시작할 때\"대로 가져온다(routing §1 표가 가리킬 때만" in inst_core)
+check("[실제8] routing §2 '50대처럼': 퍼스트 프레임이면 first-frame.md와 틀 2 둘 다", "`first-frame.md`와 이 틀 2 표 둘 다" in [l for l in ctx_route.splitlines() if l.startswith('| "50대처럼"')][0])
+check("[실제8] video 시작 이미지 없음 → first-frame.md", "(`image-prompt` → `first-frame.md`)" in [l for l in vskill.splitlines() if l.startswith("| 시작 이미지 |")][0])
+check("[실제8] prop.md: 원본 job 없으면 요소 ID로 프롬프트까지, job 미기재 알림", "원본 job이 대장에 없으면 묻지 않고 요소 ID" in prop and "job 미기재를 한 줄 알린다" in prop)
+check("[실제8] 에셋 대장 소품 표에 확정 job 열(틀·시험 작품)", all("| 요소 ID | 확정 job | 출처 |" in read(f) for f in [os.path.join(KIT, "project-files", "asset-registry.md"), os.path.join(ROOT, "tests", "agent-eval", "testbed", "project", "asset-registry.md")]))
+check("[실제8] location-edit: 층 순서와 계획의 한 단계에 층 하나", "바꾸는 순서도 이 목록 순서다" in sk("image-prompt/location-edit.md") and "계획의 한 단계에도 층은 하나만" in sk("image-prompt/location-edit.md"))
+_tbok = read(os.path.join(ROOT, "tests", "agent-eval", "testbed", "project", "ok-cuts.md"))
+check("[실제8] 시험 작품 OK 대장: 2-1 영상 draft 예·만료일(목록·카드)", "draft 예(2026-10-31)" in [l for l in _tbok.splitlines() if l.startswith("| 2-1 | 영상")][0] and "draft_job_id `job-v-2-1` · 만료일 2026-10-31" in _tbok)
+_media = os.path.join(ROOT, "tests", "agent-eval", "testbed", "media")
+check("[실제8] 시험 작품 media/: 2-1·3-1 시험 영상(각 100KB 이하), make_run.sh가 복사", all(os.path.exists(os.path.join(_media, f)) and os.path.getsize(os.path.join(_media, f)) <= 100_000 for f in ["2-1.mp4", "3-1.mp4"]) and '"$HERE/testbed/media" "$RUN/media"' in read(os.path.join(ROOT, "tests", "agent-eval", "make_run.sh")))
+_chains = json.load(open(os.path.join(ROOT, "tests", "agent-eval", "real-chains.json"), encoding="utf-8"))
+check("[실제8] 새 스킬 시나리오 C53~C56: scenarios.md와 real-chains.json", all(f"## {c} " in read(os.path.join(ROOT, "tests", "agent-eval", "scenarios.md")) and c in _chains for c in ["C53", "C54", "C55", "C56"]))
 
 # 16d. 새 스킬: assembly(러프컷·프레임), shot-design(장면 컷 설계)
 import shutil
