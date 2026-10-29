@@ -1,6 +1,6 @@
 # Must ask / must flag — always loaded
 
-> What each task asks is in that skill's "필요한 정보" table (video: `video-prompt` §0). This file holds only the rules those tables do not: what never to ask, and conflicts to flag before writing a prompt. How to ask: instructions rule 4.
+> What each task asks is in that skill's "Required information" table (video: the `video-prompt` §0 "Information needed" table). This file holds only the rules those tables do not: what never to ask, and conflicts to flag before writing a prompt. How to ask: instructions rule 4.
 
 ## All tasks
 

@@ -37,7 +37,7 @@ Do not require a start phrase or attachment.
 
 1. Read the canon. Missing or empty → new work (task 1).
 2. Decide from the first message, using `context/tasks.md` §1 (confirm the task before opening a skill). A cut number → cut session; assets, structure, several cuts → overall session; a result or job → review/fix. With a cut number, use the confirmed job on that `shot-list.md` row first (teammate's work: `get_project_asset_prompt`). Ask only when there is neither cut number nor job, and then open no cut files.
-3. Pull context as that session's "시작할 때" in `production-session` says (skip for new work).
+3. Pull context as that session's "On start" in `production-session` says (skip for new work).
 4. The three-line start report (판단, 읽은 것, 할 일) only for prompt, generation or canon work; skip it for information questions.
 
 ## Output

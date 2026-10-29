@@ -37,7 +37,7 @@ Do not require a start phrase or attachment.
 
 1. Read the canon. Missing or empty → new work (task 1).
 2. Decide from the first message, using `context/tasks.md` §1 (confirm the task before opening a skill). A cut number → cut session; assets, structure, several cuts → overall session; a result or job → review/fix. With a cut number, use the confirmed job on that `shot-list.md` row first (teammate's work: `get_project_asset_prompt`). Ask only when there is neither cut number nor job, and then open no cut files.
-3. Pull context as that session's "시작할 때" in `production-session` says (skip for new work).
+3. Pull context as that session's "On start" in `production-session` says (skip for new work).
 4. The three-line start report (판단, 읽은 것, 할 일) only for prompt, generation or canon work; skip it for information questions.
 
 ## Output
@@ -51,7 +51,7 @@ Do not require a start phrase or attachment.
 
 # Task list — always loaded
 
-The team has the same list in Korean (`guides/할일-목록.md`, same numbers). Use it to decide what the user wants and which skill to open.
+Same numbers as the team's Korean list `guides/할일-목록.md`.
 
 ## 1. Confirm the task before opening a skill
 
@@ -71,11 +71,11 @@ The team has the same list in Korean (`guides/할일-목록.md`, same numbers). 
 | 4 | 인물 시트 만들기 | "인물 시트" | `image-prompt` → `character.md` |
 | 5 | 인물 시트 고치기 (옷·머리·나이) | "옷을", "머리", "50대처럼" on the sheet itself | `image-prompt` → `character-edit.md` |
 | 6 | 장소 만들기 | "정류장 만들어", "방 만들어" | `image-prompt` → `location.md` |
-| 7 | 장소 새 시점 (반대 방향·더 가까이·확대) | "반대 방향", "뒤에서 본", "확대" | `image-prompt` → `location.md` + `location-view.md` |
+| 7 | 장소 새 시점 (반대 방향·더 가까이·확대) | "반대 방향", "뒤에서 본" (location only), "확대" | `image-prompt` → `location.md` + `location-view.md` |
 | 8 | 장소 고치기 (불·시간대·시대·물건 빼기) | "불 켜진", "밤으로", "1970년대로", "빼" | `image-prompt` → `location.md` + `location-edit.md` |
 | 9 | 소품 만들기·고치기 | "가방 만들어", "버스", "너무 새 거 같아" | `image-prompt` → `prop.md` |
 | 10 | 그림체 | "수채화", "그림체" | `image-prompt` → `style.md` |
-| 11 | 퍼스트·끝 프레임 | "퍼스트 프레임", "끝 프레임", "시작 이미지" | `image-prompt` → `first-frame.md` |
+| 11 | 퍼스트·끝 프레임 | "퍼스트 프레임", "끝 프레임", "시작 이미지", "3-4 뒤에서 본 첫 프레임", swapping a person in a frame | `image-prompt` → `first-frame.md` |
 | 12 | 이미지 결과 일부 고치기 | "여기만 고쳐" on an image result | `image-prompt` §3 + that kind's file |
 | 13 | 실사·인물 영상 | "3-2 영상", "걸어 나가는 영상" | `video-prompt` → `live-action.md`; open `acting` only on the turn that writes the prompt |
 | 14 | 배경 영상 | "배경 영상", landscape | `video-prompt` → `background.md` |
@@ -83,7 +83,7 @@ The team has the same list in Korean (`guides/할일-목록.md`, same numbers). 
 | 16 | 다른 OK처럼 | "3-1처럼", "2-1 표정 그대로" | `production-session` → `ok-reuse.md` + that one OK card, with task 11/13/14 |
 | 17 | 고해상도 | "1080p", "2k" | `video-prompt` → `rerender.md` |
 | 18 | 생성 보내기 | "이미지로 만들어", "영상으로 만들어", "보내" (prompt already shown) | `higgsfield-generation` |
-| 19 | 결과 확인·OK·거절 | "됐어", "OK", "거절", "보류" | `higgsfield-generation` |
+| 19 | 결과 확인·OK·거절 | "됐어", "OK", "거절", "보류" | `higgsfield-generation` (+ `qa-metrics.md` for numeric analysis) |
 | 20 | 크레딧·폴더 | "크레딧", "폴더 만들어" | `higgsfield-generation` (open its §2 folder part only on the turn that creates folders) |
 | 21 | 마지막 프레임·러프컷 (Claude Code) | "마지막 프레임", "이어 붙여", "러프컷" | `assembly` |
 | 22 | 색 맞추기 (Claude Code) | "색 맞춰", "톤 통일", "더 노래" | `color-continuity` |
@@ -91,15 +91,15 @@ The team has the same list in Korean (`guides/할일-목록.md`, same numbers). 
 
 ## 3. What not to open
 
-- **Never open another cut's card or handoff**, not even with `head`/`grep` to see the format. Card format comes only from `cut-card.md`. A cut session opens only its own cut's handoff. Do not open the full script, old logs, or files not in this table: old sentences leak into prompts.
+- **Never open another cut's card or handoff**, not even with `head`/`grep` to see the format. Card format comes only from `cut-card.md`. A cut session opens only its own cut's handoff. Do not open the full script, old logs, or files not in this table (old sentences leak into prompts).
 - Open the SKILL.md first, then only the stage file(s) on that task's row.
 - Video request without a start image: open `video-prompt` SKILL.md (§0, §2) and `first-frame.md` only; no `live-action.md`, no `cut-card.md`, no card written this turn.
-- A cut session reads: its own card, its own and neighbouring rows of `shot-list.md`, its own continuity row, one reference OK card, its last handoff. Neighbour cuts' acting comes only from the `OK 이유` column of the `ok-cuts.md` list. Do not open neighbour OK cards unless one is the reference (exception: character position in `first-frame.md`).
+- A cut session reads: its own card, its own and neighbouring rows of `shot-list.md`, its own continuity row, one reference OK card (an OK card is a section inside `ok-cuts.md`), its last handoff. In `shot-list.md` it edits only its own row's status and confirmed-job fields; content changes go through handoff [5]. Neighbour cuts' acting comes only from the `OK 이유` column of the `ok-cuts.md` list. Do not open neighbour OK cards unless one is the reference (exception: character position in `first-frame.md`).
 - On question-only turns do not open `cut-card.md` and do not create card files.
 
 # Must ask / must flag — always loaded
 
-> What each task asks is in that skill's "필요한 정보" table (video: `video-prompt` §0). This file holds only the rules those tables do not: what never to ask, and conflicts to flag before writing a prompt. How to ask: instructions rule 4.
+> What each task asks is in that skill's "Required information" table (video: the `video-prompt` §0 "Information needed" table). This file holds only the rules those tables do not: what never to ask, and conflicts to flag before writing a prompt. How to ask: instructions rule 4.
 
 ## All tasks
 
