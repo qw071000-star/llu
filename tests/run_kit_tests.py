@@ -422,7 +422,7 @@ check("[실행2] 지침 6번: 옆모습도 화면 쪽 + 물건, nearer the camer
 check("[실행2] live-action 맨 위: 질문 턴에는 acting을 열지 않음", "질문 턴에는 `acting`을 열지 않는다" in live.split("## 블록")[0])
 check("[실행2] 생성 운영 §6: 비용 메모가 비면 get_cost 없이 채우지 않음", "비용 메모가 비어 있으면 단가가 없다" in gen.split("## 6.")[1])
 check("[실행2] routing: OK 재표시는 생성용 영어 원문 그대로", "생성용은 영어 원문 그대로" in ctx_route)
-check("[실행2] routing: 속도·별·걸음은 §2, fixes.md는 그 밖", "속도·별·걸음 같은 말은 아래 §2" in ctx_route)
+check("[실행2] routing: 속도·별·걸음은 §2, fixes.md는 그 밖", "속도·별·걸음 같은 말은 아래 §2, 그 밖은 `fixes.md`" in ctx_route)
 check("[실행2] routing: 시트 고치기에 character.md는 안 엶", "`character-edit.md` (`character.md`는 열지 않는다)" in ctx_route)
 check("[실행2] location.md 틀 아래: 블록 밖 줄은 지침 출력대로(모드 신규)", "블록 밖 줄은 지침 \"출력\"대로" in sk("image-prompt/location.md") and "`모드: 신규`" in sk("image-prompt/location.md"))
 check("[실행2] 생성 운영 §2: 폴더 묻는 문장은 must-ask 한 곳", "제가 만들까요" not in gen and "제가 만들까요" in ctx_ask)
@@ -636,6 +636,9 @@ check("[실제9] video §0 동작 여럿: 나가기는 끝 프레임 상태", "�
 check("[실제9] prop.md: 글자 읽히지 않게, 시트 없으면 대장 초안 안 씀, 못 본 배경은 existing background", "행선지가 읽히지 않게" in prop and "에셋 대장 초안 줄(지침 4번)을 쓰지 않는다" in prop and "the existing background" in prop)
 check("[실제9] location-edit: 중간 단계는 원 시대 이름을 되풀이하지 않음", "원 시대 이름을 되풀이하지 않는다" in sk("image-prompt/location-edit.md"))
 check("[실제9] first-frame: 같은 카메라 그림체 변경은 LOCKED EDIT", "그림체·질감만 바꾸면 `LOCKED EDIT`" in sk("image-prompt/first-frame.md"))
+
+check("[실제9] must-ask: 없는 컷 번호는 내용만, 작업 여럿은 순서 제안 후 첫 것만", "컷 번호가 컷 목록에 없을 때" in _must and "순서를 제안하고 첫 것만 묻는다" in _must)
+check("[실제9] higgsfield: 보낼 때 컷 목록 생성/크레딧 칸도 올림", "컷 목록 생성/크레딧 칸" in gen)
 
 # 17. 읽기 지도: 지침의 표에 있는 파일만, 그리고 작업마다 읽는 양
 always = len(inst) + sum(len(frontmatter(read(os.path.join(SKILLS, d, "SKILL.md")))["description"]) for d in skill_dirs)
