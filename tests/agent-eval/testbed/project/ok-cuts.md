@@ -233,7 +233,7 @@ REFERENCE AUTHORITY:
 - <<<prop_doctor_bag_v1>>>: shape, material and state only; size as described below
 DO NOT TRANSFER: the character sheet's backdrop, studio lighting, pose or framing.
 PRIORITY: the CAMERA block overrides every reference.
-BLOCKING: the old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, mid-stroke with the hand nearer the tree on the leather; his eyes on the empty road on the tree side, the face calm and heavy-lidded.
+BLOCKING: the old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, mid-stroke with the screen-left hand, nearer the tree, on the leather; his eyes on the empty road on the tree side, the face calm and heavy-lidded.
 WARDROBE: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes.
 PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull. It lies across his thighs, clasp closed.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
@@ -257,7 +257,7 @@ Edit <<<loc_busstop_road_v1>>> WITHOUT reframing: camera position, camera height
 FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
 CHANGE — ADD THE TWO PEOPLE AND THE BAG at existing anchors:
 - The old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, his eyes on the empty road on the tree side.
-- The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the hand nearer the sign tracing the printed times.
+- The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the screen-right hand, nearer the sign, tracing the printed times.
 - The bag lies across the man's thighs, clasp closed, about the width of his lap.
 REFERENCE AUTHORITY:
 - <<<loc_busstop_road_v1>>> is the exact same photograph. It controls the place, the camera, the light and every object already in it.
@@ -305,7 +305,7 @@ The persimmon tree is at screen LEFT. GRANDPA stays on the bench. GIRL stays bet
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]
 (Scope: FIRST_FRAME only.)
 - GRANDPA: seated on the tree-side half of the bench, back against the wall, both hands on the bag on his lap, eyes on the empty road on the tree side.
-- GIRL: standing at the sign, facing it, mid-reading, the hand nearer the sign tracing the printed times.
+- GIRL: standing at the sign, facing it, mid-reading, the screen-right hand, nearer the sign, tracing the printed times.
 - BAG: across GRANDPA's thighs, clasp closed, his hands on top.
 Exactly 2 people are visible.
 
@@ -320,7 +320,7 @@ Diagonal field of view about 63°. The tree, the whole shelter and the sign are 
 Fixed on a tripod at standing eye level on the far side of the road, at the same position as in the start image, completely locked from 0:00 to 0:08. No pan, no tilt, no zoom, no push-in, no reframing.
 
 [ACTION_TIMING]
-0:00–0:03 — GIRL keeps reading, the hand nearer the sign sliding down the times; GRANDPA sits still, eyes on the road.
+0:00–0:03 — GIRL keeps reading, the screen-right hand, nearer the sign, sliding down the times; GRANDPA sits still, eyes on the road.
 0:03–0:05 — GIRL turns toward the bench, eyes first, then head, then shoulders, about 1.5 s, and says the line in AUDIO once.
 0:05–0:08 — GRANDPA lowers his eyes to the bag and his thumb rests on the brass clasp; GIRL takes one small step toward the bench and stops. The shot ends with GIRL facing the bench and GRANDPA looking down at the bag.
 
@@ -380,7 +380,7 @@ DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framin
 PRIORITY: the CAMERA block overrides every reference.
 BLOCKING:
 - The old man sits on the persimmon-tree half of the bench, his back against the shelter wall, both hands resting on the bag on his lap, his eyes on the empty road on the tree side.
-- The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the hand nearer the sign tracing the printed times.
+- The girl stands at the timetable sign, an arm's length from its pole, facing the sign, mid-reading, the screen-right hand, nearer the sign, tracing the printed times.
 WARDROBE: The old man: A faded olive work jacket over a cream knit vest and a white collared shirt, dark grey wool trousers, scuffed brown leather shoes. The girl: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
 PROP: A worn brown leather doctor's bag with a brass clasp, about 40 cm wide, its soft sides scuffed and its corners worn dull. It lies across the man's thighs, clasp closed.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
@@ -407,7 +407,7 @@ REFERENCE AUTHORITY:
 - <<<char_girl_raincoat_v1>>>: face, hair, wardrobe only — Same face, same bone structure, same hair, same wardrobe. Change only the pose, framing, location and lighting.
 DO NOT TRANSFER: the character sheet's backdrop, studio lighting, pose or framing.
 PRIORITY: the CAMERA block overrides every reference.
-BLOCKING: the girl stands at the timetable sign, an arm's length from its pole, facing the sign in three-quarter back view, mid-reading, the hand nearer the sign raised to the printed times.
+BLOCKING: the girl stands at the timetable sign, an arm's length from its pole, facing the sign in three-quarter back view, mid-reading, the screen-right hand, nearer the sign, raised to the printed times.
 WARDROBE: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
 Nothing else: no other people, no legible text, nothing more recent than the early 1990s.
 Low dusk sun from screen left, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off. The persimmon tree is at screen LEFT.

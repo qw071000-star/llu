@@ -14,7 +14,7 @@
 
 ## 규칙
 
-- **변경은 한 가지.** 떼면 성립하지 않는 두 변경(켠 화면과 그 화면빛)만 `two changes`와 CHANGE 블록 둘로 쓴다. 시간대(해 지우기·하늘)와 광원 켜기는 뗄 수 있으니 두 생성으로 나눈다.
+- **변경은 한 가지.** 떼면 성립하지 않는 두 변경(켠 화면과 그 화면빛)만 `two changes`와 CHANGE 블록 둘로 쓴다. 시간대(해 지우기·하늘)와 광원 켜기는 뗄 수 있으니 두 생성으로 나눈다. 나누면 1단계 결과는 아직 요청한 상태(예: 밤)가 아니라고 한 줄 알린다.
 - **방향을 바꾸면 위치를 잠그고, 상태를 바꾸면 형태와 방향을 잠근다.**
 - **대상은 위치까지 묶어 하나로 식별한다:** `the nearest [object]`, `the [object] on the RIGHT`(화면 기준).
 - **장소를 다시 묘사하지 않는다.** 모호한 대상을 넓히지 않는다.
@@ -47,10 +47,10 @@ REMOVE  Remove [object] from [location]. Continue [revealed surface] naturally t
 
 시대는 `1960s style` 한 줄이 아니라 층의 묶음이다. 원래 요소마다 목표 시대 대응물을 지정하고, 새 건축 볼륨을 만들지 않는다. 한 층을 바꿔 확정하고 그 확정본을 다음 층의 부모로 쓴다.
 
-층: `IDENTITY AND TEXT`(간판·표지판의 글자 정책) · `STRUCTURAL SURFACES`(벽·바닥·지붕·도로 포장) · `DOORS, WINDOWS AND FRAMES` · `FURNITURE / VEHICLES / FIXTURES`(벤치·표지판 기둥·가로등·차) · `LIGHTING` · `IMAGE CHARACTER`(grain, sharpness, contrast, exposure). 한 요소는 한 층에만 넣는다. `ONLY CHANGE`에는 그 층 이름을 쓴다.
+층: `IDENTITY AND TEXT`(간판·표지판의 판과 글자 정책) · `STRUCTURAL SURFACES`(벽·바닥·지붕·도로 포장) · `DOORS, WINDOWS AND FRAMES` · `FURNITURE / VEHICLES / FIXTURES`(벤치·표지판 기둥·가로등·차) · `LIGHTING` · `IMAGE CHARACTER`(grain, sharpness, contrast, exposure). 한 요소는 한 층에만 넣는다(표지판 판은 `IDENTITY AND TEXT`, 그 기둥은 `FIXTURES`). `ONLY CHANGE`에는 그 층 이름을 쓴다.
 
 ```text
-[LOCKED EDIT opening — SKILL.md §1]
+Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.
 The [SOURCE IDENTITY AND ERA] is turning into [TARGET IDENTITY AND ERA]; this step changes only its [LAYER].
 CHANGE — [LAYER]:
 [Source element] becomes [its target-era counterpart], in the same position and at the same scale.

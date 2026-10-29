@@ -22,7 +22,7 @@ kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공�
     image-prompt/          공통 + character / location(+ location-view, location-edit) / prop / style / first-frame
     video-prompt/          공통 + live-action / background / fixes / rerender
     acting/                인물 연기
-  project-files/           작품마다 복사해 채우는 정본 틀 + Claude Code용 CLAUDE.md
+  project-files/           작품마다 복사해 채우는 정본 틀 + Claude Code용 CLAUDE.md·settings.json
   dist/*.zip               Claude 앱에 올리는 스킬 묶음 (pack-skills.sh로 다시 만든다)
   dist/project-instructions.md  Claude 앱 지침 칸에 붙일 한 파일(지침 + context 둘)
 reference/                 [컨텍스트에 넣지 않음] 사람이 근거를 볼 때만
@@ -50,6 +50,7 @@ cp kit/instructions.md .claude/instructions.md
 cp -r kit/context .claude/context
 cp -r kit/skills .claude/skills
 cp kit/project-files/CLAUDE.md CLAUDE.md
+cp kit/project-files/settings.json .claude/settings.json   # 검사기(check_prompt.py) 실행 허용
 cp kit/project-files/{decisions,asset-registry,shot-list,ok-cuts}.md project/
 ```
 

@@ -19,7 +19,7 @@ The persimmon tree is at screen LEFT. GRANDPA stays on the bench. GIRL stays bet
 [FIRST_FRAME_AND_SPATIAL_BLOCKING]
 (Scope: FIRST_FRAME only.)
 - GRANDPA: seated on the tree-side half of the bench, back against the wall, both hands on the bag on his lap, eyes on the empty road on the tree side.
-- GIRL: standing at the sign, facing it, mid-reading, the hand nearer the sign tracing the printed times.
+- GIRL: standing at the sign, facing it, mid-reading, the screen-right hand, nearer the sign, tracing the printed times.
 - BAG: across GRANDPA's thighs, clasp closed, his hands on top.
 Exactly 2 people are visible.
 

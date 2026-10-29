@@ -19,7 +19,8 @@ SIM = ("이 환경에는 Higgsfield MCP가 연결되어 있지 않다(시험 환
 session = None
 for n, msg in enumerate(spec["turns"], 1):
     cmd = ["claude", "-p", msg, "--model", spec.get("model", "sonnet"), "--output-format", "stream-json", "--verbose",
-           "--permission-mode", "acceptEdits", "--disallowedTools", "mcp__*", "--append-system-prompt", SIM]
+           "--permission-mode", "acceptEdits", "--disallowedTools", "mcp__*",
+           "--allowedTools", "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)", "--append-system-prompt", SIM]
     if session: cmd += ["--resume", session]
     r = subprocess.run(cmd, cwd=run, capture_output=True, text=True, timeout=900)
     skills, reads, tools, final = [], [], [], ""

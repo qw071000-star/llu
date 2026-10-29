@@ -1,0 +1,11 @@
+# args: --refs 1
+# expect: 태그가 없다
+Edit loc_busstop_road_v1 WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.
+The rural bus stop of the early 1990s is turning into a rural bus stop of the 2020s; this step changes only its FURNITURE / FIXTURES.
+CHANGE — FURNITURE / FIXTURES:
+The wooden bench becomes a slatted aluminium bench, in the same position and at the same scale.
+REMOVE: the old wooden bench.
+PRESERVE EXACTLY:
+- Camera, framing, perspective and composition
+- Every building volume and opening position
+ONLY CHANGE: FURNITURE / FIXTURES. Everything else remains identical.

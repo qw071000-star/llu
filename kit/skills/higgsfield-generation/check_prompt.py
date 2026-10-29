@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """생성 전에 프롬프트를 기계적으로 검사한다. 반복해서 났던 실수를 규칙으로 옮긴 것이다.
 
-사용법:
-  python3 check_prompt.py --kind video prompt.txt [--refs 3] [--seconds 8] [--must-include fixed.txt]
-  python3 check_prompt.py --kind image prompt.txt [--refs 2] [--must-include fixed.txt]
+사용법 (작품 리포 루트에서. .claude/settings.json의 허용 패턴과 같은 글자로 부른다):
+  python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video prompt.txt [--refs 3] [--seconds 8] [--must-include fixed.txt]
+  python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image prompt.txt [--refs 2] [--must-include fixed.txt]
 
---refs          실제로 붙일 참조 요소 수. 프롬프트 속 <<<...>>> 태그 수와 비교한다.
+--refs          실제로 붙일 참조 요소 수. 프롬프트 속 <<<...>>> 태그 수와 비교한다(1 이상인데 태그가 없으면 WARN).
 --seconds       영상 길이(초). 없으면 프롬프트의 "NN seconds"에서 읽는다.
 --must-include  한 줄에 하나씩, 프롬프트에 글자 그대로 들어가야 할 고정 문장(에셋 대장 문장).
 
@@ -47,6 +47,11 @@ def check_common(text, args, out):
 
     if find(r"(?<!screen-)(?<!screen )\b(?:left|right) hand\b|\b(?:his|her|their) (?:own )?(?:left|right)\b|(?<!화면 )(?<!화면 왼쪽 )(?:오른손|왼손)", text):
         out.append(("WARN", "인물 기준 좌우(오른손, his left)는 뒤집혀 읽힌다. 화면 기준 + 화면 속 물건으로 쓴다: 'the screen-left hand, nearer the …'"))
+    for m in re.finditer(r"\bhand,? (?:nearer|closer)\b", text, re.IGNORECASE):
+        before = re.split(r"[.;\n]", text[max(0, m.start() - 40):m.start()])[-1]
+        if not re.search(r"screen[- ](?:left|right)", before, re.IGNORECASE):
+            out.append(("WARN", f"'{text[max(0, m.start() - 4):m.end() + 12].strip()}'에 화면 쪽이 없다. 'the screen-left hand, nearer the …'처럼 화면 쪽 + 물건으로 쓴다"))
+            break
     if find(r"\b(?:north|south|east|west)(?:ern|ward)?\b(?! Korea)|동쪽|서쪽|남쪽|북쪽", text, 0):
         out.append(("WARN", "동서남북을 썼다. 방향은 화면 기준 + 그쪽 물건으로 쓴다: 'from screen left, the [object] side'"))
     if find(r"\b(?:LEFT|RIGHT|left|right)\b(?![- ](?:PANEL|panel|-to-))", re.sub(r"left-to-right", "", text, flags=re.I), 0) and "SCREEN direction" not in text and find(r"\b(?:person|man|woman|girl|boy|people|character)\b|\[PERSON\]", text):
@@ -60,6 +65,8 @@ def check_common(text, args, out):
         out.append(("FAIL", f"자리표시 태그가 남았다: {', '.join(holders)}. 실제 요소 이름이나 image_N으로 바꾼다"))
     if not tags:
         tags = set(re.findall(r"\breference image (\d+)\b", text, re.IGNORECASE))
+    if args.refs and not tags:
+        out.append(("WARN", f"붙일 참조 {args.refs}개인데 프롬프트에 <<<…>>> 태그가 없다. 여는 문장부터 <<<image_1>>>처럼 태그로 부른다"))
     if args.refs is not None and tags and len(tags) != args.refs:
         out.append(("FAIL", f"프롬프트 속 참조 태그 {len(tags)}개, 붙일 참조 {args.refs}개. 정확히 맞춘다"))
 
