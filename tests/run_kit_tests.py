@@ -808,6 +808,12 @@ with tempfile.TemporaryDirectory() as _d:
     with open(os.path.join(_d, ".gitignore"), encoding="utf-8") as f: _gi = f.read().split()
     check("[설치] .gitignore에 tmp/·media/ 한 번씩", _gi.count("tmp/") == 1 and _gi.count("media/") == 1, str(_gi))
 
+# 붙여넣기 파일: 설치 가이드의 프롬프트와 글자 그대로 같은가, 파일이 다 있는가
+_paste = os.path.join(ROOT, "붙여넣기")
+_blocks = re.findall(r"```text\n(.*?)```", read(os.path.join(ROOT, "guides", "설치-프롬프트.md")), re.S)
+check("[붙여넣기] 설치 프롬프트 두 개가 가이드와 같음", len(_blocks) == 2 and read(os.path.join(_paste, "1-설치-ClaudeCode.txt")) == _blocks[0] and read(os.path.join(_paste, "2-설치확인-Claude앱.txt")) == _blocks[1])
+check("[붙여넣기] 세션 프롬프트 파일 5개", all(os.path.exists(os.path.join(_paste, f)) for f in ("3-총괄-시작.txt", "4-씬-시작.txt", "5-컷-시작.txt", "6-컷-끝내기.txt", "7-총괄-핸드오프반영.txt")))
+
 # 결과
 print(f"추정 토큰: 항상 읽힘 {always:,.0f} (예산 {ALWAYS_BUDGET:,}) · instructions.md {tok(inst_core):,.0f} (예산 {INST_BUDGET:,}) · "
       f"단계 최대 {max(_route_tok.values()):,.0f} '{max(_route_tok, key=_route_tok.get)}' (예산 {BUDGET:,})")

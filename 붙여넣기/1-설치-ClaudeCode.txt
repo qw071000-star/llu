@@ -1,0 +1,11 @@
+Install (or update) the Higgsfield Cinematic Kit (AI image/video production with Claude) into this folder. Answer me in Korean.
+
+Kit source: https://github.com/qw071000-star/lucian-Claude-Higgsfield-Cinematic-kit · branch: main
+
+1. Get the kit outside this folder: if the source is a URL, shallow-clone that branch to ~/.cache/higgsfield-cinematic-kit (if that folder exists, check out that branch there and git pull). If <kit>/kit/install.sh is missing, stop and tell me the branch has no kit. If the source is a local path, use it as is. If cloning fails (no network or no access), stop and tell me in one line to get access or give a local path.
+2. Before changing anything, look at this folder (CLAUDE.md, .claude/, project/) and show me one short list: what will be added, what will be replaced (.claude/instructions.md, .claude/context/, .claude/skills/, .claude/settings.json) and what will be kept (project/ canon, CLAUDE.md, the filled "This project" section). In the same message ask for the three "This project" fields (skip any already filled): 작품명, Higgsfield project (이름과 ID), 정본 위치 (proposal: repo `project/`); "몰라" leaves a field empty. End with "설치할까요?" and wait.
+3. After I agree, run in one Bash call: bash <kit>/kit/install.sh . plus --title "<작품명>", --higgsfield "<이름> (<ID>)", --canon "<정본 위치>" only for the fields I answered (the script fills them; do not edit .claude/ files yourself).
+4. Show the script's result lines as they are. If any line starts with "확인", explain it in one line; if "채움" lists empty fields, say they can be filled later in .claude/instructions.md.
+5. Finish with these steps for me, one line each: connect the Higgsfield MCP in Claude Code if it is not connected; close and reopen claude in this folder and approve "trust this folder"; first message "새 작품 시작할게." (empty canon) or "총괄 세션이야. 오늘 뭐 하면 돼?"; for per-scene and per-cut sessions see guides/세션-시작.md in the kit.
+
+Never generate images or videos. Do not change files outside this folder except the kit cache. Do not commit or push.
