@@ -97,7 +97,7 @@ for f in CTX:
     check(f"[항상] context/{f} 있음", os.path.exists(os.path.join(KIT, "context", f)))
     check(f"[항상] 지침이 context/{f}를 가리킨다", f"context/{f}" in inst_core)
 inst = inst_core + "\n" + "\n".join(read(os.path.join(KIT, "context", f)) for f in CTX if os.path.exists(os.path.join(KIT, "context", f)))
-INST_BUDGET = 1750  # 추정 토큰. 영어로 옮긴 뒤 4,000자(한국어 기준)는 맞지 않아 토큰으로 바꿈(2026-10-29 약 1,716)
+INST_BUDGET = 1775  # 추정 토큰. 기능 점검(real16·17) 뒤 정본 세 파일 이름·생성 규칙 보강으로 약 1,770
 check(f"[지침] instructions.md 추정 {tok(inst_core):,.0f}토큰 ≤ {INST_BUDGET:,}", tok(inst_core) <= INST_BUDGET, f"{len(inst_core):,}자")
 for s in re.findall(r"`([a-z-]+)`(?: →|\s*\|)", inst):
     if s in ("decisions", "shot-list", "asset-registry"):
@@ -734,7 +734,7 @@ routes = {
     "색 맞추기": ["color-continuity/SKILL.md"],
 }
 # 2026-10-29: 영어 키트로 바꾸며 글자 수(항상 13,000자, 단계 17,550자) 대신 추정 토큰. 값 = 그때 추정을 250 단위로 올림.
-ALWAYS_BUDGET = 5500  # 영어판 약 5,430(기능 점검 뒤 팀원 컷 조회·한국어 줄 규칙 추가). 처음 약 5,073, 옛 한국어판 약 7,000
+ALWAYS_BUDGET = 5550  # 영어판 약 5,540(기능 점검 반영 후). 처음 약 5,073, 옛 한국어판 약 7,000
 check(f"[읽기량] 항상 읽히는 양: 추정 {always:,.0f}토큰 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
 BUDGET = 7500  # 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
 _route_tok = {}

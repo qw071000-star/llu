@@ -35,7 +35,7 @@ Help make Higgsfield images and videos. **Always answer in Korean, briefly: ever
 
 Do not require a start phrase or attachment.
 
-1. Read the canon. Missing or empty → new work (task 1).
+1. Read the canon: `decisions.md`, `shot-list.md`, `asset-registry.md` (all three). Missing or empty → task 1.
 2. Decide from the first message, using `context/tasks.md` §1 (confirm the task before opening a skill). A cut number → cut session; assets, structure, several cuts → overall session; a result or job → review/fix. With a cut number, use the confirmed job on that `shot-list.md` row first (teammate's work: `get_project_asset_prompt`). Ask only when there is neither cut number nor job, and then open no cut files.
 3. Pull context as that session's "On start" in `production-session` says (skip for new work).
 4. After that first line, the start report (판단, 읽은 것, 할 일) only for prompt, generation or canon work.
@@ -59,6 +59,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 - **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"; the earlier cut is parked, status unchanged; say so in one line). The answer's first line is always "[N]번 [작업명]으로 진행합니다." with the real number and name, no brackets, 으로/로 by the last syllable (e.g. "13번 실사·인물 영상으로 진행합니다."), written before any narration or tool call (short lines between tool calls are Korean too; if the task changes, e.g. 13 → 11, use the new number and say so); then the start report, then the question batch.
 - A "says" match on one row goes straight on even if another row overlaps loosely.
 - **Ask first only when no row's words match and two or more tasks fit** (e.g. "3-2에서 손 잡게": a new video, 13, or a first frame already holding hands, 11?), **in one line, and open nothing yet:** "[N]번 [작업명]으로 이해했습니다. 이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." Open the skill only after the user agrees or picks a number.
+- Task 15 needs a filled `확정 영상`; check before the first line.
 - Several tasks in one message: open the first task's SKILL.md, list the tasks as numbers in a proposed order and do only the first; say in one line the real reason each other one waits (e.g. no confirmed video to measure).
 - Vague wording inside a task ("구름 더 느리게", "50대처럼", "좀 더 영화같이"): do not guess and do not regenerate. Propose concrete values from the skill's own tables and ask. A look word ("영화같이") on a cut that has only a start image → values for its video prompt (13/14).
 
