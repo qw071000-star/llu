@@ -1,0 +1,53 @@
+# args: --refs 2 --seconds 8
+# expect: 화면 쪽이 없다
+[SCENE_CONTEXT]
+Early 1990s. A rural bus stop at dusk. The girl reads the timetable sign, then turns toward the bench.
+
+[ACTIVE_REFERENCES]
+<<<ff_3-3_v1>>> START IMAGE: the exact frame at 0:00.
+<<<char_girl_v1>>> The girl (about ten). Face, hair, body type and wardrobe 100% match this reference.
+
+[LOCATION_MAP]
+LEFT and RIGHT are SCREEN directions, never the character's own left or right. Places are named by the objects on screen.
+The timetable sign stands at screen right; the bench is at screen left.
+
+[FIRST_FRAME_AND_SPATIAL_BLOCKING]
+- The girl: beside the sign pole, mid-reading, the hand nearer the sign pole resting on it.
+Exactly one person is visible.
+
+[FORMAT_MODE]
+Live action. A single continuous take from 0:00 to 0:08. No cuts. 8 seconds.
+
+[OPTICS]
+Diagonal field of view about 47°.
+
+[CAMERA]
+Fixed and completely locked from 0:00 to 0:08.
+
+[ACTION_TIMING]
+0:00–0:04 — she reads the sign.
+0:04–0:08 — she turns toward the bench. The shot ends with her facing the bench.
+
+[CHARACTER_ACTING]
+The girl: checks the time once more, then gives up. Her eyes move along the lines of the sign, then drop. Between a calm glance and a sigh; a frozen stare = failed take, a dramatic sigh = failed take.
+
+[PHYSICS]
+motion_owner = CHARACTER: the girl turns.
+
+[LIGHTING]
+Dusk light from screen right, the sign side.
+
+[AUDIO]
+No dialogue. Only faint wind. No music.
+
+[STYLE]
+Natural film look.
+
+[QUALITY]
+No distortion of faces or fingers.
+
+[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
+Required:
+- Exactly one person (ENTIRE_SHOT)
+Forbidden:
+- Subtitles, text, watermarks, logos. (ENTIRE_SHOT)

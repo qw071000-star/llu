@@ -1,0 +1,17 @@
+# args: --refs 2
+# expect: 화면 쪽이 없다
+# expect: road-side hand
+Edit <<<image_1>>> WITHOUT reframing: camera position, camera height, angle, lens, framing, horizon line and perspective are LOCKED — zero reframing, zero recentering, zero zoom — this is the same photograph with one change only.
+FIRST FRAME of a film shot — the exact state at 0:00 of the video. LEFT and RIGHT are SCREEN directions, never the character's own left or right.
+CHANGE — ADD THE PERSON at an existing anchor:
+- The girl stands in profile at the hand-lettered timetable sign at screen RIGHT, an arm's length from its pole, mid-reading, the empty road-side hand hanging loose, the hand toward the sign tracing the printed times; both hands are bare.
+REFERENCE AUTHORITY:
+- <<<image_1>>> is the exact same photograph. It controls the place, the camera, the light and every object already in it.
+- <<<char_girl_raincoat_v1>>> controls only the girl's face, hair and wardrobe. Same face, same bone structure, same hair, same wardrobe.
+DO NOT TRANSFER: the character sheets' backdrop, studio lighting, pose or framing.
+WARDROBE: The girl: A yellow raincoat over a navy school uniform, white knee socks and red rain boots.
+PRESERVE EXACTLY:
+- Camera position, height, angle, lens, framing, horizon line, vanishing point and perspective
+- Low dusk sun from screen left, the persimmon-tree side, is the only key. The persimmon tree is at screen LEFT.
+- Shadows, exposure, colour grade, contrast and grain
+ONLY CHANGE: the girl is added exactly as described. Everything else remains 100% identical. Exactly 1 person is visible.

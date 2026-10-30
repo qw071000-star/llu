@@ -1,0 +1,59 @@
+# args: --seconds 6
+# expect: failed take
+[SCENE_CONTEXT]
+Present day. A fish stall in a covered Korean traditional market, mid-morning. The woman stands behind her stall waiting for her son, who has not yet arrived. At the end of the clip he comes into view and their eyes meet.
+
+[ACTIVE_REFERENCES]
+<<<char_woman_vendor_v1>>> THE VENDOR (early sixties). A plum quilted vest worn open over a worn grey cardigan, a dark blue rubber apron with a chest bib, black fabric sleeve covers, black rubber boots. Face, hair, body type and wardrobe 100% match this reference.
+REFERENCE AUTHORITY: the character reference has authority only over face, hair, body and clothes. Do not take the background, lighting, pose or panel layout from the character reference.
+
+[LOCATION_MAP]
+LEFT and RIGHT are SCREEN directions, never the character's own left or right. Places are named by the objects on screen.
+LEFT EDGE: the stack of blue ice boxes. CENTRE: the stall table with the fish on ice, the woman behind it. RIGHT: the market aisle. FOREGROUND: the table edge.
+
+[FIRST_FRAME_AND_SPATIAL_BLOCKING]
+(Scope: FIRST_FRAME only.)
+- THE VENDOR: behind the stall table at the centre, mid-task, wiping her hands on her apron, body facing the aisle at the right of frame, gaze on the aisle.
+Exactly 1 people are visible.
+
+[FORMAT_MODE]
+Live action. A single continuous take from 0:00 to 0:06. No cuts. 6 seconds.
+All movement is slow and even; nothing accelerates suddenly.
+
+[OPTICS]
+Diagonal field of view about 47°. The woman fills the centre third of the frame / the stall table is fully visible / straight lines stay straight. Moderate depth of field.
+
+[CAMERA]
+Eye level, in front of the stall table, looking along the aisle at the woman. Fixed and completely locked from 0:00 to 0:06. No pan, no tilt, no zoom, no push-in, no reframing.
+
+[ACTION_TIMING]
+0:00–0:02 — She wipes her hands on the apron and looks along the aisle toward the right.
+0:02–0:04 — She stops wiping; the hands rest on the apron. Her gaze holds on a point down the aisle.
+0:04–0:06 — Her gaze meets someone off-screen at the right and stays on them. The shot ends with her looking at him, hands still.
+
+[CHARACTER_ACTING]
+THE VENDOR: wants to see her son before he sees that she has been waiting.  Her stop does not startle; she simply stops. Nobody looks at the camera.
+
+[PHYSICS]
+motion_owner = CHARACTER: hands wipe the apron, then rest.
+motion_owner = PROP: none
+motion_owner = CAMERA: none
+motion_owner = ENVIRONMENT: none
+
+[LIGHTING]
+Daylight through the market roof opening from the upper left; the dominant source is the skylight.
+
+[AUDIO]
+No dialogue. THE VENDOR does not say a single word: no attempt to speak, no parted lips, no mouthing. Soft market ambience. No music.
+
+[STYLE]
+Natural photographic look, muted colours.
+
+[QUALITY]
+Facial features clear; skin and fabric textures natural. No distortion of faces or fingers.
+
+[REQUIRED_AND_FORBIDDEN_CONSTRAINTS]
+Required:
+- x at 0:00. (ENTIRE_SHOT)
+Forbidden:
+- Subtitles, text, watermarks, logos. (ENTIRE_SHOT)

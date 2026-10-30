@@ -1,0 +1,5 @@
+# expect: 소수 초 시각
+# expect: 초당 N번
+[ACTION_TIMING]
+0:00–0:02.5 — GIRL reads the sign, the screen-right hand, nearer the sign, on the times.
+0:02.5–0:05 — GIRL blinks three times per second and turns toward the bench.

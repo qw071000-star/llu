@@ -1,0 +1,77 @@
+round	chain	role	model	agent_id	turns
+r1	C01	player	opus	adc9fcb3ab5992c30	t2: 장면은 3개, 나머지는 다 기본값으로 해.
+r1	C02	player	opus	ae4ca506055792c00	(1턴)
+r1	C03	player	opus	a0bcba1d958c5fd5e	t2: 그대로 해.
+r1	C04	player	opus	adb77f9429d2d869d	t2: 남색 울 더플코트, 무릎 길이. 나머지는 그대로.
+r1	C05	player	opus	a43c6d45949435fd3	t2: 벤치 높이, 미디엄 와이드. 나머지는 그대로.
+r1	C06	player	opus	a1d6b5e575a4004ad	t2: 그대로.
+r1	C07	player	opus	ac5d0d902ed20c6ed	(1턴)
+r1	C08	player	opus	aa7c5de50d9b6b329	t2: 카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.
+r1	C09	player	opus	aadb3ea90422cad65	(1턴)
+r1	C10	player	opus	aeeb449431b871966	t2: 렌즈는 망원으로 해. 대사는 없어. 나머지는 몰라.
+r1	C11	player	opus	a596ff0589b0f630c	t2: 카메라는 천천히 조금 들어가고, 감나무 잎이랑 구름만 움직이게. 소리 없이 10초.
+r1	C12	player	opus	aa78b811793620fcc	t2(질문했으면): 그대로.
+r1	C13	player	opus	a1b285860a94f85bf	t2(질문했으면): 그대로.
+r1	C14	player	opus	a4f0d949e45c1d16d	t2(질문했으면): 그대로.
+r1	C15	player	opus	a762555d978a33494	(1턴)
+r1	C16	player	opus	a8c5d62fe2103ba72	(1턴)
+r1	C17	player	opus	ad00515e7e011f27c	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
+r1	C18	player	opus	a38df018bae8e6632	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+r1	C19	player	opus	af1310071860bbce3	(1턴)
+r2	C01	player	opus	a8a0bdfb73335345b	t2: 장면은 3개, 나머지는 다 기본값으로 해.
+r2	C04	player	opus	a8733f43ca58658dd	t2: 남색 울 더플코트, 무릎 길이. 나머지는 그대로.
+r2	C06	player	opus	a5bf2b947d38e9f8a	t2: 그대로.
+r2	C08	player	opus	a110a923946800044	t2: 카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.
+r2	C10	player	opus	ac2eb6b3610bc79c5	t2: 렌즈는 망원으로 해. 대사는 없어. 나머지는 몰라.  (t3 if needed: 몰라, 알아서 해. 렌즈는 시작 이미지 그대로 둬.)
+r2	C12	player	opus	a2334167dcc5e526b	t2(질문했으면): 그대로.
+r2	C18	player	opus	a3c878d23d900c65f	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+sonnet	C02	player	sonnet	a2f5e24be3888b387	(1턴)
+sonnet	C18	player	sonnet	a46715cb252a1846a	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+r1	C01,C02,C03,C07,C15,C19	grader	opus	aca3705f1a568c07a	-
+r1	C09,C16,C17,C18	grader	opus	ad81f0bf223345cf8	-
+r1	C04,C06,C08,C13	grader	opus	a78b7bc982f7b9916	-
+r1	C05,C10,C11,C12,C14	grader	opus	afb95ff66cc9498f1	-
+r2	C01,C04,C06,C08,C10,C12,C18	grader	opus	a727f9c0a42e84c6c	(사용자 요청으로 중단, 결과 없음)
+r2-stopped	C01,C04,C06,C08,C10,C12,C18	grader	sonnet	a66beb2444d5bc5de	11:24 중단
+sonnet	C08	player	sonnet	a17d04a0728a6dfe9	t2: 카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.
+sonnet	C10	player	sonnet	aa20fce7b1da0d0ba	t2: 렌즈는 망원으로 해. 대사는 없어. 나머지는 몰라. / t3(물으면): 몰라, 알아서 해. 렌즈는 시작 이미지 그대로 둬.
+sonnet	C12	player	sonnet	a2c9ef1bb0f3807ec	t2(물으면): 그대로.
+sonnet	C13	player	sonnet	a14438f71412c5e1d	t2(물으면): 그대로.
+sonnet	C14	player	sonnet	a99b683a0c5983a39	t2(물으면): 그대로.
+sonnet	C17	player	sonnet	af3836e63c8749f12	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
+sonnet-stopped	C08,C10,C12,C13,C14,C17	player	sonnet	aa81e7081848a6de2,ae6eb648fcdb3fa1e,a2cad976d70f81f0c,a313998da3f3c7dab,aa95769fc751b27c2,a229a62c738a6145f	11:24 중단(기록만)
+r2	C01,C04,C06,C08,C10,C12,C18	grader	sonnet	a45504fddbda8e347	-
+sonnet	C02,C08,C10,C12,C13,C14,C17,C18	grader	sonnet	a0a930427b29f2a37	-
+sonnet2	C02	player	sonnet	a291da135c04d0c27	(1턴)
+sonnet2	C08	player	sonnet	aeb378657550b24da	t2: 카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.
+sonnet2	C10	player	sonnet	aee7d95320739f524	t2: 렌즈는 망원으로 해. 대사는 없어. 나머지는 몰라. / t3(물으면): 몰라, 알아서 해. 렌즈는 시작 이미지 그대로 둬.
+sonnet2	C12	player	sonnet	a5dab9e337cc92305	t2(물으면): 그대로.
+sonnet2	C13	player	sonnet	a63f6039e6f348875	t2(물으면): 그대로.
+sonnet2	C14	player	sonnet	ae38ca38e7dd3e9da	t2(물으면): 그대로.
+sonnet2-stopped	C17	player	sonnet	a621b5c3bb36ca844	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
+sonnet2-before-fix	C18	player	sonnet	a9a46325ff40fd007	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+sonnet2	C17	player	sonnet	ab2e41574b864b136	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
+sonnet2	C18	player	sonnet	abecb2b7b60fda05b	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+r4	C01	player	sonnet	acda9c832a458f7d0	t2: 장면은 3개, 나머지는 다 기본값으로 해.
+r4	C05	player	sonnet	a25d5c9dcbfa50fc8	t2: 벤치 높이, 미디엄 와이드. 나머지는 그대로.
+r4	C08	player	sonnet	afc321a0f62b157fa	t2: 카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.
+r4	C10	player	sonnet	a3f750edec10bf4f1	t2: 렌즈는 망원으로 해. 대사는 없어. 나머지는 몰라.
+r4	C11	player	sonnet	a50cd03043716738b	t2..t3 + C26 t4~t6
+r4	C12	player	sonnet	a2588ef8de4f84385	t2(물으면): 그대로.
+r4	C14	player	sonnet	a2812024f9e4ac6d9	t2(물으면): 그대로.
+r4	C17	player	sonnet	a1626f359b9f97762	t2: 됐어. / t3: 좋아, 3-2 영상 OK. / t4: 핸드오프 쓰고 끝내.
+r4	C18	player	sonnet	a5d9de18ccc2e043d	t2: 이상해. 할아버지 입이 움직여. / t3: 별로야. 거절. / t4: 다시 만들어.
+r4	C24	player	sonnet	a94fe86658b86d015	t2: 그대로.
+r4	C27	player	sonnet	abc7b28f05999af35	t2: 그대로.
+r4	C28	player	sonnet	af28a96c9d80930b6	(1턴)
+r4	C29	player	sonnet	a5e9c70ae1e2ef979	(1턴)
+r5	C08	player	sonnet	a3acf7c731ea146ae	t2: 카메라는 LC-001-V1이랑 똑같이. 나머지는 제안대로.
+r5	C10	player	sonnet	a777dae348995339d	t2/t3 같은 대본
+r5	C14	player	sonnet	a763f9ad84d7a5810	t2: 그대로.
+r5	C24	player	sonnet	aa6e4a1d7a98a8125	t2: 그대로.
+r5	C29	player	sonnet	adf95483c8dfed220	(1턴)
+r5	C33	player	sonnet	a2031c09e287fd501	t2: 그대로.
+r5	C39	player	sonnet	a609f38a6ddac5789	(1턴)
+r5	C40	player	sonnet	a03e10f9dda653657	t2: 이 컷만. 제안대로 머리부터 해.
+r5	C11	player	sonnet	a5a3fa19e297b21ad	C11 t2~t3 + C26 t4~t6
+r5	C41-C51	player	sonnet	a08df2a9,a52751c0,ae05c299,a32d8c43,a9078815,a89ad3e4,a3e90f19,a391fe1a,a1ecceed,aafe1f1d,abd8e7e8	(1턴)

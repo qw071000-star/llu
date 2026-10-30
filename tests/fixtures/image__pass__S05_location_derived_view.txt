@@ -1,0 +1,9 @@
+Using <<<image_1>>> as the exact same rural bus stop — same concrete, tin roof, bench, timetable sign, persimmon tree and dusk light logic — generate a NEW reverse view.
+Do not inherit its camera angle, framing or composition.
+CAMERA: the reverse of the reference camera. Camera seated at bench height inside the shelter, at its timetable-sign end, looking out across the road toward where the reference camera stood.
+FRAMING: medium wide. The shelter's timetable-sign post and the edge of the tin roof frame the top and left of the image. The empty road and the paddies beyond fill the middle. Keep the timetable sign pole at the left edge of frame and the bare persimmon tree at the right edge. The bench back wall falls outside the frame.
+CONTINUITY: preserve the exact design, materials, wear, state and placement relationships.
+This is a newly observed direction of the same physical place, not a horizontal mirror of the reference.
+MASTER GEOMETRY (as seen from across the road, looking at the shelter's open front): A concrete bus shelter with a corrugated tin roof stands at the CENTRE, its open front facing the road. A wooden bench runs along its back wall. A painted metal timetable sign stands at the RIGHT of the shelter. A bare persimmon tree stands at the LEFT. In this reverse view the timetable sign is at screen LEFT and the persimmon tree at screen RIGHT.
+Low dusk sun from screen right, the persimmon-tree side, is the only key; the shelter's single fluorescent tube is off.
+Palette of roughly 80% dry ochre and grey concrete — 15% deep blue dusk sky — 5% persimmon orange. Era lock: late autumn, early 1990s, rural South Korea. Nothing more recent anywhere in frame. No legible text anywhere.

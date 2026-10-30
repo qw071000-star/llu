@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+"""실제 Claude Code로 체인을 돌린다: 키트를 설치한 시험 폴더에서 사용자 말만 넣는다.
+./real_run.py <체인ID> [run_root]   — 턴은 real-chains.json에서 읽는다.
+턴마다 out/turnN.md(답 전문)와 out/turnN.meta.json(부른 Skill, 연 파일, 도구, Bash 명령)을 남긴다."""
+import json, os, re, subprocess, sys, time
+HERE = os.path.dirname(os.path.abspath(__file__))
+cid = sys.argv[1]
+root = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "runs-real")
+chains = json.load(open(os.path.join(HERE, "real-chains.json")))
+spec = chains[cid]
+mode = "empty" if spec.get("empty") else "full"
+subprocess.run([os.path.join(HERE, "make_run.sh"), cid, mode, root], check=True, stdout=subprocess.DEVNULL)
+run = os.path.join(root, cid)
+for f in ("PLAYER-RULES.md", "SKILLS-INDEX.md"):
+    p = os.path.join(run, f)
+    if os.path.exists(p): os.remove(p)
+SIM = ("이 환경에는 Higgsfield MCP가 연결되어 있지 않다(시험 환경). Higgsfield 도구를 부를 때는 실제로 부르지 말고 "
+       "답 안에 `[TOOL] 도구이름(인자)` 줄을 쓰고, 그 결과는 sim/higgsfield.md에서 찾는다. 거기 없는 결과는 알 수 없음이다.")
+session = None
+turns = list(spec["turns"])
+n = 0
+while turns:
+    msg = turns.pop(0); n += 1
+    cmd = ["claude", "-p", msg, "--model", spec.get("model", "sonnet"), "--output-format", "stream-json", "--verbose",
+           "--permission-mode", "acceptEdits", "--disallowedTools", "mcp__*",
+           "--allowedTools", "Bash(python3 .claude/skills/higgsfield-generation/check_prompt.py:*)", "Bash(python3 .claude/skills/assembly/assemble.py:*)", "Bash(python3 .claude/skills/color-continuity/color.py:*)", "--append-system-prompt", SIM]
+    if session: cmd += ["--resume", session]
+    # 사용량 한도에 걸리면 실패로 넘기지 않고 10분마다 같은 턴을 다시 시도한다(최대 6시간)
+    for _ in range(37):
+        r = subprocess.run(cmd, cwd=run, capture_output=True, text=True, timeout=900)
+        if not re.search(r"hit your .{0,20}limit|usage limit|rate limit", r.stdout[-3000:] + r.stderr[-3000:], re.I):
+            break
+        print(f"{cid} turn{n}: 사용량 한도 — 10분 뒤 다시 시도", flush=True)
+        time.sleep(600)
+    skills, reads, tools, bash, final, texts = [], [], [], [], "", []
+    for line in r.stdout.splitlines():
+        try: e = json.loads(line)
+        except Exception: continue
+        if e.get("type") == "system" and e.get("session_id"): session = e["session_id"]
+        if e.get("type") == "assistant":
+            for c in e["message"].get("content", []):
+                if c.get("type") == "text" and c.get("text", "").strip():
+                    texts.append(c["text"].strip())  # 도구 사이에 쓴 글도 사용자 화면에 보인다
+                if c.get("type") == "tool_use":
+                    i = c.get("input", {})
+                    if c["name"] == "Skill": skills.append(i.get("skill"))
+                    elif c["name"] == "Read": reads.append(os.path.relpath(i.get("file_path", ""), run))
+                    else:
+                        tools.append(c["name"])
+                        if c["name"] == "Bash":
+                            bash.append(i.get("command", ""))
+                            import re as _re
+                            for f in _re.findall(r"(\.claude/[\w./-]+\.md|project/[\w./-]+\.md)", i.get("command", "")):
+                                reads.append(f + " (bash)")
+        if e.get("type") == "result":
+            final = e.get("result", ""); session = e.get("session_id", session)
+    os.makedirs(os.path.join(run, "out"), exist_ok=True)
+    shown = "\n\n".join(texts) if texts else final  # 사용자가 본 글 전부(중간 글 + 마지막 답)
+    if final and final.strip() not in shown: shown += "\n\n" + final
+    open(os.path.join(run, "out", f"turn{n}.md"), "w").write(f"<!-- 사용자: {msg} -->\n\n{shown}\n")
+    json.dump({"user": msg, "skills": skills, "reads": reads, "tools": tools, "bash": bash, "rc": r.returncode, "stderr": r.stderr[-500:]},
+              open(os.path.join(run, "out", f"turn{n}.meta.json"), "w"), ensure_ascii=False, indent=1)
+    print(f"{cid} turn{n}: skills={skills} reads={len(reads)} rc={r.returncode}", flush=True)
+    if "이 작업을 할까요" in shown and not msg.startswith("응, 그 작업"):
+        turns.insert(0, "응, 그 작업 맞아.")  # 확인 질문에는 수락으로 답하고 원래 대본을 이어 간다
