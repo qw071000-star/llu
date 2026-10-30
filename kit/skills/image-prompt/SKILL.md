@@ -85,6 +85,18 @@ ONLY CHANGE: [CHANGE와 같은 항목]. Everything else remains 100% identical.
 - **Make the CHANGE and ONLY CHANGE items identical.**
 - **A trivial, clear change can also be a short English instruction** (observed: Seedream, Nano Banana).
 
+**"가짜 같아", "AI 같아", "너무 매끈해", "플라스틱 같아" on an image result** (realism comes from subtraction, not addition). If the user names a symptom ("매끈해" → skin, "쨍해" → colour), start at that row; otherwise check in this order. Fix only the first cause found (one change per generation); name the next ones as later steps:
+
+| # | Check | Fix sentence for CHANGE (adapt nouns) |
+|---|---|---|
+| 1 | Exposure flat, blown or pushed dark | `natural, readable exposure for this light; not darkened for mood` |
+| 2 | Everything equally sharp | `the [background] falls off softly out of focus; not everything is equally sharp` |
+| 3 | Skin waxy, glossy, poreless | the `REALISM:` line from that character's sheet prompt (OK ledger card), verbatim, plus `not airbrushed, not glossy` |
+| 4 | Colour too vivid or white balance off | `restrained, slightly muted colour; balanced white balance` |
+| 5 | Too clean or staged (no wear, perfect symmetry) | one believable imperfection only: wear, a stray object, uneven posture. Never tilt, crop or move the camera (it is locked to the view) |
+
+Do not darken the image to make it look real, and do not add phone or handheld wording to a cinematic frame.
+
 ## 4. Crop and occlusion zones
 
 - **First compute the visible band at the final screening ratio.** Keep the key elements inside that band.
