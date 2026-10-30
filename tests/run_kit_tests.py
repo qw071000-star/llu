@@ -777,6 +777,29 @@ for path in sorted(glob.glob(os.path.join(FIX, "*.txt"))):
         for e in expects:
             check(f"[검사기] {base}: '{e}'를 잡음", e in r.stdout, r.stdout.strip()[:300])
 
+# 설치 스크립트: 새로 설치 → 정본·This project를 채움 → 다시 설치해도 그대로
+import tempfile
+with tempfile.TemporaryDirectory() as _d:
+    _sh = os.path.join(KIT, "install.sh")
+    _r1 = subprocess.run(["bash", _sh, _d], capture_output=True, text=True)
+    check("[설치] 빈 폴더에 설치됨", _r1.returncode == 0 and all(os.path.exists(os.path.join(_d, f)) for f in (
+        "CLAUDE.md", ".claude/instructions.md", ".claude/context/tasks.md", ".claude/context/must-ask.md",
+        ".claude/skills/video-prompt/SKILL.md", ".claude/settings.json", "project/decisions.md", "project/ok-cuts.md")), _r1.stdout + _r1.stderr)
+    check("[설치] 검사 스크립트가 돎", "검사 스크립트 동작" in _r1.stdout, _r1.stdout[-300:])
+    _inst = os.path.join(_d, ".claude/instructions.md")
+    with open(_inst, encoding="utf-8") as f: _t = f.read()
+    with open(_inst, "w", encoding="utf-8") as f: f.write(_t.replace("[작품명]", "시험작"))
+    with open(os.path.join(_d, "project/decisions.md"), "w", encoding="utf-8") as f: f.write("내 정본\n")
+    _r2 = subprocess.run(["bash", _sh, _d], capture_output=True, text=True)
+    with open(_inst, encoding="utf-8") as f: _t2 = f.read()
+    with open(os.path.join(_d, "project/decisions.md"), encoding="utf-8") as f: _dec = f.read()
+    _strip = lambda s: s[:s.find("## This project")] + s[s.find("## Role"):]
+    check("[설치] 다시 설치해도 This project 칸과 정본이 남음", _r2.returncode == 0 and "시험작" in _t2 and _dec == "내 정본\n", _r2.stdout)
+    check("[설치] 다시 설치하면 지침 나머지는 새 버전", _strip(_t2) == _strip(read(os.path.join(KIT, "instructions.md"))))
+    check("[설치] 키트 리포 자체에는 설치하지 않음", subprocess.run(["bash", _sh, ROOT], capture_output=True).returncode != 0)
+    with open(os.path.join(_d, ".gitignore"), encoding="utf-8") as f: _gi = f.read().split()
+    check("[설치] .gitignore에 tmp/·media/ 한 번씩", _gi.count("tmp/") == 1 and _gi.count("media/") == 1, str(_gi))
+
 # 결과
 print(f"추정 토큰: 항상 읽힘 {always:,.0f} (예산 {ALWAYS_BUDGET:,}) · instructions.md {tok(inst_core):,.0f} (예산 {INST_BUDGET:,}) · "
       f"단계 최대 {max(_route_tok.values()):,.0f} '{max(_route_tok, key=_route_tok.get)}' (예산 {BUDGET:,})")

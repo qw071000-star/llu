@@ -52,6 +52,8 @@ Higgsfield도 MCP도 처음인 팀원을 위한 안내서입니다. 이 문서 �
 
 ## 3. 처음 한 번만 하는 준비
 
+> 빠른 길: [`guides/설치-프롬프트.md`](guides/설치-프롬프트.md). Claude Code는 프롬프트 하나를 붙이면 설치되고, Claude 앱은 그 문서의 10분 순서를 따릅니다.
+
 ### 3-1. Higgsfield
 1. Higgsfield 계정을 만듭니다(higgsfield.ai).
 2. 총괄에게 팀 워크스페이스 초대를 받습니다. 초대를 받아야 작품 폴더에 저장할 수 있습니다.
