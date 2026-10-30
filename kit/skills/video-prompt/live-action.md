@@ -20,7 +20,7 @@ Fill each block from the `SKILL.md` §0 table and the empty template below; this
 | 6 | `OPTICS` | mm, aperture, lens brand (convert mm with the `SKILL.md` §2 table). One lens per shot; the field of view changes only at cuts. Face, whole location and hand detail mixed in one beat (split the cut) |
 | 7 | `CAMERA` | Compound moves |
 | 8 | `ACTION_TIMING` | Empty intervals, changed counts |
-| 9 | `CHARACTER_ACTING` | Emotion adjectives |
+| 9 | `CHARACTER_ACTING` | Emotion adjectives, metaphors, idioms |
 | 10 | `PHYSICS` | Unclear who is moving |
 | 11 | `LIGHTING` | Asserting the reference photo's look |
 | 12 | `AUDIO` | — |

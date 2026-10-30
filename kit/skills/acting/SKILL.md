@@ -12,6 +12,7 @@ description: Use when newly writing CHARACTER_ACTING for an AI live-action video
 | Do not write | Write |
 |---|---|
 | Emotion adjectives | A verb aimed at the other person |
+| Metaphors, idioms ("her heart sinks") | The literal visible action (models draw idioms literally) |
 | An empty face waiting for its line | A reaction that starts before the other person finishes speaking |
 | Gestures that mimic the dialogue | Hands doing real work |
 | An acting face (eyebrows, frowning) | A thinking face. It reads in the eyes first |

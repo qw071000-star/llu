@@ -127,6 +127,19 @@ def check_video(text, args, out):
             out.append(("WARN", f"시간 구간 사이가 비었다: {e1:g}초 ~ {s2:g}초. 빈 구간은 모델이 멋대로 채운다"))
             break
 
+    fixed = []
+    if args.must_include:
+        with open(args.must_include, encoding="utf-8") as f:
+            fixed = [l.strip() for l in f if l.strip()]
+    own = text
+    for line in fixed:
+        own = own.replace(line, "")
+    frac = re.findall(r"\b\d+:\d{2}\.\d+", own)
+    if frac:
+        out.append(("WARN", f"소수 초 시각 {frac[:3]}. 모델은 정수 초 구간을 더 잘 따른다: 0:03–0:05처럼 쓴다"))
+    if find(r"\b(?:\w+|\d+) times? (?:per|a|each) second\b|초당 \d+ ?번", own):
+        out.append(("WARN", "'초당 N번' 같은 빈도는 모델이 세지 못한다. 동작 횟수를 구간마다 적는다(0:02–0:04 — blinks once)"))
+
     m = re.search(r"\[CHARACTER_ACTING\](.*?)(?:\n\[[A-Z_]+\]|\Z)", text, re.S)
     if m and len(m.group(1).strip()) > 40:
         acting = m.group(1)

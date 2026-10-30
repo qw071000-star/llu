@@ -4,6 +4,8 @@
 - 대상 모델: GPT Image 2/2.5, Seedance 2.0/2.5, Kling 3.0/4.0, Veo 3.1, Sora 2, Runway Gen-4, Midjourney, Nano Banana.
 - 먼저 읽은 것: `guides/주요-기능.md`, `reference/cinematic-tools-research.md`, `kit/skills/video-prompt/{SKILL,live-action,fixes}.md`, `kit/skills/image-prompt/{SKILL,character}.md`, `kit/skills/acting/SKILL.md`, `kit/skills/higgsfield-generation/check_prompt.py`, `reference/error-registry.md`.
 
+**반영 상태(2026-10-30):** Top 10 중 3(대사 뒤 빈 시간), 6(소수 초·"초당 N번" 검사 경고), 7(비유·관용구 금지)만 키트에 넣었다. 나머지는 넣지 않았다.
+
 **접근 한계(중요).** 이 세션의 네트워크에서는 `developers.openai.com`, `docs.cloud.google.com`, `docs.byteplus.com`, `kling.ai`, `higgsfield.ai`, `runway.com`, `help.runwayml.com`, `blog.google`, reddit 미러(`reddit.sentinel-team.org`)가 열리지 않았다. 그래서 출처를 세 가지로 나눴다.
 - **본문 읽음:** GitHub에 올라온 것. OpenAI Cookbook 노트북 2개, ByteDance 공식 GitHub(`bytedance/agentkit-samples`), 화산엔진 Seedance 2.5 공식 PDF의 GitHub 미러, 커뮤니티 스킬 저장소.
 - **2차 인용:** 다른 저장소가 공식 문서를 인용한 것. 예: Emily2040 저장소가 옮긴 화산엔진 Seedance 2.0 가이드.
