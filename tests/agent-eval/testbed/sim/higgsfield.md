@@ -48,6 +48,7 @@
 ## generate_image / generate_video / *_batch
 - `get_cost: true`이면: 이미지 1k 1장 약 4 크레딧, 영상 Seedance 2.5 480p 8초 약 40 크레딧. 생성은 하지 않는다.
 - 영상을 보내면: `{"job_id": "sim-job-3201", "status": "queued"}`
+- 같은 대화에서 영상을 두 번째로 보내면: `{"job_id": "sim-job-3299", "status": "queued"}` (세 번째부터는 `sim-job-3299`와 같은 결과)
 - 이미지를 보내면: `{"job_id": "sim-job-9101", "status": "queued"}`
 - `folder_id`가 없으면: 프로젝트 밖(기본 저장 위치)에 저장된다.
 
