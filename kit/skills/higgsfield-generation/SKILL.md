@@ -51,7 +51,7 @@ Polling status repeatedly reprocesses the whole conversation each time. Leave th
 
 ```
 보냈습니다.
-- [컷] [무엇] · [모델] · [해상도·길이] · job `[전체 job ID]` · 약 [N] 크레딧
+- [컷] [무엇] · [모델] · [해상도·길이] · job `[전체 job ID]` · 크레딧: [약 N (근거: 비용 메모 / 이 대화에서 받은 견적) 또는 알 수 없음]
 - 저장: 「작품」/[폴더]
 - 바꾼 것: [전 → 후] (다시 만들 때만)
 - 볼 점: [지시 항목 2~3개]
