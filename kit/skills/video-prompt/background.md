@@ -11,7 +11,7 @@ Use when there is no character acting and the start image already holds the whol
 - **If it looks rushed, remove one event.**
 - **Do not ask for camera/length/sound canon values; list them under "기본값으로 씀: …".** Do not put listed items back in the question list. Camera move and moving subjects total at most 3; if over, propose removing one.
 - **Convert speed, added motion, stars and similar phrases with the `SKILL.md` §0 "vague phrases" table.**
-- **If the start image's medium differs from the requested medium** (watercolour video from a photoreal image), the video alone cannot change it. Propose making the start image anew, and ask the exception scope (this cut only / the whole work).
+- **If the start image's medium differs from the requested medium** (watercolour video from a photoreal image), the video alone cannot change it. Propose making the start image anew, and ask the exception scope (this cut only / the whole work). (watercolour: `image-prompt` → style, task 10; live action: `image-prompt` → first frame, task 11)
 - **Sound:** write per the `decisions.md` sound line and do not ask (cut without dialogue = sound effects only, closing paragraph `Sound:`). If the user says silent, turn it off in the options; if it cannot be turned off, write the `Silent` paragraph.
 
 ## Template
@@ -22,7 +22,7 @@ height] over the whole clip. The horizon stays level; no rotation, no tilt, no z
 
 Motion: [only things already in the image that move, each with direction and pace].
 
-Keep the [medium] look, every [shape list], and the light from screen [left/right], the [object] side, exactly as in the
+Keep the [medium] look, every [shape list: names only, at most 5], and the light from screen [left/right], the [object] side, exactly as in the
 image; only the things named above move, slowly and without morphing or melting.
 
 Silent: no dialogue, no music, no sound effects.

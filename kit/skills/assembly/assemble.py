@@ -90,7 +90,7 @@ def frame(video, sec, out):
     need_output(out, [video])
     run(["ffmpeg", "-hide_banner", "-loglevel", "error", "-ss", f"{t}", "-i", video,
          "-frames:v", "1", "-an", out])
-    print(f"{t}초 프레임: {out}")
+    print(f"{t}초 프레임({info['w']}x{info['h']}, 영상 길이 {info['dur']:.2f}초): {out}")
 
 
 def concat(out, videos):

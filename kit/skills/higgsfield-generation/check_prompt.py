@@ -97,6 +97,7 @@ def check_video(text, args, out):
     if find(r"about to speak|almost (?:says|speaks)|tries to speak|starts to say|on the verge of speaking|말하려다", text):
         out.append(("WARN", "'말하려다 만다'는 입술을 움직이게 한다. 말하려는 시도 자체를 없애고 숨·손으로 쓴다"))
 
+
     moves = find(r"(?<!no )(?<!No )(?<!without )\b(orbit(?:s|ing)?|dolly|crane|push(?:es)?[- ]in|tracking shot|arc(?:s|ing)? around)\b", text)
     static = find(r"\b(?:locked|tripod|static camera|fixed camera)\b", text)
     if moves and static:

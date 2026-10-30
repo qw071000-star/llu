@@ -40,7 +40,7 @@ CHANGE — [OUTFIT / HAIR]:
 [In all three panels, replace the current outfit with / Only in the center and right panels, change the
 hair to] [new state, head to foot, including shoes]. [Outfit: The new outfit is one physically identical
 outfit seen from different views, with matching fabric, color, length, fit and layering. No [things not
-worn], no logos, no prints.] [Era move: nothing that dates the decade.]
+worn], no logos, no prints. No profession-signaling props unless explicitly requested.] [Era move: nothing that dates the decade.]
 
 REMOVE COMPLETELY:
 [old 1], [old 2], [old 3] are GONE in every panel. Do not layer, merge or

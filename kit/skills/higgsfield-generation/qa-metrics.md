@@ -1,6 +1,6 @@
 # Numeric QA — only when the user wants analysis
 
-Use numbers to find causes. Even if the numbers pass, if the user says "비어 보인다" (looks empty), that statement is the verdict.
+Use numbers to find causes. Brightness and colour of one file: `python3 .claude/skills/color-continuity/color.py measure media/<cut>.mp4` (Y = brightness), run exactly like that. Even if the numbers pass, if the user says "비어 보인다" (looks empty), that statement is the verdict.
 
 | Metric | How to measure | Reference value |
 |---|---|---|

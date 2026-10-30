@@ -11,7 +11,7 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 ### Flag first (ask which way before the prompt)
 
 - User's words differ from canon, an OK, the start image, or cut card [1] → which one (and: this cut only, or the whole work?).
-- The request changes an approved cut → replace it with a new take?
+- The request changes an approved cut → replace it with a new take? A teammate's cut with no card or OK prompt: look it up with `get_project_asset_prompt` first; an empty result means no original prompt, say so and ask what to base it on.
 - A pointed-to image ("이걸로") is not in the conversation → ask for that image only; defer items that need it.
 - The cut number is not in `shot-list.md` → ask only what the cut is (a new cut, or a `대기` cut misnamed?); defer camera, people, props and folder.
 - Several tasks in one message → propose an order (task numbers) and ask only about the first.

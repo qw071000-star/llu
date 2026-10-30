@@ -48,7 +48,7 @@ The table is shown to the user in Korean; keep it entirely in Korean.
 ## 3. Higgsfield project and folders
 
 1. If using an existing project, find it with `list_projects` and verify the ID.
-2. If creating a new one, agreeing to the §1 item 11 default is itself the approval. Do not ask again.
+2. If creating a new one, agreeing to the §1 item 11 default is itself the approval. Do not ask again. Create the project with `create_project` (folders as in `higgsfield-generation` §2); write the returned IDs in the registry.
 3. Show the folder structure plan and create immediately: now only `00 에셋` (subfolders for characters, locations, props, plus art style for art-style works) and `99 시험·보관`; cut folders come when the cut card is issued. How to create, name and record them: `higgsfield-generation` §2.
 
 ## 4. Place the canon
