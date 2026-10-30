@@ -10,7 +10,7 @@ description: Use when generating images or video with Higgsfield or organizing t
 1. Did the user instruct this generation?
 2. Is the `folder_id` to save to decided (§2)?
 3. Is the resolution a check-quality one? Send Seedance 2.5 video with `draft: true` (480p; costs the same as a non-draft 480p). The 1080p final of the same take is `video-prompt` → `rerender.md`.
-4. For a first-time model/setting, did you get a quote with `get_cost: true`? If the OK ledger list or the `decisions.md` §2 cost memo has the same model, resolution and length, it is not the first time.
+4. Credits basis: if the `decisions.md` §2 cost memo has this model, resolution and length, use it; otherwise get a quote with `get_cost: true` before sending (write the call). **Never cite a quote you did not get in this conversation.**
 5. Did it pass `check_prompt.py` in this skill's folder (command and procedure: see instructions "Check")? The command must match the allow pattern in `.claude/settings.json` character for character to run without approval; in the Claude app only the path changes to that skill folder.
 
 ## 2. Save location
@@ -51,7 +51,7 @@ Polling status repeatedly reprocesses the whole conversation each time. Leave th
 
 ```
 보냈습니다.
-- [컷] [무엇] · [모델] · [해상도·길이] · job `[뒤 8자리]` · 약 [N] 크레딧
+- [컷] [무엇] · [모델] · [해상도·길이] · job `[전체 job ID]` · 약 [N] 크레딧
 - 저장: 「작품」/[폴더]
 - 바꾼 것: [전 → 후] (다시 만들 때만)
 - 볼 점: [지시 항목 2~3개]
