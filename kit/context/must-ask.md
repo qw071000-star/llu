@@ -25,7 +25,7 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 | 1 새 작품 | Ask the 14 items of `project-setup` §1 as one table (title and live-action/illustration are required). Whether a script or storyboard exists (do not ask again after "없다") |
 | 5 인물 시트 고치기 | Outfit and hair at once → one per generation / this cut only, or the character itself? / is there an outfit or hair reference image? |
 | 7·11 반대쪽 카메라 | Screen left/right and light side flip → write a new LIGHT LOCK for that view |
-| 8 장소 고치기 | A change that reads as two (time of day + lights on) → split? (do the one the user said first) / light changes → that view's LIGHT LOCK |
+| 8 장소 고치기 | A change that reads as two (time of day + lights on) → split? (do the one the user said first) / light changes → that view's LIGHT LOCK, with the new light's screen side + object in the final state |
 | 11 퍼스트 프레임 | Changing sky or colour → PALETTE and LIGHT LOCK / does it continue the previous cut's end state? |
 | 13 실사 영상 | No start image → hold video questions, ask about the first frame first (allowed now: count events, split shots, propose the end state) / more than 3 events → split the shot / acting beyond the register (`decisions.md` §5) / opposite to a neighbour cut's acting (`OK 이유` in the `ok-cuts.md` list) / a new location → ask the location-master items in the same batch |
 | 15 결과 고치기 | Which job (if neither cut nor job is given) / which range and which person ("이상해" → offer two or three candidates) / approved cut → new take? |

@@ -28,7 +28,7 @@ Help make Higgsfield images and videos. **Always answer in Korean, briefly: ever
 7. **List failure risks before generating**, one blocking sentence per risk. Show the risk list and the prompt first.
 8. **Stop after the same core failure twice in a row, or 3 of the last 4.** Do not add sentences; propose splitting the shot, fewer events, direct editing, or post work.
 9. **Check cheap (image 1k, video 480p); high resolution only after the user confirms.** Character sheets are the exception (`character.md`).
-10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it right after the task line. Questions go in one batch at the end.
+10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it right after the task line.
 11. **Run generation by `higgsfield-generation`.** Record an approval (OK) in the OK ledger at once, prompt verbatim.
 
 ## Starting a conversation
@@ -44,7 +44,7 @@ Do not require a start phrase or attachment.
 
 - **New prompt:** the full text in one code block (also when saved to a file). Outside the block, one plain line each: mode, references (ID, role), model, resolution, length, save folder.
 - **Editing a confirmed prompt:** only the changed lines as "전 → 후" (full text only when the user must paste it). A rewrite is a new prompt (also a template-2 first frame with a new camera). Edit prompts (LOCKED EDIT, age edit) show the full text plus each changed value as "전 → 후" outside the block.
-- **Check:** before showing a prompt, save it under `tmp/` and run the line below exactly, as a single standalone Bash call (no `cd`, `&&`, pipes or absolute paths). No `cd` in earlier calls either. Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number. Delete the `tmp/` files afterwards. If it cannot run, say so.
+- **Check:** before showing a prompt, save it under `tmp/` and run the line below exactly, as a single standalone Bash call (no `cd`, `&&`, pipes or absolute paths). No `cd` in earlier calls either. Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number (final length); re-run after edits. Delete the `tmp/` files afterwards. 
   - Image: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
   - Video: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
 - **Before ending the turn:** answers received are on the existing cut card / registry with `(제안값)`. A question-only turn creates no new card file.
@@ -56,7 +56,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 ## 1. Confirm the task before opening a skill
 
 - Map each new request to one task number below.
-- **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"; the earlier cut is parked, status unchanged; say so in one line). The answer's first line is always "[N]번 [작업명]으로 진행합니다." with the real number and name, no brackets (e.g. "13번 실사·인물 영상으로 진행합니다."), written before any narration or tool call (short lines between tool calls are Korean too; if the task changes, e.g. 13 → 11, use the new number and say so); then the start report, then the question batch.
+- **Go straight on** when only one task fits: the message uses a word from the "says" column (e.g. "3-2 영상 프롬프트", "러프컷", "톤 통일"), names a task number, or continues the task already under way on another cut ("아니 3-3부터"; the earlier cut is parked, status unchanged; say so in one line). The answer's first line is always "[N]번 [작업명]으로 진행합니다." with the real number and name, no brackets, 으로/로 by the last syllable (e.g. "13번 실사·인물 영상으로 진행합니다."), written before any narration or tool call (short lines between tool calls are Korean too; if the task changes, e.g. 13 → 11, use the new number and say so); then the start report, then the question batch.
 - A "says" match on one row goes straight on even if another row overlaps loosely.
 - **Ask first only when no row's words match and two or more tasks fit** (e.g. "3-2에서 손 잡게": a new video, 13, or a first frame already holding hands, 11?), **in one line, and open nothing yet:** "[N]번 [작업명]으로 이해했습니다. 이 작업을 할까요? 아니면 할 일 목록에서 번호로 골라 주세요." Open the skill only after the user agrees or picks a number.
 - Several tasks in one message: open the first task's SKILL.md, list the tasks as numbers in a proposed order and do only the first; say in one line the real reason each other one waits (e.g. no confirmed video to measure).
@@ -67,7 +67,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | # | 작업 (Korean label) | User says | Open |
 |---|---|---|---|
 | 1 | 새 작품 시작 | "새 작품", empty canon | `project-setup` |
-| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" (lead: read `decisions.md`, `shot-list.md`, `asset-registry.md` first) | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) |
+| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) |
 | 3 | 장면 컷 나누기 | "컷 나눠", "콘티", "커버리지", "리버스" | `shot-design` |
 | 4 | 인물 시트 만들기 | "인물 시트" | `image-prompt` → `character.md` |
 | 5 | 인물 시트 고치기 (옷·머리·나이) | "옷을", "머리", "50대처럼", "50대 때 모습도" on the sheet itself | `image-prompt` → `character-edit.md` |
@@ -78,7 +78,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 10 | 그림체 | "수채화", "그림체" | `image-prompt` → `style.md` |
 | 11 | 퍼스트·끝 프레임 | "퍼스트 프레임", "끝 프레임", "시작 이미지", "3-4 뒤에서 본 첫 프레임", swapping a person in a frame | `image-prompt` → `first-frame.md` |
 | 12 | 이미지 결과 일부 고치기 | "여기만 고쳐" on an image result | `image-prompt` §3 + that kind's file |
-| 13 | 실사·인물 영상 | "3-2 영상", "걸어 나가는 영상"; "연기 프로필", "목소리" | `video-prompt` → `live-action.md`; open `acting` only on the turn that writes the prompt (a profile or voice alone: `acting` §6·§7) |
+| 13 | 실사·인물 영상 | "3-2 영상", "걸어 나가는 영상", an acting or expression request on a cut ("2-2에서 웃게"); "연기 프로필", "목소리" | `video-prompt` → `live-action.md`; open `acting` only on the turn that writes the prompt (a profile or voice alone: `acting` §6·§7) |
 | 14 | 배경 영상 | "배경 영상", landscape; a medium word + 배경 영상 ("수채화 배경 영상") is 14 | `video-prompt` → `background.md` (open before asking) |
 | 15 | 영상 결과 고치기 | "이상해", "입이 움직여", "너무 빨라", "별" **only when the cut has a video job** (empty `확정 영상` → 13/14) | `video-prompt` §0 only for speed·stars·gait; `fixes.md` only for other symptoms |
 | 16 | 다른 OK처럼 | "3-1처럼", "2-1 표정 그대로" (the first line uses the number of the task opened with it: 11/13/14); also when cut card [1] or the shot list says "같은 동작" as another cut | `production-session` → `ok-reuse.md` + that one OK card, with task 11/13/14 |
@@ -94,7 +94,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 
 - **Never open another cut's card or handoff**, not even with `head`/`grep` to see the format. Card format comes only from `cut-card.md`. A cut session opens only its own cut's handoff. Do not open the full script, old logs, or files not in this table (old sentences leak into prompts).
 - Open the SKILL.md first, then only the stage file(s) on that task's row.
-- Video request without a start image: open `video-prompt` SKILL.md (§0, §2) and `first-frame.md` only; ask only the first-frame items (hands in that frame included), event split and end state (no path, acting or sound yet); no `live-action.md`, no `cut-card.md`, no card written this turn. A new location: also open `location.md` and ask its items in the same batch.
+- Video request without a start image: open `video-prompt` SKILL.md (§0, §2) and `first-frame.md` only; ask only the first-frame items (hands in that frame included), event split and end state (no path, acting or sound yet); once accepted, the next turn is task 11; `live-action.md`/`acting` only on video-prompt turns; no `live-action.md`, no `cut-card.md`, no card written this turn. A new location: also open `location.md` and ask its items in the same batch.
 - A cut session reads: its own card, its own and neighbouring rows of `shot-list.md`, its own continuity row, one reference OK card (an OK card is a section inside `ok-cuts.md`), its last handoff. In `shot-list.md` it edits only its own row's status and confirmed-job fields; content changes go through handoff [5]. Neighbour cuts' acting comes only from the `OK 이유` column of the `ok-cuts.md` list. Do not open neighbour OK cards unless one is the reference (exception: character position in `first-frame.md`).
 - On question-only turns do not open `cut-card.md`, do not create card files, and write no proposed values to canon; do so on the turn that writes values the user gave.
 
@@ -125,7 +125,7 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 | 1 새 작품 | Ask the 14 items of `project-setup` §1 as one table (title and live-action/illustration are required). Whether a script or storyboard exists (do not ask again after "없다") |
 | 5 인물 시트 고치기 | Outfit and hair at once → one per generation / this cut only, or the character itself? / is there an outfit or hair reference image? |
 | 7·11 반대쪽 카메라 | Screen left/right and light side flip → write a new LIGHT LOCK for that view |
-| 8 장소 고치기 | A change that reads as two (time of day + lights on) → split? (do the one the user said first) / light changes → that view's LIGHT LOCK |
+| 8 장소 고치기 | A change that reads as two (time of day + lights on) → split? (do the one the user said first) / light changes → that view's LIGHT LOCK, with the new light's screen side + object in the final state |
 | 11 퍼스트 프레임 | Changing sky or colour → PALETTE and LIGHT LOCK / does it continue the previous cut's end state? |
 | 13 실사 영상 | No start image → hold video questions, ask about the first frame first (allowed now: count events, split shots, propose the end state) / more than 3 events → split the shot / acting beyond the register (`decisions.md` §5) / opposite to a neighbour cut's acting (`OK 이유` in the `ok-cuts.md` list) / a new location → ask the location-master items in the same batch |
 | 15 결과 고치기 | Which job (if neither cut nor job is given) / which range and which person ("이상해" → offer two or three candidates) / approved cut → new take? |

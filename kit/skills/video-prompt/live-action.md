@@ -118,6 +118,8 @@ Forbidden:
 
 ## Sentences used as is
 
+`[망원]` only when the camera is 3 m or more away. Age edits that go younger: write the opening as "make the same person younger, to [age]" (`image-prompt` → character-edit Template 2).
+
 ```text
 [첫 프레임] [Person] is already in place at 0:00, mid-[action]. No empty establishing frame.
 [광각] Diagonal field of view about 63°. [A], [B] and [C] are fully visible in one frame / straight
