@@ -796,6 +796,14 @@ with tempfile.TemporaryDirectory() as _d:
     _strip = lambda s: s[:s.find("## This project")] + s[s.find("## Role"):]
     check("[설치] 다시 설치해도 This project 칸과 정본이 남음", _r2.returncode == 0 and "시험작" in _t2 and _dec == "내 정본\n", _r2.stdout)
     check("[설치] 다시 설치하면 지침 나머지는 새 버전", _strip(_t2) == _strip(read(os.path.join(KIT, "instructions.md"))))
+    with tempfile.TemporaryDirectory() as _d3:
+        _r3 = subprocess.run(["bash", _sh, _d3, "--title", "빈 정류장", "--higgsfield", "빈 정류장 (prj-1)", "--canon", "repo `project/`"], capture_output=True, text=True)
+        with open(os.path.join(_d3, ".claude/instructions.md"), encoding="utf-8") as f: _t3 = f.read()
+        with open(os.path.join(_d3, "CLAUDE.md"), encoding="utf-8") as f: _c3 = f.read()
+        check("[설치] --title·--higgsfield·--canon으로 This project 칸을 채움", "「빈 정류장」 · Higgsfield project: 빈 정류장 (`prj-1`)" in _t3 and "Canon location: repo `project/`" in _t3 and "「빈 정류장」" in _c3, _r3.stdout[-300:])
+        _r4 = subprocess.run(["bash", _sh, _d3, "--title", "다른 이름"], capture_output=True, text=True)
+        with open(os.path.join(_d3, ".claude/instructions.md"), encoding="utf-8") as f: _t4 = f.read()
+        check("[설치] 이미 채운 칸은 옵션으로도 덮어쓰지 않음", "「빈 정류장」" in _t4 and "다른 이름" not in _t4, _r4.stdout[-300:])
     check("[설치] 키트 리포 자체에는 설치하지 않음", subprocess.run(["bash", _sh, ROOT], capture_output=True).returncode != 0)
     with open(os.path.join(_d, ".gitignore"), encoding="utf-8") as f: _gi = f.read().split()
     check("[설치] .gitignore에 tmp/·media/ 한 번씩", _gi.count("tmp/") == 1 and _gi.count("media/") == 1, str(_gi))

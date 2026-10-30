@@ -1,10 +1,20 @@
 #!/usr/bin/env bash
 # 키트를 작품 폴더(Claude Code)에 설치하거나 새 버전으로 바꾼다.
-#   bash kit/install.sh [작품 폴더]      (기본: 지금 폴더)
+#   bash kit/install.sh [작품 폴더] [--title 작품명] [--higgsfield "이름 (ID)"] [--canon 정본 위치]
+#   (폴더 기본: 지금 폴더. --옵션은 "This project" 칸이 아직 비어 있을 때만 채운다)
 # 정본(project/)과 사용자가 채운 "This project" 칸은 덮어쓰지 않는다.
 set -euo pipefail
 KIT="$(cd "$(dirname "$0")" && pwd)"
-DEST="$(cd "${1:-.}" && pwd)"
+DIR="."; TITLE=""; HIGGS=""; CANON=""
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --title) TITLE="$2"; shift 2 ;;
+    --higgsfield) HIGGS="$2"; shift 2 ;;
+    --canon) CANON="$2"; shift 2 ;;
+    *) DIR="$1"; shift ;;
+  esac
+done
+DEST="$(cd "$DIR" && pwd)"
 if [ "$DEST" = "$(dirname "$KIT")" ]; then echo "키트 리포 자체에는 설치하지 않는다. 작품 폴더를 지정한다." >&2; exit 1; fi
 cd "$DEST"
 mkdir -p .claude project/cuts project/log media
@@ -60,6 +70,30 @@ done
 
 touch .gitignore
 for line in tmp/ media/; do grep -qxF "$line" .gitignore || echo "$line" >> .gitignore; done
+
+# "This project" 칸: 비어 있는(자리표시) 줄만 채운다
+python3 - "$TITLE" "$HIGGS" "$CANON" <<'PY'
+import re, sys
+title, higgs, canon = sys.argv[1:4]
+p = ".claude/instructions.md"
+s = open(p, encoding="utf-8").read()
+done = []
+if title and "「[작품명]」" in s:
+    s = s.replace("「[작품명]」", f"「{title}」", 1); done.append("작품명")
+if higgs and "[name] (`[project_id]`)" in s:
+    m = re.match(r"(.*?)\s*\((.*)\)\s*$", higgs)
+    val = f"{m.group(1)} (`{m.group(2)}`)" if m else higgs
+    s = s.replace("[name] (`[project_id]`)", val, 1); done.append("Higgsfield")
+if canon and "Canon location: [" in s:
+    s = re.sub(r"Canon location: \[[^\n]*", lambda _: f"Canon location: {canon}", s, count=1); done.append("정본 위치")
+open(p, "w", encoding="utf-8").write(s)
+if title:
+    c = open("CLAUDE.md", encoding="utf-8").read()
+    if "[작품명]" in c:
+        open("CLAUDE.md", "w", encoding="utf-8").write(c.replace("[작품명]", title, 1))
+left = [n for n, k in (("작품명", "「[작품명]」"), ("Higgsfield", "[project_id]"), ("정본 위치", "Canon location: [")) if k in s]
+print("채움  This project: " + (", ".join(done) if done else "없음") + (" · 비어 있음: " + ", ".join(left) if left else ""))
+PY
 
 # 검사 스크립트가 도는지
 mkdir -p tmp
