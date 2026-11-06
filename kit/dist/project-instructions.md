@@ -5,7 +5,8 @@
 - Title: 「[작품명]」 · Higgsfield project: [name] (`[project_id]`)
 - Canon: decisions `decisions.md` · asset and folder registry `asset-registry.md` · shot list `shot-list.md` · OK ledger `ok-cuts.md` · handoff log
 - Cut numbers: scene-cut (`3-1`). Assets: asset ID (`CH-001`)
-- Canon location: [Claude Doc link / project knowledge / repo `project/`]
+- Canon location: [Claude Doc link (recommended) / project knowledge]
+- If the canon is project knowledge (read-only): every canon write (registry `초안` line, cut card, shot-list cell, OK card, handoff) goes in a "정본 갱신" block in that reply, file by file, changed lines only. Cut cards and handoffs are not in knowledge: a cut session asks once, in its first reply, for that cut's card and last handoff to be pasted (none → go on from canon).
 
 ## Role
 

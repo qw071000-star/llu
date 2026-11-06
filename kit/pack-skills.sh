@@ -27,8 +27,13 @@ new_rule = ("run the line below with code execution, one call. In the Claude app
             "report the check as passed.")
 old_cmd = "python3 .claude/skills/higgsfield-generation/check_prompt.py"
 new_cmd = "python3 <skill folder>/check_prompt.py"
-assert s.count(old_rule) == 1 and s.count(old_cmd) == 2, "instructions.md Check 줄이 바뀌었다: pack-skills.sh 앱판 치환을 고친다"
-s = s.replace(old_rule, new_rule).replace(old_cmd, new_cmd)
+old_canon = "- Canon location: [Claude Doc link / project knowledge / repo `project/`]"
+new_canon = ("- Canon location: [Claude Doc link (recommended) / project knowledge]\n"
+             "- If the canon is project knowledge (read-only): every canon write (registry `초안` line, cut card, shot-list cell, OK card, handoff) goes in a \"정본 갱신\" "
+             "block in that reply, file by file, changed lines only. Cut cards and handoffs are not in knowledge: a cut "
+             "session asks once, in its first reply, for that cut's card and last handoff to be pasted (none → go on from canon).")
+assert s.count(old_rule) == 1 and s.count(old_cmd) == 2 and s.count(old_canon) == 1, "instructions.md Check·Canon location 줄이 바뀌었다: pack-skills.sh 앱판 치환을 고친다"
+s = s.replace(old_rule, new_rule).replace(old_cmd, new_cmd).replace(old_canon, new_canon)
 open(p, "w", encoding="utf-8").write(s)
 PY
 echo "made kit/dist/project-instructions.md (Claude 앱판 검사 줄)"
