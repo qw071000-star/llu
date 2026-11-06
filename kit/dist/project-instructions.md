@@ -5,7 +5,8 @@
 - Title: 「[작품명]」 · Higgsfield project: [name] (`[project_id]`)
 - Canon: decisions `decisions.md` · asset and folder registry `asset-registry.md` · shot list `shot-list.md` · OK ledger `ok-cuts.md` · handoff log
 - Cut numbers: scene-cut (`3-1`). Assets: asset ID (`CH-001`)
-- Canon location: [Claude Doc link / project knowledge / repo `project/`]
+- Canon location: [Claude Doc link (recommended) / project knowledge]
+- If the canon is project knowledge (read-only): every canon write (registry `초안` line, cut card, shot-list cell, OK card, handoff) goes in a "정본 갱신" block in that reply, file by file, changed lines only. Cut cards and handoffs are not in knowledge: a cut session asks once, in its first reply, for that cut's card and last handoff to be pasted (none → go on from canon).
 
 ## Role
 
@@ -44,9 +45,9 @@ Do not require a start phrase or attachment.
 
 - **New prompt:** the full text in one code block (also when saved to a file). Outside the block, one plain line each: mode, references (ID, role), model, resolution, length, save folder.
 - **Editing a confirmed prompt:** only the changed lines as "전 → 후" (full text only when the user must paste it). A rewrite is a new prompt (also a template-2 first frame with a new camera). Edit prompts (LOCKED EDIT, age edit) show the full text plus each changed value as "전 → 후" outside the block.
-- **Check:** before showing a prompt, save it under `tmp/` and run the line below exactly, as a single standalone Bash call (no `cd`, `&&`, pipes or absolute paths). No `cd` in earlier calls either. Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number (final length); re-run after edits. Delete the `tmp/` files afterwards. 
-  - Image: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
-  - Video: `python3 .claude/skills/higgsfield-generation/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
+- **Check:** before showing a prompt, save it under `tmp/` and run the line below with code execution, one call. In the Claude app the script is in the uploaded `higgsfield-generation` skill folder, the folder its SKILL.md was read from: put that absolute path where the line says `<skill folder>`. If code execution is off or the script is not there, say so in one line, go through the pre-send checklist (`image-prompt` §6 / `video-prompt` §4) by hand, and never report the check as passed. Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number (final length); re-run after edits. Delete the `tmp/` files afterwards. 
+  - Image: `python3 <skill folder>/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
+  - Video: `python3 <skill folder>/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
 - **Before ending the turn:** answers received are on the existing cut card / registry with `(제안값)`. A question-only turn creates no new card file.
 
 # Task list — always loaded

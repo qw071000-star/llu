@@ -52,6 +52,6 @@ Principle: **keep memory in documents; sessions are written to and thrown away.*
 
 | Canon location | Read | Edit · leave handoff |
 |---|---|---|
-| Claude Doc (recommended) | Read only the needed tabs with the Docs tool. Find the OK cut tab and cut card tab by title (`3-1 영상`, `3-1`) and read only that section | Put OK cards as sections in the OK cut tab, cut cards as sections in the cut card tab. Append handoffs to the log tab |
+| Claude Doc (recommended) | Only the needed tabs. Cut card: search its first line `받는 세션: 3-1` (others stay unread); OK card: title `3-1 영상` | A cell: find its words as read (a teammate's edit then refuses, not overwritten); empty: re-read it, then replace. OK card + row, handoff: append |
 | Claude app project knowledge | Already in context. For cut cards, use what the user pasted into that cut's conversation | Claude cannot edit. Output a "정본 갱신" block (only the changed lines per file); the user replaces the files. OK cards are delivered in the same block. Output the handoff in the final reply |
 | Repo `project/` | Open only needed files. Find `ok-cuts.md` by heading and open only that section | Write handoffs to `project/log/` |

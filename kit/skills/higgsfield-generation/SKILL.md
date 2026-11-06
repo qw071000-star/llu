@@ -9,7 +9,7 @@ description: Use when generating images or video with Higgsfield or organizing t
 
 1. Did the user instruct this generation?
 2. Is the `folder_id` to save to decided (§2)?
-3. Is the resolution a check-quality one? Send Seedance 2.5 video with `draft: true` (480p; costs the same as a non-draft 480p). The 1080p final of the same take is `video-prompt` → `rerender.md`.
+3. Is the resolution a check-quality one? Send Seedance 2.5 video with `draft: true` (480p; costs the same as a non-draft 480p). Kling 4.0 has no 480p and defaults to 1080p: pass `resolution: 720p`. GPT Image 2.5 defaults to `quality: low`: pass `quality: medium` (the tested setting) unless `decisions.md` says otherwise. The 1080p final of the same take is `video-prompt` → `rerender.md`.
 4. Credits basis: if the `decisions.md` §2 cost memo has this model, resolution and length, use it; otherwise get a quote with `get_cost: true` before sending (write the call). **Never cite a quote you did not get in this conversation.**
 5. Did it pass `check_prompt.py` in this skill's folder (command and procedure: see instructions "Check")? The command must match the allow pattern in `.claude/settings.json` character for character to run without approval; in the Claude app only the path changes to that skill folder.
 
