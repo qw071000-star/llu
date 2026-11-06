@@ -24,6 +24,7 @@ CONTRAST = (0.7, 1.4)  # eq contrast
 BRIGHT = (-0.15, 0.15) # eq brightness
 BIG_UV = 12            # 평균 U·V 차이(0~255)가 이보다 크면 다시 만들기 제안
 BIG_Y = 30             # 평균 Y 차이
+CLOSE = 1.5            # 평균 Y·U·V 차이가 모두 이 이하면 이미 맞다(맞추지 않는다)
 
 
 def die(msg):
@@ -140,6 +141,11 @@ def match(ref, tgt, out):
         die("출력 확장자가 대상과 맞지 않는다(영상이면 .mp4, 이미지면 .png).")
     need_output(out, [ref, tgt])
     a, b = measure_one(ref), measure_one(tgt)
+    # 이미 맞으면 다시 인코딩하지 않는다(재인코딩만으로 Y가 1~2 흔들려 오히려 벌어진다)
+    if all(abs(b[k] - a[k]) <= CLOSE for k in "YUV"):
+        print("기준 대비 ΔY · ΔU · ΔV: " + " · ".join(f"{b[k] - a[k]:+.1f}" for k in "YUV")
+              + f" (모두 {CLOSE} 이하). 이미 맞다. 맞춘 파일을 만들지 않았다.")
+        return
     cut = []
     gains = {c: clamp(a[c] / max(b[c], 1.0), GAIN, f"{c} 이득", cut) for c in "RGB"}
     # 이득을 건 뒤의 휘도·대비를 어림해 eq로 대비를 맞추고, 평균 휘도는 기준에 둔다

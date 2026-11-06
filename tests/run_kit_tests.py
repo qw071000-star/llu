@@ -690,6 +690,17 @@ if shutil.which("ffmpeg") and shutil.which("ffprobe"):
         check("[color] 입력을 출력으로 주면 거절", r.returncode == 1 and "덮어쓰지 않는다" in r.stderr and os.path.getsize(off) > 0)
         r = subprocess.run([sys.executable, COL, "measure", os.path.join(td, "없음.mp4")], capture_output=True, text=True)
         check("[color] 없는 파일이면 한국어 오류", r.returncode == 1 and "파일이 없다" in r.stderr)
+        same = os.path.join(td, "color", "ref_self.mp4")
+        r = subprocess.run([sys.executable, COL, "match", ref, ref, same], capture_output=True, text=True)
+        check("[color] 이미 맞으면(차이 1.5 이하) 맞춘 파일을 만들지 않음", r.returncode == 0 and "이미 맞다" in r.stdout and not os.path.exists(same), (r.stdout + r.stderr)[-300:])
+
+# 16h. Claude 앱판 지침(dist/project-instructions.md): 지침 + tasks + must-ask, 검사 줄만 앱 경로
+_app = read(os.path.join(KIT, "dist", "project-instructions.md"))
+_code = "\n".join([read(os.path.join(KIT, "instructions.md")), read(os.path.join(KIT, "context", "tasks.md")), read(os.path.join(KIT, "context", "must-ask.md"))])
+_diff = [l for l in _app.splitlines() if l not in _code.splitlines()]
+check("[앱판] 검사 줄에 Claude Code 경로(.claude/)가 없음", ".claude/" not in _app)
+check("[앱판] 검사 줄은 업로드한 스킬 폴더 경로, 못 돌리면 손 점검·통과라 하지 않음", "python3 <skill folder>/check_prompt.py --kind image" in _app and "python3 <skill folder>/check_prompt.py --kind video" in _app and "never report the check as passed" in _app)
+check("[앱판] 검사 줄 3개 말고는 지침·tasks·must-ask와 같음", len(_diff) == 3 and all("Check:" in l or "<skill folder>" in l for l in _diff), str(_diff)[:300])
 sd = sk("shot-design/SKILL.md")
 check("[shot-design] 블로킹은 지침 6번, 정본 수정은 production-session §1을 가리킴", "instructions rule 6" in sd and "`production-session` §1" in sd)
 check("[shot-design] 리버스는 location-view.md를 가리키고 LIGHT LOCK 문장을 쓰지 않음", "`image-prompt` → `location-view.md`" in sd and "light comes from" not in sd)

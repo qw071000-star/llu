@@ -30,7 +30,7 @@ Run commands from the repo root exactly as written, one line at a time (one scri
 | Comparison image | `python3 .claude/skills/color-continuity/color.py compare media/3-1.mp4 media/3-2.mp4 media/color/3-2_match.mp4 media/color/3-2_compare.png` |
 
 - **What is measured:** the mean over about 5 evenly spaced frames. Y = brightness, U·V = color tilt (low U leans yellow, high V leans red), R·G·B, Y standard deviation = contrast. The difference from the first file (the reference) is output too.
-- **How it matches:** `colorchannelmixer` (R·G·B gain) brings color, and `eq` (contrast/brightness) brings exposure, closer to the reference. Values are clamped to a safe range, and it reports when it clamps. After matching, run `measure` again and show with numbers that the difference shrank.
+- **How it matches:** `colorchannelmixer` (R·G·B gain) brings color, and `eq` (contrast/brightness) brings exposure, closer to the reference. Values are clamped to a safe range, and it reports when it clamps. After matching, run `measure` again and show with numbers that the difference shrank. If every ΔY·ΔU·ΔV is already 1.5 or less, `match` writes no file and says so: report the cut as already matched.
 - **Comparison image:** middle frame, reference | original | matched.
 
 ## 4. Record · approval
