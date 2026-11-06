@@ -29,15 +29,23 @@ json.dump({"name": "kit", "version": "0.0.0", "description": "llu kit skills (ap
 for s in APP_SKILLS:
     with zipfile.ZipFile(os.path.join(KIT, "dist", f"{s}.zip")) as z:
         z.extractall(os.path.join(plugin, "skills"))
-shutil.copy(os.path.join(HERE, "testbed", "sim", "higgsfield.md"), os.path.join(run, "sim"))
+EMPTY = bool(spec.get("empty"))
+if EMPTY:  # 새 작품: 빈 정본 틀, Higgsfield에는 아직 프로젝트 없음
+    open(os.path.join(run, "sim", "higgsfield.md"), "w", encoding="utf-8").write(
+        "# Higgsfield 시뮬레이션 결과표 (시험용)\n\n실제 Higgsfield를 부르지 않는다. 답에 `[TOOL] 도구이름(인자)`를 적는다.\n\n"
+        "- 선택된 워크스페이스: 팀 워크스페이스 `ws-sim-0001`\n- list_projects: 「빈 정류장」 프로젝트는 아직 없다.\n"
+        "- create_project, create_folder: 성공. ID는 `prj-new-0001`, 폴더는 `fld-<이름>`.\n")
+else:
+    shutil.copy(os.path.join(HERE, "testbed", "sim", "higgsfield.md"), os.path.join(run, "sim"))
 
 inst = open(os.path.join(KIT, "dist", "project-instructions.md"), encoding="utf-8").read()
 # 사용자가 지침 칸에서 하듯 "This project" 칸의 값만 채운다(그 밖의 줄은 그대로)
 for k, v in [("「[작품명]」", "「빈 정류장」"), ("[name] (`[project_id]`)", "빈 정류장 (`prj-sim-0001`)"),
              ("Canon location: [Claude Doc link (recommended) / project knowledge]", "Canon location: project knowledge")]:
     assert k in inst, k
-    inst = inst.replace(k, v, 1)
-proj = os.path.join(HERE, "testbed", "project")
+    if not EMPTY or k.startswith("Canon location"):
+        inst = inst.replace(k, v, 1)
+proj = os.path.join(KIT, "project-files") if EMPTY else os.path.join(HERE, "testbed", "project")
 knowledge = "\n\n".join(f'<document name="{f}">\n{open(os.path.join(proj, f), encoding="utf-8").read()}\n</document>'
                         for f in ["decisions.md", "asset-registry.md", "shot-list.md", "ok-cuts.md"])
 SIM = ("이 환경에는 Higgsfield MCP가 연결되어 있지 않다(시험 환경). Higgsfield 도구를 부를 때는 실제로 부르지 말고 "
