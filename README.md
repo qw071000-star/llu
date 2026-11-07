@@ -13,6 +13,7 @@
 | 에셋·이미지·영상을 만드는 사람 | Claude Docs [「AI 제작 가이드 — 에셋·장소·소품·이미지·영상」](https://claude.ai/artifact/THWGi5JWe6rkyMsM2yQ9FC) — 만드는 법과 주의할 점 요약(비공개 문서라 팀원에게는 공유해서 연다) |
 | 실사 영상 프롬프트를 읽고 고치는 사람 | [`guides/15블록-가이드.md`](guides/15블록-가이드.md) — 15블록마다 들어가는 것, 예시 문장, 자주 틀리는 것, 어디서 가져오나 |
 | 작업을 지시하는 제작자 | [`guides/작업별-팁.md`](guides/작업별-팁.md) — 작업마다 이렇게 말하면 되는 것, Claude가 묻는 것, 흔한 실패, 크레딧 아끼는 법 |
+| PDF로 받아 보는 안내 | [`guides/pdf/`](guides/pdf/) — 설치 안내(3쪽) · 작업 안내(5쪽, 설치 제외) · 전체 사용 안내서(12쪽). 다시 만들기: `bash tools/pdf/build.sh` |
 | 키트를 고치는 사람 | 이 파일 |
 
 ## 구조
@@ -35,6 +36,8 @@ kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공�
   project-files/           작품마다 복사해 채우는 정본 틀 + Claude Code용 CLAUDE.md·settings.json
   dist/*.zip               Claude 앱에 올리는 스킬 묶음 (pack-skills.sh로 다시 만든다)
   dist/project-instructions.md  Claude 앱 지침 칸에 붙일 한 파일(지침 + context 둘)
+guides/pdf/                사람이 읽는 안내서 PDF (설치 · 작업 · 전체)
+tools/pdf/                 위 PDF를 만드는 스크립트 (`build.sh`, 한글 폰트 WenQuanYi Zen Hei 필요)
 reference/                 [컨텍스트에 넣지 않음] 사람이 근거를 볼 때만
   error-registry.md        오류 대장 E-01~E-47
   higgsfield-history.md    Higgsfield 전 프로젝트 분석: 잘된 것·안 된 것·크레딧
