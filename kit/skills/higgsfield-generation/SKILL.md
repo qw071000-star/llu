@@ -71,6 +71,7 @@ Polling status repeatedly reprocesses the whole conversation each time. Leave th
    - For a batch, call `jobs_wait` (0) once, then `show_generation_by_ids` once.
 2. If it is not done yet, write "아직 진행 중입니다. 완성되면 알려 주세요." and stop.
 3. If it is done, change the cut folder and cut list status to `검토`, mark ✔/✘ per instructed item (3-5 lines), and ask "승인할까요, 거절할까요?". For items only visible on screen, write "봐 주세요".
+   - **Video: add a viewing table** built from the prompt's `ACTION_TIMING` intervals (plus the dialogue line and the gaze lines), one row per interval: `구간 | 프롬프트가 지시한 것 | 확인`. Leave the last column empty for the user to fill (instructions rule 10). First row: is 0:00 the same as the start image (gaze, hands, pose)? Ask the user to answer only the rows that differ ("0:04쯤 ✘, 시선이 카메라로"); a row marked ✘ is the symptom for `video-prompt` → `fixes.md`.
 4. Numeric measurement, cause analysis and comparison with other cuts only when the user wants them (`qa-metrics.md`).
 
 **When the user says "기다렸다가 봐 줘" (wait and look):** for images, use `jobs_wait` (15 seconds) up to 4 times. Do not wait for video.

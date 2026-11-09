@@ -39,6 +39,8 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 21 | 마지막 프레임·러프컷 (Claude Code) | "마지막 프레임", "이어 붙여", "러프컷" | `assembly` |
 | 22 | 색 맞추기 (Claude Code) | "색 맞춰", "톤 통일", "더 노래" | `color-continuity` (before a rough cut, 21) |
 | 23 | OK 프롬프트 다시 보기·번역 | "프롬프트 다시", "한국어로" | that one OK card (no check). English original as is; **a translation is plain text, never in a code block** |
+| 24 | 편집 계획 (컷 수·길이·이음새) | "편집 계획", "페이싱", "리듬", "이음새 점검", "컷 몇 개로", "이 컷 빼도" | `edit-planning` |
+| 25 | 에셋 잠금 시험 | "잠금 시험", "스트레스 테스트", "영상에 써도 돼?" | `image-prompt` → `asset-lock.md` |
 
 ## 3. What not to open
 

@@ -62,7 +62,7 @@ Higgsfield도 MCP도 처음인 팀원을 위한 안내서입니다. 이 문서 �
 ### 3-2. Claude
 1. **요금제:** 스킬을 쓰려면 Pro 이상 요금제가 필요합니다.
 2. **코드 실행 켜기:** 설정에서 코드 실행(파일 만들기)을 켭니다. 스킬은 이게 켜져 있어야 동작합니다.
-3. **스킬 9개 올리기:** 스킬 메뉴(Customize → Skills 또는 Settings → Capabilities)에서 "+" → "Upload a skill"로 아래 zip을 하나씩 올립니다. 압축은 풀지 않습니다.
+3. **스킬 10개 올리기(웹에서는 8개):** 스킬 메뉴(Customize → Skills 또는 Settings → Capabilities)에서 "+" → "Upload a skill"로 아래 zip을 하나씩 올립니다. 압축은 풀지 않습니다.
    - `project-setup.zip`
    - `production-session.zip`
    - `higgsfield-generation.zip`
@@ -70,6 +70,7 @@ Higgsfield도 MCP도 처음인 팀원을 위한 안내서입니다. 이 문서 �
    - `video-prompt.zip`
    - `acting.zip`
    - `shot-design.zip`
+   - `edit-planning.zip`
    - `assembly.zip` (Claude Code에서만 동작. 리포 `media/`의 영상을 ffmpeg로 다룹니다)
    - `color-continuity.zip` (Claude Code에서만 동작. 확정 컷끼리 색·밝기를 ffmpeg로 맞춥니다)
 
@@ -202,7 +203,7 @@ OK한 결과물은 다음 컷의 기준이 됩니다. 무엇을 가져올지 말
 
 | 증상 | 먼저 해 볼 것 |
 |---|---|
-| Claude가 질문 없이 바로 프롬프트를 쓴다 / 형식이 안내와 다르다 | 스킬 9개가 켜져 있는지, 코드 실행이 켜져 있는지 확인합니다. 대화에서 "video-prompt 스킬대로 다시"라고 말해 봅니다 |
+| Claude가 질문 없이 바로 프롬프트를 쓴다 / 형식이 안내와 다르다 | 스킬 8개(Claude Code는 10개)가 켜져 있는지, 코드 실행이 켜져 있는지 확인합니다. 대화에서 "video-prompt 스킬대로 다시"라고 말해 봅니다 |
 | Claude가 Higgsfield를 못 쓴다고 한다 | 대화 화면에서 Higgsfield 커넥터가 켜져 있는지 확인합니다. 커넥터를 다시 연결하고 로그인합니다 |
 | 저장이 안 된다 / 403, 404 오류 | 팀 워크스페이스에 초대됐는지, 선택된 워크스페이스가 팀 것인지 확인합니다. 그래도 안 되면 총괄에게 폴더 ID를 확인받습니다 |
 | 결과물이 작품 폴더 밖에 있다 | Claude에게 "3-1 폴더로 옮겨"라고 합니다. 원인(폴더 미지정)을 키트 관리자에게 알립니다 |

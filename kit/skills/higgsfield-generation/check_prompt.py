@@ -71,6 +71,20 @@ def check_common(text, args, out):
     if "SCREEN direction" in text and "never the character's own left or right" not in text and people:
         out.append(("WARN", "좌표 문장이 짧다. 인물이 있으면 글자 그대로: 'LEFT and RIGHT are SCREEN directions, never the character's own left or right.'"))
 
+    # 렌더되지 않는 말(형용사 수프)과 몸 없이 이름만 쓴 감정. 고정 문장(--must-include)은 제외한다
+    own = text
+    if args.must_include:
+        with open(args.must_include, encoding="utf-8") as f:
+            for line in (l.strip() for l in f):
+                if line:
+                    own = own.replace(line, "")
+    lazy = [m.group(0) for m in re.finditer(r"(?<!no )(?<!not )(?<!without )(?<!No )\b(?:cinematic|masterpiece|stunning|breathtaking|amazing|epic|hyper-?realistic|ultra[- ]?hd|(?:beautiful|dramatic|epic) lighting|dynamic camera|intense moment|powerful scene|high[- ]quality|professional(?:ly)? (?:shot|quality|grade)|[48]k)\b", own, re.IGNORECASE)]
+    if lazy:
+        out.append(("WARN", f"렌더되지 않는 말 {sorted(set(w.lower() for w in lazy))[:4]}. 한 줄을 구체적인 사실로 바꾼다: 빛의 방향·세기, 몸의 미세 동작, 공간의 압력(차가운 냉장고 불빛, 젖은 아스팔트)"))
+    named = find(r"\b(?:he|she|they|the (?:old )?(?:man|woman|girl|boy)|grandfather|grandmother)\s+(?:is|looks|feels|seems|appears|was)\s+(?:very |so |really )?(?:sad|angry|afraid|scared|happy|nervous|lonely|anxious|worried|furious|heartbroken|depressed|upset)\b", own)
+    if named:
+        out.append(("WARN", "감정 이름만 썼다(he is sad류). 몸으로 쓴다: 턱이 굳는다, 손마디가 하얗다, 숨이 한 박자 멈춘다, 시선이 한 뼘 내려간다(감정 하나에 눈에 보이는 단서 2~4개)"))
+
     tags = set(re.findall(r"<<<\s*([^>]+?)\s*>>>", text))
     holders = sorted(t for t in tags if re.fullmatch(r"[A-Z]{1,5}|.*[\[\]].*", t))
     if holders:
