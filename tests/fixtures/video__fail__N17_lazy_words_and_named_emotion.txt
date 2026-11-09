@@ -1,0 +1,9 @@
+# args: --seconds 5
+# expect: 렌더되지 않는 말
+# expect: 감정 이름만 썼다
+[SCENE_CONTEXT]
+A cinematic, stunning shot of an old man at a bus stop at dusk. He is sad.
+[CAMERA]
+Across the road at standing eye level. Fixed and completely locked from 0:00 to 0:05. No pan, no tilt, no zoom.
+[ACTION_TIMING]
+0:00–0:05 — he sits and looks down the empty road.

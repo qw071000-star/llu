@@ -92,6 +92,8 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 21 | 마지막 프레임·러프컷 (Claude Code) | "마지막 프레임", "이어 붙여", "러프컷" | `assembly` |
 | 22 | 색 맞추기 (Claude Code) | "색 맞춰", "톤 통일", "더 노래" | `color-continuity` (before a rough cut, 21) |
 | 23 | OK 프롬프트 다시 보기·번역 | "프롬프트 다시", "한국어로" | that one OK card (no check). English original as is; **a translation is plain text, never in a code block** |
+| 24 | 편집 계획 (컷 수·길이·이음새) | "편집 계획", "페이싱", "리듬", "이음새 점검", "컷 몇 개로", "이 컷 빼도" | `edit-planning` |
+| 25 | 에셋 잠금 시험 | "잠금 시험", "스트레스 테스트", "영상에 써도 돼?" | `image-prompt` → `asset-lock.md` |
 
 ## 3. What not to open
 
@@ -130,9 +132,11 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 | 7·11 반대쪽 카메라 | Screen left/right and light side flip → write a new LIGHT LOCK for that view |
 | 8 장소 고치기 | A change that reads as two (time of day + lights on) → split? (do the one the user said first) / light changes → that view's LIGHT LOCK, with the new light's screen side + object in the final state |
 | 11 퍼스트 프레임 | Changing sky or colour → PALETTE and LIGHT LOCK / does it continue the previous cut's end state? |
-| 13 실사 영상 | No start image → hold video questions, ask about the first frame first (allowed now: count events, split shots, propose the end state) / more than 3 events → split the shot / acting beyond the register (`decisions.md` §5) / opposite to a neighbour cut's acting (`OK 이유` in the `ok-cuts.md` list) / a new location → ask the location-master items in the same batch |
+| 13 실사 영상 | No start image → hold video questions, ask about the first frame first (allowed now: count events, split shots, propose the end state) / more than 3 events → split the shot / acting beyond the register (`decisions.md` §5) / opposite to a neighbour cut's acting (`OK 이유` in the `ok-cuts.md` list) / a new location → ask the location-master items in the same batch / a character or prop in the cut reads `잠금 상태: 초안` → offer the lock test once (`asset-lock.md`, task 25); the user may skip (`건너뜀`, never ask again) |
 | 15 결과 고치기 | Which job (if neither cut nor job is given) / which range and which person ("이상해" → offer two or three candidates) / approved cut → new take? |
 | 16 다른 OK처럼 | What to take (motion / expression / colour / camera) if unsaid / length, people, place or props differ / opposite camera flips the imported lines' left and right |
 | 3 컷 나누기 | No confirmed view for a reverse or new angle → `새 뷰 필요` / a shot that crosses the line |
 | 21 프레임·러프컷 | Video not in `media/` → which job, where / the next cut already has a confirmed start image → replace? / cuts differ in resolution or fps |
 | 22 색 맞추기 | Reference cut (if not in `decisions.md`) and target cut / a big difference → regenerate that cut instead |
+| 24 편집 계획 | Scope and target runtime unknown → ask both / no cut list for that scene → task 3 first / a cut to delete is approved → ask before proposing its removal / tempo unsaid → propose from the work's tone |
+| 25 에셋 잠금 시험 | No confirmed sheet job → task 4 or 9 first / which co-stars and which location views (LIGHT LOCK) → ask only what the registry and shot list lack / the same test ✘ twice → stop and propose a new version (rule 8) |

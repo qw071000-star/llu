@@ -13,6 +13,7 @@
 | 에셋·이미지·영상을 만드는 사람 | Claude Docs [「AI 제작 가이드 — 에셋·장소·소품·이미지·영상」](https://claude.ai/artifact/THWGi5JWe6rkyMsM2yQ9FC) — 만드는 법과 주의할 점 요약(비공개 문서라 팀원에게는 공유해서 연다) |
 | 실사 영상 프롬프트를 읽고 고치는 사람 | [`guides/15블록-가이드.md`](guides/15블록-가이드.md) — 15블록마다 들어가는 것, 예시 문장, 자주 틀리는 것, 어디서 가져오나 |
 | 작업을 지시하는 제작자 | [`guides/작업별-팁.md`](guides/작업별-팁.md) — 작업마다 이렇게 말하면 되는 것, Claude가 묻는 것, 흔한 실패, 크레딧 아끼는 법 |
+| PDF로 받아 보는 안내 | [`guides/pdf/`](guides/pdf/) — 설치 안내(3쪽) · 작업 안내(5쪽, 설치 제외) · 전체 사용 안내서(12쪽). 다시 만들기: `bash tools/pdf/build.sh` |
 | 키트를 고치는 사람 | 이 파일 |
 
 ## 구조
@@ -20,21 +21,24 @@
 ```
 kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공유한다)
   instructions.md          [항상 읽힘] 규칙 11개, 대화 시작 순서, 출력 (영어, 약 1,750토큰 이하)
-  context/                 [항상 읽힘] tasks.md = 할 일 목록 23개(사용자 말 → 작업 번호 → 스킬), 애매하면 "이 작업을 할까요?" 확인
+  context/                 [항상 읽힘] tasks.md = 할 일 목록 25개(사용자 말 → 작업 번호 → 스킬), 애매하면 "이 작업을 할까요?" 확인
                                      must-ask.md = 묻지 않을 것 / 먼저 짚을 것 (작업별 질문은 각 스킬의 "필요한 정보" 표)
-  skills/                  [그 작업 때만] 스킬 9개. 스킬 안에서도 tasks.md가 가리키는 파일만 연다
+  skills/                  [그 작업 때만] 스킬 10개. 스킬 안에서도 tasks.md가 가리키는 파일만 연다
     project-setup/         새 작품: 질문 한 번, 정본 초안, Higgsfield 폴더
     production-session/    세션 시작·컷 카드·핸드오프·정본 관리, ok-reuse("3-1처럼")
     higgsfield-generation/ 생성 전 점검·폴더·승인/거절·OK 기록·크레딧 + check_prompt.py
-    image-prompt/          공통 + character / location(+ location-view, location-edit) / prop / style / first-frame
+    image-prompt/          공통 + character / location(+ location-view, location-edit) / prop / style / first-frame / asset-lock(에셋 잠금 시험)
     video-prompt/          공통 + live-action / background / fixes / rerender
     acting/                인물 연기
     shot-design/           대본 한 장면 → 블로킹·180도 선·커버리지·컷 길이(컷 카드 이전, 제안만)
+    edit-planning/         컷이 하는 일·길이 배분·이음새 5항목·자르는 동기 → 편집 계획표(제안만)
     assembly/              Claude Code + ffmpeg: 마지막·지정 프레임, 러프컷 concat, 경계 비교 + assemble.py
     color-continuity/      Claude Code + ffmpeg: 컷 간 색·밝기 재기, 기준 컷에 1차 맞춤, 비교 이미지 + color.py
   project-files/           작품마다 복사해 채우는 정본 틀 + Claude Code용 CLAUDE.md·settings.json
   dist/*.zip               Claude 앱에 올리는 스킬 묶음 (pack-skills.sh로 다시 만든다)
   dist/project-instructions.md  Claude 앱 지침 칸에 붙일 한 파일(지침 + context 둘)
+guides/pdf/                사람이 읽는 안내서 PDF (설치 · 작업 · 전체)
+tools/pdf/                 위 PDF를 만드는 스크립트 (`build.sh`, 한글 폰트 WenQuanYi Zen Hei 필요)
 reference/                 [컨텍스트에 넣지 않음] 사람이 근거를 볼 때만
   error-registry.md        오류 대장 E-01~E-47
   higgsfield-history.md    Higgsfield 전 프로젝트 분석: 잘된 것·안 된 것·크레딧
@@ -51,7 +55,7 @@ archive/어머니와-고등어/     [컨텍스트에 넣지 않음] 원본 문�
 
 ## 설치
 
-- **Claude 앱:** `TEAM-GUIDE.md` §3. 스킬 zip 9개를 계정에 올리고, 작품 프로젝트의 지침 칸에 `kit/dist/project-instructions.md`(지침 + tasks + must-ask)를 붙인다. 프로젝트 지식에는 시나리오·콘티 정도만 넣는다. `reference/`·`archive/`는 넣지 않는다.
+- **Claude 앱:** `TEAM-GUIDE.md` §3. 스킬 zip 10개(웹은 8개: assembly·color-continuity 제외)를 계정에 올리고, 작품 프로젝트의 지침 칸에 `kit/dist/project-instructions.md`(지침 + tasks + must-ask)를 붙인다. 프로젝트 지식에는 시나리오·콘티 정도만 넣는다. `reference/`·`archive/`는 넣지 않는다.
 - **Claude Code (작품 리포):**
 
 ```bash

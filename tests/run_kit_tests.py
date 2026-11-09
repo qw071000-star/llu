@@ -619,11 +619,11 @@ check("[실제8] 새 스킬 시나리오 C53~C56: scenarios.md와 real-chains.js
 # 16d. 새 스킬: assembly(러프컷·프레임), shot-design(장면 컷 설계)
 import shutil
 import tempfile
-EXPECT_SKILLS = ["acting", "assembly", "color-continuity", "higgsfield-generation", "image-prompt", "production-session", "project-setup", "shot-design", "video-prompt"]
-check("[스킬 수] 스킬 9개", skill_dirs == EXPECT_SKILLS, ", ".join(skill_dirs))
-check("[스킬 수] zip 9개", sorted(os.path.basename(p)[:-4] for p in glob.glob(os.path.join(KIT, "dist", "*.zip"))) == EXPECT_SKILLS)
+EXPECT_SKILLS = ["acting", "assembly", "color-continuity", "edit-planning", "higgsfield-generation", "image-prompt", "production-session", "project-setup", "shot-design", "video-prompt"]
+check("[스킬 수] 스킬 10개", skill_dirs == EXPECT_SKILLS, ", ".join(skill_dirs))
+check("[스킬 수] zip 10개", sorted(os.path.basename(p)[:-4] for p in glob.glob(os.path.join(KIT, "dist", "*.zip"))) == EXPECT_SKILLS)
 _tg = read(os.path.join(ROOT, "TEAM-GUIDE.md"))
-check("[스킬 수] README·TEAM-GUIDE가 9개로 적음", "스킬 9개" in read(os.path.join(ROOT, "README.md")) and "스킬 9개" in _tg and all(f"{s}.zip" in _tg for s in EXPECT_SKILLS))
+check("[스킬 수] README·TEAM-GUIDE가 10개로 적음", "스킬 10개" in read(os.path.join(ROOT, "README.md")) and "스킬 10개" in _tg and all(f"{s}.zip" in _tg for s in EXPECT_SKILLS))
 for s, word, n in [("assembly", "마지막 프레임", 21), ("shot-design", "컷 나눠", 3), ("color-continuity", "더 노래", 22)]:
     check(f"[새 스킬] 할 일 목록 {n}번 줄에 `{s}`", f"`{s}`" in _task_rows.get(n, "") and word in _task_rows.get(n, ""))
     check(f"[새 스킬] must-ask 작업별 표에 {n}번 줄", re.search(rf"^\| {n} ", ctx_ask, re.M) is not None)
@@ -749,7 +749,7 @@ routes = {
     "색 맞추기": ["color-continuity/SKILL.md"],
 }
 # 2026-10-29: 영어 키트로 바꾸며 글자 수(항상 13,000자, 단계 17,550자) 대신 추정 토큰. 값 = 그때 추정을 250 단위로 올림.
-ALWAYS_BUDGET = 5550  # 영어판 약 5,540(기능 점검 반영 후). 처음 약 5,073, 옛 한국어판 약 7,000
+ALWAYS_BUDGET = 5900  # 2026-11-09: 새 스킬 edit-planning(설명 ~75) + 작업 24·25(~120) + 잠금 시험 질문 규칙(~90)으로 5,550 → 5,900. 처음 약 5,073, 옛 한국어판 약 7,000
 check(f"[읽기량] 항상 읽히는 양: 추정 {always:,.0f}토큰 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
 BUDGET = 7500  # 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
 _route_tok = {}
@@ -822,6 +822,13 @@ with tempfile.TemporaryDirectory() as _d:
     check("[설치] 키트 리포 자체에는 설치하지 않음", subprocess.run(["bash", _sh, ROOT], capture_output=True).returncode != 0)
     with open(os.path.join(_d, ".gitignore"), encoding="utf-8") as f: _gi = f.read().split()
     check("[설치] .gitignore에 tmp/·media/ 한 번씩", _gi.count("tmp/") == 1 and _gi.count("media/") == 1, str(_gi))
+
+# 17b. 실사 시네마틱 보강 (2026-11): 린트, 관찰 증상, 시청 체크표
+_fx = sk("video-prompt/fixes.md")
+check("[보강4] fixes.md: (관찰) 증상 6개와 승격 기준", _fx.count("| (관찰) ") == 6 and "promote to a rule after two cases of our own" in _fx)
+check("[보강4] 검사기: 렌더되지 않는 말·감정 이름 경고(고정 문장은 제외)", "렌더되지 않는 말" in chk and "감정 이름만 썼다" in chk and "own.replace(line" in chk)
+_gen = sk("higgsfield-generation/SKILL.md")
+check("[보강4] 생성 운영: 영상은 시청 체크표(ACTION_TIMING 구간별, 첫 행은 시작 이미지 비교, ✘ 행은 fixes.md)", "Video: add a viewing table" in _gen and "First row: is 0:00 the same as the start image" in _gen and "`fixes.md`" in _gen.split("Video: add a viewing table")[1][:700])
 
 # 결과
 print(f"추정 토큰: 항상 읽힘 {always:,.0f} (예산 {ALWAYS_BUDGET:,}) · instructions.md {tok(inst_core):,.0f} (예산 {INST_BUDGET:,}) · "

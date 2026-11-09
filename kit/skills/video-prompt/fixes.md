@@ -21,3 +21,14 @@
 | The camera goes straight to the centre instead of the designated point | Change to "tracking shot following the subject". Write the zoom amount as half of what is wanted |
 | Acting is too big or expressionless | Close both ends of the emotional range with `failed take` |
 | Background characters freeze or all move at once | Headcount + one different task each. Unnamed people are faceless silhouettes |
+
+**관찰 (community sources, 2026-11; not yet seen in our own generations: promote to a rule after two cases of our own).** Same use as above: change only the matching line, show "전 → 후".
+
+| Symptom | Fix |
+|---|---|
+| (관찰) Comes out as slow motion you did not ask for | Give the pace a number or a physical referent and make the action fit the clip, not the clip the action: `He walks at a steady pace, one footfall roughly every 0.55 seconds. Constant speed, no slow motion, no speed ramp.` Retiming in the edit (about 115%) before a cut often beats regenerating |
+| (관찰) Looks like a slideshow: a photo with a zoom, nothing happens | The prompt describes a picture, not an event. Write at least two motion layers (body, cloth or hair, environment) and one weight shift: `His coat hem lifts and drops in gusts. He shifts his weight onto the screen-left foot and lowers his chin.` If the start image is a rigid symmetrical pose, rebuild it mid-gesture (`image-prompt` → `first-frame.md`) |
+| (관찰) The mouth does not match the line | One speaker, one line of about six words or fewer, mouth clearly visible, clip 4 seconds or less. For a longer line, turn the speaker three-quarters away or show the listener, and place the line in the edit as voice-over. Treat generated room sound as a scratch track |
+| (관찰) Head cut off, subject too small, wrong crop | State the frame as geography: `eyes on the upper third line, about 10% headroom, subject on the screen-left third, hands inside the frame.` Make the start image at the delivery aspect and size; never crop a 16:9 image into 9:16 |
+| (관찰) A visible jump where an extended clip joins | Do not repeat the original prompt in the extension. Write a continuation that names the state in progress (`she is mid-step, right foot forward, weight still transferring; complete that step and take one more; do not reset her pose`). Or stop extending: two designed shots on a cut beat one extended shot with a seam. Hide a seam with a 0.5 s cutaway or a short dissolve |
+| (관찰) A prop vanishes or changes after being covered, small, or leaving the frame | State it for the whole clip: `the cream paper envelope, one corner creased, stays flat in the lower right of frame for the entire shot, never covered, never leaving frame.` Name it with the same two or three nouns every time (colour, material, one edge condition). Keep a handled prop to 4 seconds or less. Put the occlusion on a cut: clip A ends with the hand over it, clip B opens uncovered |

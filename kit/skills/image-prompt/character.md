@@ -45,7 +45,7 @@
 - Derive only from the confirmed version. Never make a derivative of a derivative. Never delete the confirmed version.
 - Make video elements separately for each outfit/hair state (`char_<character>_<state>_v1`). If the state changes within one video, attach both elements and split by time range.
 
-**Record:** When confirmed, write into the asset registry: the IDENTITY and WARDROBE fixed sentences, job ID, the model actually used, variant (A/B), limitations. Put only the WARDROBE sentence into cut prompts, letter for letter. The face is handled by the reference. The prompt and settings live on the asset ID card in the OK ledger.
+**Record:** When confirmed, write into the asset registry: the IDENTITY and WARDROBE fixed sentences, job ID, the model actually used, variant (A/B), limitations. Put only the WARDROBE sentence into cut prompts, letter for letter. The face is handled by the reference. The prompt and settings live on the asset ID card in the OK ledger. A confirmed sheet is still `잠금 상태: 초안` until the lock test passes or the user skips it (`asset-lock.md`, task 25).
 
 ## Template 1 (틀 1) — new
 
