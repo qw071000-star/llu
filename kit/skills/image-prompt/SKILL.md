@@ -18,7 +18,7 @@ Fill in the "required information" table of that asset type's file and the commo
 
 What to ask is in `context/must-ask.md`; how to ask is in instructions rule 4.
 
-**Reference tags:** `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>` in the templates are placeholders. Keep the angle brackets and replace only the name inside with the real element name or the attach-order name (`<<<loc_…_v1>>>`, `<<<image_1>>>`). The opening line works the same way: `Edit <<<loc_…_v1>>> WITHOUT reframing`. Number of references = number of tags = number of attached images.
+**Reference tags:** `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>` in the templates are placeholders. Keep the angle brackets and replace only the name inside with the real element ID (the UUID in the registry's `요소 ID` column; `loc_…_v1` is only its label) or the attach-order name (`<<<image_1>>>`). The opening line works the same way: `Edit <<<loc_…_v1>>> WITHOUT reframing`. Number of references = number of tags = number of attached images.
 
 ## 1. Decide before writing
 
@@ -108,7 +108,7 @@ Do not darken the image to make it look real, and do not add phone or handheld w
 
 | Model | Note |
 |---|---|
-| GPT Image 2.5 | Specifying many elements pushes the texture toward a 3D render. Reduce the elements or put the texture paragraph first |
+| GPT Image 2.5 / 2.6 | Specifying many elements pushes the texture toward a 3D render. Reduce the elements or put the texture paragraph first |
 | Nano Banana Pro | May be processed by a different model than requested. Record the model actually used before confirming |
 
 ## 6. Pre-send checklist (what the check script cannot catch)

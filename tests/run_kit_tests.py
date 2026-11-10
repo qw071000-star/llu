@@ -825,7 +825,7 @@ with tempfile.TemporaryDirectory() as _d:
 
 # 17b. 실사 시네마틱 보강 (2026-11): 린트, 관찰 증상, 시청 체크표
 _fx = sk("video-prompt/fixes.md")
-check("[보강4] fixes.md: (관찰) 증상 6개와 승격 기준", _fx.count("| (관찰) ") == 6 and "promote to a rule after two cases of our own" in _fx)
+check("[보강4] fixes.md: (관찰) 증상 7개와 승격 기준", _fx.count("| (관찰) ") == 7 and "promote to a rule after two cases of our own" in _fx)
 check("[보강4] 검사기: 렌더되지 않는 말·감정 이름 경고(고정 문장은 제외)", "렌더되지 않는 말" in chk and "감정 이름만 썼다" in chk and "own.replace(line" in chk)
 _gen = sk("higgsfield-generation/SKILL.md")
 check("[보강4] 생성 운영: 영상은 시청 체크표(ACTION_TIMING 구간별, 첫 행은 시작 이미지 비교, ✘ 행은 fixes.md)", "Video: add a viewing table" in _gen and "First row: is 0:00 the same as the start image" in _gen and "`fixes.md`" in _gen.split("Video: add a viewing table")[1][:700])
@@ -843,6 +843,7 @@ check("[공용5] 읽기 지도: 할 일 2번이 shared-account.md를 가리킴",
 check("[저장1] OK 대장: 시작 이미지·영상 한 쌍, 각 카드에 프롬프트 전문, 승인 카드는 고치지 않음", "### 3-1 시작 이미지" in _okc and "시작 이미지와 영상은 한 쌍으로" in _okc and "승인된 카드는 고치지 않는다" in _okc and _okc.count("프롬프트(보낸 그대로)") >= 2)
 check("[저장2] 생성 운영 OK 기록: 시작 이미지 카드가 없으면 먼저 쓰고 승인 카드는 수정 안 함", "saved as a pair, each with its own prompt" in _gen and "never edited" in _gen)
 check("[저장2b] 생성 운영: 공용 계정이면 승인 줄에 승인자 이름", "`승인` line ends with the approver's name" in _gen)
+check("[실생성1] 생성 운영: 시작 이미지 영상은 start-frame 모델, 이미지 모델 2.6, 요소 ID는 UUID", "`start-frame`" in _gen and "gpt_image_2_6" in _gen and "UUID" in sk("image-prompt/SKILL.md") and "start-frame" in _fx)
 check("[저장3] 컷 설계: job·폴더·카드가 있는 컷이 있으면 번호를 밀지 않음", "do not renumber" in sk("shot-design/SKILL.md"))
 
 # 결과
