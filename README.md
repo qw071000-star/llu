@@ -13,7 +13,8 @@
 | 에셋·이미지·영상을 만드는 사람 | Claude Docs [「AI 제작 가이드 — 에셋·장소·소품·이미지·영상」](https://claude.ai/artifact/THWGi5JWe6rkyMsM2yQ9FC) — 만드는 법과 주의할 점 요약(비공개 문서라 팀원에게는 공유해서 연다) |
 | 실사 영상 프롬프트를 읽고 고치는 사람 | [`guides/15블록-가이드.md`](guides/15블록-가이드.md) — 15블록마다 들어가는 것, 예시 문장, 자주 틀리는 것, 어디서 가져오나 |
 | 작업을 지시하는 제작자 | [`guides/작업별-팁.md`](guides/작업별-팁.md) — 작업마다 이렇게 말하면 되는 것, Claude가 묻는 것, 흔한 실패, 크레딧 아끼는 법 |
-| PDF로 받아 보는 안내 | [`guides/pdf/`](guides/pdf/) — 설치 안내(3쪽) · 작업 안내(5쪽, 설치 제외) · 전체 사용 안내서(12쪽). 다시 만들기: `bash tools/pdf/build.sh` |
+| PDF로 받아 보는 안내 | [`guides/pdf/`](guides/pdf/) — 설치 안내(3쪽) · 작업 안내(5쪽, 설치 제외) · 전체 사용 안내서(13쪽). 다시 만들기: `bash tools/pdf/build.sh` |
+| 무엇이 바뀌었나 | [`CHANGELOG.md`](CHANGELOG.md) — v1.1 추가분과 이전 버전(`archive/kit-v1.0` 브랜치) |
 | 키트를 고치는 사람 | 이 파일 |
 
 ## 구조
@@ -44,6 +45,7 @@ reference/                 [컨텍스트에 넣지 않음] 사람이 근거를 �
   higgsfield-history.md    Higgsfield 전 프로젝트 분석: 잘된 것·안 된 것·크레딧
   source-index.md          원본 자료가 키트 어디에 들어갔나
   kit-test-report.md       키트 시험 결과
+  community-cinematic-research-2026-11.md  영화 같은 실사를 위한 커뮤니티 조사(v1.1의 근거)
 tests/                     [컨텍스트에 넣지 않음]
   run_kit_tests.py         키트를 고칠 때마다 돌린다
   fixtures/                검사기 통과·실패 예시 프롬프트
