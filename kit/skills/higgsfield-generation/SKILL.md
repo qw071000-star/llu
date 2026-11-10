@@ -96,7 +96,7 @@ Polling status repeatedly reprocesses the whole conversation each time. Leave th
 - **Reject log:** leave the reject reason in cut card [11] as `job — 거절 — 이유`. The next attempt's risk list comes from here.
 
 **OK record (at the moment of approval, never deferred to the next conversation)**
-1. Write a list line and a card in the OK ledger (`ok-cuts.md`). The format is in that file.
+1. Write a list line and a card in the OK ledger (`ok-cuts.md`). The format is in that file. With `운영 방식: 공용 계정`, the card's `승인` line ends with the approver's name.
 2. Copy the prompt exactly as sent, character for character. Lookup order:
    1. What was sent in this conversation
    2. `get_project_asset_prompt` (that job)
