@@ -6,8 +6,8 @@
    - If there are several kinds (start image and video), choose with "Which OK" in the table below. If still ambiguous, ask with a proposal.
 2. Open only that card's prompt. An OK card is a section inside `ok-cuts.md`.
    - Open the card first even **before proposing** to bring in an OK (do not propose from the list's `OK 이유` alone).
-3. If there is no card, first create it from the confirmed job in the cut list. The order for finding the prompt is the same as the OK record in `higgsfield-generation` §4. Do not guess and rewrite the prompt by looking at the result.
-4. Do not use superseded old OKs. If the user points to an old one, confirm which one they mean.
+3. If there is no card, first create it from the confirmed job in the cut list, finding the prompt as in the OK record of `higgsfield-generation` §4. Never rewrite it from the result.
+4. Never use superseded OKs; if the user points to one, confirm which they mean.
 
 ## 2. What to bring
 

@@ -4,7 +4,7 @@ Write at most 40 lines, one cut only. The reader is the next session's Claude. L
 
 ```text
 받는 세션: 총괄
-보낸 세션: [컷 번호 3-1] · [날짜]
+보낸 세션: [컷 번호 3-1] · [날짜] · [이름]
 컷 상태: [진행 / 검토 / 승인 / 보류]
 
 [1] 확정된 것: [종류 · job · OK 대장 카드 기록함/못함 · 한계]

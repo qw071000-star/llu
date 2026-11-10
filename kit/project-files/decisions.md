@@ -34,6 +34,7 @@
 - [ ]
 
 ## §7. 작업 방식 (이 작품에서 정한 것)
+- 운영 방식: [단독 / 공용 계정: Claude 1개 · Higgsfield 1개를 [이름들]이 돌아가며 사용 (`production-session` → `shared-account.md`)] · 총괄: [이름] · 하루 크레딧 상한: [없음 / N]
 - [ ]
 
 ## 미결
