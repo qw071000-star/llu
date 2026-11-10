@@ -48,6 +48,10 @@ for k, v in [("「[작품명]」", "「빈 정류장」"), ("[name] (`[project_i
 proj = os.path.join(KIT, "project-files") if EMPTY else os.path.join(HERE, "testbed", "project")
 knowledge = "\n\n".join(f'<document name="{f}">\n{open(os.path.join(proj, f), encoding="utf-8").read()}\n</document>'
                         for f in ["decisions.md", "asset-registry.md", "shot-list.md", "ok-cuts.md"])
+if spec.get("shared"):  # 공용 계정 운영: 정본 확정 사항에 운영 방식 줄이 있는 작품
+    _h = "## §8. 작업 방식 (이 작품에서 정한 것)\n"
+    assert _h in knowledge
+    knowledge = knowledge.replace(_h, _h + "- 운영 방식: 공용 계정: Claude 1개 · Higgsfield 1개를 지수 · 민호 · 서연이 돌아가며 사용 · 하루 크레딧 상한: 없음\n", 1)
 SIM = ("이 환경에는 Higgsfield MCP가 연결되어 있지 않다(시험 환경). Higgsfield 도구를 부를 때는 실제로 부르지 말고 "
        "답 안에 `[TOOL] 도구이름(인자)` 줄을 쓰고, 그 결과는 sim/higgsfield.md에서 찾는다. 거기 없는 결과는 알 수 없음이다.")
 system = ("# Project instructions (Claude app project)\n\n" + inst +

@@ -749,7 +749,7 @@ routes = {
     "색 맞추기": ["color-continuity/SKILL.md"],
 }
 # 2026-10-29: 영어 키트로 바꾸며 글자 수(항상 13,000자, 단계 17,550자) 대신 추정 토큰. 값 = 그때 추정을 250 단위로 올림.
-ALWAYS_BUDGET = 5900  # 2026-11-09: 새 스킬 edit-planning(설명 ~75) + 작업 24·25(~120) + 잠금 시험 질문 규칙(~90)으로 5,550 → 5,900. 처음 약 5,073, 옛 한국어판 약 7,000
+ALWAYS_BUDGET = 6000  # 2026-11-09 공용 계정 읽기 지도 한 줄 추가로 5,900 → 6,000; 2026-11-09: 새 스킬 edit-planning(설명 ~75) + 작업 24·25(~120) + 잠금 시험 질문 규칙(~90)으로 5,550 → 5,900. 처음 약 5,073, 옛 한국어판 약 7,000
 check(f"[읽기량] 항상 읽히는 양: 추정 {always:,.0f}토큰 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
 BUDGET = 7500  # 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
 _route_tok = {}
@@ -829,6 +829,20 @@ check("[보강4] fixes.md: (관찰) 증상 6개와 승격 기준", _fx.count("| 
 check("[보강4] 검사기: 렌더되지 않는 말·감정 이름 경고(고정 문장은 제외)", "렌더되지 않는 말" in chk and "감정 이름만 썼다" in chk and "own.replace(line" in chk)
 _gen = sk("higgsfield-generation/SKILL.md")
 check("[보강4] 생성 운영: 영상은 시청 체크표(ACTION_TIMING 구간별, 첫 행은 시작 이미지 비교, ✘ 행은 fixes.md)", "Video: add a viewing table" in _gen and "First row: is 0:00 the same as the start image" in _gen and "`fixes.md`" in _gen.split("Video: add a viewing table")[1][:700])
+
+# 17c. 공용 계정 운영과 프롬프트 저장 (2026-11-09)
+_sa = sk("production-session/shared-account.md")
+_okc = read(os.path.join(KIT, "project-files", "ok-cuts.md"))
+_dec = read(os.path.join(KIT, "project-files", "decisions.md"))
+_sl = read(os.path.join(KIT, "project-files", "shot-list.md"))
+check("[공용1] shared-account.md: 이름·선점·쓰기 권한·정정 줄·번호 고정·에셋 변경·크레딧 8개 규칙", all(f"\n{i}. **" in _sa for i in range(1, 9)) and "`정정(날짜 · 이름)" in _sa and "never renumber" in _sa)
+check("[공용2] decisions.md §7 운영 방식 줄과 production-session 연결", "운영 방식:" in _dec and "공용 계정" in _dec and "shared-account.md" in sess)
+check("[공용3] 컷 목록 틀에 담당 칸, 컷 세션은 자기 줄의 담당·상태·확정 job만", "| 상태 | 담당 |" in _sl and "`담당`, status, confirmed jobs" in sess)
+check("[공용4] 핸드오프 머리에 이름", "[날짜] · [이름]" in sk("production-session/handoff.md"))
+check("[공용5] 읽기 지도: 할 일 2번이 shared-account.md를 가리킴", "shared-account.md" in _task_rows.get(2, ""))
+check("[저장1] OK 대장: 시작 이미지·영상 한 쌍, 각 카드에 프롬프트 전문, 승인 카드는 고치지 않음", "### 3-1 시작 이미지" in _okc and "시작 이미지와 영상은 한 쌍으로" in _okc and "승인된 카드는 고치지 않는다" in _okc and _okc.count("프롬프트(보낸 그대로)") >= 2)
+check("[저장2] 생성 운영 OK 기록: 시작 이미지 카드가 없으면 먼저 쓰고 승인 카드는 수정 안 함", "saved as a pair, each with its own prompt" in _gen and "never edited" in _gen)
+check("[저장3] 컷 설계: job·폴더·카드가 있는 컷이 있으면 번호를 밀지 않음", "do not renumber" in sk("shot-design/SKILL.md"))
 
 # 결과
 print(f"추정 토큰: 항상 읽힘 {always:,.0f} (예산 {ALWAYS_BUDGET:,}) · instructions.md {tok(inst_core):,.0f} (예산 {INST_BUDGET:,}) · "

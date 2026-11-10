@@ -103,7 +103,8 @@ Polling status repeatedly reprocesses the whole conversation each time. Leave th
    3. Ask the user to paste it (it is in the result detail on the Higgsfield web)
    - Never rewrite it from memory. For results made by another account, option 2 returns empty, so the card is the only copy teammates can see.
 3. For a job sent with `draft: true`, write `draft 예 · 만료일` in the list's "모델 · 설정" and the card's draft line (otherwise `draft 아니오`). The 1080p finalization picks its `rerender.md` route from this marking.
-4. Fix the cut list's `확정 job` cell. For an asset, also fix the asset registry's `확정 job` and fixed description text (the session that edits: `production-session` §1).
+4. **Start image and video are saved as a pair, each with its own prompt.** Approving a start image writes `3-1 시작 이미지`; the video card's `시작 이미지` line names that job and card, and the start-image card's `이 이미지로 만든 영상` line names the video. A video approval whose start image has no card: write that card first. An approved card is never edited: a correction is one `정정(날짜 · 이름)` line under it, a replacement a new take ("Superseded" above).
+5. Fix the cut list's `확정 job` cell. For an asset, also fix the asset registry's `확정 job` and fixed description text (the session that edits: `production-session` §1).
 
 ## 5. Post-production
 

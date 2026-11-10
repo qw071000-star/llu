@@ -17,7 +17,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | # | 작업 (Korean label) | User says | Open |
 |---|---|---|---|
 | 1 | 새 작품 시작 | "새 작품", empty canon | `project-setup` |
-| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) |
+| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) (+ `shared-account.md` if 공용 계정) |
 | 3 | 장면 컷 나누기 | "컷 나눠", "콘티", "커버리지", "리버스" | `shot-design` |
 | 4 | 인물 시트 만들기 | "인물 시트" | `image-prompt` → `character.md` |
 | 5 | 인물 시트 고치기 (옷·머리·나이) | "옷을", "머리", "50대처럼", "50대 때 모습도" on the sheet itself | `image-prompt` → `character-edit.md` |
@@ -47,5 +47,5 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 - **Never open another cut's card or handoff**, not even with `head`/`grep` to see the format. Card format comes only from `cut-card.md`. A cut session opens only its own cut's handoff. Do not open the full script, old logs, or files not in this table (old sentences leak into prompts).
 - Open the SKILL.md first, then only the stage file(s) on that task's row.
 - Video request without a start image: open `video-prompt` SKILL.md (§0, §2) and `first-frame.md` only; ask only the first-frame items (hands in that frame included), event split and end state (no path, acting or sound yet); once accepted, the next turn is task 11; `live-action.md`/`acting` only on video-prompt turns; no `live-action.md`, no `cut-card.md`, no card written this turn. A new location: also open `location.md` and ask its items in the same batch.
-- A cut session reads: its own card, its own and neighbouring rows of `shot-list.md`, its own continuity row, one reference OK card (an OK card is a section inside `ok-cuts.md`), its last handoff. In `shot-list.md` it edits only its own row's status and confirmed-job fields; content changes go through handoff [5]. Neighbour cuts' acting comes only from the `OK 이유` column of the `ok-cuts.md` list. Do not open neighbour OK cards unless one is the reference (exception: character position in `first-frame.md`).
+- A cut session reads: its own card, its own and neighbouring rows of `shot-list.md`, its own continuity row, one reference OK card (an OK card is a section inside `ok-cuts.md`), its last handoff. In `shot-list.md` it edits only its own row's `담당`, status and confirmed-job fields; content changes go through handoff [5]. Neighbour cuts' acting comes only from the `OK 이유` column of the `ok-cuts.md` list. Do not open neighbour OK cards unless one is the reference (exception: character position in `first-frame.md`).
 - On question-only turns do not open `cut-card.md`, do not create card files, and write no proposed values to canon; do so on the turn that writes values the user gave.
