@@ -42,7 +42,7 @@ for d in skill_dirs:
 FORBIDDEN = ["Higgsfield", "check_prompt", "folder_id", "get_cost", "jobs_wait", "models_explore", "UUID", "generate_image",
              "generate_video", "element", "요소 UUID", "크레딧", "draft_job", "seedance", "Seedance", "Kling", "GPT Image"]
 files = [p for p in glob.glob(os.path.join(KIT, "**", "*"), recursive=True)
-         if os.path.isfile(p) and p.endswith((".md", ".sh")) and "/dist/" not in p and not p.endswith("README.md")]
+         if os.path.isfile(p) and p.endswith((".md", ".sh")) and "/upload/" not in p and not p.endswith("README.md")]
 bad = []
 for p in files:
     t = read(p)
@@ -120,9 +120,9 @@ for d in skill_dirs:
     big = max(tok(read(p)) for p in glob.glob(os.path.join(SKILLS, d, "*.md")))
     check(f"[읽기량] {d}의 가장 큰 파일 추정 {big:,.0f}토큰 ≤ 2,200", big <= 2200)
 
-# 8. dist가 소스와 같다
+# 8. upload가 소스와 같다
 for d in skill_dirs:
-    zp = os.path.join(KIT, "dist", f"{d}.zip")
+    zp = os.path.join(KIT, "upload", f"{d}.zip")
     ok = os.path.exists(zp)
     if ok:
         with zipfile.ZipFile(zp) as z:
@@ -134,7 +134,7 @@ for d in skill_dirs:
             srcs = {os.path.relpath(p, SKILLS) for p in glob.glob(os.path.join(SKILLS, d, "**", "*"), recursive=True) if os.path.isfile(p)}
             ok = ok and srcs == {n for n in z.namelist() if not n.endswith("/")}
     check(f"[zip] {d}.zip이 소스와 같다", ok)
-pi = os.path.join(KIT, "dist", "project-instructions.md")
+pi = os.path.join(KIT, "upload", "project-instructions.md")
 want = read(os.path.join(KIT, "instructions.md")) + "\n" + read(os.path.join(KIT, "context", "tasks.md")) + "\n" + read(os.path.join(KIT, "context", "must-ask.md"))
 check("[zip] project-instructions.md가 지침+할 일+질문과 같다", os.path.exists(pi) and read(pi) == want)
 
