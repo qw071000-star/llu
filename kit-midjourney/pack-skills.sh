@@ -14,3 +14,18 @@ done
 cd ..
 { cat instructions.md; echo; cat context/tasks.md; echo; cat context/must-ask.md; } > dist/project-instructions.md
 echo "made kit-midjourney/dist/project-instructions.md"
+# 이 폴더 전체를 한 파일로: 한 단계 위에 kit-midjourney.zip (받아서 다른 프로젝트에 적용)
+cd ..
+python3 - <<'PY'
+import os, zipfile
+here = "kit-midjourney"
+with zipfile.ZipFile("kit-midjourney.zip", "w", zipfile.ZIP_DEFLATED) as z:
+    for d, dirs, files in os.walk(here):
+        dirs[:] = [x for x in dirs if x not in ("__pycache__", "runs-mj")]
+        for f in sorted(files):
+            if f.endswith(".pyc"):
+                continue
+            p = os.path.join(d, f)
+            z.write(p, p)
+print("made kit-midjourney.zip")
+PY

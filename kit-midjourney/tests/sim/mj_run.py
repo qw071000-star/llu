@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""미드저니 전용 키트(kit-midjourney)를 Claude 앱 프로젝트처럼 흉내 내 체인을 돌린다: ./mj_run.py <체인ID> [run_root]
+"""미드저니 전용 키트를 Claude 앱 프로젝트처럼 흉내 내 체인을 돌린다: python3 tests/sim/mj_run.py <체인ID> [run_root]
+필요: claude CLI. 실제 이미지는 만들지 않는다.
 app_run.py와 같은 방식: dist의 지침을 시스템 프롬프트에, zip을 플러그인 폴더에 풀고, 정본 틀을 프로젝트 지식(읽기 전용)으로 넣는다.
 미드저니는 연결 도구가 없다. 이미지는 만들지도 붙이지도 않는다(결과 판정 체인은 '이미지 없음' 상황을 시험한다)."""
 import json, os, re, shutil, subprocess, sys, time, zipfile
 HERE = os.path.dirname(os.path.abspath(__file__))
-KIT = os.path.join(HERE, "..", "..", "kit-midjourney")
+KIT = os.path.join(HERE, "..", "..")  # 키트 폴더
 SKILLS = ["mj-setup", "mj-image", "mj-video", "mj-production", "mj-shots"]
 cid = sys.argv[1]
 root = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "runs-mj")
@@ -24,7 +25,7 @@ EMPTY = bool(spec.get("empty"))
 if not EMPTY:
     inst = inst.replace("「[작품명]」", "「빈 정류장」").replace("[V7 / V8.x]", "V7").replace("[있음 / 없음]", "있음", 1)
 inst = inst.replace("Canon location: [Claude Doc link (recommended) / project knowledge]", "Canon location: project knowledge")
-proj = os.path.join(KIT, "project-files") if EMPTY else os.path.join(HERE, "mj-testbed")
+proj = os.path.join(KIT, "project-files") if EMPTY else os.path.join(HERE, "testbed")
 knowledge = "\n\n".join(f'<document name="{f}">\n{open(os.path.join(proj, f), encoding="utf-8").read()}\n</document>'
                         for f in ["decisions.md", "asset-registry.md", "shot-list.md", "ok-cuts.md"])
 if spec.get("shared"):

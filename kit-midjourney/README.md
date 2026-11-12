@@ -1,6 +1,12 @@
 # 미드저니 전용 키트
 
-Midjourney로 인물·장소·소품·스틸 컷(과 짧은 영상)을 만들 때 Claude를 같이 쓰는 키트입니다. Higgsfield 키트(`../kit/`)와 **완전히 별개**이고, 파일을 서로 쓰지 않습니다.
+Midjourney로 인물·장소·소품·스틸 컷(과 짧은 영상)을 만들 때 Claude를 같이 쓰는 키트입니다. Higgsfield 키트(`kit/`)와 **완전히 별개**이고, 파일을 서로 쓰지 않습니다. **이 폴더만 받으면 다른 프로젝트에서 그대로 적용할 수 있습니다**(리포의 다른 폴더가 필요 없습니다).
+
+## 받는 법
+
+- 가장 쉬운 방법: 리포 루트의 [`kit-midjourney.zip`](../kit-midjourney.zip)을 받아 압축을 풉니다(이 폴더 전체가 들어 있습니다).
+- 리포를 통째로 받았다면 이 `kit-midjourney/` 폴더만 복사하면 됩니다.
+- 실제로 올리는 파일은 `dist/`의 zip 5개와 `project-instructions.md` 하나뿐입니다.
 
 ## 먼저 알아 둘 것
 
@@ -22,7 +28,9 @@ kit-midjourney/
     mj-production        총괄·컷 세션, 컷 카드, 핸드오프, OK 기록, 공용 계정
     mj-shots             장면을 컷으로 나누기
   dist/                  업로드할 zip 5개 + project-instructions.md
-  pack-skills.sh         skills/와 지침을 고친 뒤 dist/를 다시 만든다
+  pack-skills.sh         skills/와 지침을 고친 뒤 dist/와 kit-midjourney.zip을 다시 만든다
+  tests/run_tests.py     자동 점검(Higgsfield 전용 말이 섞이지 않았는지, 참조·zip이 맞는지)
+  tests/sim/             Claude 앱을 흉내 낸 모의 시험(claude CLI 필요, 이미지는 만들지 않음)
 ```
 
 ## 설치 (claude.ai, 10분)
@@ -53,7 +61,11 @@ kit-midjourney/
 
 ## 고친 뒤
 
+이 폴더 안에서:
+
 ```bash
-python3 tests/run_mj_tests.py
-bash kit-midjourney/pack-skills.sh
+bash pack-skills.sh
+python3 tests/run_tests.py
 ```
+
+`pack-skills.sh`가 `dist/`의 zip과 한 단계 위의 `kit-midjourney.zip`을 다시 만듭니다. 고친 뒤에는 바뀐 zip을 계정에 다시 올리고 지침 칸도 새 `project-instructions.md`로 바꿔 붙여야 합니다.

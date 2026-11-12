@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""미드저니 전용 키트(kit-midjourney/)의 자동 점검. 실행: python3 tests/run_mj_tests.py
+"""미드저니 전용 키트의 자동 점검. 키트 폴더 안에서 실행: python3 tests/run_tests.py
 Higgsfield 키트(kit/)와 섞이지 않았는지, 읽기 지도·참조·zip이 맞는지 본다."""
 import glob, os, re, sys, zipfile
 
-ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
-KIT = os.path.join(ROOT, "kit-midjourney")
+KIT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")  # 이 파일은 키트 폴더/tests/ 안에 있다
 SKILLS = os.path.join(KIT, "skills")
 results = []
 

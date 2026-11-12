@@ -14,7 +14,7 @@
 | 실사 영상 프롬프트를 읽고 고치는 사람 | [`guides/15블록-가이드.md`](guides/15블록-가이드.md) — 15블록마다 들어가는 것, 예시 문장, 자주 틀리는 것, 어디서 가져오나 |
 | 작업을 지시하는 제작자 | [`guides/작업별-팁.md`](guides/작업별-팁.md) — 작업마다 이렇게 말하면 되는 것, Claude가 묻는 것, 흔한 실패, 크레딧 아끼는 법 |
 | PDF로 받아 보는 안내 | [`guides/pdf/`](guides/pdf/) — 설치 안내(3쪽) · 작업 안내(5쪽, 설치 제외) · 전체 사용 안내서(13쪽). 다시 만들기: `bash tools/pdf/build.sh` |
-| 미드저니로 만들 사람 | [`kit-midjourney/`](kit-midjourney/README.md) — Higgsfield 키트와 별개인 미드저니 전용 키트(프롬프트를 Claude가 쓰고 사람이 실행). 점검: `python3 tests/run_mj_tests.py` |
+| 미드저니로 만들 사람 | [`kit-midjourney/`](kit-midjourney/README.md) — Higgsfield 키트와 별개인 미드저니 전용 키트(프롬프트를 Claude가 쓰고 사람이 실행). **폴더 전체를 한 파일로: [`kit-midjourney.zip`](kit-midjourney.zip)**. 점검: `kit-midjourney/tests/run_tests.py` |
 | 무엇이 바뀌었나 | [`CHANGELOG.md`](CHANGELOG.md) — v1.1 추가분과 이전 버전(`archive/kit-v1.0` 브랜치) |
 | 키트를 고치는 사람 | 이 파일 |
 
