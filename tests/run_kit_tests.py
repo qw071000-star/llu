@@ -844,6 +844,7 @@ check("[저장1] OK 대장: 시작 이미지·영상 한 쌍, 각 카드에 프�
 check("[저장2] 생성 운영 OK 기록: 시작 이미지 카드가 없으면 먼저 쓰고 승인 카드는 수정 안 함", "saved as a pair, each with its own prompt" in _gen and "never edited" in _gen)
 check("[저장2b] 생성 운영: 공용 계정이면 승인 줄에 승인자 이름", "`승인` line ends with the approver's name" in _gen)
 check("[실생성1] 생성 운영: 시작 이미지 영상은 start-frame 모델, 이미지 모델 2.6, 요소 ID는 UUID", "`start-frame`" in _gen and "gpt_image_2_6" in _gen and "UUID" in sk("image-prompt/SKILL.md") and "start-frame" in _fx)
+check("[실존감] 인물 시트: 실존감 문장(REAL PERSON), 호감 단어는 구조로 바꾸고 성격은 연기 프로필로", "REAL PERSON:" in sk("image-prompt/character.md") and "`cute`" in sk("image-prompt/character.md") and "ACTING PROFILE" in sk("image-prompt/character.md"))
 check("[저장3] 컷 설계: job·폴더·카드가 있는 컷이 있으면 번호를 밀지 않음", "do not renumber" in sk("shot-design/SKILL.md"))
 
 # 결과
