@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """미드저니 전용 키트를 Claude 앱 프로젝트처럼 흉내 내 체인을 돌린다: python3 tests/sim/mj_run.py <체인ID> [run_root]
 필요: claude CLI. 실제 이미지는 만들지 않는다.
-app_run.py와 같은 방식: dist의 지침을 시스템 프롬프트에, zip을 플러그인 폴더에 풀고, 정본 틀을 프로젝트 지식(읽기 전용)으로 넣는다.
+app_run.py와 같은 방식: upload의 지침을 시스템 프롬프트에, zip을 플러그인 폴더에 풀고, 정본 틀을 프로젝트 지식(읽기 전용)으로 넣는다.
 미드저니는 연결 도구가 없다. 이미지는 만들지도 붙이지도 않는다(결과 판정 체인은 '이미지 없음' 상황을 시험한다)."""
 import json, os, re, shutil, subprocess, sys, time, zipfile
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -18,9 +18,9 @@ os.makedirs(os.path.join(run, "out")); os.makedirs(os.path.join(plugin, ".claude
 json.dump({"name": "mjkit", "version": "0.0.0", "description": "kit-midjourney skills (app upload zips)"},
           open(os.path.join(plugin, ".claude-plugin", "plugin.json"), "w"))
 for s in SKILLS:
-    with zipfile.ZipFile(os.path.join(KIT, "dist", f"{s}.zip")) as z:
+    with zipfile.ZipFile(os.path.join(KIT, "upload", f"{s}.zip")) as z:
         z.extractall(os.path.join(plugin, "skills"))
-inst = open(os.path.join(KIT, "dist", "project-instructions.md"), encoding="utf-8").read()
+inst = open(os.path.join(KIT, "upload", "project-instructions.md"), encoding="utf-8").read()
 EMPTY = bool(spec.get("empty"))
 if not EMPTY:
     inst = inst.replace("「[작품명]」", "「빈 정류장」").replace("[V7 / V8.x]", "V7").replace("[있음 / 없음]", "있음", 1)

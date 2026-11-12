@@ -6,7 +6,7 @@ Midjourney로 인물·장소·소품·스틸 컷(과 짧은 영상)을 만들 �
 
 - 가장 쉬운 방법: 리포 루트의 [`kit-midjourney.zip`](../kit-midjourney.zip)을 받아 압축을 풉니다(이 폴더 전체가 들어 있습니다).
 - 리포를 통째로 받았다면 이 `kit-midjourney/` 폴더만 복사하면 됩니다.
-- 실제로 올리는 파일은 `dist/`의 zip 5개와 `project-instructions.md` 하나뿐입니다.
+- **실제로 올리는 파일은 `upload/` 폴더에 있습니다:** 스킬 zip 5개(`mj-*.zip`, 압축을 풀지 않고 그대로 업로드)와 지침 파일 `project-instructions.md` 하나입니다. `skills/` 폴더는 zip의 원본이라 올리지 않습니다.
 
 ## 먼저 알아 둘 것
 
@@ -27,16 +27,16 @@ kit-midjourney/
     mj-video             이미지 → 짧은 영상(미검증)
     mj-production        총괄·컷 세션, 컷 카드, 핸드오프, OK 기록, 공용 계정
     mj-shots             장면을 컷으로 나누기
-  dist/                  업로드할 zip 5개 + project-instructions.md
-  pack-skills.sh         skills/와 지침을 고친 뒤 dist/와 kit-midjourney.zip을 다시 만든다
+  upload/                  업로드할 zip 5개 + project-instructions.md
+  pack-skills.sh         skills/와 지침을 고친 뒤 upload/와 kit-midjourney.zip을 다시 만든다
   tests/run_tests.py     자동 점검(Higgsfield 전용 말이 섞이지 않았는지, 참조·zip이 맞는지)
   tests/sim/             Claude 앱을 흉내 낸 모의 시험(claude CLI 필요, 이미지는 만들지 않음)
 ```
 
 ## 설치 (claude.ai, 10분)
 
-1. **스킬 올리기:** 설정에서 코드 실행을 켜고, 스킬 메뉴의 "Upload a skill"로 `dist/`의 zip 5개를 하나씩 올립니다(압축은 풀지 않습니다). 스킬은 계정마다 올립니다.
-2. **프로젝트 만들기:** 새 프로젝트를 만들고 **지침 칸**에 `dist/project-instructions.md`를 통째로 붙입니다.
+1. **스킬 올리기:** 설정에서 코드 실행을 켜고, 스킬 메뉴의 "Upload a skill"로 `upload/`의 zip 5개를 하나씩 올립니다(압축은 풀지 않습니다). 스킬은 계정마다 올립니다.
+2. **프로젝트 만들기:** 새 프로젝트를 만들고 **지침 칸**에 `upload/project-instructions.md`를 통째로 붙입니다.
 3. **"This project" 칸 채우기:** 맨 위의 작품명, Midjourney 버전(V7 등), Omni Reference 유무, 정본 위치(Docs 링크). 모르면 비워 두고 4번에서 채웁니다.
 4. **새 대화에서 `새 작품 시작하자`** 라고 합니다. 질문 12개에 답하면 정본 초안이 만들어집니다. Claude Docs 도구가 있으면 정본 문서를 만들어 링크를 알려 주니, 그 링크를 지침 칸에 적습니다. 없으면 정본 4개를 프로젝트 지식에 올립니다.
 5. Higgsfield 키트와 같은 계정에 올려도 이름이 달라서(`mj-…`) 서로 섞이지 않습니다. 다만 한 프로젝트에는 한 키트의 지침만 붙이세요.
@@ -68,4 +68,4 @@ bash pack-skills.sh
 python3 tests/run_tests.py
 ```
 
-`pack-skills.sh`가 `dist/`의 zip과 한 단계 위의 `kit-midjourney.zip`을 다시 만듭니다. 고친 뒤에는 바뀐 zip을 계정에 다시 올리고 지침 칸도 새 `project-instructions.md`로 바꿔 붙여야 합니다.
+`pack-skills.sh`가 `upload/`의 zip과 한 단계 위의 `kit-midjourney.zip`을 다시 만듭니다. 고친 뒤에는 바뀐 zip을 계정에 다시 올리고 지침 칸도 새 `project-instructions.md`로 바꿔 붙여야 합니다.

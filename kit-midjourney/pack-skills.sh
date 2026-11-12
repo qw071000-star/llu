@@ -1,19 +1,19 @@
 #!/usr/bin/env bash
-# kit-midjourney/skills/<이름>/ 폴더마다 Claude 앱 업로드용 zip → kit-midjourney/dist/<이름>.zip
-# 프로젝트 지침 칸에 붙일 한 파일 → kit-midjourney/dist/project-instructions.md
+# kit-midjourney/skills/<이름>/ 폴더마다 Claude 앱 업로드용 zip → kit-midjourney/upload/<이름>.zip
+# 프로젝트 지침 칸에 붙일 한 파일 → kit-midjourney/upload/project-instructions.md
 # 스킬·지침을 고친 뒤 다시 실행한다.
 set -euo pipefail
 cd "$(dirname "$0")/skills"
-mkdir -p ../dist
+mkdir -p ../upload
 for dir in */; do
   name="${dir%/}"
-  rm -f "../dist/$name.zip"
-  python3 -m zipfile -c "../dist/$name.zip" "$name"
-  echo "made kit-midjourney/dist/$name.zip"
+  rm -f "../upload/$name.zip"
+  python3 -m zipfile -c "../upload/$name.zip" "$name"
+  echo "made kit-midjourney/upload/$name.zip"
 done
 cd ..
-{ cat instructions.md; echo; cat context/tasks.md; echo; cat context/must-ask.md; } > dist/project-instructions.md
-echo "made kit-midjourney/dist/project-instructions.md"
+{ cat instructions.md; echo; cat context/tasks.md; echo; cat context/must-ask.md; } > upload/project-instructions.md
+echo "made kit-midjourney/upload/project-instructions.md"
 # 이 폴더 전체를 한 파일로: 한 단계 위에 kit-midjourney.zip (받아서 다른 프로젝트에 적용)
 cd ..
 python3 - <<'PY'
