@@ -209,8 +209,8 @@ class Arch(Flowable):
         c.roundRect(bx, by, bw, bh, 7, fill=1, stroke=1)
         c.setFillColor(NAVY); c.setFont("KR", 10)
         c.drawCentredString(bx + bw / 2, by + bh - 8 * m, "Claude 프로젝트  (claude.ai 웹)")
-        inner = [("지침  ·  항상 읽음", "규칙 11개 · 할 일 목록 26개 · 꼭 물을 것"),
-                 ("스킬 9개  ·  그 작업 때만", "프롬프트 쓰기 · 생성 · 세션 운영 · 연기 …"),
+        inner = [("지침  ·  항상 읽음", "규칙 11개 · 할 일 목록 25개 · 꼭 물을 것"),
+                 ("스킬 8개  ·  그 작업 때만", "프롬프트 쓰기 · 생성 · 세션 운영 · 연기 …"),
                  ("정본  ·  Claude Docs 문서", "확정 사항 · 에셋 · 컷 목록 · OK 대장 · 핸드오프")]
         for i, (a, b) in enumerate(inner):
             y = by + 6 * m + (2 - i) * 20 * m

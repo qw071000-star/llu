@@ -12,7 +12,7 @@ real_run.py(Claude Code 설치본)와 다른 점 — 앱에서 달라지는 것�
 import json, os, re, shutil, subprocess, sys, time, zipfile
 HERE = os.path.dirname(os.path.abspath(__file__))
 KIT = os.path.join(HERE, "..", "..", "kit")
-APP_SKILLS = ["project-setup", "production-session", "higgsfield-generation", "image-prompt", "video-prompt", "acting", "shot-design", "edit-planning", "midjourney-prompt"]
+APP_SKILLS = ["project-setup", "production-session", "higgsfield-generation", "image-prompt", "video-prompt", "acting", "shot-design", "edit-planning"]
 cid = sys.argv[1]
 root = sys.argv[2] if len(sys.argv) > 2 else os.path.join(HERE, "runs-app")
 chains = json.load(open(os.path.join(HERE, "real-chains.json")))

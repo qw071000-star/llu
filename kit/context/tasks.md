@@ -41,7 +41,6 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 23 | OK 프롬프트 다시 보기·번역 | "프롬프트 다시", "한국어로" | that one OK card (no check). English original as is; **a translation is plain text, never in a code block** |
 | 24 | 편집 계획 (컷 수·길이·이음새) | "편집 계획", "페이싱", "리듬", "이음새 점검", "컷 몇 개로", "이 컷 빼도" | `edit-planning` |
 | 25 | 에셋 잠금 시험 | "잠금 시험", "스트레스 테스트", "영상에 써도 돼?" | `image-prompt` → `asset-lock.md` |
-| 26 | 미드저니 이미지 프롬프트 | "미드저니", "Midjourney", "MJ" (the user runs it; no connector) | `midjourney-prompt` |
 
 ## 3. What not to open
 
