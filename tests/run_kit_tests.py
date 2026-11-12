@@ -619,11 +619,11 @@ check("[실제8] 새 스킬 시나리오 C53~C56: scenarios.md와 real-chains.js
 # 16d. 새 스킬: assembly(러프컷·프레임), shot-design(장면 컷 설계)
 import shutil
 import tempfile
-EXPECT_SKILLS = ["acting", "assembly", "color-continuity", "edit-planning", "higgsfield-generation", "image-prompt", "midjourney-prompt", "production-session", "project-setup", "shot-design", "video-prompt"]
-check("[스킬 수] 스킬 11개", skill_dirs == EXPECT_SKILLS, ", ".join(skill_dirs))
-check("[스킬 수] zip 11개", sorted(os.path.basename(p)[:-4] for p in glob.glob(os.path.join(KIT, "dist", "*.zip"))) == EXPECT_SKILLS)
+EXPECT_SKILLS = ["acting", "assembly", "color-continuity", "edit-planning", "higgsfield-generation", "image-prompt", "production-session", "project-setup", "shot-design", "video-prompt"]
+check("[스킬 수] 스킬 10개", skill_dirs == EXPECT_SKILLS, ", ".join(skill_dirs))
+check("[스킬 수] zip 10개", sorted(os.path.basename(p)[:-4] for p in glob.glob(os.path.join(KIT, "dist", "*.zip"))) == EXPECT_SKILLS)
 _tg = read(os.path.join(ROOT, "TEAM-GUIDE.md"))
-check("[스킬 수] README·TEAM-GUIDE가 11개로 적음", "스킬 11개" in read(os.path.join(ROOT, "README.md")) and "스킬 11개" in _tg and all(f"{s}.zip" in _tg for s in EXPECT_SKILLS))
+check("[스킬 수] README·TEAM-GUIDE가 10개로 적음", "스킬 10개" in read(os.path.join(ROOT, "README.md")) and "스킬 10개" in _tg and all(f"{s}.zip" in _tg for s in EXPECT_SKILLS))
 for s, word, n in [("assembly", "마지막 프레임", 21), ("shot-design", "컷 나눠", 3), ("color-continuity", "더 노래", 22)]:
     check(f"[새 스킬] 할 일 목록 {n}번 줄에 `{s}`", f"`{s}`" in _task_rows.get(n, "") and word in _task_rows.get(n, ""))
     check(f"[새 스킬] must-ask 작업별 표에 {n}번 줄", re.search(rf"^\| {n} ", ctx_ask, re.M) is not None)
@@ -749,7 +749,7 @@ routes = {
     "색 맞추기": ["color-continuity/SKILL.md"],
 }
 # 2026-10-29: 영어 키트로 바꾸며 글자 수(항상 13,000자, 단계 17,550자) 대신 추정 토큰. 값 = 그때 추정을 250 단위로 올림.
-ALWAYS_BUDGET = 6300  # 2026-11-12 미드저니 스킬 설명·할 일 26번·질문 한 줄로 6,100 → 6,300; 2026-11-10 공용 계정 규칙 두 줄(OK 카드 수정 금지, 총괄 아닌 사람의 변경)과 읽기 지도로 5,900 → 6,100; 2026-11-09: 새 스킬 edit-planning(설명 ~75) + 작업 24·25(~120) + 잠금 시험 질문 규칙(~90)으로 5,550 → 5,900. 처음 약 5,073, 옛 한국어판 약 7,000
+ALWAYS_BUDGET = 6100  # 2026-11-10 공용 계정 규칙 두 줄(OK 카드 수정 금지, 총괄 아닌 사람의 변경)과 읽기 지도로 5,900 → 6,100; 2026-11-09: 새 스킬 edit-planning(설명 ~75) + 작업 24·25(~120) + 잠금 시험 질문 규칙(~90)으로 5,550 → 5,900. 처음 약 5,073, 옛 한국어판 약 7,000
 check(f"[읽기량] 항상 읽히는 양: 추정 {always:,.0f}토큰 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
 BUDGET = 7500  # 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
 _route_tok = {}
@@ -845,7 +845,6 @@ check("[저장2] 생성 운영 OK 기록: 시작 이미지 카드가 없으면 �
 check("[저장2b] 생성 운영: 공용 계정이면 승인 줄에 승인자 이름", "`승인` line ends with the approver's name" in _gen)
 check("[실생성1] 생성 운영: 시작 이미지 영상은 start-frame 모델, 이미지 모델 2.6, 요소 ID는 UUID", "`start-frame`" in _gen and "gpt_image_2_6" in _gen and "UUID" in sk("image-prompt/SKILL.md") and "start-frame" in _fx)
 check("[실존감] 인물 시트: 실존감 문장(REAL PERSON), 호감 단어는 구조로 바꾸고 성격은 연기 프로필로", "REAL PERSON:" in sk("image-prompt/character.md") and "`cute`" in sk("image-prompt/character.md") and "ACTING PROFILE" in sk("image-prompt/character.md"))
-check("[미드저니] 스킬: 수동 경로, 버전 먼저, 한 이미지로 시트 만들지 않음, 승인 시 OK 카드, 할 일 26번", "you write, the user runs" in sk("midjourney-prompt/SKILL.md") and "ask the version first" in sk("midjourney-prompt/SKILL.md") and "Not a sheet in one image" in sk("midjourney-prompt/SKILL.md") and "`midjourney-prompt`" in _task_rows.get(26, ""))
 check("[저장3] 컷 설계: job·폴더·카드가 있는 컷이 있으면 번호를 밀지 않음", "do not renumber" in sk("shot-design/SKILL.md"))
 
 # 결과

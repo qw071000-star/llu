@@ -14,6 +14,7 @@
 | 실사 영상 프롬프트를 읽고 고치는 사람 | [`guides/15블록-가이드.md`](guides/15블록-가이드.md) — 15블록마다 들어가는 것, 예시 문장, 자주 틀리는 것, 어디서 가져오나 |
 | 작업을 지시하는 제작자 | [`guides/작업별-팁.md`](guides/작업별-팁.md) — 작업마다 이렇게 말하면 되는 것, Claude가 묻는 것, 흔한 실패, 크레딧 아끼는 법 |
 | PDF로 받아 보는 안내 | [`guides/pdf/`](guides/pdf/) — 설치 안내(3쪽) · 작업 안내(5쪽, 설치 제외) · 전체 사용 안내서(13쪽). 다시 만들기: `bash tools/pdf/build.sh` |
+| 미드저니로 만들 사람 | [`kit-midjourney/`](kit-midjourney/README.md) — Higgsfield 키트와 별개인 미드저니 전용 키트(프롬프트를 Claude가 쓰고 사람이 실행). **폴더 전체를 한 파일로: [`kit-midjourney.zip`](kit-midjourney.zip)**. 점검: `kit-midjourney/tests/run_tests.py` |
 | 무엇이 바뀌었나 | [`CHANGELOG.md`](CHANGELOG.md) — v1.1 추가분과 이전 버전(`archive/kit-v1.0` 브랜치) |
 | 키트를 고치는 사람 | 이 파일 |
 
@@ -24,7 +25,7 @@ kit/                       ← 다른 프로젝트에 넣는 것 (이것만 공�
   instructions.md          [항상 읽힘] 규칙 11개, 대화 시작 순서, 출력 (영어, 약 1,750토큰 이하)
   context/                 [항상 읽힘] tasks.md = 할 일 목록 25개(사용자 말 → 작업 번호 → 스킬), 애매하면 "이 작업을 할까요?" 확인
                                      must-ask.md = 묻지 않을 것 / 먼저 짚을 것 (작업별 질문은 각 스킬의 "필요한 정보" 표)
-  skills/                  [그 작업 때만] 스킬 11개. 스킬 안에서도 tasks.md가 가리키는 파일만 연다
+  skills/                  [그 작업 때만] 스킬 10개. 스킬 안에서도 tasks.md가 가리키는 파일만 연다
     project-setup/         새 작품: 질문 한 번, 정본 초안, Higgsfield 폴더
     production-session/    세션 시작·컷 카드·핸드오프·정본 관리, ok-reuse("3-1처럼")
     higgsfield-generation/ 생성 전 점검·폴더·승인/거절·OK 기록·크레딧 + check_prompt.py
@@ -57,7 +58,7 @@ archive/어머니와-고등어/     [컨텍스트에 넣지 않음] 원본 문�
 
 ## 설치
 
-- **Claude 앱:** `TEAM-GUIDE.md` §3. 스킬 zip 11개(웹은 9개: assembly·color-continuity 제외)를 계정에 올리고, 작품 프로젝트의 지침 칸에 `kit/dist/project-instructions.md`(지침 + tasks + must-ask)를 붙인다. 프로젝트 지식에는 시나리오·콘티 정도만 넣는다. `reference/`·`archive/`는 넣지 않는다.
+- **Claude 앱:** `TEAM-GUIDE.md` §3. 스킬 zip 10개(웹은 8개: assembly·color-continuity 제외)를 계정에 올리고, 작품 프로젝트의 지침 칸에 `kit/dist/project-instructions.md`(지침 + tasks + must-ask)를 붙인다. 프로젝트 지식에는 시나리오·콘티 정도만 넣는다. `reference/`·`archive/`는 넣지 않는다.
 - **Claude Code (작품 리포):**
 
 ```bash

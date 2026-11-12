@@ -94,7 +94,6 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 23 | OK 프롬프트 다시 보기·번역 | "프롬프트 다시", "한국어로" | that one OK card (no check). English original as is; **a translation is plain text, never in a code block** |
 | 24 | 편집 계획 (컷 수·길이·이음새) | "편집 계획", "페이싱", "리듬", "이음새 점검", "컷 몇 개로", "이 컷 빼도" | `edit-planning` |
 | 25 | 에셋 잠금 시험 | "잠금 시험", "스트레스 테스트", "영상에 써도 돼?" | `image-prompt` → `asset-lock.md` |
-| 26 | 미드저니 이미지 프롬프트 | "미드저니", "Midjourney", "MJ" (the user runs it; no connector) | `midjourney-prompt` |
 
 ## 3. What not to open
 
@@ -141,5 +140,4 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 | 21 프레임·러프컷 | Video not in `media/` → which job, where / the next cut already has a confirmed start image → replace? / cuts differ in resolution or fps |
 | 22 색 맞추기 | Reference cut (if not in `decisions.md`) and target cut / a big difference → regenerate that cut instead |
 | 24 편집 계획 | Scope and target runtime unknown → ask both / no cut list for that scene → task 3 first / a cut to delete is approved → ask before proposing its removal / tempo unsaid → propose from the work's tone |
-| 26 미드저니 | Version unknown → ask once / a character view with no approved face image → make the first view first / the user's result differs (mirrored side, drift) → change one thing |
 | 25 에셋 잠금 시험 | No confirmed sheet job → task 4 or 9 first / which co-stars and which location views (LIGHT LOCK) → ask only what the registry and shot list lack / the same test ✘ twice → stop and propose a new version (rule 8) |

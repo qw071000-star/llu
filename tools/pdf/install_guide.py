@@ -46,13 +46,13 @@ story += sec(1, "설치 6단계")
 story.append(steps([
     ("키트 파일 받기", blist([
         "GitHub 리포 → 초록색 " + hl("Code") + " 버튼 → " + hl("Download ZIP") + " → 압축 풀기 (git을 쓰면 clone, 이후 pull로 최신 유지)",
-        "쓰는 폴더는 " + code("kit/dist/") + " 하나: 스킬 zip 11개 + " + code("project-instructions.md"),
+        "쓰는 폴더는 " + code("kit/dist/") + " 하나: 스킬 zip 10개 + " + code("project-instructions.md"),
     ])),
     ("코드 실행 켜기", blist([
         "설정에서 " + hl("코드 실행(파일 만들기)") + "을 켠다",
         "꺼져 있으면 스킬을 올릴 수 없고, 올려도 프롬프트 검사 스크립트가 돌지 않는다",
     ])),
-    ("스킬 zip 9개 올리기", blist([
+    ("스킬 zip 8개 올리기", blist([
         "설정 → 스킬 메뉴(Customize → Skills 또는 Settings → Capabilities) → + → " + hl("Upload a skill"),
         hl("압축을 풀지 말고") + " zip 그대로 하나씩 올린다: " + code("project-setup") + " " + code("production-session") + " " + code("higgsfield-generation") + " " + code("image-prompt") + " " + code("video-prompt") + " " + code("acting") + " " + code("shot-design"),
         "올리지 않는 2개: " + code("assembly.zip") + " · " + code("color-continuity.zip") + " (마지막 프레임·러프컷·색 맞추기, Claude Code 전용)",
@@ -88,7 +88,7 @@ step6 = steps_from(6, [("5분 확인 (생성은 하지 않음)", "프로젝트�
 story += [KeepTogether([step6, Spacer(1, 4), pb]), Spacer(1, 6)]
 
 story.append(tbl(["이렇게 나오면 정상", "안 나오면"], [[
-    P("\n".join([]) or "스킬 9개가 하나씩 보임 · “This project”의 빈 줄을 물어봄 · Higgsfield 연결을 확인함 · 정본이 비어 있으면 “새 작품”으로 시작하라고 함 · " + code("check_prompt.py") + " 경로와 검사 결과 한 줄을 보여 줌", "cell"),
+    P("\n".join([]) or "스킬 8개가 하나씩 보임 · “This project”의 빈 줄을 물어봄 · Higgsfield 연결을 확인함 · 정본이 비어 있으면 “새 작품”으로 시작하라고 함 · " + code("check_prompt.py") + " 경로와 검사 결과 한 줄을 보여 줌", "cell"),
     P("5번이 안 되면 코드 실행이 꺼져 있거나 스크립트를 못 찾은 것이다. 코드 실행을 켜고 " + code("higgsfield-generation.zip") + "을 다시 올린다. 그래도 안 되면 Claude는 손 점검을 하고 “검사 통과”라고 말하지 않는다", "cell")]],
     [0.5, 0.5], zebra=False))
 story.append(Spacer(1, 4))
@@ -108,7 +108,7 @@ story.append(steps([
 
 story += sec(3, "팀원이 합류할 때 — 각자 체크")
 chk = Table([[P("□", "ctrh"), P(a, "cell"), P("□", "ctrh"), P(b, "cell")] for a, b in [
-    ("Higgsfield 팀 워크스페이스 초대 수락, 선택된 워크스페이스 확인", "스킬 zip 9개 업로드 (계정마다)"),
+    ("Higgsfield 팀 워크스페이스 초대 수락, 선택된 워크스페이스 확인", "스킬 zip 8개 업로드 (계정마다)"),
     ("Higgsfield · Claude Docs 커넥터 로그인", "공유받은 프로젝트에 들어가기 (공유가 안 되면 4단계처럼 직접 만들고 지침 붙이기)"),
     ("정본 Doc 편집 권한 확인", "5분 확인 글 실행")]],
     colWidths=[6 * mm, W / 2 - 6 * mm, 6 * mm, W / 2 - 6 * mm])
