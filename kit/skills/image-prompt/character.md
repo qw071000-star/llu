@@ -26,6 +26,8 @@
 
 **Identity:** Do not make the character resemble a real actor or celebrity. A reference image is not the source of the face. Write objective facial-structure traits first, before subjective words like `beautiful`, `elegant`.
 
+**A person who feels real (실존감).** A flawless, appealing face reads as a model or a render. Replace appeal words (`cute`, `likeable`, `quirky`) with structure (cute = fuller cheeks, large eyes, soft brows; personality goes to the `ACTING PROFILE`, never the sheet), then add `REAL PERSON` to REALISM, 3-4 ordinary imperfections that do not change the identity: `REAL PERSON: an ordinary individual, not a model or an idealised face: one eyebrow slightly higher, ears at slightly different heights, a small mole on the screen-right cheek, an uneven hairline with a few flyaway strands, faint redness around the nose, slightly dry lips, natural creases in the clothes, scuffed shoe toes, weight slightly on one leg. Soft even daylight like an ID photo, no beauty lighting, no rim light, no skin glow.` Name each imperfection by screen side and feature; the model may mirror a side (a mole asked for on screen right came out on screen left), so after the result write the side actually seen into the registry's IDENTITY sentence, or later views will not repeat it.
+
 **Headless-panel variant — unify to one within a work**
 - A headless human body: for checking fit and silhouette (Template 1 as is).
 - B ghost mannequin: for confirming garment cut. The risk is a plastic mannequin. Do not use `mannequin` alone. Replace the left line of Template 1 with:
