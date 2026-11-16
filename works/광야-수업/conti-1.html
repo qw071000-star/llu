@@ -1,0 +1,375 @@
+<title>광야 수업 인트로 콘티</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Gowun+Batang:wght@700&display=swap">
+<style>
+/* 레이아웃: 촬영 현장 콘티 시트. 장면 묶음마다 16:9 패널 격자, 패널 아래 대사 카드 */
+:root{
+  --paper:#eceef0; --card:#fbfbfc; --ink:#1d2126; --muted:#5d6670; --rule:#cfd4d9;
+  --sand:#c9a46a; --ochre:#9a6a1f; --risk:#a8432f;
+  --sk-sky:#dfe7ee; --sk-sand:#e7d6b8; --sk-rock:#c9b08a; --sk-hill:#d6c3a2; --sk-dark:#3a3f46; --sk-drop:#cdb48c; --sk-fig:#1d2126; --sk-band:rgba(29,33,38,.16);
+  --f-display:"Gowun Batang",serif; --f-body:"IBM Plex Sans KR",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#15181b; --card:#1d2125; --ink:#e7e9ec; --muted:#9aa3ad; --rule:#2e343a;
+  --sand:#c9a46a; --ochre:#d9a650; --risk:#e27a63;
+  --sk-sky:#2b3540; --sk-sand:#5a4c37; --sk-rock:#6e5b40; --sk-hill:#4d4231; --sk-dark:#0f1113; --sk-drop:#5e4f38; --sk-fig:#f0f2f4; --sk-band:rgba(240,242,244,.14);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#15181b; --card:#1d2125; --ink:#e7e9ec; --muted:#9aa3ad; --rule:#2e343a;
+  --sand:#c9a46a; --ochre:#d9a650; --risk:#e27a63;
+  --sk-sky:#2b3540; --sk-sand:#5a4c37; --sk-rock:#6e5b40; --sk-hill:#4d4231; --sk-dark:#0f1113; --sk-drop:#5e4f38; --sk-fig:#f0f2f4; --sk-band:rgba(240,242,244,.14);
+  color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:36px}
+.top{display:grid;gap:10px}
+.top h1{font-family:var(--f-display);font-size:clamp(26px,4vw,40px);line-height:1.2;margin:0;text-wrap:balance}
+.top .sub{color:var(--muted);margin:0;max-width:65ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin:4px 0 0;padding:0;list-style:none}
+.facts b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:8px;vertical-align:middle;margin-right:6px;border-radius:2px}
+.seq{display:grid;gap:14px}
+.seq h2{display:flex;align-items:baseline;gap:12px;margin:0;font-size:18px;font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:8px}
+.seq h2 span{font-family:var(--f-mono);color:var(--ochre);font-size:15px}
+.seq h2 small{margin-left:auto;font-weight:400;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.cut{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:12px;display:grid;gap:8px;align-content:start;min-width:0}
+.cut header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;font-size:12px;color:var(--muted)}
+.cut .no{font-family:var(--f-mono);font-size:17px;color:var(--ink);letter-spacing:.02em}
+.cut .tc{font-variant-numeric:tabular-nums}
+.cut .view{margin-left:auto;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em}
+.cut svg{width:100%;height:auto;display:block;border-radius:3px;max-width:100%}
+.shot{margin:0;font-size:12.5px;font-weight:500;color:var(--ochre)}
+.act{margin:0;font-size:14px}
+.line{border-left:2px solid var(--sand);padding-left:10px;display:grid;gap:2px}
+.line.quiet{border-color:var(--rule)}
+.who{font-size:11.5px;color:var(--muted);letter-spacing:.03em}
+.en{margin:0;font-size:14px;font-weight:500}
+.ko{margin:0;font-size:13px;color:var(--muted)}
+.meta{margin:0;font-size:12px;color:var(--muted)}
+.meta b{font-weight:500;color:var(--ink);margin-right:4px}
+.risk{margin:0;font-size:12px;color:var(--risk)}
+.foot{font-size:12.5px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px;max-width:80ch}
+/* sketch */
+.sky{fill:var(--sk-sky)} .sand{fill:var(--sk-sand)} .rock{fill:var(--sk-rock)} .hill{fill:var(--sk-hill)}
+.dark{fill:var(--sk-dark)} .drop{fill:var(--sk-drop)} .tent{fill:var(--sk-rock)}
+.fig{fill:var(--sk-fig)} .fig.dim{opacity:.45} .fig.blur{opacity:.35} .fig.back{opacity:.75}
+.kit,.mon{fill:none;stroke:var(--sk-fig);stroke-width:1} .mon{stroke-width:1.4}
+.paper{fill:var(--sk-sky);stroke:var(--sk-fig);stroke-width:.6}
+.stand,.line{stroke:var(--sk-fig);stroke-width:.7;fill:none;opacity:.6} .lamp{fill:var(--sand)}
+.chair{fill:none;stroke:var(--sk-fig);stroke-width:.8;opacity:.6}
+.flat{fill:var(--sand);stroke:var(--sk-fig);stroke-width:.6}
+.move{stroke:var(--ochre);stroke-width:1.2;fill:none;stroke-dasharray:2 1.5}
+.band{fill:var(--sk-band)} .bandt{font:4px var(--f-body);fill:var(--sk-fig);opacity:.7}
+.lbl{font:5px var(--f-body);font-weight:700;fill:var(--ochre)}
+.note{font:4.6px var(--f-body);fill:var(--ochre)}
+.frame{fill:none;stroke:var(--rule);stroke-width:.8}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <div class="top">
+    <h1>광야 수업: 다시 가나안을 향해 — #1 인트로</h1>
+    <p class="sub">컷마다 화면 구도 스케치, 샷, 대사(영어 음성 / 한국어 자막)를 정리한 콘티입니다. 스케치의 아래 띠는 하단 자막 자리라 얼굴과 입을 두지 않습니다.</p>
+    <ul class="facts"><li><b>37</b>컷</li><li>약 <b>3:59</b></li><li>16:9 실사</li><li>대사 영어, 자막 한국어</li><li>카메라 고정, 1-5만 풀백</li><li>Higgsfield 「109th」</li></ul>
+    <div class="legend"><span><i style="background:var(--sand)"></i>대사 카드</span><span><i style="background:var(--ochre)"></i>움직임·카메라</span><span><i style="background:var(--risk)"></i>실패 위험</span></div>
+  </div>
+  <section class="seq"><h2><span>A</span>극중극 — 가나안 정탐<small>1–5컷</small></h2><div class="grid"><article class="cut" id="c1_1">
+<header><span class="no">1-1</span><span class="tc">0:00–0:05 · 5초</span><span class="view">LC-001-V1</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-1 구도 스케치"><rect width="160" height="30" class="sky"/><path d="M0 30 Q30 24 60 28 T120 25 T160 30 V90 H0Z" class="hill"/><rect y="34" width="160" height="60" class="sand"/><path d="M20 58 Q55 50 95 56 L98 64 Q55 68 18 64Z" class="rock"/><rect x="112" y="40" width="14" height="9" class="tent"/><rect x="128" y="42" width="14" height="8" class="tent"/><circle cx="43.0" cy="58.5" r="1.3" class="fig"/><circle cx="75.7" cy="52.6" r="1.3" class="fig"/><circle cx="61.8" cy="54.5" r="1.3" class="fig"/><circle cx="69.9" cy="57.9" r="1.3" class="fig"/><circle cx="40.9" cy="50.3" r="1.3" class="fig"/><circle cx="79.5" cy="54.3" r="1.3" class="fig"/><circle cx="75.6" cy="50.0" r="1.3" class="fig"/><circle cx="59.2" cy="57.2" r="1.3" class="fig"/><circle cx="47.9" cy="59.5" r="1.3" class="fig"/><circle cx="82.9" cy="50.3" r="1.3" class="fig"/><circle cx="37.3" cy="55.4" r="1.3" class="fig"/><circle cx="84.8" cy="53.8" r="1.3" class="fig"/><text x="62" y="47" class="lbl" text-anchor="middle">정탐꾼 12</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">드론 와이드(약 20 m 위, 35mm), 고정</p>
+<p class="act">정탐꾼 12명이 바위 언덕 위아래에 모여 긴장한 채 의논한다. 왼쪽에 큰 바위들, 오른쪽 뒤에 천막 둘</p>
+<div class="line quiet"><p class="ko">없음</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, CH-003~CH-008</p>
+<p class="risk">12명을 한 화면에: 인원 수와 겹침. 세트 장비가 보이면 안 된다</p>
+</article><article class="cut" id="c1_2">
+<header><span class="no">1-2</span><span class="tc">0:05–0:13 · 8초</span><span class="view">LC-001-V1</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-2 구도 스케치"><rect width="160" height="62" class="sky"/><path d="M0 62 Q30 56 60 60 T120 57 T160 62 V90 H0Z" class="hill"/><rect y="66" width="160" height="28" class="sand"/><path d="M0 74 Q80 62 160 72 V90 H0Z" class="rock"/><path d="M59.2 90 Q59.2 36.8 80.0 34.4 Q100.8 36.8 100.8 90Z" class="fig"/><circle cx="80" cy="24.0" r="8.0" class="fig"/><text x="80" y="14.0" class="lbl" text-anchor="middle">나비</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">미디엄(허리 위), 50mm, 무릎 높이 로우앵글, 고정</p>
+<p class="act">나비 역(CH-004, 꼭두서니 갈색 겉옷)이 바위 언덕 위에 서서 화면 밖 무리를 보며 불안하게 말한다</p>
+<div class="line"><span class="who">나비 · 남_1</span><p class="en">The people we saw when we explored the land looked really strong. How could we possibly stand against them?</p><p class="ko">&quot;우리가 정탐하며 본 그 땅의 백성들은 참으로 강해보였습니다. 우리가 어찌 저들과 맞서 싸울 수 있겠습니까...&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-004, 뒤에 CH-008</p>
+<p class="risk">정극. 옆 인물이 입을 움직이지 않게</p>
+</article><article class="cut" id="c1_3">
+<header><span class="no">1-3</span><span class="tc">0:13–0:19 · 6초</span><span class="view">LC-001-V1</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-3 구도 스케치"><rect width="160" height="40" class="sky"/><path d="M0 40 Q30 34 60 38 T120 35 T160 40 V90 H0Z" class="hill"/><rect y="44" width="160" height="50" class="sand"/><path d="M0 20 Q20 8 46 18 L60 90 H0Z" class="rock"/><path d="M7.8 90 Q7.8 49.2 52.0 44.1 Q96.2 49.2 96.2 90Z" class="fig"/><circle cx="52" cy="22.0" r="17.0" class="fig"/><text x="52" y="6.0" class="lbl" text-anchor="middle">갓디</text><path d="M116.2 90 Q116.2 46.8 150.0 42.9 Q183.8 46.8 183.8 90Z" class="fig blur"/><circle cx="150" cy="26.0" r="13.0" class="fig blur"/><text x="150" y="11.0" class="lbl" text-anchor="middle">나비</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">미디엄 클로즈업, 85mm, 눈높이, 고정</p>
+<p class="act">갓디 역(CH-005, 쪽빛 겉옷)이 큰 바위 앞에 서서 말한다. 오른쪽 가장자리에 나비가 흐리게</p>
+<div class="line"><span class="who">갓디 · 남_2</span><p class="en">Let&#x27;s just turn back. There&#x27;s no way we can take Canaan.</p><p class="ko">&quot;이제 그만 돌아갑시다. 가나안 땅은 우리가 정복할 수 있는 땅이 아닙니다.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-005</p>
+<p class="risk">정극</p>
+</article><article class="cut" id="c1_4">
+<header><span class="no">1-4</span><span class="tc">0:19–0:25 · 6초</span><span class="view">LC-001-V1</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-4 구도 스케치"><rect width="160" height="58" class="sky"/><path d="M0 58 Q30 52 60 56 T120 53 T160 58 V90 H0Z" class="hill"/><rect y="62" width="160" height="32" class="sand"/><path d="M63.8 90 Q63.8 49.2 108.0 44.1 Q152.2 49.2 152.2 90Z" class="fig"/><circle cx="108" cy="22.0" r="17.0" class="fig"/><text x="108" y="6.0" class="lbl" text-anchor="middle">잭</text><path d="M86 70 L66 50 M130 70 L150 50" class="move"/><text x="150" y="14" class="note" text-anchor="end">0:03 발연기</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">미디엄 클로즈업, 85mm, 눈높이, 고정</p>
+<p class="act">잭(삼무아, 갈색 줄무늬 조끼)이 바위 언덕 위에 서 있다. 0:00에는 평범한 얼굴 → 눈을 크게 뜨고 양팔을 과장되게 벌리며 외친다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">They were huge! We looked like grasshoppers next to them!</p><p class="ko">&quot;덩치가 얼마나 크던지! 우리가 메뚜기처럼 보였습니다!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+<p class="risk">**의도된 발연기.** 연기 범위의 &quot;과장&quot; 끝이 정답이다. 감정 범위 문장을 거꾸로 쓴다</p>
+</article><article class="cut" id="c1_5">
+<header><span class="no">1-5</span><span class="tc">0:25–0:33 · 8초</span><span class="view">LC-001-V1 → V2</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-5 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M10 14 H150 V44 H10Z" class="drop"/><path d="M0 52 L160 52 L160 74 L0 74Z" class="sand"/><path d="M46 48 Q70 42 96 47 L98 54 Q70 57 44 54Z" class="rock"/><path d="M8 74 V30" class="stand"/><rect x="4" y="26" width="8" height="6" class="lamp"/><path d="M150 74 V30" class="stand"/><rect x="146" y="26" width="8" height="6" class="lamp"/><rect x="118" y="58" width="16" height="10" class="kit"/><path d="M126 68 V76 M120 76 L132 76" class="stand"/><path d="M73.5 69.5 L74.4 55.4 L81.6 55.4 L82.5 69.5Z" class="fig"/><circle cx="78" cy="50.0" r="4.5" class="fig"/><text x="78" y="43.5" class="lbl" text-anchor="middle">잭</text><circle cx="20" cy="66" r="1.8" class="fig dim"/><path d="M17.5 74 Q20 67 22.5 74Z" class="fig dim"/><circle cx="32" cy="66" r="1.8" class="fig dim"/><path d="M29.5 74 Q32 67 34.5 74Z" class="fig dim"/><circle cx="136" cy="66" r="1.8" class="fig dim"/><path d="M133.5 74 Q136 67 138.5 74Z" class="fig dim"/><circle cx="146" cy="66" r="1.8" class="fig dim"/><path d="M143.5 74 Q146 67 148.5 74Z" class="fig dim"/><path d="M60 40 L40 30 M100 40 L120 30 M60 62 L40 70 M100 62 L120 70" class="move"/><text x="80" y="10" class="note" text-anchor="middle">풀백 →</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">미디엄 → 풀샷 와이드, **풀백 한 번**</p>
+<p class="act">팔을 벌린 채 멈춘 잭에서 카메라가 뒤로 빠진다 → 바위가 세트 소품이고, 카메라·조명·모니터·스태프가 둘러싼 촬영장이 드러난다. 모두 굳어 정적</p>
+<div class="line quiet"><p class="ko">없음 (효과음: 정적, 조명 웅웅거림)</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, CH-003~CH-009, PR-003, PR-004</p>
+<p class="risk">시작·끝 프레임 둘 다 이미지로 확정한다. 풀백 중 세트가 바뀌는 위험. 안 되면 1-5a(잭 정지) / 1-5b(와이드)로 나눈다</p>
+</article></div></section><section class="seq"><h2><span>B</span>감독과 잭<small>6–17컷</small></h2><div class="grid"><article class="cut" id="c1_6">
+<header><span class="no">1-6</span><span class="tc">0:33–0:36 · 3초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-6 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M57.2 90 Q57.2 36.8 78.0 34.4 Q98.8 36.8 98.8 90Z" class="fig"/><circle cx="78" cy="24.0" r="8.0" class="fig"/><text x="78" y="14.0" class="lbl" text-anchor="middle">감독</text><rect x="34" y="52" width="36" height="20" class="mon"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">미디엄, 고정</p>
+<p class="act">모니터 뒤 감독이 손을 들며 외친다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">Cut!</p><p class="ko">&quot;컷!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002, PR-003</p>
+
+</article><article class="cut" id="c1_7">
+<header><span class="no">1-7</span><span class="tc">0:36–0:41 · 5초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-7 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">감독</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">감독이 숨을 고르고, 애써 차분하게 말한다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">Brother... Could you make it a little more realistic?</p><p class="ko">&quot;형제님... 연기를 좀 더 리얼하게 해주셔야죠.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002</p>
+
+</article><article class="cut" id="c1_8">
+<header><span class="no">1-8</span><span class="tc">0:41–0:49 · 8초</span><span class="view">LC-001-V4</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-8 구도 스케치"><rect width="160" height="54" class="drop"/><rect y="54" width="160" height="36" class="sand"/><path d="M0 50 Q40 44 70 52 L74 60 H0Z" class="rock"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">잭이 팔을 내리며 뻔뻔하게 말한다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">Look, Director, I&#x27;m a method actor. I can&#x27;t give a good performance unless I really get into the role.</p><p class="ko">&quot;감독님, 저는 메소드 연기를 추구하거든요. 감정 몰입이 안 되면 연기가 잘 안 나와요.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+<p class="risk">생활 연기. 1-4의 과장이 남지 않게</p>
+</article><article class="cut" id="c1_9">
+<header><span class="no">1-9</span><span class="tc">0:49–0:58 · 9초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-9 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">감독</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">감독이 아이를 달래듯 손짓하며 설명한다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">Brother... The spies really thought they might die out there. Try to put yourself in their shoes and show that fear.</p><p class="ko">&quot;형제님~ 정탐꾼들은 자신들이 죽을 수도 있다고 생각했던 거예요. 그 두려운 마음을 잘 살려서, 연기해 주면 좋을 것 같아요.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002</p>
+<p class="risk">대사 2문장 9초: 빠르면 나눈다</p>
+</article><article class="cut" id="c1_10">
+<header><span class="no">1-10</span><span class="tc">0:58–1:05 · 7초</span><span class="view">LC-001-V4</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-10 구도 스케치"><rect width="160" height="54" class="drop"/><rect y="54" width="160" height="36" class="sand"/><path d="M0 50 Q40 44 70 52 L74 60 H0Z" class="rock"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">잭이 이해가 안 된다는 얼굴로 되묻는다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">But come on! God had shown them so many miracles. Why would they be afraid?</p><p class="ko">&quot;아니, 그래도 그렇죠! 하나님께서 기적을 얼마나 많이 보여주셨는데, 왜 두려워요?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+
+</article><article class="cut" id="c1_11">
+<header><span class="no">1-11</span><span class="tc">1:05–1:12 · 7초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-11 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">감독</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">감독이 착잡함을 숨기며 말한다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">Even if you know all that, it&#x27;s hard not to be afraid when your life is on the line.</p><p class="ko">&quot;그걸 알고 있어도, 자기 목숨이 위태롭다고 느껴지면 마음이 흔들릴 수 있죠.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002</p>
+
+</article><article class="cut" id="c1_12">
+<header><span class="no">1-12</span><span class="tc">1:12–1:20 · 8초</span><span class="view">LC-001-V4</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-12 구도 스케치"><rect width="160" height="54" class="drop"/><rect y="54" width="160" height="36" class="sand"/><path d="M0 50 Q40 44 70 52 L74 60 H0Z" class="rock"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">잭이 고개를 저으며 말한다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">Come on! I just don&#x27;t get it. They committed the very same sins just before entering Canaan as they did right after leaving Egypt!</p><p class="ko">&quot;에이~ 저는 도무지 이해가 안 되는데요? 출애굽 한 직후에 지은 죄를 가나안 들어가기 직전에 또 짓고!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+
+</article><article class="cut" id="c1_13">
+<header><span class="no">1-13</span><span class="tc">1:20–1:28 · 8초</span><span class="view">LC-001-V4</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-13 구도 스케치"><rect width="160" height="54" class="drop"/><rect y="54" width="160" height="36" class="sand"/><path d="M0 50 Q40 44 70 52 L74 60 H0Z" class="rock"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트 → 같은 구도, 고정</p>
+<p class="act">잭이 자기도 답답하다는 듯 손을 펼친다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">They&#x27;d seen so many miracles, yet they kept making the same mistakes for 40 years. How am I supposed to understand those people?</p><p class="ko">&quot;그렇게 많은 기적을 보고도, 40년 동안 같은 죄를 반복하는데… 그 백성들을 제가 어떻게 이해합니까.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+<p class="risk">1-12와 같은 구도. 이어 붙이기는 1-12 마지막 프레임을 시작 이미지로</p>
+</article><article class="cut" id="c1_14">
+<header><span class="no">1-14</span><span class="tc">1:28–1:38 · 10초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-14 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">감독</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">감독이 차분하게 말한다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">Exactly! That&#x27;s what we&#x27;re trying to show. Why did the Israelites keep falling into the same sins, even after everything God had done for them?</p><p class="ko">&quot;네~ 바로 그걸 담으려는 거예요. 하나님께서 많은 은혜를 베푸셨는데도 이스라엘 백성들은 왜 계속 같은 죄를 지었을까?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002</p>
+<p class="risk">10초 2문장</p>
+</article><article class="cut" id="c1_15">
+<header><span class="no">1-15</span><span class="tc">1:38–1:44 · 6초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-15 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">감독</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트, 고정</p>
+<p class="act">감독이 잭을 보며 마무리한다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">So really put yourself in their shoes and make your acting feel more real.</p><p class="ko">&quot;그러니까 형제님도 그 상황에 놓인 사람처럼, 더 리얼하게 연기해 주셔야죠.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002</p>
+<p class="risk">1-14와 같은 구도</p>
+</article><article class="cut" id="c1_16">
+<header><span class="no">1-16</span><span class="tc">1:44–1:49 · 5초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-16 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M-10.2 90 Q-10.2 49.2 34.0 44.1 Q78.2 49.2 78.2 90Z" class="fig back"/><circle cx="34" cy="22.0" r="17.0" class="fig back"/><text x="34" y="6.0" class="lbl" text-anchor="middle">잭</text><path d="M87.2 90 Q87.2 36.8 108.0 34.4 Q128.8 36.8 128.8 90Z" class="fig"/><circle cx="108" cy="24.0" r="8.0" class="fig"/><text x="108" y="14.0" class="lbl" text-anchor="middle">감독</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">투샷(어깨 너머), 고정</p>
+<p class="act">잭이 여전히 납득 못 한 얼굴로 감독을 본다 → 감독이 크게 심호흡한다</p>
+<div class="line quiet"><p class="ko">없음</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, CH-002</p>
+<p class="risk">대사 없는 컷: 둘 다 입을 움직이지 않게</p>
+</article><article class="cut" id="c1_17">
+<header><span class="no">1-17</span><span class="tc">1:49–1:55 · 6초</span><span class="view">LC-001-V2</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-17 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M10 14 H150 V44 H10Z" class="drop"/><path d="M0 52 L160 52 L160 74 L0 74Z" class="sand"/><path d="M46 48 Q70 42 96 47 L98 54 Q70 57 44 54Z" class="rock"/><path d="M8 74 V30" class="stand"/><rect x="4" y="26" width="8" height="6" class="lamp"/><path d="M150 74 V30" class="stand"/><rect x="146" y="26" width="8" height="6" class="lamp"/><rect x="118" y="58" width="16" height="10" class="kit"/><path d="M126 68 V76 M120 76 L132 76" class="stand"/><path d="M53.5 69.5 L54.4 55.4 L61.6 55.4 L62.5 69.5Z" class="fig"/><circle cx="58" cy="50.0" r="4.5" class="fig"/><text x="58" y="43.5" class="lbl" text-anchor="middle">감독</text><circle cx="20" cy="66" r="1.8" class="fig dim"/><path d="M17.5 74 Q20 67 22.5 74Z" class="fig dim"/><circle cx="32" cy="66" r="1.8" class="fig dim"/><path d="M29.5 74 Q32 67 34.5 74Z" class="fig dim"/><circle cx="136" cy="66" r="1.8" class="fig dim"/><path d="M133.5 74 Q136 67 138.5 74Z" class="fig dim"/><circle cx="146" cy="66" r="1.8" class="fig dim"/><path d="M143.5 74 Q146 67 148.5 74Z" class="fig dim"/><path d="M70 66 L52 60 M90 66 L108 60 M80 66 L80 58" class="move"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">와이드, 고정</p>
+<p class="act">감독이 손뼉을 치며 말한다 → 스태프와 배우들이 흩어진다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">How about we take a short break?</p><p class="ko">&quot;자, 잠깐 쉬다 갈까요?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002, CH-008, CH-009</p>
+<p class="risk">여럿이 한꺼번에 움직임: 각자 다른 일 하나씩. 이름 없는 인원은 얼굴 없이</p>
+</article></div></section><section class="seq"><h2><span>C</span>휴식 — 잭과 맥스<small>18–30컷</small></h2><div class="grid"><article class="cut" id="c1_18">
+<header><span class="no">1-18</span><span class="tc">1:55–2:01 · 6초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-18 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M37.2 90 Q37.2 36.8 58.0 34.4 Q78.8 36.8 78.8 90Z" class="fig"/><circle cx="58" cy="24.0" r="8.0" class="fig"/><text x="58" y="14.0" class="lbl" text-anchor="middle">잭</text><path d="M111.2 90 Q111.2 36.8 132.0 34.4 Q152.8 36.8 152.8 90Z" class="fig"/><circle cx="132" cy="24.0" r="8.0" class="fig"/><text x="132" y="14.0" class="lbl" text-anchor="middle">맥스</text><path d="M156 40 L144 40" class="move"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">미디엄, 고정</p>
+<p class="act">잭이 휴식 의자에 앉아 대본을 내려다본다. 갸웃 → 맥스가 화면 안으로 걸어와 선다</p>
+<div class="line quiet"><p class="ko">없음</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, CH-003, PR-001, PR-005</p>
+<p class="risk">맥스는 &quot;이미 걷는 중&quot;으로 시작</p>
+</article><article class="cut" id="c1_19">
+<header><span class="no">1-19</span><span class="tc">2:01–2:05 · 4초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-19 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M35.2 90 Q35.2 36.8 56.0 34.4 Q76.8 36.8 76.8 90Z" class="fig"/><circle cx="56" cy="24.0" r="8.0" class="fig"/><text x="56" y="14.0" class="lbl" text-anchor="middle">잭</text><path d="M85.2 90 Q85.2 36.8 106.0 34.4 Q126.8 36.8 126.8 90Z" class="fig"/><circle cx="106" cy="24.0" r="8.0" class="fig"/><text x="106" y="14.0" class="lbl" text-anchor="middle">맥스</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">투샷, 고정</p>
+<p class="act">맥스가 잭 옆에 서서 묻는다</p>
+<div class="line"><span class="who">맥스 · 남_5</span><p class="en">Brother, what&#x27;s making it hard for you to get into character?</p><p class="ko">&quot;형제님, 어떤 부분에서 몰입이 안 되는 거예요?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, CH-003</p>
+
+</article><article class="cut" id="c1_20">
+<header><span class="no">1-20</span><span class="tc">2:05–2:12 · 7초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-20 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M39.2 90 Q39.2 36.8 60.0 34.4 Q80.8 36.8 80.8 90Z" class="fig"/><circle cx="60" cy="24.0" r="8.0" class="fig"/><text x="60" y="14.0" class="lbl" text-anchor="middle">잭</text><path d="M87.2 90 Q87.2 36.8 108.0 34.4 Q128.8 36.8 128.8 90Z" class="fig"/><circle cx="108" cy="24.0" r="8.0" class="fig"/><text x="108" y="14.0" class="lbl" text-anchor="middle">맥스</text><rect x="52" y="60" width="16" height="10" class="paper"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">투샷 → 대본 쪽으로 기울임, 고정</p>
+<p class="act">잭이 대본을 펼쳐 한 줄을 가리킨다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">Look at what this guy, Shammua, says here. He&#x27;s showing a complete lack of faith!</p><p class="ko">&quot;여기, 삼무아라는 사람이 하는 말을 봐봐요. 지금 믿음 없는 소리만 하고 있잖아요.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, CH-003, PR-001</p>
+<p class="risk">대본 글자는 읽히지 않게(글자 금지)</p>
+</article><article class="cut" id="c1_21">
+<header><span class="no">1-21</span><span class="tc">2:12–2:19 · 7초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-21 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">맥스</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(맥스), 고정</p>
+<p class="act">맥스가 차분히 되묻는다</p>
+<div class="line"><span class="who">맥스 · 남_5</span><p class="en">But they actually had to fight to enter Canaan. What would you have done in their shoes?</p><p class="ko">&quot;실제로 가나안에 들어가려면 전쟁을 치러야 했잖아요. 형제님이라면 어땠을 것 같아요?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-003</p>
+
+</article><article class="cut" id="c1_22">
+<header><span class="no">1-22</span><span class="tc">2:19–2:24 · 5초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-22 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(잭), 고정</p>
+<p class="act">잭이 당연하다는 듯 가슴을 편다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">What do you mean, what would I do? I&#x27;d have charged right in!</p><p class="ko">&quot;어떻게 하긴요? 저라면 무조건 담대하게 앞장섰죠!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+
+</article><article class="cut" id="c1_23">
+<header><span class="no">1-23</span><span class="tc">2:24–2:27 · 3초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-23 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">맥스</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(맥스), 고정</p>
+<p class="act">맥스가 짧게 묻는다</p>
+<div class="line"><span class="who">맥스 · 남_5</span><p class="en">Even if they were 3 meters tall?</p><p class="ko">&quot;키가 3m나 되는 거인들이어도요?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-003</p>
+
+</article><article class="cut" id="c1_24">
+<header><span class="no">1-24</span><span class="tc">2:27–2:37 · 10초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-24 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(잭), 고정</p>
+<p class="act">잭이 손을 휘저으며 가볍게 받아친다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">Then I&#x27;d pray and go for it! God&#x27;s with us. What&#x27;s there to worry about? And come on, they couldn&#x27;t have been that big!</p><p class="ko">&quot;그럴 땐 기도하고, 가면 되죠! 하나님께서 함께하시는데 뭐가 걱정이에요? 그리고 거인이라고 해봤자, 얼마나 컸겠어요!?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+<p class="risk">3문장 10초: 빠르면 앞 두 문장 / 끝 문장으로 나눈다</p>
+</article><article class="cut" id="c1_25">
+<header><span class="no">1-25</span><span class="tc">2:37–2:44 · 7초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-25 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">맥스</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(맥스), 고정</p>
+<p class="act">맥스가 말끝을 흐리며 말한다</p>
+<div class="line"><span class="who">맥스 · 남_5</span><p class="en">But when you&#x27;re actually facing with something like that... you never know how you&#x27;ll react.</p><p class="ko">&quot;그래도 막상 눈앞에 그런 상황들이 펼쳐지면... 우리도 어떻게 행동할 지 장담할 수 없죠.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-003</p>
+
+</article><article class="cut" id="c1_26">
+<header><span class="no">1-26</span><span class="tc">2:44–2:53 · 9초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-26 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M52.2 90 Q52.2 46.8 86.0 42.9 Q119.8 46.8 119.8 90Z" class="fig"/><circle cx="86" cy="26.0" r="13.0" class="fig"/><text x="86" y="11.0" class="lbl" text-anchor="middle">잭</text><path d="M0 64 Q14 60 30 66" class="fig dim" style="stroke-width:6;fill:none"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(잭), 고정</p>
+<p class="act">잭이 맥스 팔을 툭 치며 으쓱한다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">Oh, come on, Brother Max! Sure, I&#x27;m playing Shammua right now, but when it comes to faith I&#x27;m more like Joshua and Caleb!</p><p class="ko">&quot;에헤이~ 맥스 형제님, 제가 비록 지금은 삼무아 역할을 맡았지만, 사실 제 믿음은 여호수아와 갈렙이거든요!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001 (맥스 팔 일부)</p>
+
+</article><article class="cut" id="c1_27">
+<header><span class="no">1-27</span><span class="tc">2:53–2:58 · 5초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-27 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M52.2 90 Q52.2 46.8 86.0 42.9 Q119.8 46.8 119.8 90Z" class="fig"/><circle cx="86" cy="26.0" r="13.0" class="fig"/><text x="86" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(잭), 고정</p>
+<p class="act">잭이 주먹을 쥐며 단언한다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">If God says, &quot;Go,&quot; then I&#x27;m going! No questions asked!</p><p class="ko">&quot;하나님께서 가라고 하셨으면? 저는 무조건 갑니다!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+<p class="risk">1-26과 같은 구도</p>
+</article><article class="cut" id="c1_28">
+<header><span class="no">1-28</span><span class="tc">2:58–3:03 · 5초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-28 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">맥스</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(맥스), 고정</p>
+<p class="act">맥스가 어이없다는 듯 헛웃음을 짓는다</p>
+<div class="line"><span class="who">맥스 · 남_5</span><p class="en">Brother, you&#x27;re not even listening to the director...</p><p class="ko">&quot;형제님, 지금 감독님 말씀도 잘 안 듣잖아요...&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-003</p>
+<p class="risk">헛웃음이 큰 웃음이 되지 않게</p>
+</article><article class="cut" id="c1_29">
+<header><span class="no">1-29</span><span class="tc">3:03–3:06 · 3초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-29 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(잭), 고정</p>
+<p class="act">잭이 처음 듣는다는 듯 눈을 동그랗게 뜬다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">Huh? Me?</p><p class="ko">&quot;네? 제가요?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+
+</article><article class="cut" id="c1_30">
+<header><span class="no">1-30</span><span class="tc">3:06–3:11 · 5초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-30 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M37.2 90 Q37.2 36.8 58.0 34.4 Q78.8 36.8 78.8 90Z" class="fig"/><circle cx="58" cy="24.0" r="8.0" class="fig"/><text x="58" y="14.0" class="lbl" text-anchor="middle">잭</text><path d="M97.2 90 Q97.2 36.8 118.0 34.4 Q138.8 36.8 138.8 90Z" class="fig"/><circle cx="118" cy="24.0" r="8.0" class="fig"/><text x="118" y="14.0" class="lbl" text-anchor="middle">맥스</text><path d="M128 40 L152 40" class="move"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">투샷, 고정</p>
+<p class="act">맥스가 잭 어깨를 두드리고 화면 밖으로 걸어 나간다</p>
+<div class="line"><span class="who">맥스 · 남_5</span><p class="en">Anyway, let&#x27;s just get through the rest of today&#x27;s shoot.</p><p class="ko">&quot;아무튼, 오늘 촬영 무사히 끝내봅시다.&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, CH-003</p>
+<p class="risk">말하면서 걷기: 사건 2개</p>
+</article></div></section><section class="seq"><h2><span>D</span>혼자 남은 잭<small>31–33컷</small></h2><div class="grid"><article class="cut" id="c1_31">
+<header><span class="no">1-31</span><span class="tc">3:11–3:17 · 6초</span><span class="view">LC-001-V6 (제안값)</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-31 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="20" y="16" width="120" height="34" class="drop"/><rect x="20" y="50" width="120" height="12" class="sand"/><path d="M0 62 H160" class="line"/><path d="M66.8 55.5 L67.4 47.8 L72.6 47.8 L73.2 55.5Z" class="fig"/><circle cx="70" cy="44.0" r="3.2" class="fig"/><text x="70" y="38.8" class="lbl" text-anchor="middle">여호수아</text><path d="M88.8 55.5 L89.4 47.8 L94.6 47.8 L95.2 55.5Z" class="fig"/><circle cx="92" cy="44.0" r="3.2" class="fig"/><text x="92" y="38.8" class="lbl" text-anchor="middle">갈렙</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">잭 시점 와이드, 고정</p>
+<p class="act">멀리 세트 한쪽에서 여호수아·갈렙 역 배우가 진지하게 대사를 맞춘다</p>
+<div class="line quiet"><p class="ko">없음 (멀리 웅얼거림만)</p></div>
+<p class="meta"><b>인물·소품</b> CH-006, CH-007</p>
+<p class="risk">멀리 있는 두 사람 입: 또렷한 대사가 들리지 않게</p>
+</article><article class="cut" id="c1_32">
+<header><span class="no">1-32</span><span class="tc">3:17–3:25 · 8초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-32 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(잭), 고정</p>
+<p class="act">잭이 부러운 눈으로 둘을 보며 중얼거린다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">Man, I wish I were playing Joshua or Caleb. Then I could show them what real faith looks like...</p><p class="ko">&quot;내가 여호수아나 갈렙 역을 맡았으면 얼마나 좋아. 그럼 진짜 믿음 있는 모습이 뭔지, 확실히 보여줄 수 있었을 텐데...&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001</p>
+<p class="risk">중얼거림: 작은 목소리</p>
+</article><article class="cut" id="c1_33">
+<header><span class="no">1-33</span><span class="tc">3:25–3:34 · 9초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-33 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M46.2 90 Q46.2 46.8 80.0 42.9 Q113.8 46.8 113.8 90Z" class="fig"/><circle cx="80" cy="26.0" r="13.0" class="fig"/><text x="80" y="11.0" class="lbl" text-anchor="middle">잭</text><rect x="52" y="60" width="16" height="10" class="paper"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(잭), 고정</p>
+<p class="act">잭이 대본을 보며 몰입하려 애쓴다 → 고개를 갸웃한다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">I&#x27;m Shammua... I&#x27;m Shammua... Ah... I just can&#x27;t get into it...</p><p class="ko">&quot;나는 삼무아다... 삼무아다...&quot; / &quot;아... 안 되겠는데...?&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, PR-001</p>
+<p class="risk">1-32와 같은 구도</p>
+</article></div></section><section class="seq"><h2><span>E</span>재촬영과 사고<small>34–37컷</small></h2><div class="grid"><article class="cut" id="c1_34">
+<header><span class="no">1-34</span><span class="tc">3:34–3:40 · 6초</span><span class="view">LC-001-V5</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-34 구도 스케치"><rect width="160" height="90" class="dark"/><rect x="96" y="18" width="64" height="26" class="drop"/><rect x="96" y="44" width="64" height="8" class="sand"/><path d="M0 56 H160" class="line"/><path d="M10 70 h12 v-10 h-12z M140 70 h12 v-10 h-12z" class="chair"/><path d="M65.5 69.5 L66.4 55.4 L73.6 55.4 L74.5 69.5Z" class="fig"/><circle cx="70" cy="50.0" r="4.5" class="fig"/><text x="70" y="43.5" class="lbl" text-anchor="middle">잭</text><path d="M128 40 L152 40" class="move"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">풀샷, 고정</p>
+<p class="act">감독 목소리에 잭이 일어나 고개를 갸우뚱하며 세트 쪽으로 걸어간다</p>
+<div class="line"><span class="who">감독 · 남_4, 화면 밖</span><p class="en">All right, everyone! Let&#x27;s get rolling again!</p><p class="ko">&quot;자, 다시 촬영 들어가겠습니다!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, PR-005</p>
+<p class="risk">화면 밖 목소리: 잭의 입이 움직이지 않게</p>
+</article><article class="cut" id="c1_35">
+<header><span class="no">1-35</span><span class="tc">3:40–3:48 · 8초</span><span class="view">LC-001-V3</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-35 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M0 60 H160" class="line"/><rect x="128" y="20" width="10" height="44" class="kit"/><path d="M20 30 V62 M14 26 H26" class="stand"/><path d="M52.2 90 Q52.2 46.8 86.0 42.9 Q119.8 46.8 119.8 90Z" class="fig"/><circle cx="86" cy="26.0" r="13.0" class="fig"/><text x="86" y="11.0" class="lbl" text-anchor="middle">감독</text><rect x="34" y="52" width="36" height="20" class="mon"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">바스트(감독, 모니터 너머), 고정</p>
+<p class="act">감독이 모니터를 확인하며 말하고, 손을 내리며 신호를 준다</p>
+<div class="line"><span class="who">감독 · 남_4</span><p class="en">Jack, this time, really put yourself in their shoes. Give it your all. Ready... Action!</p><p class="ko">&quot;잭, 이번엔 진짜 그 상황에 놓여 있다고 생각하고 제대로 해봅시다. 레디, 액션!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-002, PR-003</p>
+
+</article><article class="cut" id="c1_36">
+<header><span class="no">1-36</span><span class="tc">3:48–3:53 · 5초</span><span class="view">LC-001-V2</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-36 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M10 14 H150 V44 H10Z" class="drop"/><path d="M0 52 L160 52 L160 74 L0 74Z" class="sand"/><path d="M46 48 Q70 42 96 47 L98 54 Q70 57 44 54Z" class="rock"/><path d="M8 74 V30" class="stand"/><rect x="4" y="26" width="8" height="6" class="lamp"/><path d="M150 74 V30" class="stand"/><rect x="146" y="26" width="8" height="6" class="lamp"/><rect x="118" y="58" width="16" height="10" class="kit"/><path d="M126 68 V76 M120 76 L132 76" class="stand"/><path d="M55.5 69.5 L56.4 55.4 L63.6 55.4 L64.5 69.5Z" class="fig"/><circle cx="60" cy="50.0" r="4.5" class="fig"/><text x="60" y="43.5" class="lbl" text-anchor="middle">잭</text><g transform="rotate(-14 96 72)"><rect x="80" y="20" width="34" height="52" class="flat"/></g><path d="M118 22 L104 30" class="move"/><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">풀샷, 고정</p>
+<p class="act">바위 앞에 선 잭 옆, 대형 소품 장막이 균형을 잃고 잭 쪽으로 기운다 → 잭이 올려다보며 놀란다</p>
+<div class="line"><span class="who">잭 · 남_3</span><p class="en">W-Whoa?!</p><p class="ko">&quot;어, 어어?!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001, PR-002</p>
+<p class="risk">장막의 상태 머신: 서 있음 → 기울어짐(한 번). 쓰러지는 끝까지는 이 컷에서 하지 않는다</p>
+</article><article class="cut" id="c1_37">
+<header><span class="no">1-37</span><span class="tc">3:53–3:59 · 6초</span><span class="view">LC-001-V2</span></header>
+<svg viewBox="0 0 160 90" role="img" aria-label="1-37 구도 스케치"><rect width="160" height="90" class="dark"/><path d="M10 14 H150 V44 H10Z" class="drop"/><path d="M0 52 L160 52 L160 74 L0 74Z" class="sand"/><path d="M46 48 Q70 42 96 47 L98 54 Q70 57 44 54Z" class="rock"/><path d="M8 74 V30" class="stand"/><rect x="4" y="26" width="8" height="6" class="lamp"/><path d="M150 74 V30" class="stand"/><rect x="146" y="26" width="8" height="6" class="lamp"/><rect x="118" y="58" width="16" height="10" class="kit"/><path d="M126 68 V76 M120 76 L132 76" class="stand"/><path d="M30 74 Q50 40 80 46 Q110 40 130 74Z" class="flat"/><text x="80" y="38" class="note" text-anchor="middle">천 아래에서 허둥댐</text><rect y="72" width="160" height="18" class="band"/><text x="4" y="78" class="bandt">자막 띠</text><rect width="160" height="90" class="frame"/></svg>
+<p class="shot">풀샷, 고정</p>
+<p class="act">장막이 잭을 완전히 덮은 상태로 시작한다. 천 아래에서 잭이 허둥대며 더듬는다</p>
+<div class="line"><span class="who">잭 · 남_3, 천 속에서</span><p class="en">Hey! Somebody get this thing off me!</p><p class="ko">&quot;저기요! 이거 좀 치워주세요!!&quot;</p></div>
+<p class="meta"><b>인물·소품</b> CH-001(천 아래 실루엣), PR-002</p>
+<p class="risk">장막이 덮는 순간은 1-36과 1-37 사이 편집으로 처리(후반). 천 속 입은 안 보인다</p>
+</article></div></section>
+  <p class="foot">원본: <code>works/광야-수업/project/conti-1.md</code>(글 콘티)와 <code>script/01-intro.md</code>(대본). 컷 길이와 1-5 이후 구도는 제안값입니다. 1-1~1-4는 Higgsfield 컷 폴더의 시작 이미지 시안 구도를 따랐습니다. 영어 대사가 한국어보다 길면 컷 길이를 다시 잽니다.</p>
+</div>

@@ -1,0 +1,79 @@
+<title>광야 수업 인트로 콘티</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&family=Gowun+Batang:wght@700&display=swap">
+<style>
+/* 레이아웃: 촬영 현장 콘티 시트. 장면 묶음마다 16:9 패널 격자, 패널 아래 대사 카드 */
+:root{
+  --paper:#eceef0; --card:#fbfbfc; --ink:#1d2126; --muted:#5d6670; --rule:#cfd4d9;
+  --sand:#c9a46a; --ochre:#9a6a1f; --risk:#a8432f;
+  --sk-sky:#dfe7ee; --sk-sand:#e7d6b8; --sk-rock:#c9b08a; --sk-hill:#d6c3a2; --sk-dark:#3a3f46; --sk-drop:#cdb48c; --sk-fig:#1d2126; --sk-band:rgba(29,33,38,.16);
+  --f-display:"Gowun Batang",serif; --f-body:"IBM Plex Sans KR",system-ui,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#15181b; --card:#1d2125; --ink:#e7e9ec; --muted:#9aa3ad; --rule:#2e343a;
+  --sand:#c9a46a; --ochre:#d9a650; --risk:#e27a63;
+  --sk-sky:#2b3540; --sk-sand:#5a4c37; --sk-rock:#6e5b40; --sk-hill:#4d4231; --sk-dark:#0f1113; --sk-drop:#5e4f38; --sk-fig:#f0f2f4; --sk-band:rgba(240,242,244,.14);
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#15181b; --card:#1d2125; --ink:#e7e9ec; --muted:#9aa3ad; --rule:#2e343a;
+  --sand:#c9a46a; --ochre:#d9a650; --risk:#e27a63;
+  --sk-sky:#2b3540; --sk-sand:#5a4c37; --sk-rock:#6e5b40; --sk-hill:#4d4231; --sk-dark:#0f1113; --sk-drop:#5e4f38; --sk-fig:#f0f2f4; --sk-band:rgba(240,242,244,.14);
+  color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+.wrap{max-width:1180px;margin:0 auto;display:grid;gap:36px}
+.top{display:grid;gap:10px}
+.top h1{font-family:var(--f-display);font-size:clamp(26px,4vw,40px);line-height:1.2;margin:0;text-wrap:balance}
+.top .sub{color:var(--muted);margin:0;max-width:65ch}
+.facts{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin:4px 0 0;padding:0;list-style:none}
+.facts b{color:var(--ink);font-weight:500;font-variant-numeric:tabular-nums}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:14px;height:8px;vertical-align:middle;margin-right:6px;border-radius:2px}
+.seq{display:grid;gap:14px}
+.seq h2{display:flex;align-items:baseline;gap:12px;margin:0;font-size:18px;font-weight:700;border-bottom:1px solid var(--rule);padding-bottom:8px}
+.seq h2 span{font-family:var(--f-mono);color:var(--ochre);font-size:15px}
+.seq h2 small{margin-left:auto;font-weight:400;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.cut{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:12px;display:grid;gap:8px;align-content:start;min-width:0}
+.cut header{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 10px;font-size:12px;color:var(--muted)}
+.cut .no{font-family:var(--f-mono);font-size:17px;color:var(--ink);letter-spacing:.02em}
+.cut .tc{font-variant-numeric:tabular-nums}
+.cut .view{margin-left:auto;font-family:var(--f-mono);font-size:11px;letter-spacing:.04em}
+.cut svg{width:100%;height:auto;display:block;border-radius:3px;max-width:100%}
+.shot{margin:0;font-size:12.5px;font-weight:500;color:var(--ochre)}
+.act{margin:0;font-size:14px}
+.line{border-left:2px solid var(--sand);padding-left:10px;display:grid;gap:2px}
+.line.quiet{border-color:var(--rule)}
+.who{font-size:11.5px;color:var(--muted);letter-spacing:.03em}
+.en{margin:0;font-size:14px;font-weight:500}
+.ko{margin:0;font-size:13px;color:var(--muted)}
+.meta{margin:0;font-size:12px;color:var(--muted)}
+.meta b{font-weight:500;color:var(--ink);margin-right:4px}
+.risk{margin:0;font-size:12px;color:var(--risk)}
+.foot{font-size:12.5px;color:var(--muted);border-top:1px solid var(--rule);padding-top:14px;max-width:80ch}
+/* sketch */
+.sky{fill:var(--sk-sky)} .sand{fill:var(--sk-sand)} .rock{fill:var(--sk-rock)} .hill{fill:var(--sk-hill)}
+.dark{fill:var(--sk-dark)} .drop{fill:var(--sk-drop)} .tent{fill:var(--sk-rock)}
+.fig{fill:var(--sk-fig)} .fig.dim{opacity:.45} .fig.blur{opacity:.35} .fig.back{opacity:.75}
+.kit,.mon{fill:none;stroke:var(--sk-fig);stroke-width:1} .mon{stroke-width:1.4}
+.paper{fill:var(--sk-sky);stroke:var(--sk-fig);stroke-width:.6}
+.stand,.line{stroke:var(--sk-fig);stroke-width:.7;fill:none;opacity:.6} .lamp{fill:var(--sand)}
+.chair{fill:none;stroke:var(--sk-fig);stroke-width:.8;opacity:.6}
+.flat{fill:var(--sand);stroke:var(--sk-fig);stroke-width:.6}
+.move{stroke:var(--ochre);stroke-width:1.2;fill:none;stroke-dasharray:2 1.5}
+.band{fill:var(--sk-band)} .bandt{font:4px var(--f-body);fill:var(--sk-fig);opacity:.7}
+.lbl{font:5px var(--f-body);font-weight:700;fill:var(--ochre)}
+.note{font:4.6px var(--f-body);fill:var(--ochre)}
+.frame{fill:none;stroke:var(--rule);stroke-width:.8}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+</style>
+<div class="wrap">
+  <div class="top">
+    <h1>광야 수업: 다시 가나안을 향해 — #1 인트로</h1>
+    <p class="sub">컷마다 화면 구도 스케치, 샷, 대사(영어 음성 / 한국어 자막)를 정리한 콘티입니다. 스케치의 아래 띠는 하단 자막 자리라 얼굴과 입을 두지 않습니다.</p>
+    <ul class="facts"><li><b>37</b>컷</li><li>약 <b><!--TOTAL--></b></li><li>16:9 실사</li><li>대사 영어, 자막 한국어</li><li>카메라 고정, 1-5만 풀백</li><li>Higgsfield 「109th」</li></ul>
+    <div class="legend"><span><i style="background:var(--sand)"></i>대사 카드</span><span><i style="background:var(--ochre)"></i>움직임·카메라</span><span><i style="background:var(--risk)"></i>실패 위험</span></div>
+  </div>
+  <!--CUTS-->
+  <p class="foot">원본: <code>works/광야-수업/project/conti-1.md</code>(글 콘티)와 <code>script/01-intro.md</code>(대본). 컷 길이와 1-5 이후 구도는 제안값입니다. 1-1~1-4는 Higgsfield 컷 폴더의 시작 이미지 시안 구도를 따랐습니다. 영어 대사가 한국어보다 길면 컷 길이를 다시 잽니다.</p>
+</div>
