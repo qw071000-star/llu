@@ -38,6 +38,7 @@ reference/                            ← [컨텍스트에 넣지 않음] 사람
 tests/                                ← [컨텍스트에 넣지 않음] 키트 점검 스크립트와 시험 프롬프트
   run_kit_tests.py                    python3 tests/run_kit_tests.py — 키트를 고칠 때마다 돌린다
   agent-eval/                         서브에이전트 맹검 시험: 시험 작품, 시나리오 19개, 채점 결과, 기록 전체(records/)
+works/광야-수업/                       ← 작품 정본: 대본(script/), 콘티·컷 목록·에셋 대장·확정 사항·OK 대장(project/)
 archive/어머니와-고등어/                ← [컨텍스트에 넣지 않음] 원본 24개. 그 작품을 이어갈 때만
 ```
 
