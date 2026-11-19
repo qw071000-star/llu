@@ -27,7 +27,7 @@ Principle: **keep memory in documents; sessions are written to and thrown away.*
 
 ## 2. Lead session
 
-**On start:** read `decisions.md`, `shot-list.md`, `asset-registry.md` in that order. Read the OK ledger only when the list is needed. Process received handoffs (§4). Do not open the handoff of a cut whose `생성/크레딧` field is already filled.
+**On start:** read `decisions.md`, `shot-list.md`, `asset-registry.md` in that order. Approvals are the hearts in the cut folders (`storyboard.md`). Read the OK ledger only when the list is needed. Process received handoffs (§4). Do not open the handoff of a cut whose `생성/크레딧` field is already filled.
 
 **Does:** decides sections, cut order and length, aspect ratio, crop, masked zones, era, and art-style reference. Confirms shared assets. Decides the Higgsfield folder structure. Issues cut cards (`cut-card.md`).
 

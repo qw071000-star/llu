@@ -14,7 +14,7 @@ description: Use when generating images or video with Higgsfield or organizing t
 5. Did it pass `check_prompt.py` in this skill's folder (command and procedure: see instructions "Check")? The command must match the allow pattern in `.claude/settings.json` character for character to run without approval; in the Claude app only the path changes to that skill folder.
 6. A video that must begin exactly on its start image needs a model whose `models_explore` tags include `start-frame` (e.g. Seedance 2.0, Seedance 2.0 Mini, Kling 3.0 Turbo, MiniMax H3). Seedance 2.5 took `start_image` as a reference only (observed 2026-11-10: 0:00 differed from the image); propose a start-frame model and say it is not yet verified by generation (`fixes.md`).
 7. Several accounts: does `list_workspaces` show the chosen account's workspace (registry 계정 table)? If not, do not send (`production-session` → `accounts.md`). References are that account's IDs.
-8. A person in the image or video: is that character's confirmed sheet attached? It always is, in every generation with that person.
+8. A person in the image or video: is that character's confirmed sheet attached? It always is, in every generation with that person (except when making the sheet itself; no confirmed sheet yet → task 4 first).
 
 ## 2. Save location
 
@@ -42,7 +42,7 @@ description: Use when generating images or video with Higgsfield or organizing t
 
 ## 3. Send the request and end the turn
 
-Polling status repeatedly reprocesses the whole conversation each time. Leave the waiting to the user.
+Polling status repeatedly reprocesses the whole conversation each time. Leave the waiting for video to the user; an image gets one short wait (below).
 
 **Sending**
 - To make one, use `generate_image` or `generate_video` with `count: 1`. The widget shows progress.
@@ -58,6 +58,7 @@ Polling status repeatedly reprocesses the whole conversation each time. Leave th
 - 볼 점: [지시 항목 2~3개]
 완성되면 알려 주세요. 분석이나 개선점, 다른 컷과의 비교가 필요하면 말씀해 주세요.
 ```
+(Image: drop the last line when you report the result in the same answer.)
 
 **Credit logging:** every time you send (no new quote → use the earlier recorded value for the same setting and name that basis), write `job — 보냄 — 약 N 크레딧` in cut card [11] and raise the counts in the cut list 생성/크레딧 cell (`이미지 n / 영상 n · 약 N 크레딧`). If the `decisions.md` §2 cost memo has that setting, use its value; otherwise use the `get_cost` quote. If neither exists, write `알 수 없음` instead of a number (instructions rule 10). Also attach the basis (cost memo / get_cost) to the credits in the after-sending format.
 

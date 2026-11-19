@@ -124,7 +124,7 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 - The cut number is not in `shot-list.md` → ask only what the cut is (a new cut, or a `대기` cut misnamed?); defer camera, people, props and folder.
 - Several tasks in one message → propose an order (task numbers) and ask only about the first.
 - Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (one folder `3-6`, no subfolders) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
-- Generation: no "만들어"/"보내" on a prompt the user saw → ask whether to send.
+- Generation: no "만들어"/"보내"/"진행" on a prompt the user saw → ask whether to send.
 
 ## Per task (beyond the skill's table)
 
