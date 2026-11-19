@@ -858,11 +858,12 @@ check("[정본4] 컷 폴더 이름은 번호만, 승인일 때만 [승인], 재�
 check("[정본5] 여러 계정: 계정 묻고 워크스페이스 확인, 다르면 생성 안 함", "어느 계정(A~E)으로 작업하나요?" in _acc and "`list_workspaces`" in _acc and "do not generate" in _acc and "accounts.md" in inst_core and "Several accounts and the connected workspace" in ctx_ask)
 check("[정본6] Seedream 5.5·Seedance 2.5는 그 계정의 media ID", "Seedream 5.5 · Seedance 2.5" in _acc and "this account's media IDs" in vskill and "Seedream 5.5 takes this account's media IDs" in img_skill)
 check("[정본7] 이미지는 기다려 직접 보고 ✔/✘, 영상은 보내고 끝", "Image: write the same format, then wait" in _gen and "Video is never waited for" in _gen)
-check("[정본8] 새 요소는 누구나, 다섯 계정 모두 같은 이름(다음 세션에 맞춤)", "Anyone may make a new element" in _acc and "create every missing one from the original URL" in _acc and "| 에셋 ID | 요소 이름 | 원본 주소 | A | B | C | D | E |" in _reg)
+check("[정본8] 새 요소는 누구나, 그 자리에서 모든 계정에 만듦(못 바꾸면 다음 세션)", "Anyone may make one" in _acc and "A new element is made in every account at once" in _acc and "go through the other accounts one by one" in _acc and "next session start" in _acc and "| 에셋 ID | 요소 이름 | 원본 주소 | A | B | C | D | E |" in _reg)
 check("[정본9] 다른 계정 결과는 원본 주소로 가져오고, draft 확정은 만든 계정에서 7일 안", "import it from its original URL" in _acc and "in the account that made the draft" in sk("video-prompt/rerender.md"))
 check("[정본10] 사람이 나오면 확정 시트를 항상 붙임", "confirmed sheet attached" in _gen and "Every person in the shot has the confirmed character sheet attached" in sk("video-prompt/live-action.md"))
 check("[정본11] 콘티는 묻지 않고 반영, 전 → 후 보고, 만든 계정만", "Reflect without asking" in _sb and "`콘티: 전 → 후`" in _sb and "record only the account" in _sb and "`1-3.5`" in _sb)
 check("[정본13] 이미지 승인을 물을 때 에셋 저장을 함께 말함", "승인하면 에셋으로 저장합니다." in _gen)
+check("[정본14] 계정끼리 공유할 것은 처음 세팅에서 정하고 확정 사항에 적힘", "계정끼리 공유할 것" in sk("project-setup/SKILL.md") and "계정 공유" in _dec and "`계정 공유`" in _acc)
 check("[정본] 읽기 지도: 할 일 2번이 accounts.md·storyboard.md를 가리킴", "accounts.md" in _task_rows.get(2, "") and "storyboard.md" in _task_rows.get(2, ""))
 
 # 결과

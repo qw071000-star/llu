@@ -35,6 +35,7 @@
 
 ## §7. 작업 방식 (이 작품에서 정한 것)
 - 운영 방식: [단독 / 공용 계정: Claude 1개 · Higgsfield 1개를 [이름들]이 돌아가며 사용 (`production-session` → `shared-account.md`) / 여러 계정: Claude 1개 · Higgsfield A 공용 + B~E 개인 (`production-session` → `accounts.md`)] · 총괄: [이름] · 하루 크레딧 상한: [없음 / N]
+- 계정 공유(여러 계정일 때, 처음 세팅에서 정함): 요소 [인물 · 장소 · 소품 · 그림체] · 승인 이미지 [필요할 때만 가져오기 / 모든 계정] (`accounts.md` 2·3)
 - 콘티 위치: [문서 링크] (`production-session` → `storyboard.md`)
 - [ ]
 
