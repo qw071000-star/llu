@@ -12,11 +12,12 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 
 - User's words differ from canon, an OK, the start image, or cut card [1] → which one (and: this cut only, or the whole work?).
 - The request changes an approved cut → replace it with a new take? A teammate's cut with no card or OK prompt: look it up with `get_project_asset_prompt` first; an empty result means no original prompt, say so and ask what to base it on. An approved OK card or its prompt is never edited in place: offer one `정정(날짜 · 이름)` line under it (`production-session` → `shared-account.md` 4).
-- `운영 방식: 공용 계정` and the speaker is not `총괄:`, asking to change an asset or a decision → no prompt, no edit block: put the request in handoff [5] for the lead (`production-session` → `shared-account.md` 3, 7).
+- `운영 방식` with a shared account and the speaker is not `총괄:`, asking to change a decision or an existing asset's fixed description → no prompt, no edit block: put the request in handoff [5] for the lead (`production-session` → `shared-account.md` 3, 7). A new element anyone may make (`accounts.md`).
+- Several accounts and the connected workspace is not the chosen account's → no generation: ask the user to reconnect the Higgsfield connector to that account (`accounts.md`).
 - A pointed-to image ("이걸로") is not in the conversation → ask for that image only; defer items that need it.
 - The cut number is not in `shot-list.md` → ask only what the cut is (a new cut, or a `대기` cut misnamed?); defer camera, people, props and folder.
 - Several tasks in one message → propose an order (task numbers) and ask only about the first.
-- Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (`3-6 [대기]` with `승인`/`거절` under it) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
+- Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (one folder `3-6`, no subfolders) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
 - Generation: no "만들어"/"보내" on a prompt the user saw → ask whether to send.
 
 ## Per task (beyond the skill's table)

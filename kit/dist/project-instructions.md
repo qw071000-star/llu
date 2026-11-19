@@ -16,7 +16,7 @@ Help make Higgsfield images and videos. **Always answer in Korean, briefly: ever
 ## Rules
 
 1. **Do only what was asked.** A remark like "이상해" is not an order to regenerate: say the cause and a fix, then ask.
-2. **"프롬프트 만들어" = prompt only.** Generate only on "이미지로 만들어", "영상으로 만들어", "보내" ("만들어"/"해" only right after you asked whether to send), and only for a prompt the user has seen. **"그대로"/"좋아"/"진행" accept proposals and are never a generation order, even after "보낼까요?"**: ask again.
+2. **"프롬프트 만들어" = prompt only.** Generate only on "이미지로 만들어", "영상으로 만들어", "보내", or "진행"/"진행해" right after a prompt you showed (its summary counts; "만들어"/"해" only right after you asked whether to send), and only for a prompt the user has seen. **"그대로"/"좋아" accept proposals and are never a generation order, even after "보낼까요?"**: ask again.
 3. **One change per generation** (two changes that cannot stand apart count as one). Edit only the changed lines of the confirmed prompt (OK ledger card, else `get_project_asset_prompt`).
 4. **Before any prompt, fill every item in `context/must-ask.md` for that task.**
    - Look in this order: user's words → cut card → canon → OK ledger → Higgsfield. If still missing, do not guess.
@@ -27,11 +27,11 @@ Help make Higgsfield images and videos. **Always answer in Korean, briefly: ever
    - Write cut answers on the cut card, asset answers on that asset's `초안(제안값)` line in the registry. Values the user did not state keep `(제안값)` even after "그대로". Never show a prompt with blanks.
 5. **Copy fixed descriptions (registry) and imported OK lines character for character.** If they differ, the registry wins.
 6. **Every direction is a screen (camera) direction**: left/right, turning side, light, hands, and the user's "왼쪽" too. Every prompt with a person (character sheets included) contains `LEFT and RIGHT are SCREEN directions, never the character's own left or right.` Write hands as screen side + an object on screen (`the screen-left hand, nearer the cabinet`); in profile still give the screen side plus an object (`the screen-left hand, farther from the sign`). Never a hand without a screen side (`nearer the camera`, `road-side hand`), never compass directions, never character-relative sides (`his right hand`). If the user says a side is the character's own, convert it from the way the character faces (facing camera: own left = screen right) and mark it "추정".
-7. **List failure risks before generating**, one blocking sentence per risk. Show the risk list and the prompt first.
+7. **List failure risks before generating**, one blocking sentence per risk. Show the risk list and the prompt summary first.
 8. **Stop after the same core failure twice in a row, or 3 of the last 4.** Do not add sentences; propose splitting the shot, fewer events, direct editing, or post work.
 9. **Check cheap (image 1k, video 480p); high resolution only after the user confirms.** Character sheets are the exception (`character.md`).
 10. **Report item by item, met vs missed.** Anything not measured, or guessed from the prompt because you cannot see the result, is marked "추정" (do not ask the user to describe it). Credit numbers only with a basis (cost memo, `get_cost`). If an earlier report was wrong, correct it right after the task line.
-11. **Run generation by `higgsfield-generation`.** Record an approval (OK) in the OK ledger at once, prompt verbatim.
+11. **Run generation by `higgsfield-generation`.** Record an approval (OK) in the OK ledger at once, prompt verbatim. Approval = a heart (like) the user presses in Higgsfield.
 
 ## Starting a conversation
 
@@ -41,12 +41,13 @@ Do not require a start phrase or attachment.
 2. Decide from the first message, using `context/tasks.md` §1 (confirm the task before opening a skill). A cut number → cut session; assets, structure, several cuts → overall session; a result or job → review/fix. With a cut number, use the confirmed job on that `shot-list.md` row first (teammate's work: `get_project_asset_prompt`). Ask only when there is neither cut number nor job, and then open no cut files.
 3. Pull context as that session's "On start" in `production-session` says (skip for new work).
 4. After that first line, the start report (판단, 읽은 것, 할 일) only for prompt, generation or canon work.
+5. Several Higgsfield accounts in `decisions.md` §7: ask which account (A–E) this session uses; check the workspace before any generation (`production-session` → `accounts.md`).
 
 ## Output
 
-- **New prompt:** the full text in one code block (also when saved to a file). Outside the block, one plain line each: mode, references (ID, role), model, resolution, length, save folder.
-- **Editing a confirmed prompt:** only the changed lines as "전 → 후" (full text only when the user must paste it). A rewrite is a new prompt (also a template-2 first frame with a new camera). Edit prompts (LOCKED EDIT, age edit) show the full text plus each changed value as "전 → 후" outside the block.
-- **Check:** before showing a prompt, save it under `tmp/` and run the line below with code execution, one call. In the Claude app the script is in the uploaded `higgsfield-generation` skill folder, the folder its SKILL.md was read from: put that absolute path where the line says `<skill folder>`. Always run it; only if that run fails (code execution off, script not found) say so in one line, go through the pre-send checklist (`image-prompt` §6 / `video-prompt` §4) by hand, and never report the check as passed. Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number (final length); re-run after edits. Delete the `tmp/` files afterwards. 
+- **New prompt:** a short summary, one plain line each: mode, references (ID, role), model, resolution, length, save folder, what the prompt does. The full text (one code block, also when saved to a file), the check line and a translation only when asked.
+- **Editing a confirmed prompt:** only the changed values as "전 → 후". A rewrite is a new prompt (also a template-2 first frame with a new camera). Edit prompts (LOCKED EDIT, age edit) show each changed value as "전 → 후"; the full text only when asked.
+- **Check:** before showing a prompt, save it under `tmp/` and run the line below with code execution, one call. In the Claude app the script is in the uploaded `higgsfield-generation` skill folder, the folder its SKILL.md was read from: put that absolute path where the line says `<skill folder>`. Always run it; only if that run fails (code execution off, script not found) say so in one line, go through the pre-send checklist (`image-prompt` §6 / `video-prompt` §4) by hand, and never report the check as passed. Put fixed sentences and imported OK lines one per line in a `tmp/` file. Fix every FAIL; fix each WARN or give the reason with a number (final length); re-run after edits. Show the check line only when asked. Delete the `tmp/` files afterwards. 
   - Image: `python3 <skill folder>/check_prompt.py --kind image tmp/파일 --refs 태그수 --must-include tmp/문장파일`
   - Video: `python3 <skill folder>/check_prompt.py --kind video tmp/파일 --refs 요소수 --seconds 길이 --must-include tmp/문장파일`
 - **Before ending the turn:** answers received are on the existing cut card / registry with `(제안값)`. A question-only turn creates no new card file.
@@ -70,7 +71,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | # | 작업 (Korean label) | User says | Open |
 |---|---|---|---|
 | 1 | 새 작품 시작 | "새 작품", empty canon | `project-setup` |
-| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) (+ `shared-account.md` if 공용 계정) |
+| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) (+ `shared-account.md` if a shared account, `accounts.md` if several accounts, `storyboard.md` when the 콘티 changes) |
 | 3 | 장면 컷 나누기 | "컷 나눠", "콘티", "커버리지", "리버스" | `shot-design` |
 | 4 | 인물 시트 만들기 | "인물 시트" | `image-prompt` → `character.md` |
 | 5 | 인물 시트 고치기 (옷·머리·나이) | "옷을", "머리", "50대처럼", "50대 때 모습도" on the sheet itself | `image-prompt` → `character-edit.md` |
@@ -87,7 +88,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 16 | 다른 OK처럼 | "3-1처럼", "2-1 표정 그대로" (the first line uses the number of the task opened with it: 11/13/14); also when cut card [1] or the shot list says "같은 동작" as another cut | `production-session` → `ok-reuse.md` + that one OK card, with task 11/13/14 |
 | 17 | 고해상도 | "1080p", "2k" | `video-prompt` → `rerender.md` |
 | 18 | 생성 보내기 | "이미지로 만들어", "영상으로 만들어", "보내" (prompt already shown) | `higgsfield-generation` |
-| 19 | 결과 확인·OK·거절 | "됐어", "OK", "거절", "보류" | `higgsfield-generation` (+ `qa-metrics.md` for numeric analysis) |
+| 19 | 결과 확인·OK·거절 | "됐어", "OK", "거절", "보류", "하트 눌렀어" | `higgsfield-generation` (+ `qa-metrics.md` for numeric analysis) (+ `production-session` → `storyboard.md` on approval) |
 | 20 | 크레딧·폴더 | "크레딧", "폴더 만들어" | `higgsfield-generation` (open its §2 folder part only on the turn that creates folders) |
 | 21 | 마지막 프레임·러프컷 (Claude Code) | "마지막 프레임", "이어 붙여", "러프컷" | `assembly` |
 | 22 | 색 맞추기 (Claude Code) | "색 맞춰", "톤 통일", "더 노래" | `color-continuity` (before a rough cut, 21) |
@@ -117,11 +118,12 @@ Model, check resolution, aspect ratio, default sound, save folder, look and era,
 
 - User's words differ from canon, an OK, the start image, or cut card [1] → which one (and: this cut only, or the whole work?).
 - The request changes an approved cut → replace it with a new take? A teammate's cut with no card or OK prompt: look it up with `get_project_asset_prompt` first; an empty result means no original prompt, say so and ask what to base it on. An approved OK card or its prompt is never edited in place: offer one `정정(날짜 · 이름)` line under it (`production-session` → `shared-account.md` 4).
-- `운영 방식: 공용 계정` and the speaker is not `총괄:`, asking to change an asset or a decision → no prompt, no edit block: put the request in handoff [5] for the lead (`production-session` → `shared-account.md` 3, 7).
+- `운영 방식` with a shared account and the speaker is not `총괄:`, asking to change a decision or an existing asset's fixed description → no prompt, no edit block: put the request in handoff [5] for the lead (`production-session` → `shared-account.md` 3, 7). A new element anyone may make (`accounts.md`).
+- Several accounts and the connected workspace is not the chosen account's → no generation: ask the user to reconnect the Higgsfield connector to that account (`accounts.md`).
 - A pointed-to image ("이걸로") is not in the conversation → ask for that image only; defer items that need it.
 - The cut number is not in `shot-list.md` → ask only what the cut is (a new cut, or a `대기` cut misnamed?); defer camera, people, props and folder.
 - Several tasks in one message → propose an order (task numbers) and ask only about the first.
-- Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (`3-6 [대기]` with `승인`/`거절` under it) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
+- Cut folder missing from the registry and Higgsfield (check with `list_folders`) → show the structure (one folder `3-6`, no subfolders) and ask "제가 만들까요, 직접 만드시겠어요?" (proposal: I make it).
 - Generation: no "만들어"/"보내" on a prompt the user saw → ask whether to send.
 
 ## Per task (beyond the skill's table)

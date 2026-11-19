@@ -97,7 +97,7 @@ for f in CTX:
     check(f"[항상] context/{f} 있음", os.path.exists(os.path.join(KIT, "context", f)))
     check(f"[항상] 지침이 context/{f}를 가리킨다", f"context/{f}" in inst_core)
 inst = inst_core + "\n" + "\n".join(read(os.path.join(KIT, "context", f)) for f in CTX if os.path.exists(os.path.join(KIT, "context", f)))
-INST_BUDGET = 1775  # 추정 토큰. 기능 점검(real16·17) 뒤 정본 세 파일 이름·생성 규칙 보강으로 약 1,770
+INST_BUDGET = 1875  # 2026-11-19 정본 규칙 반영(진행=생성, 요약 출력, 하트 승인, 계정 선택)으로 약 1,860. 추정 토큰. 기능 점검(real16·17) 뒤 정본 세 파일 이름·생성 규칙 보강으로 약 1,770
 check(f"[지침] instructions.md 추정 {tok(inst_core):,.0f}토큰 ≤ {INST_BUDGET:,}", tok(inst_core) <= INST_BUDGET, f"{len(inst_core):,}자")
 for s in re.findall(r"`([a-z-]+)`(?: →|\s*\|)", inst):
     if s in ("decisions", "shot-list", "asset-registry"):
@@ -460,7 +460,7 @@ check("[실행] 할 일 목록: 영상 요청이면 video-prompt §0·§2", "ope
 check("[실행] 할 일 목록: 그 컷 번호의 핸드오프만, 이웃 OK 카드는 기준이 아니면 안 엶", "its last handoff" in _r3 and "Do not open neighbour OK cards unless one is the reference" in _r3)
 check("[실행] production-session §2: 총괄 시작도 칸이 채워진 컷의 핸드오프는 열지 않음", "Do not open the handoff of a cut whose `생성/크레딧` field is already filled" in sess)  # 옛 routing §3에서 세션 스킬로 옮김
 check("[실행] must-ask: '이걸로'인데 이미지 없으면 그것만", "ask for that image only" in ctx_ask)
-check("[실행] must-ask: 컷 폴더 없으면 구성안과 누가 만들지", "제가 만들까요, 직접 만드시겠어요?" in ctx_ask and "`3-6 [대기]`" in ctx_ask)
+check("[실행] must-ask: 컷 폴더 없으면 구성안과 누가 만들지", "제가 만들까요, 직접 만드시겠어요?" in ctx_ask and "one folder `3-6`, no subfolders" in ctx_ask)
 check("[실행] must-ask 실사 영상: 시작 이미지 없으면 영상 질문 보류", "hold video questions" in ctx_ask)
 check("[실행] must-ask 실사 영상: 새 장소면 장소 마스터 항목을 함께", "ask the location-master items in the same batch" in ctx_ask)
 check("[실행] must-ask 실사 영상: 이웃 컷 OK 연기와 반대면 짚기", "opposite to a neighbour cut's acting" in ctx_ask)
@@ -492,7 +492,7 @@ check("[실행] character-edit 규칙: 목둘레·[old 1~3] 칸을 모두 채우
 out_sec = inst_core.split("## Output")[1]
 rule3 = [l for l in inst_core.splitlines() if l.startswith("3. ")][0]
 check("[실행2] 지침 출력: 고치면 전 → 후만, 새로 쓰면 전문, 편집 프롬프트는 둘 다", "**Editing a confirmed prompt:**" in out_sec and "A rewrite is a new prompt" in out_sec and "Edit prompts (LOCKED EDIT, age edit)" in out_sec)
-check("[실행2] 지침 출력: 블록 밖 줄은 코드블록에 넣지 않음", "Outside the block, one plain line each" in out_sec)
+check("[실행2] 지침 출력: 요약은 코드블록 밖 한 줄씩", "a short summary, one plain line each" in out_sec)
 check("[실행2] 지침 3번은 보이는 법을 적지 않는다(출력에만)", "전 → 후" not in rule3 and "full text" not in rule3, rule3)  # 옛 "보이는 법은 출력" 포인터 대신: 3번에 보이는 법이 없으면 충돌도 없다
 check("[실행2] 지침 6번: 옆모습도 화면 쪽 + 물건, nearer the camera만은 안 됨", "`the screen-left hand, farther from the sign`" in inst_core and "Never a hand without a screen side (`nearer the camera`, `road-side hand`)" in inst_core)
 check("[실행2] live-action 맨 위: 질문 턴에는 acting을 열지 않음", "Do not open `acting` in a question turn" in live.split("## Blocks")[0])
@@ -562,7 +562,7 @@ check("[실행4] scenarios C24: acting은 프롬프트 턴(2턴)에 연다", "`a
 
 # 16b. 실제 Claude Code 시험 5회차(real5)에서 찾은 결함
 check("[실제5] 지침 4번: 에셋 질문의 답은 에셋 대장 초안 줄, 컷 질문의 답만 컷 카드", "Write cut answers on the cut card, asset answers on that asset's `초안(제안값)` line in the registry" in inst_core)
-check("[실제5] 지침 출력: 파일로 저장해도 답에 전문", "(also when saved to a file)" in out_sec)
+check("[실제5] 지침 출력: 전문은 요청 때만, 파일로 저장해도 같음", "(one code block, also when saved to a file)" in out_sec and "only when asked" in out_sec)
 check("[실제5] tasks §3: 시작 이미지가 없으면 live-action·cut-card를 열지 않음", "Video request without a start image" in _r3 and "no `live-action.md`, no `cut-card.md`" in _r3)
 check("[실제5] must-ask 배경: 카메라는 사용자가 움직임을 말했을 때만 묻는다", "Background video: no camera move question unless the user mentioned movement" in ctx_ask)
 _ce_blocks = "\n".join(b for i, b in enumerate(sk("image-prompt/character-edit.md").split("```")) if i % 2 == 1)
@@ -749,9 +749,9 @@ routes = {
     "색 맞추기": ["color-continuity/SKILL.md"],
 }
 # 2026-10-29: 영어 키트로 바꾸며 글자 수(항상 13,000자, 단계 17,550자) 대신 추정 토큰. 값 = 그때 추정을 250 단위로 올림.
-ALWAYS_BUDGET = 6100  # 2026-11-10 공용 계정 규칙 두 줄(OK 카드 수정 금지, 총괄 아닌 사람의 변경)과 읽기 지도로 5,900 → 6,100; 2026-11-09: 새 스킬 edit-planning(설명 ~75) + 작업 24·25(~120) + 잠금 시험 질문 규칙(~90)으로 5,550 → 5,900. 처음 약 5,073, 옛 한국어판 약 7,000
+ALWAYS_BUDGET = 6200  # 2026-11-19 정본 규칙(진행·요약·계정·폴더) 반영으로 6,100 → 6,200; 2026-11-10 공용 계정 규칙 두 줄(OK 카드 수정 금지, 총괄 아닌 사람의 변경)과 읽기 지도로 5,900 → 6,100; 2026-11-09: 새 스킬 edit-planning(설명 ~75) + 작업 24·25(~120) + 잠금 시험 질문 규칙(~90)으로 5,550 → 5,900. 처음 약 5,073, 옛 한국어판 약 7,000
 check(f"[읽기량] 항상 읽히는 양: 추정 {always:,.0f}토큰 ≤ {ALWAYS_BUDGET:,}", always <= ALWAYS_BUDGET)
-BUDGET = 7500  # 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
+BUDGET = 7650  # 2026-11-19 콘티 규칙은 storyboard.md로 빼고도 사람마다 시트 붙이기·Seedance 2.5 media ID로 약 7,620. 단계 파일만(항상 읽히는 양 제외). 그때 가장 큰 작업 약 7,386("3-1처럼" 영상). 늘려야 하면 무엇을 지울지 먼저 본다
 _route_tok = {}
 for name, files in routes.items():
     n = sum(tok(read(os.path.join(SKILLS, f))) for f in files)
@@ -846,6 +846,24 @@ check("[저장2b] 생성 운영: 공용 계정이면 승인 줄에 승인자 이
 check("[실생성1] 생성 운영: 시작 이미지 영상은 start-frame 모델, 이미지 모델 2.6, 요소 ID는 UUID", "`start-frame`" in _gen and "gpt_image_2_6" in _gen and "UUID" in sk("image-prompt/SKILL.md") and "start-frame" in _fx)
 check("[실존감] 인물 시트: 실존감 문장(REAL PERSON), 호감 단어는 구조로 바꾸고 성격은 연기 프로필로", "REAL PERSON:" in sk("image-prompt/character.md") and "`cute`" in sk("image-prompt/character.md") and "ACTING PROFILE" in sk("image-prompt/character.md"))
 check("[저장3] 컷 설계: job·폴더·카드가 있는 컷이 있으면 번호를 밀지 않음", "do not renumber" in sk("shot-design/SKILL.md"))
+
+# 17d. 정본 규칙 반영 (2026-11-19): 진행=생성, 요약 출력, 하트 승인, 폴더 하나, 여러 계정, 콘티
+_acc = sk("production-session/accounts.md")
+_sb = sk("production-session/storyboard.md")
+_reg = read(os.path.join(KIT, "project-files", "asset-registry.md"))
+check("[정본1] 지침 2번: 보인 프롬프트 뒤 '진행'은 생성 지시, 그대로·좋아는 아님", '"진행"/"진행해" right after a prompt you showed' in inst_core and '"그대로"/"좋아" accept proposals' in inst_core)
+check("[정본2] 지침 출력: 보내기 전엔 요약, 전문·점검 줄·번역은 요청 때만", "a short summary" in out_sec and "the check line and a translation only when asked" in out_sec and "Show the check line only when asked" in out_sec)
+check("[정본3] 승인은 하트, 하트 없으면 최근 것이 최종본, 하위 폴더 없음", "a result with a heart is the approved one" in _gen and "the most recent result is the current final" in _gen and "no subfolders" in _gen and "승인\n│   └─ 거절" not in _gen)
+check("[정본4] 컷 폴더 이름은 번호만, 승인일 때만 [승인], 재작업은 셋을 함께", "with ` [승인]` added only while it holds an approved result" in _gen and "Reworking an approved cut" in _gen and "수정작업중" in _sb)
+check("[정본5] 여러 계정: 계정 묻고 워크스페이스 확인, 다르면 생성 안 함", "어느 계정(A~E)으로 작업하나요?" in _acc and "`list_workspaces`" in _acc and "do not generate" in _acc and "accounts.md" in inst_core and "Several accounts and the connected workspace" in ctx_ask)
+check("[정본6] Seedream 5.5·Seedance 2.5는 그 계정의 media ID", "Seedream 5.5 · Seedance 2.5" in _acc and "this account's media IDs" in vskill and "Seedream 5.5 takes this account's media IDs" in img_skill)
+check("[정본7] 이미지는 기다려 직접 보고 ✔/✘, 영상은 보내고 끝", "Image: write the same format, then wait" in _gen and "Video is never waited for" in _gen)
+check("[정본8] 새 요소는 누구나, 다섯 계정 모두 같은 이름(다음 세션에 맞춤)", "Anyone may make a new element" in _acc and "create every missing one from the original URL" in _acc and "| 에셋 ID | 요소 이름 | 원본 주소 | A | B | C | D | E |" in _reg)
+check("[정본9] 다른 계정 결과는 원본 주소로 가져오고, draft 확정은 만든 계정에서 7일 안", "import it from its original URL" in _acc and "in the account that made the draft" in sk("video-prompt/rerender.md"))
+check("[정본10] 사람이 나오면 확정 시트를 항상 붙임", "confirmed sheet attached" in _gen and "Every person in the shot has the confirmed character sheet attached" in sk("video-prompt/live-action.md"))
+check("[정본11] 콘티는 묻지 않고 반영, 전 → 후 보고, 만든 계정만", "Reflect without asking" in _sb and "`콘티: 전 → 후`" in _sb and "record only the account" in _sb and "`1-3.5`" in _sb)
+check("[정본13] 이미지 승인을 물을 때 에셋 저장을 함께 말함", "승인하면 에셋으로 저장합니다." in _gen)
+check("[정본] 읽기 지도: 할 일 2번이 accounts.md·storyboard.md를 가리킴", "accounts.md" in _task_rows.get(2, "") and "storyboard.md" in _task_rows.get(2, ""))
 
 # 결과
 print(f"추정 토큰: 항상 읽힘 {always:,.0f} (예산 {ALWAYS_BUDGET:,}) · instructions.md {tok(inst_core):,.0f} (예산 {INST_BUDGET:,}) · "
