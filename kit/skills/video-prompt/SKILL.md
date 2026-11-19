@@ -87,7 +87,7 @@ How to ask is instructions rule 4. If there are more than 10 questions, group th
 
 | Model | Note |
 |---|---|
-| Seedance 2.5 | Call references with `<<<요소ID>>>` (element ID), matching the attached elements exactly. Sound is on by default, so an AUDIO block is needed. Voice references were called audio_1, audio_2 in the order attached (observed; not confirmed by official docs). Extend may change the aspect ratio |
+| Seedance 2.5 | Attach references as this account's media IDs (the imported confirmed sheet, location, start image) and call them in attach order (`<<<image_1>>>` …), not element tags (`production-session` → `accounts.md` 4). A person in the shot: that character's confirmed sheet is always attached. Sound is on by default, so an AUDIO block is needed. Voice references were called audio_1, audio_2 in the order attached (observed; not confirmed by official docs). Extend may change the aspect ratio |
 | Kling 4.0 | Do not re-describe what is in the image; write only the motion and what to keep. Write the camera as a separate paragraph and do not write an end state |
 
 ## 4. Pre-send check (what the check script cannot catch)

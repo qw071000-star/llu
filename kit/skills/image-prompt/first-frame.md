@@ -6,7 +6,7 @@
 |---|---|
 | Is the cut camera the same as the confirmed location view? (location view job). If the location view in the shot list is exactly the confirmed view or is blank, ask it as the first question and propose "같음(틀 1)" (same, Template 1) | mode: Template 1 / Template 2 |
 | Location view job, that view's LIGHT LOCK | `<<<LOC>>>`, `PRESERVE EXACTLY` |
-| For each character: element ID, wardrobe state, fixed description sentence | `REFERENCE AUTHORITY`, `WARDROBE` |
+| For each character: the confirmed sheet (always attached; element ID, or this account's media ID for Seedream 5.5), wardrobe state, fixed description sentence | `REFERENCE AUTHORITY`, `WARDROBE` |
 | Prop: position, state, who holds it, size (cm + body) | `PROP` |
 | Camera: position (by objects on screen), height, what it looks at (when looking down, as in a foot/hand insert, give height and down direction together), distance, shot size (Template 2 also equipment names) | `CAMERA` |
 | For each character: starting position (anchor, distance, contact), ongoing action, gaze, hands | `CHANGE` / `BLOCKING` |

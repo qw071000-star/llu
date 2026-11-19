@@ -17,7 +17,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | # | 작업 (Korean label) | User says | Open |
 |---|---|---|---|
 | 1 | 새 작품 시작 | "새 작품", empty canon | `project-setup` |
-| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) (+ `shared-account.md` if 공용 계정) |
+| 2 | 오늘 할 일·세션 시작·컷 카드·핸드오프 | a cut number alone, "오늘 뭐 해", "핸드오프", "대장 정리" | `production-session` (+ `cut-card.md` / `handoff.md` only when writing them) (+ `shared-account.md` if a shared account, `accounts.md` if several accounts, `storyboard.md` when the 콘티 changes) |
 | 3 | 장면 컷 나누기 | "컷 나눠", "콘티", "커버리지", "리버스" | `shot-design` |
 | 4 | 인물 시트 만들기 | "인물 시트" | `image-prompt` → `character.md` |
 | 5 | 인물 시트 고치기 (옷·머리·나이) | "옷을", "머리", "50대처럼", "50대 때 모습도" on the sheet itself | `image-prompt` → `character-edit.md` |
@@ -34,7 +34,7 @@ Same numbers as the team's Korean list `guides/할일-목록.md`.
 | 16 | 다른 OK처럼 | "3-1처럼", "2-1 표정 그대로" (the first line uses the number of the task opened with it: 11/13/14); also when cut card [1] or the shot list says "같은 동작" as another cut | `production-session` → `ok-reuse.md` + that one OK card, with task 11/13/14 |
 | 17 | 고해상도 | "1080p", "2k" | `video-prompt` → `rerender.md` |
 | 18 | 생성 보내기 | "이미지로 만들어", "영상으로 만들어", "보내" (prompt already shown) | `higgsfield-generation` |
-| 19 | 결과 확인·OK·거절 | "됐어", "OK", "거절", "보류" | `higgsfield-generation` (+ `qa-metrics.md` for numeric analysis) |
+| 19 | 결과 확인·OK·거절 | "됐어", "OK", "거절", "보류", "하트 눌렀어" | `higgsfield-generation` (+ `qa-metrics.md` for numeric analysis) (+ `production-session` → `storyboard.md` on approval) |
 | 20 | 크레딧·폴더 | "크레딧", "폴더 만들어" | `higgsfield-generation` (open its §2 folder part only on the turn that creates folders) |
 | 21 | 마지막 프레임·러프컷 (Claude Code) | "마지막 프레임", "이어 붙여", "러프컷" | `assembly` |
 | 22 | 색 맞추기 (Claude Code) | "색 맞춰", "톤 통일", "더 노래" | `color-continuity` (before a rough cut, 21) |

@@ -18,7 +18,7 @@ Fill in the "required information" table of that asset type's file and the commo
 
 What to ask is in `context/must-ask.md`; how to ask is in instructions rule 4.
 
-**Reference tags:** `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>` in the templates are placeholders. Keep the angle brackets and replace only the name inside with the real element ID (the UUID in the registry's `요소 ID` column; `loc_…_v1` is only its label) or the attach-order name (`<<<image_1>>>`). The opening line works the same way: `Edit <<<loc_…_v1>>> WITHOUT reframing`. Number of references = number of tags = number of attached images.
+**Reference tags:** `<<<LOC>>>`, `<<<CHAR>>>`, `<<<PROP>>>`, `<<<OK>>>`, `<<<A>>>` in the templates are placeholders. Keep the angle brackets and replace only the name inside with the real element ID (the UUID in the registry's `요소 ID` column; `loc_…_v1` is only its label) or the attach-order name (`<<<image_1>>>`). The opening line works the same way: `Edit <<<loc_…_v1>>> WITHOUT reframing`. Number of references = number of tags = number of attached images. Seedream 5.5 takes this account's media IDs in attach order, not element tags (`production-session` → `accounts.md` 4). Every generation with a person attaches that character's confirmed sheet.
 
 ## 1. Decide before writing
 

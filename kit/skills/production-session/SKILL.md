@@ -21,12 +21,13 @@ Principle: **keep memory in documents; sessions are written to and thrown away.*
 - Edit only the relevant lines of a file. Never rewrite a canon document wholesale.
 - Canon holds only what is currently valid; history and discarded items go to the log, never the same content in two documents.
 - Do not touch canon another session is editing.
-- `decisions.md` §7 `운영 방식: 공용 계정` → also `shared-account.md`.
+- `decisions.md` §7 `운영 방식` with a shared account → also `shared-account.md`; with several Higgsfield accounts → also `accounts.md`.
+- The 콘티 (storyboard) is updated without asking: `storyboard.md`.
 - A problem outside the cut session's scope is not fixed; write it under handoff [5] "총괄에 올릴 것". A fixed description sentence that conflicts with this cut goes there too.
 
 ## 2. Lead session
 
-**On start:** read `decisions.md`, `shot-list.md`, `asset-registry.md` in that order. Read the OK ledger only when the list is needed. Process received handoffs (§4). Do not open the handoff of a cut whose `생성/크레딧` field is already filled.
+**On start:** read `decisions.md`, `shot-list.md`, `asset-registry.md` in that order. Approvals are the hearts in the cut folders (`storyboard.md`). Read the OK ledger only when the list is needed. Process received handoffs (§4). Do not open the handoff of a cut whose `생성/크레딧` field is already filled.
 
 **Does:** decides sections, cut order and length, aspect ratio, crop, masked zones, era, and art-style reference. Confirms shared assets. Decides the Higgsfield folder structure. Issues cut cards (`cut-card.md`).
 
@@ -36,7 +37,7 @@ Principle: **keep memory in documents; sessions are written to and thrown away.*
 
 **On start Claude gathers** (instructions, "when starting a conversation").
 1. Read the cut card. If none, build a draft (only on a turn that writes values the user gave: `context/tasks.md` §3) from that cut's line and the continuity table in `shot-list.md`, the relevant asset/folder in `asset-registry.md`, and the relevant lines in `decisions.md` (`cut-card.md`). Even for a new cut, do not open neighboring cut cards or handoffs (`context/tasks.md` §3).
-2. Check current state in the Higgsfield cut folder (`list_folders`, `list_project_assets`): the state in the folder name, the number of results in the `승인` and `거절` folders, results awaiting review.
+2. Check current state in the Higgsfield cut folder (`list_folders`, `list_project_assets`): `[승인]` in the folder name, the result with a heart (approved), else the most recent result (current final), results awaiting review. If the folder differs from the 콘티 or canon, reflect it (`storyboard.md`).
 3. If that cut number has a last handoff, read it and continue from [6] next steps. If that step is a user confirmation, ask that confirmation together with the proposed values for the card's empty fields, in one go.
 4. If that cut has ever received OK, read its card in the OK ledger.
 
